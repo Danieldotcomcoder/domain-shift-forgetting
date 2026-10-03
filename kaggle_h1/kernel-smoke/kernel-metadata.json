@@ -1,0 +1,18 @@
+{
+  "id": "danny00/h1-single-notebook-smoke",
+  "title": "h1-single-notebook-smoke",
+  "code_file": "h1-single-notebook-smoke.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "danny00/stage1-online-inputes"
+  ],
+  "competition_sources": [],
+  "model_sources": [],
+  "kernel_sources": [],
+  "machine_shape": "NvidiaTeslaT4"
+}

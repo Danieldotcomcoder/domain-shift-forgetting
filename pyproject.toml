@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "domain-shift-forgetting"
+version = "0.0.1"
+description = "Unvalidated preparation code for the protocol-v3 H1 research pilot"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+model = ["torch", "numpy"]
+test = ["pytest"]
+local-data = ["numpy", "tiktoken", "pyarrow"]
+scientific-data = ["numpy", "tiktoken", "pyarrow", "huggingface_hub", "datasets", "datasketch"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+# Dependency names describe capabilities only. Resolve and freeze actual versions
+# at T01/T12; this is deliberately not a reproducible environment lock.

@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-03",
+  "status": "completed",
+  "before_bytes": 35404601884.0,
+  "removed": [
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\free-budget-tests-01",
+      "files": 2821,
+      "bytes": 428792565.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\kaggle-acceptance-fix-01",
+      "files": 2819,
+      "bytes": 428790608.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\kaggle-tests-01",
+      "files": 97,
+      "bytes": 5104920232.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\kaggle-tests-final",
+      "files": 120,
+      "bytes": 6040954562.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-final-tests-01",
+      "files": 5826,
+      "bytes": 2134588596.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-full-tests-01",
+      "files": 5921,
+      "bytes": 6473724636.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-tests-01",
+      "files": 5794,
+      "bytes": 432766555.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\pilot-tests-01",
+      "files": 2732,
+      "bytes": 428461198.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\pilot-tests-final-01",
+      "files": 2932,
+      "bytes": 6469427742.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\pilot-tests-followup-01",
+      "files": 2818,
+      "bytes": 428771414.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\pilot-tests-followup-02",
+      "files": 2818,
+      "bytes": 428771415.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\pilot-tests-followup-03",
+      "files": 2818,
+      "bytes": 428771415.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\source-auth-tests-01",
+      "files": 7,
+      "bytes": 1681.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\free-budget-cache",
+      "files": 4,
+      "bytes": 4355.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\kaggle-acceptance-fix-cache",
+      "files": 4,
+      "bytes": 4173.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-cache",
+      "files": 4,
+      "bytes": 2640.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-final-cache",
+      "files": 4,
+      "bytes": 3229.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\paired-full-cache",
+      "files": 4,
+      "bytes": 7238.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\local-lab\\large-tests-1",
+      "files": 36,
+      "bytes": 1701498206.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\local-lab\\large-tests-final",
+      "files": 55,
+      "bytes": 1999348179.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\local-lab\\large-data-test",
+      "files": 16,
+      "bytes": 50030.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    },
+    {
+      "path": "C:\\Users\\danie\\Desktop\\System\\domain-shift-forgetting\\artifacts\\local-lab\\cpu-validation\\pytest-temp-2",
+      "files": 12,
+      "bytes": 85166507.0,
+      "reason": "Disposable pytest temporary output or pytest cache"
+    }
+  ],
+  "preserved_files": 87,
+  "after_bytes": 2389774708.0,
+  "reclaimed_bytes": 33014827176.0,
+  "preserved_files_verified": true
+}

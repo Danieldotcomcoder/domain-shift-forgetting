@@ -1,0 +1,238 @@
+{
+  "schema_version": "1",
+  "purpose": "Local source export inventory; not an execution freeze",
+  "files": [
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi 3d88a2d10e448149ac9df736861f0d40.md",
+      "sha256": "bf5f14e40bc0b61fb960953f945ae1a1b793d893ac4abf5f71633ada2ed5300e"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/01 · Protocol v3 — H1 only 3d88a2d10e44812ea734fdeff5891429.md",
+      "sha256": "9657240fa63fc1a8be7071690da165882c639e00e8db46358f6c61995f644770"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/02 · Data, tokenization and leakage controls 3d88a2d10e44815391dffb1e1533faa8.md",
+      "sha256": "4a6f1c515336186f4455cd660e9506d782e14cd693bc20d1061311b06113bf95"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/03 · Analysis plan and decision rules 3d88a2d10e4481af9a3deb8e29c432c7.md",
+      "sha256": "454af3277a9736f07c1e29ff7fd53fb70d7e92e4fb1b1eda45a651ed868159d6"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/04 · Execution, GPU budget and reproducibility 3d88a2d10e44811ebd95cc0afce540c9.md",
+      "sha256": "89b8fef0c2942bebd72cea64fde7e18366b5e02f3ad77a7f7e539ceafa7dcb85"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/05 · Decision sheet, limitations and revision reco 3d88a2d10e4481298fd9f24f8a9b7309.md",
+      "sha256": "91681775374f0ba2126ba684d51bee4416666bbccd12c91765391dd6df68334b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks facc2f8abdc3499a99aa523d288eaadf_all.csv",
+      "sha256": "ff960814f9d5d7501923c245a6618af991a287af27ba994dd67eb67b06d87f0b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks facc2f8abdc3499a99aa523d288eaadf.csv",
+      "sha256": "ff960814f9d5d7501923c245a6618af991a287af27ba994dd67eb67b06d87f0b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T01 · Pin environment and implementation sources 3d88a2d10e4481f6b3bec60f1de2f8d6.md",
+      "sha256": "ad1a46493e31db56d85de524e90d96f279b4444ab7685f8e8008f155ac281220"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T02 · Verify dataset access and inspect provenance 3d88a2d10e4481f7b617debd9787c1c4.md",
+      "sha256": "62201dda12b44d3d09a6f228deffe6916a5a6356a0296c3a9a3db12dc2f9e933"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T03 · Build deterministic split and dedup pipeline 3d88a2d10e4481c692c7e019b59018c4.md",
+      "sha256": "d1cd289de2414d3e0af7f5bfde0730d7df71fd52bdca5c6008b95043653cb6e1"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T04 · Materialize packed arrays and token metadata 3d88a2d10e4481be9c7fc9e1ba4927b3.md",
+      "sha256": "0b793b7a3fc448739e0040746934e3364872dbe9f2be16d8f6ad58b4f281380e"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T05 · Implement paired transformer and TaperNorm 3d88a2d10e448136859bdb65a0cd652e.md",
+      "sha256": "7b175a546eeedc7766bc3c03629c696bbc2dbb45b7a9ad4d87bfd37e979e72f1"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T06 · Implement optimizer schedule and resumable b 3d88a2d10e448102aac6db3bf6cc3021.md",
+      "sha256": "b3b3a1be4cb39e05a0bf5c4103494b384d47c97448a306c93b33c26c9c11d5bb"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T07 · Implement scheduled evaluation and diagnosti 3d88a2d10e448123afb7f01c5871f31f.md",
+      "sha256": "4465e3fd4195d0c8863836aec85f107c03fc1619bcc749a16a9e4109b5f0d1d9"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T08 · Implement deterministic analysis and classif 3d88a2d10e4481c2b916f3d1f256b1e4.md",
+      "sha256": "738efd2637751b0c850676c25dc731a00dd4082d2de37edd5d501a24438847a5"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T09 · Validate model endpoints, EMA and resume 3d88a2d10e4481acba45f239ecab9723.md",
+      "sha256": "0a765a0a8381f5780d09aa28936e4e9a5778d123f4b7e4879bbb3b9f382d2e7f"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T10 · Validate data and analysis invariants 3d88a2d10e4481748f00c77314f07eb1.md",
+      "sha256": "db38c3a97a3a573dc8d82ffe2cb0e4d10b707e926336a7ee64243013294af46e"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T11 · Benchmark GPU and lock feasible allocation 3d88a2d10e4481e9b131cd4a0ae65bf7.md",
+      "sha256": "4965a8ebbe6b369ddd332c9d393b777734e4f407bc4f15ed3b1ebadc369a8922"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T12 · Freeze execution manifest and analysis versi 3d88a2d10e44810ab981f924326214f3.md",
+      "sha256": "42fc2326bf9f8b672826170ded0ef38bebfced7589e96482c86e2e5d2d80f222"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T13 · Run primary paired group 101 3d88a2d10e44813fa2b8c5f1df21289a.md",
+      "sha256": "e82b9c7f6446387b2f0279b4781124eeaed1971d7d15b4a74649136eb7cefa77"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T14 · Run primary paired group 102 3d88a2d10e4481c883d9c2edc12c5aee.md",
+      "sha256": "eef60247b297bb5238a973f2e890c0d651cbefa23476cae4022f7e1b98d26d86"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T15 · Run primary paired group 103 3d88a2d10e4481af8679fc9580f04517.md",
+      "sha256": "d7ade7a6f2fa6ff43dfd5cdd5105f475e6e0b7fb6a74380cbe202a5b6c77a094"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T16 · Run conditional auxiliary group 101 3d88a2d10e4481f984cefda58e81eb1e.md",
+      "sha256": "4b20e3e8788e9ebc12349801851b1e84c98bb551c91762710aa4233b0eda3718"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T17 · Run conditional auxiliary group 102 3d88a2d10e4481859180ff7e7dc7b997.md",
+      "sha256": "c04625501982664922ad19b16b619c0d9d59d8b946a9127ab6508bd2b776fd76"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T18 · Run conditional auxiliary group 103 3d88a2d10e4481a298a5cc91a1a29d30.md",
+      "sha256": "9408a2961f2249414d38867de1a8c6e9715a1452902f89ca9437a16ace3e52bd"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T19 · Assemble decision sheet and figures 3d88a2d10e44810d91cacc56b269cb14.md",
+      "sha256": "6db4c5470fa1412018ba806a9e3a3a57f0d167f5ca3926e35be9af14064512f8"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Implementation tasks/T20 · Archive evidence and write next-stage decisi 3d88a2d10e44810cac5efca0d5abee7e.md",
+      "sha256": "553125eeebdff595505745e12394594ee35de8efefa3c68e827921d58ab4175c"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry 310a761cff234f6ab5b3564877a7e102_all.csv",
+      "sha256": "b52b543af44ba8540b29e959bc9c3895b1e8d63cbfca1b3159506ed721aa3190"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry 310a761cff234f6ab5b3564877a7e102.csv",
+      "sha256": "b52b543af44ba8540b29e959bc9c3895b1e8d63cbfca1b3159506ed721aa3190"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-RMS-prefix 3d88a2d10e44814986e5dd9d646f2aad.md",
+      "sha256": "549c3661826096411d466d773c349813fca74238deb0638b9e60afb9ba6023dd"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-RMS-python 3d88a2d10e4481c6b89de776e10c7b03.md",
+      "sha256": "46af51b57cb810bad9bc1848f96f7b8fcf7af29228981e2493514c464d8ef079"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-RMS-web 3d88a2d10e4481afaa2bfb96f940afa0.md",
+      "sha256": "f5a29baac63f9d623dc548bd82b5e7f475f12897d5c6884fd5be6613d345f0df"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-minus-prefix 3d88a2d10e44813aab82d4d23ff6f86a.md",
+      "sha256": "31fe74e24193e34e5cdc077e916b1b51699e629383eba9ae10eabe3d671dcbc3"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-minus-python 3d88a2d10e44818e94dcc743c1eb43c0.md",
+      "sha256": "e1c0a9f444a53892e8b3e85349a7a01e2aa03fb3324613b3651215d705884b74"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-minus-web 3d88a2d10e448166853fc2044d09b7dc.md",
+      "sha256": "1177231ec4a368323f363fd1e7ee4194a64801a411ce9e0f985fcf76051f7f39"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-plus-prefix 3d88a2d10e4481028f0dfaf40f55d147.md",
+      "sha256": "c23ee3ee7ca904ec105cd4d23122ea123c7b82c8f4d51e50af4737be8badcb6d"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-plus-python 3d88a2d10e4481488ea8dd2876d87ee8.md",
+      "sha256": "13634f62c806fc5f4c7a36f437a9333ae6520d6eaaedcf2cc38afac07080cd8b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S101-Taper-plus-web 3d88a2d10e4481838f7df6d02b1cc425.md",
+      "sha256": "81dbe4e6c209e5fb00247c3ab4ae566c7adeb7c2aabd8aa7f36612a3e19e23e2"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-RMS-prefix 3d88a2d10e4481c28a9af064b13e0bd7.md",
+      "sha256": "9391e4bb24678167bbc6e24b0eb54a195c0bfe2e926f5e2df9a1265896e85448"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-RMS-python 3d88a2d10e44812aaa42c52a0d0ae38f.md",
+      "sha256": "0ee42e9ca70ab0093793157aa2c555e37c249806a5f3a56dded64258ba173733"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-RMS-web 3d88a2d10e4481838567e133c56f15ab.md",
+      "sha256": "a909462ea173bb6d6653d7ac652fb909b88d44e6519ad3ab0818b7d3b656f38d"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-minus-prefix 3d88a2d10e4481579cfac451d6dc829f.md",
+      "sha256": "59024f93e0a2ade07db4930cf9e8473725691795af3c9797c92e7ef95a4d8e24"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-minus-python 3d88a2d10e448129b9a9ce16fa1bba4f.md",
+      "sha256": "818e6c94c763d4f8c3fae68fd0f1371d9e10ee7a92615589d688ade8547a5ee1"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-minus-web 3d88a2d10e4481b88d6bf2dc9c672240.md",
+      "sha256": "5ab93ebc9b99d67abe9040ac89115a5cf7955c8c19ab14c34376871a09e555e2"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-plus-prefix 3d88a2d10e44813cb199c8dadae37e1b.md",
+      "sha256": "a6c42e74b5d550e30cf44846ddbe6e861106d681e0ce3d0f626a985c42d501ac"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-plus-python 3d88a2d10e4481589932cd0bab394de1.md",
+      "sha256": "953246ca7e91eb347c6191b0d2db61d14d059459704774c63adc82f3f5b95c4d"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S102-Taper-plus-web 3d88a2d10e448188b453ef3f1edf4918.md",
+      "sha256": "13f900c036fbdf7fa1d6bd7755e9711db596866212a94076d101a45ba2a07a9b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-RMS-prefix 3d88a2d10e44811a837acbd587a51732.md",
+      "sha256": "85c0d6d160928996447242bdf4dce616a5cad99d8f04a7e2bacb5a65ee133835"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-RMS-python 3d88a2d10e4481638ecdcc47c73a7a64.md",
+      "sha256": "7884b0328a2139f462c606c7e95f0bc6b83c4ec854c54294494047d998c5e3ce"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-RMS-web 3d88a2d10e4481c59a42d5841133dda2.md",
+      "sha256": "264584aa63de2b16fdc199105694d32afdc72cc35190e851c6ce1dc43131410e"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-minus-prefix 3d88a2d10e44810cbf0af1d11e9efa3f.md",
+      "sha256": "6393c9ace9ba986ae8f2e9456fd994c5d73c3b55b30e2cf7029b7151e1402581"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-minus-python 3d88a2d10e44812ca78ee82c0a3ee43b.md",
+      "sha256": "3322bf519bcdfb57aeff47b7cb11e16a19db73af6cf1fbc63388a2c267a317b1"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-minus-web 3d88a2d10e448102bda9c56bb5d4b596.md",
+      "sha256": "60a5332af269d5b2f2c0a7555ab63031fc5a7a07d54e43380b83749c0ca65525"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-plus-prefix 3d88a2d10e44815b9abfca600b6ed211.md",
+      "sha256": "808f3b3abbe609357c2bf105a7e6149daa5d8e6f68a3b65d15c60bacbbe6fb6b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-plus-python 3d88a2d10e44811b83d9cf45f9ac2fb3.md",
+      "sha256": "846c5fb8a27180d02e79c624f3e78efdc4e454d4931c68561406178601a40d0b"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Run registry/S103-Taper-plus-web 3d88a2d10e4481f48514c60c2c8eec9a.md",
+      "sha256": "0a30a1e1432452181044dff63ca2f65b321226c3236a4e8163af1e9be7c7f30f"
+    },
+    {
+      "path": "Domain-Shift Forgetting · Stage 1 — H1 Research Pi/Untitled 3d88a2d10e4481aba8eeebca15c90446.csv",
+      "sha256": "2c3c5bcd5f7e2605ae63fab6ac5bcef71773946c6d554274427977d661114e45"
+    }
+  ]
+}

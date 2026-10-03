@@ -1,0 +1,21 @@
+﻿Task,Depends on,Evidence,Order,Phase,Priority,Status
+T06 · Implement optimizer schedule and resumable branching,T05,,6,Implementation,P0,Not started
+T12 · Freeze execution manifest and analysis version,T11,,12,Setup,P0,Not started
+T20 · Archive evidence and write next-stage decision,T19,,20,Analysis,P1,Not started
+T19 · Assemble decision sheet and figures,T15,,19,Analysis,P1,Not started
+T07 · Implement scheduled evaluation and diagnostics,"T04, T05",,7,Implementation,P0,Not started
+T05 · Implement paired transformer and TaperNorm,T01,,5,Implementation,P0,Not started
+T13 · Run primary paired group 101,T12,,13,Execution,P1,Not started
+T10 · Validate data and analysis invariants,"T04, T08",,10,Validation,P0,Not started
+T17 · Run conditional auxiliary group 102,T16,,17,Execution,P1,Conditional
+T18 · Run conditional auxiliary group 103,T17,,18,Execution,P1,Conditional
+"T09 · Validate model endpoints, EMA and resume","T05, T06",,9,Validation,P0,Not started
+T15 · Run primary paired group 103,T14,,15,Execution,P1,Not started
+T04 · Materialize packed arrays and token metadata,T03,,4,Data,P0,Not started
+T08 · Implement deterministic analysis and classifier,T07,,8,Implementation,P0,Not started
+T03 · Build deterministic split and dedup pipeline,T02,,3,Data,P0,Not started
+T14 · Run primary paired group 102,T13,,14,Execution,P1,Not started
+T11 · Benchmark GPU and lock feasible allocation,"T09, T10",,11,Validation,P0,Not started
+T01 · Pin environment and implementation sources,None,,1,Setup,P0,Not started
+T02 · Verify dataset access and inspect provenance schema,None,,2,Data,P0,Not started
+T16 · Run conditional auxiliary group 101,T15,,16,Execution,P1,Conditional

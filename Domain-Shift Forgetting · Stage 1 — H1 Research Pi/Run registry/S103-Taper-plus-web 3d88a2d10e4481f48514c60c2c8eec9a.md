@@ -1,0 +1,37 @@
+# S103-Taper-plus-web
+
+Condition: Taper-plus
+Parent run: S103-Taper-plus-prefix
+Phase: Web continuation
+Planned tokens: 100007936
+Seed: 103
+Status: Conditional
+
+[Domain-Shift Forgetting · Stage 1 — H1 Research Pilot](../../Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi%203d88a2d10e448149ac9df736861f0d40.md)
+
+[01 · Protocol v3 — H1 only](../01%20%C2%B7%20Protocol%20v3%20%E2%80%94%20H1%20only%203d88a2d10e44812ea734fdeff5891429.md)
+
+[03 · Analysis plan and decision rules](../03%20%C2%B7%20Analysis%20plan%20and%20decision%20rules%203d88a2d10e4481af9a3deb8e29c432c7.md)
+
+## Planned execution
+
+Run ID: S103-Taper-plus-web. Continue exact same-condition prefix state, global updates 9157–15260; no optimizer or LR restart.
+
+Supervised token budget: 100007936. Conditional on pre-outcome allocation of all three auxiliary seeds.
+
+## Before launch
+
+- [ ]  Manifest/code/config and parent checkpoint hashes verified.
+- [ ]  Correct seed, condition, data order, GPU model and precision verified.
+- [ ]  Remaining budget checked without inspecting effect direction.
+
+## Completion evidence
+
+- [ ]  Actual updates, token count, runtime and billed cost recorded.
+- [ ]  All scheduled evaluation events and diagnostics present.
+- [ ]  Durable endpoint/prefix checkpoint checksum verified.
+- [ ]  Failure or deviation recorded; no outcome-based exclusion.
+
+## Measured results
+
+Pending. Blank database numbers are unmeasured, not zero.

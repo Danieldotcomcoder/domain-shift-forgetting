@@ -1,0 +1,28 @@
+﻿Run,Actual GPU hours,Checkpoint,Condition,Cost USD,Final code non-W CE,Final web CE,Manifest,Parent run,Phase,Planned tokens,Seed,Status
+S101-Taper-plus-prefix,,,Taper-plus,,,,,Canonical initialization,Prefix,150011904,101,Conditional
+S103-Taper-minus-web,,,Taper-minus,,,,,S103-Taper-minus-prefix,Web continuation,100007936,103,Not started
+S103-Taper-minus-prefix,,,Taper-minus,,,,,Canonical initialization,Prefix,150011904,103,Not started
+S103-RMS-prefix,,,RMS,,,,,Canonical initialization,Prefix,150011904,103,Not started
+S103-Taper-plus-python,,,Taper-plus,,,,,S103-Taper-plus-prefix,Python continuation,100007936,103,Conditional
+S102-Taper-minus-python,,,Taper-minus,,,,,S102-Taper-minus-prefix,Python continuation,100007936,102,Not started
+S102-RMS-python,,,RMS,,,,,S102-RMS-prefix,Python continuation,100007936,102,Not started
+S103-Taper-minus-python,,,Taper-minus,,,,,S103-Taper-minus-prefix,Python continuation,100007936,103,Not started
+S101-Taper-minus-prefix,,,Taper-minus,,,,,Canonical initialization,Prefix,150011904,101,Not started
+S102-Taper-plus-prefix,,,Taper-plus,,,,,Canonical initialization,Prefix,150011904,102,Conditional
+S101-Taper-plus-python,,,Taper-plus,,,,,S101-Taper-plus-prefix,Python continuation,100007936,101,Conditional
+S101-RMS-prefix,,,RMS,,,,,Canonical initialization,Prefix,150011904,101,Not started
+S102-Taper-minus-prefix,,,Taper-minus,,,,,Canonical initialization,Prefix,150011904,102,Not started
+S102-Taper-plus-python,,,Taper-plus,,,,,S102-Taper-plus-prefix,Python continuation,100007936,102,Conditional
+S103-Taper-plus-prefix,,,Taper-plus,,,,,Canonical initialization,Prefix,150011904,103,Conditional
+S103-RMS-python,,,RMS,,,,,S103-RMS-prefix,Python continuation,100007936,103,Not started
+S101-Taper-minus-web,,,Taper-minus,,,,,S101-Taper-minus-prefix,Web continuation,100007936,101,Not started
+S102-RMS-web,,,RMS,,,,,S102-RMS-prefix,Web continuation,100007936,102,Not started
+S101-Taper-plus-web,,,Taper-plus,,,,,S101-Taper-plus-prefix,Web continuation,100007936,101,Conditional
+S102-Taper-plus-web,,,Taper-plus,,,,,S102-Taper-plus-prefix,Web continuation,100007936,102,Conditional
+S101-Taper-minus-python,,,Taper-minus,,,,,S101-Taper-minus-prefix,Python continuation,100007936,101,Not started
+S101-RMS-web,,,RMS,,,,,S101-RMS-prefix,Web continuation,100007936,101,Not started
+S102-Taper-minus-web,,,Taper-minus,,,,,S102-Taper-minus-prefix,Web continuation,100007936,102,Not started
+S102-RMS-prefix,,,RMS,,,,,Canonical initialization,Prefix,150011904,102,Not started
+S103-RMS-web,,,RMS,,,,,S103-RMS-prefix,Web continuation,100007936,103,Not started
+S101-RMS-python,,,RMS,,,,,S101-RMS-prefix,Python continuation,100007936,101,Not started
+S103-Taper-plus-web,,,Taper-plus,,,,,S103-Taper-plus-prefix,Web continuation,100007936,103,Conditional

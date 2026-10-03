@@ -1,0 +1,34 @@
+# Local environments and caches
+.venv/
+.venv-check/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+/build/
+/dist/
+.env
+.env.*
+!.env.example
+
+# Corpus content and large generated artifacts; retain directory documentation
+/data/**
+!/data/**/
+!/data/**/README.md
+/artifacts/**
+!/artifacts/**/
+!/artifacts/**/README.md
+*.pt
+*.pth
+*.safetensors
+*.npy
+*.npz
+*.bin
+*.parquet
+
+# Small provenance records, frozen manifests and reports remain trackable.
+# Do not commit credentials, raw corpus text, or private document manifests.

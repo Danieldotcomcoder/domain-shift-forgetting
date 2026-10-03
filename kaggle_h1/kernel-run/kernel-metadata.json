@@ -1,0 +1,20 @@
+{
+  "id": "danny00/h1-single-notebook-run",
+  "title": "h1-single-notebook-run",
+  "code_file": "h1-single-notebook-run.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "danny00/stage1-online-inputes"
+  ],
+  "competition_sources": [],
+  "model_sources": [],
+  "kernel_sources": [
+    "danny00/h1-single-notebook-run"
+  ],
+  "machine_shape": "NvidiaTeslaT4"
+}

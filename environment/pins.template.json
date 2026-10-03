@@ -1,0 +1,18 @@
+{
+  "status": "unresolved_not_a_lockfile",
+  "python_version": null,
+  "package_manager": null,
+  "package_lock_path": null,
+  "package_lock_sha256": null,
+  "nanogpt": {"url": "https://github.com/karpathy/nanoGPT", "commit": null, "license_evidence": null, "adopted_files": null},
+  "tapernorm": {"protocol_reference": "https://arxiv.org/html/2602.10408v1", "verified_source_sha256": null, "equation_mapping_evidence": null},
+  "container_image": null,
+  "container_digest": null,
+  "gpu_model": null,
+  "driver_version": null,
+  "cuda_version": null,
+  "library_versions": null,
+  "compile_enabled": null,
+  "deterministic_test_settings": null,
+  "bf16_tolerances_and_evidence": null
+}

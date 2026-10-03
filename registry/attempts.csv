@@ -1,0 +1,1 @@
+attempt_id,run_id,status,parent_checkpoint_sha256,manifest_sha256,gpu_session_id,start_utc,end_utc,completed_global_updates,actual_supervised_tokens,attributed_gpu_hours,cost_usd,outcome,failure_reason,evidence_path

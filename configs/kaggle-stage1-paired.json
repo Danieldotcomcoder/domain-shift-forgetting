@@ -1,0 +1,52 @@
+{
+  "protocol": "v3-kaggle-fp16-paired-1",
+  "purpose": "Original C4-to-Stack H1 primary allocation; admission requires measured evidence",
+  "precision": "fp16",
+  "amendment": "User authorized 2026-09-28: Tesla T4 FP16 mixed precision with GradScaler; original C4/Stack data, three seeds, token budgets and decision thresholds retained. Single active GPU, separate notebook quota accounting; no pooling with BF16. User authorized paired independent workers on 2026-10-01; unchanged numerical training path.",
+  "seeds": [
+    101,
+    102,
+    103
+  ],
+  "conditions": [
+    "RMS",
+    "Taper-minus"
+  ],
+  "microbatch": 2,
+  "accumulation": 16,
+  "compile": false,
+  "numerical_max_ce_gap_nats": 0.005,
+  "optimizer_hours_cap": 50,
+  "active_gpu_hours_cap": 50,
+  "checkpoint_interval_seconds": 900,
+  "session_chunk_minutes": 110,
+  "session_save_reserve_minutes": 10,
+  "decision_thresholds": {
+    "prefix_gap": 0.02,
+    "adaptation": 0.05,
+    "proceed_d": 0.03,
+    "proceed_d3050": 0.015,
+    "q_fraction": 0.5,
+    "opposite_d": -0.03,
+    "small_d": 0.015,
+    "transient_d": 0.05
+  },
+  "budget_amendment": {
+    "id": "kaggle-paired-50-notebook-hours-20261001",
+    "authorized_by": "user",
+    "date": "2026-09-30",
+    "platform": "Kaggle free tier",
+    "active_gpu_hours_cap": 50,
+    "reason": "User authorized 2026-10-01: 50 elapsed Kaggle notebook hours across sessions/weeks; summed worker hours separately recorded. Same fixed scientific allocation."
+  },
+  "execution": {
+    "mode": "paired",
+    "workers": {
+      "RMS": "0",
+      "Taper-minus": "1"
+    },
+    "budget_unit": "elapsed_notebook_hours",
+    "notebook_hours_cap": 50,
+    "summed_worker_hours": "recorded separately; not the cap"
+  }
+}
