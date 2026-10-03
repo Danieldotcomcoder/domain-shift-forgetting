@@ -15,6 +15,55 @@ what it learned when its training data switches domain.
 The protocol, data splits, endpoints and decision rules were fixed before any training run. This is a
 screening pilot that decides whether a larger study is worth running. It is not a confirmatory result.
 
+## Result
+
+> **H1: No.** Taper-minus did not show more persistent web forgetting than RMSNorm after the switch to Python.
+> The pre-registered decision is **STOP — SMALL OBSERVED EFFECT**. Stage 1 is closed.
+
+The run was complete and valid. All three paired seeds finished, no events were missing, there were no
+numerical failures, and every guardrail passed.
+
+| Seed | D (endpoint) | D at 3050 | Q | Matched forgetting (furthest target) | Prefix gap | Code improvement (RMS / Taper) |
+|---|---:|---:|---:|---:|---:|---:|
+| 101 | −0.0200 | +0.0109 | −0.0194 | −0.0308 | 0.28% | 3.55 / 3.55 nats |
+| 102 | −0.0207 | −0.0124 | −0.0199 | −0.0183 | 0.28% | 3.60 / 3.46 nats |
+| 103 | −0.0262 | +0.0193 | −0.0220 | −0.0286 | 0.34% | 3.35 / 3.34 nats |
+| **Mean** | **−0.0223** | **+0.0059** | **−0.0204** | **−0.0259** | | |
+
+- **Mean D:** −0.0223 nats/token (SD 0.0034). The descriptive t95 interval is [−0.0308, −0.0139].
+- **Guardrails passed:** prefix gaps of 0.28–0.34% (limit 2%) and code improvements of about 3.3–3.6 nats
+  (minimum 0.05).
+
+**How to read it**
+
+- **Both models forget heavily.** Switching to Python raises held-out web cross-entropy by about +1.63 to
+  +1.69 nats/token for both conditions, while continuing on web lowers it by about 0.13. The difference
+  between conditions (D) is about 1.3% of that forgetting.
+- **D points the opposite way to H1.** It is negative in all three seeds, meaning Taper-minus forgot slightly
+  *less*. The difference sits in the Python branch itself: the web-control gap change G is about 0, so Q ≈ D.
+- **This is not a finding that TaperNorm protects against forgetting.** The effect is smaller than the
+  pre-registered "opposite direction" threshold (mean D ≤ −0.03). Its sign was also unstable earlier in
+  continuation: D at 1525 was +0.037, +0.022 and −0.029 across the seeds, and D at 3050 was mixed.
+- **No early transient.** The largest early mean quick-dev D (update ≤ 1000) was +0.015, far below the 0.05
+  transient threshold.
+- **The effect is broad, not driven by outliers.** Median per-document D is about −0.02 to −0.03, the top 1% of
+  documents do not dominate, and most of the contribution comes from alphanumeric tokens.
+- **What the rules allow.** STOP means no convincing persistent excess forgetting within this pilot. It is not
+  evidence of equivalence. Per protocol, no extra seeds, changed endpoints or follow-up study start
+  automatically. Any new question, such as whether TaperNorm reduces forgetting, needs its own
+  pre-registered protocol.
+
+**Run record**
+
+- **One Kaggle session:** 9.36 h on 2x Tesla T4, PyTorch 2.11 / CUDA 12.8, with zero worker restarts.
+- **Configuration:** sha256 `c18441…` is recorded in [`config.json`](reports/h1-kaggle/h1state/config.json).
+- **Evidence in this repository:** [`decision-report.txt`](reports/h1-kaggle/h1state/decision-report.txt) and
+  [`decision-report.json`](reports/h1-kaggle/h1state/decision-report.json) (per-seed contrasts, persistence,
+  matching, tails, class contributions), [`sessions.jsonl`](reports/h1-kaggle/h1state/sessions.jsonl) and the
+  notebook log.
+- **Full state:** all checkpoints and per-evaluation sufficient statistics (about 2 GB) stay in the output of
+  the private Kaggle notebook `danny00/h1-single-notebook-run`.
+
 ## Status
 
 | Stage | State |
@@ -23,11 +72,8 @@ screening pilot that decides whether a larger study is worth running. It is not 
 | Corpus preparation (C4 English + The Stack dedup Python, GPT-2 tokens) | Done, hash-verified |
 | Implementation + equivalence tests | Done |
 | Kaggle smoke test (T4 x2) | Passed 2026-10-03 |
-| **Primary run** (3 seeds x 2 conditions x 3 phases) | **Running since 2026-10-03** |
-| Decision on H1 | Pending |
-
-Results will be added here when the primary run completes. Until then this repository contains no
-H1 result, and missing measurements are reported as missing, never as zero.
+| Primary run (3 seeds x 2 conditions x 3 phases) | Complete 2026-10-04 |
+| **Decision on H1** | **No: STOP — SMALL OBSERVED EFFECT. Stage 1 closed.** |
 
 ## Experimental design
 
@@ -136,6 +182,7 @@ These figures come from the Kaggle smoke run with both workers running at once:
 | Training throughput, Taper-minus | ~42–43k tokens/s per T4 |
 | One full-development evaluation (both domains) | ~37 s |
 | Projected total | ~9–10 h per GPU, typically one 11¼-hour session |
+| Actual primary run (2026-10-04) | 9.36 h, one session, no restarts |
 
 Kaggle's weekly GPU quota applies, and T4 x2 may be billed above 1x elapsed time.
 
@@ -226,8 +273,9 @@ configs/                   Protocol values (stage1.v3.json) and earlier Kaggle c
 docs/                      Implementation notes and earlier runbooks
 notebooks/, scripts/       Earlier Kaggle workflows (superseded by kaggle_h1/ for execution)
 Domain-Shift Forgetting · Stage 1 — H1 Research Pi/   Protocol export: the scientific source of truth
+reports/h1-kaggle/         Final H1 decision report, frozen config, session record, run log
 manifests/, registry/      Manifest templates and run/task registries
-data/, artifacts/, reports/  Local data, checkpoints and reports (contents git-ignored)
+data/, artifacts/          Local data and checkpoints (contents git-ignored)
 ```
 
 ### Protocol documents

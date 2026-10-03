@@ -1,0 +1,12 @@
+H1 ANSWER: NO - no persistent excess forgetting >= 0.015 nats/token detected for Taper-minus (pilot stop; not proof of equivalence).
+Decision category: STOP — SMALL OBSERVED EFFECT
+Complete: True; paired seed groups with full evidence: 3/3; missing events: 0
+Seed 101: D=-0.02000  D3050=+0.01090  Q=-0.01935  prefix gap=0.28%  code improvement RMS=3.5518 Taper=3.5512  matched={1525: -0.00747, 3050: -0.00376, 6104: -0.03075}
+Seed 102: D=-0.02073  D3050=-0.01242  Q=-0.01985  prefix gap=0.28%  code improvement RMS=3.5990 Taper=3.4584  matched={1525: 0.00939, 3050: -0.01064, 6104: -0.01825}
+Seed 103: D=-0.02622  D3050=+0.01934  Q=-0.02202  prefix gap=0.34%  code improvement RMS=3.3454 Taper=3.3356  matched={1525: -0.02594, 3050: 0.01454, 6104: -0.02862}
+Mean D = -0.02232 nats/token, SD 0.00340, descriptive t95 [-0.03076, -0.01388]
+mean_D = -0.02232
+mean_D3050 = +0.00594
+mean_Q = -0.02041
+mean_matched_difference = -0.02587
+Reason: Mean endpoint D < 0.015; not evidence of equivalence
