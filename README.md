@@ -1,72 +1,271 @@
-## Current H1 execution (2026-10-03): one self-resuming Kaggle notebook
+# Domain-Shift Forgetting: Does TaperNorm Forget More?
 
-`kaggle_h1/h1_run.py` is the whole experiment (data verification, paired RMS/Taper-minus training on T4 x2,
-scheduled evaluation, checkpoints, frozen decision rules). `kaggle_h1/build_notebooks.py` packages it as the
-Kaggle notebook `danny00/h1-single-notebook-run`, which lists its own output as input, so every new version
-resumes from the previous one with no archive handling. Check or continue it with
-`.venv\Scripts\python kaggle_h1\h1_status.py [--continue]`. Equivalence tests against `src/`:
-`kaggle_h1/test_h1_run.py`. The workflows below are superseded for H1 execution.
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c)
+![Hardware](https://img.shields.io/badge/run%20on-Kaggle%20T4%20x2-20beff)
 
-## Automatic Kaggle backup and resume
+A pre-registered pilot experiment that asks whether replacing a transformer's internal RMSNorm layers with
+**TaperNorm** (normalization that is gradually switched off during training) makes the model forget more of
+what it learned when its training data switches domain.
 
-Use [kaggle-automatic.ipynb](notebooks/kaggle-automatic.ipynb) and the new `artifacts/kaggle-auto/domain-shift-auto.zip`. This replaces manual ZIP handoffs: it discovers recovered checkpoints, uses a private Kaggle backup dataset, verifies remote downloads, and continues automatically after backup boundaries. See [setup and limitations](docs/kaggle-automatic.md). The original training source remains unchanged.
+> **H1.** After switching training from web text to Python code, does a model trained with internal
+> TaperNorm (*Taper-minus*) lose more held-out web performance than an otherwise identical RMSNorm model,
+> relative to simply continuing web training?
 
-> **Two-T4 execution (2026-10-01):** use the [paired runbook](docs/paired-kaggle-runbook.md), [paired notebook](notebooks/kaggle-stage1-paired.ipynb), and `artifacts/kaggle-paired/domain-shift-paired.zip`. The 50-hour cap now means elapsed notebook time for this separate paired configuration. Reuse the prepared online dataset; a new paired preflight and fresh-session dual restore are required.
+The protocol, data splits, endpoints and decision rules were fixed before any training run. This is a
+screening pilot that decides whether a larger study is worth running. It is not a confirmatory result.
 
-> **Original-protocol Kaggle execution:** start with [the scientific runbook](docs/scientific-runbook.md), the [CPU preparation notebook](notebooks/kaggle-stage1-prepare.ipynb), and the [T4 execution notebook](notebooks/kaggle-stage1-run.ipynb). The original C4/Stack allocation now has a gated runner and an explicit FP16 amendment. Scientific execution and real-data feasibility validation remain pending user runs. Earlier draft status below describes the archived planning baseline.
+## Status
 
-# Domain-Shift Forgetting — Stage 1
+| Stage | State |
+|---|---|
+| Protocol v3, data specification, analysis plan | Frozen |
+| Corpus preparation (C4 English + The Stack dedup Python, GPT-2 tokens) | Done, hash-verified |
+| Implementation + equivalence tests | Done |
+| Kaggle smoke test (T4 x2) | Passed 2026-10-03 |
+| **Primary run** (3 seeds x 2 conditions x 3 phases) | **Running since 2026-10-03** |
+| Decision on H1 | Pending |
 
-Research foundation for the **H1-only, protocol v3 pilot**: does internal TaperNorm increase persistent held-out web deterioration after switching from web to Python, relative to continuing web training?
+Results will be added here when the primary run completes. Until then this repository contains no
+H1 result, and missing measurements are reported as missing, never as zero.
 
-**Scientific pilot status: preparation code drafted; scientific execution remains disabled and unvalidated.** A separate [laptop learning lab](docs/local-lab.md) now provides small local training runs. Lab runs and tests are not evidence that a scientific empirical gate passed. Missing scientific measurements are null or blank, never zero.
+## Experimental design
 
-## Read first
+### Model and conditions
 
-For free GPU portability tests, use the [Kaggle benchmark](docs/kaggle.md) and
-`notebooks/kaggle-benchmark.ipynb`. It checks FP16/FP32 execution and checkpoint
-replay on synthetic data without launching the scientific pilot.
+- A GPT-style decoder: 6 layers, width 256, 4 heads, MLP width 1024 (GELU), context 512, learned positions,
+  tied GPT-2 embeddings (vocabulary 50,257), no biases, no dropout. About 17.7M parameters.
+- **RMS:** standard pre-norm RMSNorm at all 12 internal sites.
+- **Taper-minus:** internal TaperNorm (no auxiliary loss), following
+  [TaperNorm, §3 and Appendix C](https://arxiv.org/html/2602.10408v1). It is calibrated during the first 763
+  updates, faded out with a cosine gate until update 6,104, and fully off afterwards.
+- Both conditions keep the final RMSNorm.
+- Seeds 101, 102 and 103 are **paired**: both conditions start from the same copied initial weights and see the
+  same data order.
 
-For local experiments on the RTX 2060: start with the [small teaching lab](docs/local-lab.md),
-or use the [larger real-data training setup](docs/local-large.md) with a measured GPU
-profile, FP16 training, and resumable checkpoints. Both remain separate from protocol v3.
-
-1. [Source index](docs/source-index.md) links the unchanged supplied protocol, data specification, analysis plan, operations guide, decision sheet, and task pages.
-2. [Research structure](docs/structure.md) defines module ownership and artifact locations.
-3. [Protocol configuration](configs/stage1.v3.json) records fixed values; it is a draft specification, not an executable run configuration.
-4. [Implementation and validation requirements](docs/implementation.md) map the source tasks to future work and evidence.
-5. [Freeze checklist](docs/freeze-checklist.md) describes the evidence required before seed 101.
-6. [Code preparation status](docs/code-preparation.md) identifies the implemented primitives, prepared tests, draft conventions and remaining integration work.
-
-The supplied export is the scientific source of truth. Existing document statements about past authorization, Notion creation, rental, or execution are source context, not new user instructions. The laptop lab is separately authorized for local learning and testing; it does not authorize scientific pilot execution or GPU rental. Nothing runs automatically.
-
-## Fixed scope
-
-- RMS and Taper-minus are primary; Taper-plus is optional and secondary, all three seeds or none, chosen at T11 and frozen at T12.
-- Paired seeds 101, 102, 103; canonical initialization copied across conditions; condition-specific trained prefixes branch into web and Python with complete shared switch state.
-- Six layers, width 256, four heads, context 512, tied GPT-2 embeddings, final RMSNorm always retained.
-- Primary endpoint is full-development web CE difference-in-differences at continuation update 6,104. Reserved test data remain unopened for the pilot analysis.
-- No H2, correction, replay, re-gating, extra seeds, optimizer reset, LR restart, or outcome-dependent redesign.
-- Historical paid-hardware cap: 24 rented GPU-hours. User amendment dated 2026-09-30 permits 50 cumulative free Kaggle GPU-hours across sessions/weeks; fixed scientific workload and decision rules remain unchanged. Updated admission and external restore checks are required.
-
-## Working layout
+### Training timeline (one condition, one seed)
 
 ```text
-configs/                  Draft protocol values; no launch entry point
-docs/                     Source index, implementation contracts, freeze requirements
-environment/              Unresolved environment and upstream-source pins
-src/domain_shift_forgetting/
-  data/                   Draft grouping, exact dedup, packing and token classes
-  models/                 Draft fixed transformer and RMS/Taper operators
-  training/               Draft effective update, full-state persistence and budget math
-  evaluation/             Draft development CE aggregation and diagnostic helpers
-  analysis/               Draft estimands, matching, contributions and decision logic
-tests/                    Prepared synthetic tests and acceptance specification; unexecuted
-data/                     Separate future local corpus artifacts; reserved test isolated
-manifests/                Draft templates, source hashes, future immutable freezes
-registry/                 Planned tasks/runs and empty attempt/cost ledgers
-artifacts/                Future checkpoints, validation evidence and logs
-reports/                  Future decision sheet, figures and archived evidence
+             web prefix (9,156 updates)              ┌── web branch:    +6,104 updates of web text
+update 0 ──────────────────────────────────────── 9,156
+             305: LR warmup ends                     └── Python branch: +6,104 updates of Python code
+             763: Taper calibration frozen                (both branches restore the identical switch state)
+           6,104: Taper gate reaches zero
 ```
 
-The original long-named Markdown page and export folder remain in place so their relative links and provenance are preserved. There is no fabricated package lock, upstream commit, hardware measurement, result, or scientific decision. T01 and T02 remain unresolved prerequisites; draft implementation work does not satisfy their dependencies. The original draft had no scientific-run CLI. The new `domain_shift_forgetting.pilot` CLI is gated by real-data validation, feasibility and persisted-checkpoint replay; there is no background service or automatic scientific execution. The library exposes explicit callable primitives, so the draft configuration flag is a status marker, not a sandbox for arbitrary Python calls.
+- **Batch:** every update has 32 sequences x 512 labels = 16,384 tokens.
+- **Optimizer:** AdamW at lr 6e-4 with cosine decay to 6e-5 on one global clock.
+- **Weight decay and clipping:** matrix decay 0.1, no decay on gain vectors, gradient clipping at 1.0.
+- **Primary allocation:** 2.10B supervised tokens.
+
+### Primary endpoint
+
+With $L$ the token-weighted web cross-entropy (nats/token) on 2,097,152 held-out development labels, measured
+after 6,104 continuation updates:
+
+$$
+D = \big[L(\text{Taper},\text{python}) - L(\text{Taper},\text{web})\big] - \big[L(\text{RMS},\text{python}) - L(\text{RMS},\text{web})\big]
+$$
+
+**Positive D means Taper-minus suffers more excess web forgetting under the Python shift.** The analysis also
+reports actual forgetting F, the web-control gap change G, the direct differential forgetting Q = D − G,
+matched-adaptation forgetting, per-document tails and per-token-class contributions.
+
+### Pre-registered decision rules
+
+The rules are applied in this order after all three paired seeds complete:
+
+| # | Category | Condition | H1 reading |
+|---|---|---|---|
+| 1 | Invalid or incomplete | Missing seed, numerical failure, or correctness/data failure | No answer |
+| 2 | Comparability / adaptation limited | Prefix web-CE gap > 2%, or a code branch improves < 0.05 nats | No answer |
+| 3 | Opposite direction | Mean D ≤ −0.03 | **No** |
+| 4 | Proceed to design the next study | Mean D ≥ 0.03, D > 0 for every seed, mean D(3050) ≥ 0.015, mean Q > ½ mean D, matched forgetting > 0 | **Yes** (pilot level) |
+| 5 | Transient only | Mean D < 0.015, but an early mean quick-dev D ≥ 0.05 (update ≤ 1000) | **No** (not persistent) |
+| 6 | Stop: small observed effect | Mean D < 0.015 | **No** (not proof of equivalence) |
+| 7 | Inconclusive | Anything else | Undecided |
+
+With three seeds the reported 95% t-interval (mean D ± 4.303·s/√3) is descriptive only.
+
+## Running the experiment
+
+The whole experiment is one file, [`kaggle_h1/h1_run.py`](kaggle_h1/h1_run.py). It runs as a Kaggle notebook on
+two T4 GPUs: RMS on GPU 0 and Taper-minus on GPU 1, each processing seeds 101 → 102 → 103.
+
+- **Checkpoints persist automatically.** All state goes to the notebook's own output folder (`h1state/`). The
+  notebook lists its own output as an input, so each new version resumes from where the last one stopped.
+- **No hand-off between sessions.** A session that runs out of time saves and exits cleanly; you just start
+  the notebook again.
+
+### Prerequisites
+
+- A Kaggle account with an API token ([kaggle.com/settings/api](https://www.kaggle.com/settings/api)).
+  Store it in a local `.env` as `KAGGLE_API_TOKEN=...`, which is git-ignored.
+- Python 3.11+ with `pip install -e ".[model,test]" kaggle`.
+- The prepared corpus as a **private** Kaggle dataset containing `online/` and `orders/`. See
+  [Data preparation](#data-preparation).
+
+### Launch, monitor, continue
+
+```bash
+# 1. Point kaggle_h1/build_notebooks.py at your Kaggle username and dataset (USER, DATASET).
+
+# 2. First push only: a CPU bootstrap (~1 min, no GPU quota) that authorizes one fresh start.
+python kaggle_h1/build_notebooks.py run --phase bootstrap
+kaggle kernels push -p kaggle_h1/kernel-run
+
+# 3. Every later push: the GPU run (T4 x2), which resumes itself from the previous output.
+python kaggle_h1/build_notebooks.py run --phase gpu
+kaggle kernels push -p kaggle_h1/kernel-run
+
+# 4. Check progress and fetch the decision report. --continue starts the next session if needed.
+python kaggle_h1/h1_status.py [--continue]
+```
+
+An optional smoke test runs the full pipeline on a tiny schedule plus 25 minutes of real training. It uses a
+separate notebook (`python kaggle_h1/build_notebooks.py smoke`, then push `kaggle_h1/kernel-smoke`), so it
+never touches the experiment's state.
+
+### Compute
+
+These figures come from the Kaggle smoke run with both workers running at once:
+
+| Measurement | Value |
+|---|---|
+| Training throughput, RMS | ~45k tokens/s per T4 |
+| Training throughput, Taper-minus | ~42–43k tokens/s per T4 |
+| One full-development evaluation (both domains) | ~37 s |
+| Projected total | ~9–10 h per GPU, typically one 11¼-hour session |
+
+Kaggle's weekly GPU quota applies, and T4 x2 may be billed above 1x elapsed time.
+
+### Outputs
+
+```text
+h1state/
+  config.json               frozen configuration, data hashes, amendments (sha256-bound)
+  decision-report.txt|json  decision category, H1 reading, per-seed D, D(3050), Q, guardrails, tails
+  sessions.jsonl            one line per Kaggle session (runtime, GPUs, exit codes)
+  runs/S{seed}-{condition}/
+    events.jsonl            every scheduled evaluation with per-document/per-class sufficient statistics
+    train.jsonl             per-update loss, gradient norm, clipping, FP16 scale
+    switch.pt               complete prefix state shared by both branches
+    web-final.pt, python-final.pt, completion.json
+```
+
+## Data preparation
+
+The corpus is prepared once on CPU, before any GPU time. Raw text is never committed to this repository.
+
+- **Web:** [allenai/c4](https://huggingface.co/datasets/allenai/c4), `en`, train split for training; the
+  official validation split is hashed 50/50 into development and reserved test.
+- **Code:** [bigcode/the-stack-dedup](https://huggingface.co/datasets/bigcode/the-stack-dedup), `data/python`.
+  Access is gated and needs an approved Hugging Face token. Files are grouped by repository alias before
+  splitting, by `sha256(group) mod 100`: 0–89 train, 90–94 dev, 95–99 test.
+- **Deduplication:** exact content hashes across all splits, plus a MinHash/LSH near-duplicate audit
+  (5-gram shingles, 128 permutations, 32x4 bands, Jaccard ≥ 0.85). Held-out documents always win.
+- **Quotas:** 260M web + 110M Python training tokens; 2,097,152 development labels per domain; 8,388,608
+  reserved-test labels per domain. The reserved test set is sealed and is never attached to a training run.
+
+```bash
+python -m domain_shift_forgetting.pilot sources --output prep/upstream
+python -m domain_shift_forgetting.pilot_data inspect --output prep/access          # needs HF_TOKEN
+python -m domain_shift_forgetting.pilot_data prepare --access prep/access/access.json \
+       --output prep/corpus --cache prep/cache                                    # resumable
+python -m domain_shift_forgetting.pilot orders --data-dir prep/corpus/online --output prep/orders
+```
+
+Upload `prep/corpus/online/` and `prep/orders/` (plus `prep/upstream/`) as one private Kaggle dataset.
+Keep `prep/corpus/reserved-test/` elsewhere. A Kaggle CPU-notebook version of these steps is in
+[`notebooks/kaggle-stage1-prepare.ipynb`](notebooks/kaggle-stage1-prepare.ipynb).
+
+## Testing
+
+```bash
+pytest                              # synthetic unit tests for src/ (protocol, data, norms, model, analysis)
+pytest kaggle_h1/test_h1_run.py     # h1_run.py vs. the tested src/ implementation
+```
+
+`kaggle_h1/test_h1_run.py` checks that the runner matches the reference package:
+
+- identical schedules, learning-rate and gate clocks;
+- identical paired initialization;
+- identical training updates and TaperNorm forward passes in every gate state;
+- vectorized evaluation that reproduces the reference evaluator on the real development data;
+- identical decision categories across 3,000 random evidence sets;
+- checkpoint resume within GPU nondeterminism.
+
+The CUDA and real-data tests skip when no GPU or prepared corpus (`data/kaggle-online/`) is available. The
+mini end-to-end test is GPU-heavy; prefer the Kaggle smoke notebook.
+
+## Protocol amendments
+
+All amendments were recorded before any primary-run update. None changes the model, data, token budgets,
+seeds, endpoints or decision thresholds.
+
+| Date | Amendment |
+|---|---|
+| 2026-09-28 | Tesla T4: FP16 autocast + GradScaler replaces BF16. FP32 master weights, moments, norm/EMA reductions and loss. Results are never pooled with a BF16 run. |
+| 2026-09-30 | Free Kaggle GPU time across sessions replaces the original 24 paid GPU-hour cap. |
+| 2026-10-01 | RMS and Taper-minus run as independent workers on two T4s, with no shared state. |
+| 2026-10-03 | Microbatch 8 x accumulation 4 (the protocol default; same effective batch). Single self-resuming notebook. Weight snapshots are kept only for the switch state and branch endpoints, for storage; every full-dev point keeps its sufficient statistics. |
+
+## Repository layout
+
+```text
+kaggle_h1/                 Current runner: h1_run.py, notebook builder, status script, equivalence tests
+src/domain_shift_forgetting/
+  models/                  Transformer, RMSNorm, TaperNorm
+  training/                Effective update, checkpoints, budget arithmetic
+  evaluation/              Token-weighted CE sufficient statistics, diagnostics helpers
+  analysis/                Contrasts (D, F, G, Q), matching, tails, class contributions, decision rules
+  data/                    Repository grouping, splits, dedup, packing, token classes
+  pilot_data.py, pilot.py  Corpus preparation and order generation CLIs
+tests/                     Synthetic unit tests for src/
+configs/                   Protocol values (stage1.v3.json) and earlier Kaggle configurations
+docs/                      Implementation notes and earlier runbooks
+notebooks/, scripts/       Earlier Kaggle workflows (superseded by kaggle_h1/ for execution)
+Domain-Shift Forgetting · Stage 1 — H1 Research Pi/   Protocol export: the scientific source of truth
+manifests/, registry/      Manifest templates and run/task registries
+data/, artifacts/, reports/  Local data, checkpoints and reports (contents git-ignored)
+```
+
+### Protocol documents
+
+The original protocol pages remain the scientific source of truth:
+
+- [Project overview](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi%203d88a2d10e448149ac9df736861f0d40.md)
+- [01 · Protocol v3, H1 only](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/01%20%C2%B7%20Protocol%20v3%20%E2%80%94%20H1%20only%203d88a2d10e44812ea734fdeff5891429.md)
+- [02 · Data, tokenization and leakage controls](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/02%20%C2%B7%20Data,%20tokenization%20and%20leakage%20controls%203d88a2d10e44815391dffb1e1533faa8.md)
+- [03 · Analysis plan and decision rules](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/03%20%C2%B7%20Analysis%20plan%20and%20decision%20rules%203d88a2d10e4481af9a3deb8e29c432c7.md)
+- [04 · Execution, GPU budget and reproducibility](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/04%20%C2%B7%20Execution,%20GPU%20budget%20and%20reproducibility%203d88a2d10e44811ebd95cc0afce540c9.md)
+- [05 · Decision sheet, limitations and revision record](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/05%20%C2%B7%20Decision%20sheet,%20limitations%20and%20revision%20reco%203d88a2d10e4481298fd9f24f8a9b7309.md)
+
+## Scope and limitations
+
+- **One question only.** H1 is the only hypothesis. There is no Taper-plus arm, correction, replay, extra seeds
+  or outcome-dependent redesign.
+- **Development data only.** The pilot uses development data alone; the reserved test split stays sealed for any
+  later confirmatory study.
+- **What H1 covers.** It concerns the complete TaperNorm training intervention, including its taper history.
+  It does not isolate a mechanism, and it does not describe normalization-free transformers in general.
+- **Narrow conditions.** Results come from one small model, one corpus sample, one recipe and FP16 on T4.
+  Generalization beyond these is untested.
+- **Embeddings dominate.** Embeddings are most of the parameter count, so differential embedding drift can
+  mediate the effect.
+- **Fragile uncertainty.** With three seeds, uncertainty estimates are fragile, and a positive screen does not
+  establish a population effect.
+
+## References
+
+- TaperNorm: [arXiv:2602.10408](https://arxiv.org/html/2602.10408v1). The operator and calibration are reused;
+  the training setup is this project's own.
+- [nanoGPT](https://github.com/karpathy/nanoGPT): model starting point.
+- [C4](https://huggingface.co/datasets/allenai/c4) and
+  [The Stack (dedup)](https://huggingface.co/datasets/bigcode/the-stack-dedup): data sources. Their own
+  licenses and terms of use apply, and no corpus content is redistributed here.
+
+## License
+
+No license has been chosen yet. Until a `LICENSE` file is added, default copyright applies to the code in this
+repository.
