@@ -1,0 +1,136 @@
+{
+  "schema": "pilot-arrays-v1",
+  "sources": {
+    "web": {
+      "repo": "allenai/c4",
+      "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+      "sample_shard": "en/c4-train.00000-of-01024.json.gz",
+      "schema": {
+        "text": "str",
+        "timestamp": "datetime",
+        "url": "str"
+      },
+      "sample_content_sha256": "817d25ec0005bddc46001d4d492a74ea5fe3afa6e8bd91d9f8a0a576fc5d2c9e",
+      "alias_fields": [],
+      "license_fields": [],
+      "status": "passed"
+    },
+    "python": {
+      "repo": "bigcode/the-stack-dedup",
+      "revision": "17cad72c886a2858e08d4c349a00d6466f54df63",
+      "sample_shard": "data/python/data-00000-of-00144.parquet",
+      "schema": {
+        "hexsha": "str",
+        "size": "int",
+        "ext": "str",
+        "lang": "str",
+        "max_stars_repo_path": "str",
+        "max_stars_repo_name": "str",
+        "max_stars_repo_head_hexsha": "str",
+        "max_stars_repo_licenses": "list",
+        "max_stars_count": "NoneType",
+        "max_stars_repo_stars_event_min_datetime": "NoneType",
+        "max_stars_repo_stars_event_max_datetime": "NoneType",
+        "max_issues_repo_path": "str",
+        "max_issues_repo_name": "str",
+        "max_issues_repo_head_hexsha": "str",
+        "max_issues_repo_licenses": "list",
+        "max_issues_count": "int",
+        "max_issues_repo_issues_event_min_datetime": "str",
+        "max_issues_repo_issues_event_max_datetime": "str",
+        "max_forks_repo_path": "str",
+        "max_forks_repo_name": "str",
+        "max_forks_repo_head_hexsha": "str",
+        "max_forks_repo_licenses": "list",
+        "max_forks_count": "NoneType",
+        "max_forks_repo_forks_event_min_datetime": "NoneType",
+        "max_forks_repo_forks_event_max_datetime": "NoneType",
+        "content": "str",
+        "avg_line_length": "float",
+        "max_line_length": "int",
+        "alphanum_fraction": "float"
+      },
+      "sample_content_sha256": "522892c36aa46a476af67cae169d45b9d44a547cfc37ea483a9b54a509c5dd0c",
+      "alias_fields": [
+        "max_stars_repo_name",
+        "max_issues_repo_name",
+        "max_forks_repo_name"
+      ],
+      "license_fields": [
+        "max_stars_repo_licenses",
+        "max_issues_repo_licenses",
+        "max_forks_repo_licenses"
+      ],
+      "status": "passed"
+    }
+  },
+  "splits": {
+    "web_train": {
+      "tokens": 260000257,
+      "labels": 260000256,
+      "file": "web_train.bin",
+      "sha256": "0db33183f032fe51d1a383605b69fd396ff7cc20826c8a32c2cd17592d94a540",
+      "owners": "web_train.owners.bin",
+      "owners_sha256": "3080c85a41a88c8cc9e2ab7c2b75da3f5edf450a4e9dd0304ba60ce62414c2c8",
+      "documents": "web_train.documents.json",
+      "documents_sha256": "dd1c6494e390a027f7e6a2c86b6e20de78818a360096840d36f5f9aea06aca40",
+      "initial_context_tokens": 1
+    },
+    "python_train": {
+      "tokens": 110000129,
+      "labels": 110000128,
+      "file": "python_train.bin",
+      "sha256": "acf3a9574c51131db67bba392b91a9dbffe74495fe416afa555733e909b5a2a8",
+      "owners": "python_train.owners.bin",
+      "owners_sha256": "bcc1985521b577238454a0874a031d9c4632b52516e71a5e934076cbced6263e",
+      "documents": "python_train.documents.json",
+      "documents_sha256": "80bc77fb43783d8bca7ab841c346d16440949578d3d928e8d8b3fcda13649bff",
+      "initial_context_tokens": 1
+    },
+    "web_dev": {
+      "tokens": 2097153,
+      "labels": 2097152,
+      "file": "web_dev.bin",
+      "sha256": "7a65edcbef0bec4a37a2cf6b2a7880ad6c759968ad6662e05bdf197f0e91bd19",
+      "owners": "web_dev.owners.bin",
+      "owners_sha256": "502b413f9eb8375d827e399d772580b753097a64f276e4e0366bab9ed2ee08d6",
+      "documents": "web_dev.documents.json",
+      "documents_sha256": "e6eb33dd7d7e558e6be4925bbaae92c9668231c3317ee0d99befbf86405aae86",
+      "initial_context_tokens": 1
+    },
+    "python_dev": {
+      "tokens": 2097153,
+      "labels": 2097152,
+      "file": "python_dev.bin",
+      "sha256": "e421d2241506f09f5d5293a37008194073ff0a41a32c79bebc98260c25336b16",
+      "owners": "python_dev.owners.bin",
+      "owners_sha256": "de2d60e21b458fef7eb2796df0e35d9f20d8a039aebed99855f559bcfd9724d9",
+      "documents": "python_dev.documents.json",
+      "documents_sha256": "480122e3b43c6b0cd822c1013faf20731a70450874e35a33efd625746b7a9d6e",
+      "initial_context_tokens": 1
+    }
+  },
+  "tokenizer_hashes": {
+    "encoding": "gpt2",
+    "id_to_bytes_sha256": "a5623714bcf19049eb0fd78df19b6daa1e61ac435b86a5deae767768e7fcdc3d",
+    "tiktoken": "0.12.0",
+    "unicode": "15.0.0"
+  },
+  "sampling_seed": 20260911,
+  "classes_sha256": "e2c602a86c665c71a97b8f88238f72f76932f61333083cb413a6d667ab77b52f",
+  "dedup_audit_sha256": "b841e79156b06ac2ba6cbb06c2c789378ed8823e6407d8ea2226819996451639",
+  "reserved_test_sealed": {
+    "manifest_sha256": "a26ec20cf7100fc68e34c028cd62aea5b900443e0b71dd3cc43d30ffdcf7f9c8",
+    "labels_per_domain": 8388608,
+    "online_path_included": false
+  },
+  "preparation_packages": {
+    "numpy": "2.0.2",
+    "tiktoken": "0.12.0",
+    "pyarrow": "24.0.0",
+    "huggingface_hub": "1.11.0",
+    "datasets": "5.0.0",
+    "datasketch": "2.0.0"
+  },
+  "preparation_status": "prepared_requires_acceptance_validation"
+}

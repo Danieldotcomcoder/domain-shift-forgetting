@@ -1,0 +1,11 @@
+{
+  "seed": 102,
+  "condition": "RMS",
+  "config_sha256": "c18441799eee2b6a78b257e2e22c6ac32ddb7c30cd81d6eb57e488b2b173ce10",
+  "switch_sha256": "0f0f603bf4546d1955f0e75fe3c4dc6af1514dc8bb01c0166f1830b739a82b12",
+  "updates": 21364,
+  "optimizer_seconds": 7975.4247262477875,
+  "clipped": 12781,
+  "overflow_retries": 0,
+  "completed_unix": 1791052400.1686676
+}

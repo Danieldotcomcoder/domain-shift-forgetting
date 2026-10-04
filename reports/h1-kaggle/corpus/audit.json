@@ -1,0 +1,12 @@
+{
+  "exact_removed": 0,
+  "near_removed": 2182,
+  "short_shingle_documents": 20,
+  "missed_candidate_pairs_checked": 2043,
+  "missed_candidate_pairs_found": 0,
+  "repository_groups": 140195,
+  "minhash_permutations": 128,
+  "seed": 20260911,
+  "lsh_bands": 32,
+  "lsh_rows": 4
+}

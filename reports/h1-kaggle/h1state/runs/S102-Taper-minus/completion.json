@@ -1,0 +1,11 @@
+{
+  "seed": 102,
+  "condition": "Taper-minus",
+  "config_sha256": "c18441799eee2b6a78b257e2e22c6ac32ddb7c30cd81d6eb57e488b2b173ce10",
+  "switch_sha256": "78fde02da7e9d922edf6918e86487193931a83331196f4f1bbf58c620db251b2",
+  "updates": 21364,
+  "optimizer_seconds": 7874.870263338089,
+  "clipped": 15021,
+  "overflow_retries": 0,
+  "completed_unix": 1791052060.4513257
+}
