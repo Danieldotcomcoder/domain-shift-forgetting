@@ -20,13 +20,12 @@
 \definecolor{rmsblue}{HTML}{2A78D6}
 \definecolor{taperorange}{HTML}{EB6834}
 \definecolor{inkmuted}{HTML}{52514E}
-\newcommand{\authornote}[1]{\textcolor{red!70!black}{[\textbf{Author:} #1]}}
 
 \input{generated/numbers.tex}
 
 \title{No Evidence That TaperNorm Increases Forgetting After a Web-to-Code Domain Shift:\\ A Pre-Specified Pilot Study}
-\author{\authornote{Author name}\\ \authornote{Affiliation, or ``Independent researcher''}\\ \authornote{email}}
-\date{First draft --- not for distribution}
+\author{Daniel Shdeed\\ \texttt{DanielShdeed@my.uopeople.edu}}
+\date{Draft --- October 2026}
 
 \begin{document}
 \maketitle
@@ -114,7 +113,7 @@ mitigation. It isolates how much forgetting the normalization choice itself
 causes, relative to a matched control branch.
 
 \paragraph{Pre-specification.} Fixing hypotheses, endpoints and analysis rules before seeing outcomes protects
-against flexible analysis \citep{nosek2018preregistration}. It is still uncommon in machine-learning experiments.
+against flexible analysis \citep{nosek2018preregistration}.
 \Cref{sec:prespec} states exactly what was fixed, and when.
 
 \section{Pre-specified design}
@@ -294,23 +293,30 @@ seeds.}
 \label{sec:prespec}
 
 The hypothesis, design, estimands, evaluation schedule and decision thresholds come from a written protocol
-(``protocol v3''), drafted before the data were prepared. \authornote{Confirm the protocol's drafting date
-(the project export suggests 11--12 September 2026) and where it was kept.} The protocol was not lodged with an
-external registry, which is a limitation (\cref{sec:limitations}). The amendments in \cref{tab:amendments} were
-made before any primary-run update; none of them changes the model, data, token budgets, seeds, endpoint or
-thresholds.
+(``protocol v3''), drafted on 12 September 2026, before the corpus was prepared or any model was trained on it. The
+protocol text is included in the project repository. It was not lodged with an external registry, which is a
+limitation (\cref{sec:limitations}). The amendments in \cref{tab:amendments} were made before any primary-run
+update; none of them changes the model, data, token budgets, seeds, endpoint or thresholds.
 
-The primary run's configuration (thresholds, schedule, batch layout and data hashes) was frozen into a hash
-(\texttt{\configSha\ldots}) at launch, and the analysis is a deterministic function of the stored evaluation
-records. A public commit containing the protocol and the analysis code was made on 2026-10-03 at 16:07~UTC: after
-the primary run had started (\sessionStart{}~UTC) but before it finished (\sessionEnd{}~UTC).
+At launch, the primary run's configuration (thresholds, schedule, batch layout and data hashes) was frozen into a
+hash (\texttt{\configSha\ldots}). The analysis is a deterministic function of the stored evaluation records. The
+public repository contains a commit (\texttt{3ee1dc4}) dated 3 October 2026, 16:07~UTC: after the primary run started
+(\sessionStart{}~UTC) and before it finished (\sessionEnd{}~UTC). That commit includes the protocol text and the
+exact runner script that executed, which contains the frozen thresholds and the analysis code. The script's
+SHA-256 (\texttt{\runnerSha\ldots}) matches the hash recorded in the run's session log.
 
-Before the primary run, engineering runs measured throughput and verified checkpoint resume. These included
-earlier preflights under a separate engineering seed, and a 25-minute smoke test that repeated roughly the first
-2{,}300 prefix updates of seed 101 for both conditions. These runs were discarded. None of them reached the switch,
-so no continuation-phase quantity, and hence no value of $D$, was computed before the primary run.
-\authornote{Confirm that no earlier run (including exploratory runs on proxy corpora) produced a $D$-like
-contrast on these data.}
+Before the primary run, engineering runs measured throughput and verified checkpoint resume. All of them were
+discarded:
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+  \item local development runs on stand-in corpora (WikiText-103 and CodeSearchNet functions), which trained RMS
+        models only;
+  \item preflights of an earlier execution pipeline under engineering seed 997, which timed each training phase by
+        repositioning the update clock rather than by training a prefix to the switch;
+  \item a smoke test of about 20 minutes on the final runner, which repeated the first 2{,}197 (Taper-minus) and
+        2{,}336 (RMS) prefix updates of seed 101.
+\end{itemize}
+None of them produced a Taper-minus-versus-RMS continuation contrast on the C4 and Stack data, so no value of
+$D$ was computed before the primary run.
 
 \begin{table}[t]
 \centering
@@ -322,7 +328,7 @@ contrast on these data.}
 Date & Amendment \\
 \midrule
 2026-09-28 & NVIDIA T4 hardware: FP16 autocast with dynamic loss scaling replaces BF16; FP32 master weights, moments, normalization and EMA statistics, and loss. Results are not pooled with any BF16 run. \\
-2026-09-30 & Free cloud GPU time spread over sessions replaces the original 24-GPU-hour paid budget; the scientific allocation is unchanged. \\
+2026-09-30 & A cap of 50 free cloud GPU-hours, spread over sessions and weekly quota resets, replaces the original 24-GPU-hour paid budget; the scientific allocation is unchanged. \\
 2026-10-01 & RMS and Taper-minus are trained as independent processes on two GPUs, with no shared state. \\
 2026-10-03 & Microbatch of 8 sequences $\times$ 4 accumulation steps (the protocol's default layout; effective batch unchanged). For storage, model weights are kept only for the switch state and branch endpoints; the per-document and per-class statistics required at every full-development point are kept. \\
 \bottomrule
@@ -458,8 +464,8 @@ added, no endpoint was changed and no follow-up was launched.
 \paragraph{What it does not show.} \emph{Stop} is not evidence of equivalence \citep{lakens2017equivalence}, and
 the negative endpoint is not evidence that TaperNorm protects against forgetting. That effect would have needed
 $\bar D \le -0.03$, which was not reached. The intermediate-checkpoint fluctuations in \cref{fig:trajectories}b
-are as large as the endpoint value, and three seeds give a fragile estimate of seed-to-seed variance
-\citep{dodge2020finetuning}. The descriptive interval is conditional on one prepared corpus sample and one
+are as large as the endpoint value. Seed-to-seed variation in neural-network training can be large
+\citep{dodge2020finetuning}, and three seeds estimate it poorly. The descriptive interval is conditional on one prepared corpus sample and one
 training recipe; it is not a population bound.
 
 \paragraph{Why the concern may not have materialized (conjecture).} We did not test mechanisms, but three
@@ -487,8 +493,10 @@ Each of these is a hypothesis for a future study, not a finding of this one.
   \item \textbf{Statistics.} Three paired seeds share one prepared corpus, so uncertainty is conditional on that
         corpus, and the interval in \cref{tab:primary} is descriptive. All measurements use development data; the
         reserved test sets remain sealed for any confirmatory study.
-  \item \textbf{Pre-specification.} The protocol was kept privately and not registered externally. The public
-        record of the analysis code postdates the start of the primary run (\cref{sec:prespec}).
+  \item \textbf{Pre-specification.} The protocol was kept privately and not registered externally. The earliest
+        public record of the protocol and analysis code, a git commit, postdates the start of the primary run
+        (\cref{sec:prespec}). Git commit dates are set by the author's machine and are not independent
+        timestamps.
   \item \textbf{Data audit.} The near-duplicate search is approximate, and the random audit of \auditPairs{}
         cross-split document pairs (\auditFound{} found above threshold) has low power to detect rare leakage.
         Repository names are an incomplete proxy for forks.
@@ -507,16 +515,19 @@ more seeds and more than one domain shift. On its own, this pilot does not justi
 
 \section*{Code and data availability}
 The code (data preparation, training, evaluation and the frozen analysis), the frozen configuration with data and
-source hashes, the decision report, and every evaluation record behind the tables and figures are available at
-\authornote{repository URL, currently \url{https://github.com/Danieldotcomcoder/domain-shift-forgettting}}.
+source hashes, the decision report, and every evaluation record behind the tables and figures are available in
+the project repository:
+\begin{center}\url{https://github.com/Danieldotcomcoder/domain-shift-forgetting}\end{center}
 The script \texttt{paper/make\_assets.py} regenerates every number, table and figure in this paper from those
 records. C4 and The Stack are subject to their own licenses and terms of use; no corpus text is redistributed.
 
-\section*{Acknowledgements}
-\authornote{Disclose AI assistance as required by arXiv policy, for example: ``The training and analysis code
-and a first draft of this manuscript were prepared with assistance from an AI system (Claude, Anthropic). The
-author designed the study, reviewed all code and text, and takes full responsibility for the content.'' Adjust
-this to reflect your actual roles.}
+\section*{Use of AI assistance}
+AI systems, including Claude (Anthropic), were used extensively in this project. They helped draft and revise
+the study protocol; wrote the data-preparation, training, orchestration and analysis code and its tests; operated
+the cloud training runs through the Kaggle API; and drafted this manuscript, including the script that generates
+its numbers, tables and figures. The author directed the project, approved the study design, every protocol
+amendment and the decision to stop, and takes full responsibility for the content of this paper, including any
+errors.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}

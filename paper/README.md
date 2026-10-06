@@ -1,8 +1,6 @@
 # Preprint draft
 
-`main.tex` is the first draft of the arXiv preprint for the H1 pilot. `main.pdf` is the compiled draft.
-Red **[Author: …]** notes in the text are facts only the author can confirm (name, affiliation, protocol
-date, AI-assistance wording); resolve them before submission.
+`main.tex` is the draft arXiv preprint for the H1 pilot. `main.pdf` is the compiled draft.
 
 Every number, table and figure is generated from the run's own records in `reports/h1-kaggle/`. The
 script recomputes the primary contrasts from the raw evaluation logs and checks them against the frozen
