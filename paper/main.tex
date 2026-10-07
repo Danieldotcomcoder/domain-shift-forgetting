@@ -17,6 +17,8 @@
 \usepackage[colorlinks=true,linkcolor=black!70!blue,citecolor=black!70!blue,urlcolor=black!70!blue]{hyperref}
 \usepackage[capitalise,noabbrev]{cleveref}
 
+\setlength{\emergencystretch}{2em}
+
 \definecolor{rmsblue}{HTML}{2A78D6}
 \definecolor{taperorange}{HTML}{EB6834}
 \definecolor{inkmuted}{HTML}{52514E}
@@ -24,29 +26,14 @@
 \input{generated/numbers.tex}
 
 \title{No Evidence That TaperNorm Increases Forgetting After a Web-to-Code Domain Shift:\\ A Pre-Specified Pilot Study}
-\author{Daniel Shdeed\\ \texttt{DanielShdeed@my.uopeople.edu}}
-\date{Draft --- October 2026}
+\author{Daniel Shdeed\\ University of the People\\ \texttt{DanielShdeed@my.uopeople.edu}}
+\date{October 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-TaperNorm \citep{kanavalau2026tapernorm} replaces the internal normalization layers of a pre-norm Transformer
-with a gated map that behaves like RMSNorm early in training and then tapers to a fixed, calibrated,
-sample-independent scaling. A tapered layer no longer rescales each token by its own statistics, which raises a
-natural concern: such a model might forget more when its training distribution shifts. We tested this concern
-in a small pilot whose design, primary endpoint and decision rules were specified before training.
-Small decoder-only language models (17.7M parameters), using either internal RMSNorm or internal TaperNorm,
-were trained on 150M tokens of web text (C4). Each was then continued for 100M tokens either on further web text
-or on Python code (The Stack), with three paired seeds. The primary endpoint is a difference-in-differences $D$ of
-held-out web cross-entropy, where positive values mean more excess forgetting under TaperNorm. Switching to
-Python raised web cross-entropy by about \FcodeMean{}~nats/token in both conditions. Mean $D$ was \Dmean{}~nats/token
-(seeds \DA, \DB, \DC), which is below the pre-specified $+0.015$ bound for a meaningful excess.
-The pre-specified decision is therefore to stop: we find no evidence that TaperNorm increases persistent
-forgetting in this setting. The endpoint difference points the opposite way in all three seeds, but it is small,
-it falls short of the pre-specified threshold for an opposite-direction effect, and the seed-mean contrast varied
-between \trajMin{} and \trajMax{} across intermediate checkpoints, so we do not claim that TaperNorm reduces
-forgetting. Code, the frozen configuration and all evaluation records are released.
+\input{generated/abstract.tex}
 \end{abstract}
 
 \section{Introduction}
@@ -55,12 +42,13 @@ Normalization layers such as LayerNorm \citep{ba2016layer} and RMSNorm \citep{zh
 part of Transformer language models. In the common pre-norm arrangement \citep{xiong2020layer}, every attention
 and MLP sub-layer reads its input through a normalizer that rescales each token's activation vector by that
 token's own statistics. A long line of work has asked whether normalization is necessary at all
-\citep{zhang2019fixup,brock2021nfnet}. TaperNorm \citep{kanavalau2026tapernorm} is a recent proposal for
-Transformers. It acts exactly as RMSNorm (or LayerNorm) during an initial gate warm-up, calibrates a fixed
-scaling branch during that warm-up, and then cosine-decays a global gate until each internal normalizer becomes
-a sample-independent linear map. That map can be folded into the adjacent linear projections at inference.
-\citet{kanavalau2026tapernorm} report that this matches normalized baselines under identical setups, and they
-measure up to $1.22\times$ higher throughput in an inference microbenchmark.
+\citep{zhang2019fixup,brock2021nfnet,he2024simplifying,zhu2025dyt}. TaperNorm \citep{kanavalau2026tapernorm} is a
+recent proposal for Transformers; we follow version~1 of its arXiv preprint throughout. It acts exactly as RMSNorm
+(or LayerNorm) during an initial gate warm-up, calibrates a fixed scaling branch during that warm-up, and then
+cosine-decays a global gate until each internal normalizer becomes a sample-independent linear map. That map can
+be folded into the adjacent linear projections at inference. \citet{kanavalau2026tapernorm} report that this
+matches normalized baselines under identical setups, and they measure up to $1.22\times$ higher throughput in an
+inference microbenchmark.
 
 This study looks at a property that the original evaluation did not target: behaviour under a later shift in the
 training distribution. A normalizer is invariant to the scale of its input. If continued training on a new
@@ -68,12 +56,13 @@ domain changes activation magnitudes, an RMSNorm layer absorbs part of that chan
 tapered layer applies a scale calibrated on the earlier distribution. One can conjecture that the tapered network
 must then absorb the shift through weight updates, which might overwrite structure that supports the original
 domain and so increase catastrophic forgetting
-\citep{mccloskey1989catastrophic,french1999catastrophic,kirkpatrick2017overcoming}. We use this argument only to
-motivate the hypothesis; we do not test the mechanism.
+\citep{mccloskey1989catastrophic,french1999catastrophic,kirkpatrick2017overcoming}. This argument motivates the
+hypothesis; the experiment tests the hypothesis, not the mechanism.
 
 \paragraph{Hypothesis.} \textbf{H1}: after training switches from web text to Python code, internal TaperNorm
 (without the auxiliary scale loss; final RMSNorm retained) increases the persistent deterioration of held-out web
-cross-entropy, relative to continuing web training, compared with internal RMSNorm.
+cross-entropy, relative to continuing web training, compared with internal RMSNorm. \emph{Persistent} is defined
+in \cref{sec:estimands}.
 
 We ran a deliberately small, inexpensive pilot to decide whether H1 deserves a larger study. Its design
 (\cref{sec:design}) pairs the two conditions on initialization and data order and branches each condition's
@@ -86,8 +75,10 @@ contributions are:
         term, per-document effects and per-token-class effects;
   \item the pilot's result. All validity checks pass and the pre-specified decision is \emph{stop: small observed
         effect}. Mean $D$ = \Dmean{}~nats/token, against a $+0.015$ bound for a meaningful excess;
-  \item code, frozen configuration, data hashes and all evaluation records, sufficient to recompute every number
-        in this paper.
+  \item exploratory analyses, labelled as such, suggesting that the premise of H1 was only weakly present: the
+        code-specific change in activation scale was small and similar in both architectures;
+  \item code, frozen configuration, data hashes and all evaluation and training records, sufficient to recompute
+        every number in this paper.
 \end{itemize}
 The study is small (\paramsRMS{} parameters, three seeds, one domain pair) and should be read as a screening
 result, not as a general statement about TaperNorm (\cref{sec:limitations}).
@@ -97,44 +88,68 @@ result, not as a general statement about TaperNorm (\cref{sec:limitations}).
 \paragraph{Normalization and its removal.} LayerNorm \citep{ba2016layer} and RMSNorm \citep{zhang2019rmsnorm}
 normalize each token independently, and the pre-norm placement \citep{xiong2020layer} is now standard in
 decoder-only language models. Fixup \citep{zhang2019fixup} and NFNets \citep{brock2021nfnet} train deep residual
-networks without normalization through initialization, scaling and clipping choices. TaperNorm
-\citep{kanavalau2026tapernorm} instead removes normalization gradually during training. Its analysis attributes
-the essential role of normalization to the \emph{output} normalizer, which anchors scale; this is why our
-Taper-minus condition keeps the final RMSNorm.
+networks without normalization through initialization, scaling and clipping choices. For Transformers,
+\citet{he2024simplifying} study which standard components of the block can be removed, and
+\citet{zhu2025dyt} replace normalization layers with an element-wise $\tanh$ map. TaperNorm
+\citep{kanavalau2026tapernorm} instead removes internal normalization gradually during training. Its analysis
+attributes the essential role of normalization to the \emph{output} normalizer, which anchors scale; this is why
+our Taper-minus condition keeps the final RMSNorm.
+
+\paragraph{Normalization, weight decay and effective learning rate.} When a normalizer makes a network's output
+invariant to the scale of some weights, weight decay no longer regularizes those weights in the usual sense;
+it shrinks them and thereby raises their effective learning rate \citep{vanlaarhoven2017l2,zhang2019weightdecay}.
+\citet{lyle2024normalization} connect normalization and effective learning rates to the loss of plasticity under
+nonstationary training. These results bear on our exploratory scale analysis (\cref{sec:exploratory}).
 
 \paragraph{Forgetting under continued training.} Catastrophic forgetting
 \citep{mccloskey1989catastrophic,french1999catastrophic} is the loss of earlier competence when a network is
 trained on new data, and it has motivated methods such as elastic weight consolidation
-\citep{kirkpatrick2017overcoming}. In language modelling, continued pre-training on a new domain improves
-in-domain performance \citep{gururangan2020dont}, but it can degrade performance on the original distribution.
-\citet{ibrahim2024simple} study how learning-rate re-warming, re-decaying and replay trade adaptation to the
-new distribution against this forgetting. Our design deliberately uses no replay, re-warming or other
-mitigation. It isolates how much forgetting the normalization choice itself
-causes, relative to a matched control branch.
+\citep{kirkpatrick2017overcoming}. The training regime, including learning-rate decay, affects how much a network
+forgets \citep{mirzadeh2020training}; larger pre-trained models forget less \citep{ramasesh2022scale}; and the
+choice of normalization layer matters in online continual learning \citep{pham2022continual}. In language
+modelling, continued pre-training on a new domain improves in-domain performance \citep{gururangan2020dont}, but
+it can degrade performance on the original distribution; \citet{gupta2023rewarm} and \citet{ibrahim2024simple}
+study how learning-rate re-warming, re-decaying and replay trade adaptation against this forgetting. Our design
+deliberately uses no replay, re-warming or other mitigation. It isolates how much forgetting the normalization
+choice itself causes, relative to a matched control branch.
 
 \paragraph{Pre-specification.} Fixing hypotheses, endpoints and analysis rules before seeing outcomes protects
-against flexible analysis \citep{nosek2018preregistration}.
-\Cref{sec:prespec} states exactly what was fixed, and when.
+against flexible analysis \citep{nosek2018preregistration}. \Cref{sec:prespec} states exactly what was fixed, and
+when, including one disclosure about the timing of the public record.
 
 \section{Pre-specified design}
 \label{sec:design}
 
-\subsection{Estimands}
+\subsection{Notation and estimands}
+\label{sec:estimands}
+
+We write $u$ for the global optimizer update ($u = 1,\dots,15{,}260$) and $s = u - 9{,}156$ for the continuation
+update within a branch. Two different events fall on the number 6{,}104: the TaperNorm gate reaches zero at global
+update $u = 6{,}104$, and the primary endpoint is continuation update $s = 6{,}104$ (global update $u = 15{,}260$).
+They coincide because the protocol ends the taper at 40\% of the 15{,}260-update trajectory, which equals the
+continuation length. We always state whether a number is a $u$ or an $s$.
 
 Let $L(m, b, s)$ be the token-weighted cross-entropy on the held-out web development set (nats per supervised
 token, 2{,}097{,}152 labels), for normalization condition $m \in \{\mathrm{R}, \mathrm{T}\}$ (RMS, Taper-minus),
 after $s$ continuation updates on branch $b \in \{\text{web}, \text{code}\}$. Let $L(m,\text{prefix})$ be the
-same quantity at the switch. The primary endpoint, evaluated at $s = 6{,}104$, is
+same quantity at the switch. The primary endpoint is
 \begin{equation}
-  D(s) = \big[L(\mathrm{T},\text{code},s) - L(\mathrm{T},\text{web},s)\big] - \big[L(\mathrm{R},\text{code},s) - L(\mathrm{R},\text{web},s)\big].
+  D(s) = \big[L(\mathrm{T},\text{code},s) - L(\mathrm{T},\text{web},s)\big] - \big[L(\mathrm{R},\text{code},s) - L(\mathrm{R},\text{web},s)\big],
   \label{eq:d}
 \end{equation}
-Positive $D$ means that, relative to its own web-continuation control, the Taper-minus model loses more web
-performance under the Python shift than the RMS model does. Within each condition the code-minus-web difference
-cancels everything the two branches share, including the condition-specific quality of the prefix and generic
-continued-training drift. We also report the actual forgetting
-$F(m,b) = L(m,b,6104) - L(m,\text{prefix})$ and the change in the between-condition gap during web
-continuation, $G_{\text{web}} = [L(\mathrm{T},\text{prefix}) - L(\mathrm{R},\text{prefix})] -
+evaluated at $s = 6{,}104$. Positive $D$ means that, relative to its own web-continuation control, the Taper-minus
+model loses more web performance under the Python shift than the RMS model does. Within each condition the
+code-minus-web difference cancels everything the two branches share, including the condition-specific quality of
+the prefix and generic continued-training drift.
+
+\paragraph{Persistent.} We call a deterioration \emph{persistent} if it is present at the fixed endpoint
+$s = 6{,}104$, after 100M continuation tokens and at the end of the learning-rate schedule. A difference visible
+only early in continuation ($s \le 1{,}000$) is \emph{transient}, which the decision rules treat separately
+(\cref{tab:rules}, rule~5).
+
+We also report the actual forgetting $F(m,b) = L(m,b,6104) - L(m,\text{prefix})$ and the change in the
+between-condition gap during web continuation,
+$G_{\text{web}} = [L(\mathrm{T},\text{prefix}) - L(\mathrm{R},\text{prefix})] -
 [L(\mathrm{T},\text{web},6104) - L(\mathrm{R},\text{web},6104)]$. These satisfy the identity
 \begin{equation}
   D = \underbrace{F(\mathrm{T},\text{code}) - F(\mathrm{R},\text{code})}_{Q} + G_{\text{web}},
@@ -143,7 +158,8 @@ so $Q = D - G_{\text{web}}$ is the direct difference in Python-branch forgetting
 numerically in the analysis code. Because CE is token-weighted, $D$ decomposes exactly into per-document terms
 $D_i$ (weighted by each document's scored-label count) and into four disjoint GPT-2 token classes: whitespace
 (W), text containing an alphanumeric character (A), other punctuation and symbols (P), and special, control or
-invalid-fragment tokens (X).
+invalid-fragment tokens (X). A fifth, overlapping flag R marks rare tokens: those that occur fewer than 100 times
+in that seed's prefix training stream.
 
 \subsection{Models and conditions}
 
@@ -156,24 +172,30 @@ All models are pre-norm decoder-only Transformers adapted from nanoGPT \citep{ka
 The RMS model has \paramsRMS{} parameters; Taper-minus adds 3{,}072 for its second gain vectors. About
 \embedShare\% of all parameters are in the token-embedding table. Both conditions keep the final RMSNorm.
 
+\paragraph{Initialization.} All linear and embedding weights (token and position) are drawn from
+$\mathcal{N}(0, 0.02^2)$. The two residual output projections of each block (the attention output projection and
+the MLP down-projection) use $\mathcal{N}\big(0, (0.02/\sqrt{12})^2\big)$, where $12 = 2 \times 6$ layers. All gains
+start at~1.
+
 \paragraph{RMS.} All 12 internal normalizers are RMSNorm with $\epsilon = 10^{-6}$.
 
 \paragraph{Taper-minus.} All 12 internal normalizers are TaperNorm, following the operator and calibration of
 \citet{kanavalau2026tapernorm} (their Section~3 and Appendix~C), without their auxiliary scale loss. For an input
-$h \in \mathbb{R}^d$ at optimizer update $u$, with gains $\gamma$ and $\tilde\gamma$,
+$h \in \mathbb{R}^d$ at global update $u$, with gains $\gamma$ and $\tilde\gamma$,
 \begin{equation}
   r(h) = \sqrt{\lVert h\rVert_2^2/d + 10^{-6}}, \qquad
   y = g(u)\, \frac{h}{r(h)} \odot \gamma + \big(1 - g(u)\big)\, c\, h \odot \tilde\gamma .
 \end{equation}
-The scalar $c$ of each site is calibrated during updates $1$--$763$ as the ratio of bias-corrected exponential
-moving averages (one EMA step per optimizer update, new-sample weight $0.01$) of
+The scalar $c$ of each site is calibrated during updates $u = 1$--$763$ as the ratio of bias-corrected
+exponential moving averages (one EMA step per optimizer update, new-sample weight $0.01$) of
 $\lVert h\odot\gamma\rVert^2 / r(h)$ and $\lVert h\odot\gamma\rVert^2$. These are collected from the pre-step
-forward passes of every microbatch. After update 763, $c$ is frozen and $\tilde\gamma$ is initialized from
-$\gamma$; $\tilde\gamma$ first receives an optimizer step at update 764 and stays trainable. The gate is $g(u) = 1$
+forward passes of every microbatch. After update $u = 763$, $c$ is frozen and $\tilde\gamma$ is initialized from
+$\gamma$; $\tilde\gamma$ first receives an optimizer step at $u = 764$ and stays trainable. The gate is $g(u) = 1$
 for $u \le 763$, $g(u) = \tfrac12[1 + \cos(\pi (u - 763)/5341)]$ for $763 < u < 6104$, and $g(u) = 0$ for
-$u \ge 6104$. At $g = 0$ no per-token statistic is computed and $\gamma$ receives no gradient. The gate timing,
-GELU, learned positions, weight decay, learning-rate schedule and domain branching are choices of this study, so
-this is an adaptation of TaperNorm, not a replication of its experiments.
+$u \ge 6104$. At $g = 0$ no per-token statistic is computed and $\gamma$ receives no gradient. Until $u = 763$ the
+two conditions are mathematically identical. The gate timing, GELU, learned positions, weight decay,
+learning-rate schedule and domain branching are choices of this study, so this is an adaptation of TaperNorm, not
+a replication of its experiments.
 
 \subsection{Training protocol}
 
@@ -186,28 +208,30 @@ this is an adaptation of TaperNorm, not a replication of its experiments.
   \node[inkmuted, anchor=east] at (-0.05,1.4) {$g{=}0$};
   \draw[taperorange, thick] (0,2.1) -- (0.763,2.1) -- plot[domain=0.763:6.104, samples=60]
         (\x, {1.4 + 0.7*0.5*(1+cos(180*(\x-0.763)/5.341))}) -- (9.156,1.4);
-  \node[taperorange, anchor=west, align=left] at (9.4,1.75) {TaperNorm gate $g(u)$ (Taper-minus only):\\1 until 763, cosine decay, 0 from 6{,}104};
+  \node[taperorange, anchor=west, align=left] at (9.4,1.75) {TaperNorm gate $g(u)$ (Taper-minus only):\\$1$ until $u = 763$, cosine decay, $0$ from $u = 6{,}104$};
   % prefix
   \draw[line width=2.2pt, black!75] (0,0) -- (9.156,0);
-  \node[anchor=south west, inner sep=2pt] at (0,0.1) {web prefix: 9{,}156 updates (150.0M tokens)};
+  \node[anchor=south west, inner sep=2pt] at (0,0.1) {web prefix: $u = 1$--$9{,}156$ (150.0M tokens)};
   \foreach \u in {0.305, 0.763} { \draw[black!75] (\u,-0.12) -- (\u,0.12); }
   \draw[black!45] (0.763,-0.12) -- (0.763,-0.42);
-  \node[anchor=north west, inner sep=1pt] at (0.70,-0.42) {763: calibration ends; $c$ frozen; $\tilde\gamma \leftarrow \gamma$};
+  \node[anchor=north west, inner sep=1pt] at (0.70,-0.42) {$u = 763$: calibration ends; $c$ frozen; $\tilde\gamma \leftarrow \gamma$};
   \draw[black!45] (0.305,-0.12) -- (0.305,-0.92);
-  \node[anchor=north west, inner sep=1pt] at (0.24,-0.92) {305: LR warm-up ends};
+  \node[anchor=north west, inner sep=1pt] at (0.24,-0.92) {$u = 305$: LR warm-up ends};
   % switch and branches
   \fill (9.156,0) circle (2.6pt);
-  \node[anchor=north east, inner sep=1pt] at (9.05,-0.92) {switch: full state saved};
+  \draw[black!45] (9.156,-0.12) -- (9.156,-1.38);
+  \node[anchor=north east, inner sep=1pt] at (9.1,-1.38) {switch ($u = 9{,}156$): full state saved};
   \draw[line width=2.2pt, black!40] (9.156,0) -- (9.75,0.62) -- (15.26,0.62);
   \draw[line width=2.2pt, black!85] (9.156,0) -- (9.75,-0.62) -- (15.26,-0.62);
-  \node[anchor=south east, inner sep=2pt] at (15.26,0.66) {web branch: +6{,}104 updates};
-  \node[anchor=north east, inner sep=2pt] at (15.26,-0.66) {Python branch: +6{,}104 updates};
-  \node[anchor=west, align=left] at (15.4,0) {$s = 6{,}104$:\\primary\\endpoint};
+  \node[anchor=south east, inner sep=2pt] at (15.26,0.66) {web branch: $s = 1$--$6{,}104$};
+  \node[anchor=north east, inner sep=2pt] at (15.26,-0.66) {Python branch: $s = 1$--$6{,}104$};
+  \node[anchor=west, align=left] at (15.4,0) {$s = 6{,}104$\\($u = 15{,}260$):\\endpoint};
 \end{tikzpicture}
-\caption{One condition and seed of the design. Both conditions start from identical initial weights and read the
-same data order for each seed. At the switch, each condition's complete state (weights, optimizer moments, loss
-scale and random-number state) is saved, and both of its branches restore that identical state. The web branch
-continues on C4; the Python branch trains on Python files from The Stack. The global learning-rate clock continues through the branches without a restart.
+\caption{One condition and seed of the design ($u$: global update; $s$: continuation update). Both conditions
+start from identical initial weights and read the same data order for each seed. At the switch ($u = 9{,}156$),
+each condition's complete state (weights, optimizer moments, loss scale and random-number state) is saved, and
+both of its branches restore that identical state. The web branch continues on C4; the Python branch trains on
+Python files from The Stack. The global learning-rate clock continues through the branches without a restart.
 Evaluations follow the schedule in \cref{app:schedule}.}
 \label{fig:design}
 \end{figure}
@@ -215,17 +239,17 @@ Evaluations follow the schedule in \cref{app:schedule}.}
 \paragraph{Optimization.} The optimizer is AdamW \citep{loshchilov2019adamw} with $\beta = (0.9, 0.95)$ and
 $\epsilon = 10^{-8}$. All two-dimensional parameters, embeddings included, get weight decay $0.1$; gain vectors
 get none. Gradients are clipped once per update to global norm $1.0$, after accumulation. Each update uses
-$32 \times 512 = 16{,}384$ supervised tokens. The learning rate rises linearly to $6\times10^{-4}$ over 305
-updates and then follows a cosine decay to $6\times10^{-5}$ at global update 15{,}260. The branches continue this
+$32 \times 512 = 16{,}384$ supervised tokens. The learning rate rises linearly to $6\times10^{-4}$ over the first
+305 updates and then follows a cosine decay to $6\times10^{-5}$ at $u = 15{,}260$. The branches continue this
 global clock, with no learning-rate restart, optimizer reset, replay or regularization toward the prefix
 (\cref{fig:design}).
 
 \paragraph{Pairing.} Seeds 101, 102 and 103 are paired across conditions. A canonical RMS initialization is
 generated from the seed and explicitly copied into the Taper-minus model; $\tilde\gamma$ starts at~1 and is
-inactive until update 764. Both conditions read the same pre-generated window order. Each run consists of a
-prefix of 9{,}156 updates (150{,}011{,}904 tokens) followed by two branches of 6{,}104 updates each
-(100{,}007{,}936 tokens). The web branch reads further unseen web windows and the Python branch reads Python
-windows; no window repeats within a trajectory. The primary allocation is 2.10B supervised tokens.
+inactive until $u = 764$. Both conditions read the same pre-generated window order. Each run consists of a prefix
+of 9{,}156 updates (150{,}011{,}904 tokens) followed by two branches of 6{,}104 updates each (100{,}007{,}936
+tokens). The web branch reads further unseen web windows and the Python branch reads Python windows; no window
+repeats within a trajectory. The primary allocation is 2.10B supervised tokens.
 
 \paragraph{Precision.} Training ran in FP16 autocast with dynamic loss scaling \citep{micikevicius2018mixed}.
 Master weights, optimizer moments, normalization and calibration statistics, and the loss were kept in FP32.
@@ -235,29 +259,42 @@ lacks efficient BF16 support (\cref{tab:amendments}).
 
 \subsection{Data}
 
-\paragraph{Sources.} Web text comes from C4 English \citep{raffel2020t5} (revision \texttt{\cfourRev}); training
-uses the official training split, and the official validation split is hashed 50/50 into development and
-reserved-test sets. Code comes from the Python subset of The Stack (deduplicated) \citep{kocetkov2022stack}
-(revision \texttt{\stackRev}). Files are grouped into connected components over their repository-name aliases
-(\repoGroups{} groups), and each group is assigned by $\mathrm{sha256}(\text{group}) \bmod 100$: 0--89 train,
-90--94 development, 95--99 test.
+\paragraph{Sources and splits.} Web text comes from C4 English \citep{raffel2020t5}. Training uses the official
+training split, and the official validation split is hashed 50/50 into development and reserved-test sets. Code
+comes from the Python subset of The Stack (deduplicated) \citep{kocetkov2022stack}. The dataset revisions are
+\texttt{\cfourRev} (C4) and \texttt{\stackRev} (The Stack). Python files are grouped into connected components
+over their repository-name aliases (\repoGroups{} groups). Each group is assigned to a split by the value of
+$\mathrm{sha256}(\text{group}) \bmod 100$: 0--89 train, 90--94 development and 95--99 test. Empty documents, and
+Python files without a usable repository name, were dropped.
 
 \paragraph{Deduplication.} Documents are deduplicated exactly by content hash across all domains and splits. An
-approximate near-duplicate audit uses MinHash \citep{broder1997resemblance} over GPT-2 token 5-grams (128
+approximate near-duplicate search uses MinHash \citep{broder1997resemblance} over GPT-2 token 5-grams (128
 permutations, LSH with 32 bands of 4 rows), confirmed by exact Jaccard similarity $\ge 0.85$. When duplicates
-straddle splits, the copy in the higher-priority split is kept (test over development over training). This removed \exactRemoved{} exact and \nearRemoved{} near duplicates.
+straddle splits, the copy in the higher-priority split is kept (test over development over training). This
+removed \exactRemoved{} exact and \nearRemoved{} near duplicates. Documents shorter than five tokens have no
+5-gram and are covered only by exact deduplication (\shortDocs{} documents).
+
+\paragraph{Recall of the near-duplicate search.} With 32 bands of 4 rows, a pair with Jaccard similarity $J$
+becomes an LSH candidate with probability $1 - (1 - J^4)^{32}$. A pair at $J = 0.85$ is therefore missed with
+probability \lshMiss, and a pair at $J = 0.70$ is still found with probability \lshRecallSeventy. As an empirical
+check, a deterministic random sample of \auditPairs{} cross-split document pairs was compared by exact Jaccard,
+and none reached 0.85. That sampled audit has low power to detect rare leakage (\cref{sec:limitations}).
 
 \paragraph{Packing and quotas.} Text is tokenized with GPT-2 BPE, with one EOS appended per document, and packed
-into 513-token windows at stride 512 with no padding. Quotas are \webTrainTokens{} web and \pyTrainTokens{} Python
-training tokens, and 2{,}097{,}152 development labels (4{,}096 windows) per domain. The \emph{quick} development
-set is the first 262{,}144 of those labels. Reserved-test sets of 8{,}388{,}608 labels per domain were sealed and
-never used. The non-whitespace code CE used to measure adaptation excludes class W only.
+into 513-token windows at stride 512 with no padding. Windows are packed across document boundaries without an
+attention mask: a window can hold the end of one document, an EOS token and the start of the next, and attention
+can cross the EOS. Positions restart at 0 in every window. Each label is attributed to its own document (a label
+after an EOS belongs to the new document), so per-document sums reconstruct the corpus CE exactly. Quotas are
+\webTrainTokens{} web and \pyTrainTokens{} Python training tokens, and 2{,}097{,}152 development labels (4{,}096
+windows) per domain. The \emph{quick} development set is the first 262{,}144 of those labels. Reserved-test sets
+of 8{,}388{,}608 labels per domain were sealed and never used. The non-whitespace code CE used to measure
+adaptation excludes class W only.
 
 \subsection{Evaluation schedule and decision rules}
 
-Full development evaluations ran at 13 prefix points and at 25 continuation points per branch. Quick
-development evaluations ran at the switch and at 80 continuation points per branch, dense early on (\cref{app:schedule}). Every full
-evaluation stores per-document and per-class sufficient statistics.
+Full development evaluations ran at 13 prefix points and at 25 continuation points per branch. Quick development
+evaluations ran at the switch and at 80 continuation points per branch, dense early on (\cref{app:schedule}).
+Every full evaluation stores per-document and per-class sufficient statistics.
 
 The secondary \emph{matched-adaptation} analysis is fixed in advance. It fixes targets at the RMS Python branch's
 quick-dev code CE at $s \in \{1525, 3050, 6104\}$. It finds the first downward crossing of each target by
@@ -268,11 +305,17 @@ The decision rules in \cref{tab:rules} are applied in order once all three seed 
 screening criteria, not significance tests. With three seeds, the reported 95\% interval
 $\bar D \pm 4.303\, s_D/\sqrt{3}$ is descriptive.
 
+\paragraph{Choice of thresholds.} The protocol fixed the thresholds of 0.015 and 0.03~nats/token in advance as
+investment thresholds for a screening pilot. It records no power analysis or formal derivation for them, and we
+do not supply one after the fact. For orientation, a cross-entropy difference of 0.015 or 0.03~nats/token
+corresponds to a 1.5\% or 3.0\% change in perplexity ($e^{0.015} \approx 1.015$, $e^{0.03} \approx 1.030$).
+A mean between the two thresholds falls into the inconclusive category rather than into either decision.
+
 \begin{table}[t]
 \centering
 \small
 \caption{Pre-specified decision rules, applied in order. CE values are in nats/token; a bar denotes the mean over
-seeds.}
+seeds; $s$ is the continuation update.}
 \label{tab:rules}
 \begin{tabular}{@{}clp{8.6cm}@{}}
 \toprule
@@ -280,33 +323,45 @@ seeds.}
 \midrule
 1 & Invalid or incomplete & Missing seed group, unresolved correctness or data failure, nonfinite primary run, or resource termination \\
 2 & Comparability / adaptation limited & Any seed's relative prefix web-CE gap $> 2\%$, or either condition's Python branch improves non-W code CE by $< 0.05$ \\
-3 & Opposite direction & $\bar D \le -0.03$ \\
-4 & Proceed to design next study & $\bar D \ge 0.03$; $D > 0$ in every seed; $\bar D(3050) \ge 0.015$; $\bar Q > 0.5\,\bar D$; mean matched differential forgetting $> 0$ at the furthest common target \\
-5 & Transient only & $\bar D < 0.015$ and quick-dev $\bar D(s) \ge 0.05$ at some scheduled $s \le 1000$ \\
-6 & Stop: small observed effect & $\bar D < 0.015$ \\
+3 & Opposite direction & $\bar D(6104) \le -0.03$ \\
+4 & Proceed to design next study & $\bar D(6104) \ge 0.03$; $D(6104) > 0$ in every seed; $\bar D(3050) \ge 0.015$; $\bar Q > 0.5\,\bar D$; mean matched differential forgetting $> 0$ at the furthest common target \\
+5 & Transient only & $\bar D(6104) < 0.015$ and quick-dev $\bar D(s) \ge 0.05$ at some scheduled $s \le 1000$ \\
+6 & Stop: small observed effect & $\bar D(6104) < 0.015$ \\
 7 & Inconclusive & Anything else \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Pre-specification and amendments}
+\subsection{Pre-specification, timeline and amendments}
 \label{sec:prespec}
 
-The hypothesis, design, estimands, evaluation schedule and decision thresholds come from a written protocol
-(``protocol v3''), drafted on 12 September 2026, before the corpus was prepared or any model was trained on it. The
-protocol text is included in the project repository. It was not lodged with an external registry, which is a
-limitation (\cref{sec:limitations}). The amendments in \cref{tab:amendments} were made before any primary-run
-update; none of them changes the model, data, token budgets, seeds, endpoint or thresholds.
+\paragraph{Protocol.} The hypothesis, design, estimands, evaluation schedule and decision thresholds come from a
+written protocol (``protocol v3''), drafted on 12 September 2026, before the corpus was prepared or any model was
+trained on it. The protocol text is included in the project repository. It was not lodged with an external
+registry, which is a limitation (\cref{sec:limitations}). The amendments in \cref{tab:amendments} were made before
+any primary-run update; none of them changes the model, data, token budgets, seeds, endpoint or thresholds.
 
-At launch, the primary run's configuration (thresholds, schedule, batch layout and data hashes) was frozen into a
-hash (\texttt{\configSha\ldots}). The analysis is a deterministic function of the stored evaluation records. The
-public repository contains a commit (\texttt{3ee1dc4}) dated 3 October 2026, 16:07~UTC: after the primary run started
-(\sessionStart{}~UTC) and before it finished (\sessionEnd{}~UTC). That commit includes the protocol text and the
-exact runner script that executed, which contains the frozen thresholds and the analysis code. The script's
-SHA-256 (\texttt{\runnerSha\ldots}) matches the hash recorded in the run's session log.
+\paragraph{Timeline of the primary run (3 October 2026, UTC).}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+  \item \sessionStartTime: the run starts.
+  \item \logConfigTime: the run log records the frozen configuration hash (\texttt{\configSha\ldots}). The
+        hashed configuration contains the decision thresholds, and the hash can be recomputed from the released
+        \texttt{config.json}.
+  \item \seedOneFirst--\seedOneLast: seed 101's four endpoint cross-entropies (both conditions, both branches)
+        appear in the run's live log. Seed 101's $D$ could have been computed from them.
+  \item \commitTime: commit \texttt{3ee1dc4} is made, containing the protocol text and the runner script.
+  \item \sessionEndTime: the run ends, and the same process applies the decision rules and writes the decision
+        report.
+\end{itemize}
+Because the commit came after seed 101's endpoint values had been printed, the commit on its own does not
+establish pre-specification, and we disclose that here and in \cref{sec:limitations}. The evidence that the
+analysis was fixed in advance is different. The thresholds used by the run were bound into the configuration
+hash logged at \logConfigTime, before any outcome existed. The runner script, whose decision thresholds appear on
+line~\thresholdLine, has the same SHA-256 (\texttt{\runnerSha\ldots}) in every commit of the repository history,
+and that hash matches the one recorded by the run itself. The decision report was produced by that same process.
 
-Before the primary run, engineering runs measured throughput and verified checkpoint resume. All of them were
-discarded:
+\paragraph{Engineering runs.} Before the primary run, engineering runs measured throughput and verified
+checkpoint resume. All of them were discarded:
 \begin{itemize}[leftmargin=1.4em,itemsep=1pt]
   \item local development runs on stand-in corpora (WikiText-103 and CodeSearchNet functions), which trained RMS
         models only;
@@ -340,13 +395,31 @@ Date & Amendment \\
 
 The primary run took one \sessionHours-hour session on a cloud machine with two NVIDIA Tesla T4 GPUs (PyTorch
 \torchVersion, CUDA \cudaVersion), with RMS on one GPU and Taper-minus on the other. All six condition--seed runs
-completed all 21{,}364 updates. There were no nonfinite losses, gradients or weights, and the loss scale never
-needed a retry (\overflowRetries{} retries in total). Gradient clipping was active in \clipRMSlo--\clipRMShi\% of
-updates for RMS and \clipTaperlo--\clipTaperhi\% for Taper-minus. GPU kernels used for the backward pass are
-nondeterministic, so results are reproducible to within numerical noise, not bitwise.
+completed all 21{,}364 updates. There were no nonfinite losses, gradients or weights; the loss scale grew to
+\maxLossScale{} and never needed a retry (\overflowRetries{} retries in total). GPU kernels used for the backward
+pass are nondeterministic, so results are reproducible to within numerical noise, not bitwise.
 
-The training code is a single script that transcribes a separately tested reference implementation of the model,
-optimizer step and analysis. Before the run, it was checked against that reference in seven ways:
+\paragraph{Gradient clipping.} Clipping at global norm 1.0 is part of the same optimization recipe for both
+conditions; we report how often it was active, per phase, from the per-update training logs (\cref{tab:clipping}).
+During calibration, where the two conditions are mathematically identical, clipping was active in
+\clipCalib\% of updates for both, as it should be. While the gate decayed it was less frequent
+(\clipDecayRMS\% of updates for RMS, \clipDecayTaper\% for Taper-minus, as means over seeds). After the gate
+reached zero it became more frequent, more so for Taper-minus (\clipGateZeroTaper\% vs \clipGateZeroRMS\% of
+the remaining prefix updates). On both continuation branches it was active in \clipBranchLo--\clipBranchHi\%
+of updates in both conditions. We report these rates descriptively and did not analyse their consequences.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Share of updates with gradient clipping active (pre-clipping global norm $> 1.0$), mean over seeds with
+the range across seeds in parentheses, by training phase. $u$ is the global update.}
+\label{tab:clipping}
+\input{generated/table_clipping.tex}
+\end{table}
+
+\paragraph{Implementation checks.} The training code is a single script that transcribes a separately tested
+reference implementation of the model, optimizer step and analysis. Before the run, it was checked against that
+reference in seven ways:
 \begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=1pt]
   \item identical learning-rate and gate values at all 15{,}260 updates;
   \item identical paired initial tensors;
@@ -405,10 +478,10 @@ forgetting at the furthest target reached by every seed ($s = \matchedTarget$).}
 
 \Cref{tab:primary} gives the primary results. Mean $D$ = \Dmean{}~nats/token (SD \Dsd; descriptive 95\% interval
 $[\Dlo, \Dhi]$), and $D$ is negative in all three seeds. Since $\bar D < 0.015$ and no early transient reached
-0.05 (below), the pre-specified decision is \textbf{stop: small observed effect} (rule~6). The data provide no
-evidence for H1.
+0.05 (\cref{sec:trajectory}), the pre-specified decision is \textbf{stop: small observed effect} (rule~6). The
+data provide no evidence for H1.
 
-The other quantities point the same way as $D$:
+The other pre-specified quantities point the same way as $D$:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
   \item $G_{\text{web}}$ is close to zero (mean \Gmean), so the difference sits in the Python branch itself: the
         direct differential forgetting $Q$ averages \Qmean.
@@ -422,63 +495,128 @@ The other quantities point the same way as $D$:
         By token class, alphanumeric tokens contribute negatively in all \classAneg{} seeds and give the largest
         share in \classAlargest{} of them; in seed 101, punctuation and symbol tokens contribute more
         (\cref{app:extra}).
+  \item Rare tokens (flag R, \Rlabels{} labels per seed) have a more negative per-label contrast (mean $D$ on R
+        between \RmeanLo{} and \RmeanHi), but because they are rare they contribute only \RcontribLo{} to
+        \RcontribHi{} to $D$, at most \RsharePct\% of it (\cref{app:extra}).
 \end{itemize}
 
-\subsection{Size and stability of the difference}
+\subsection{How the contrast developed during continuation}
+\label{sec:trajectory}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/trajectories.pdf}
-\caption{Continuation trajectories on the full development sets (means over three seeds unless stated).
-\textbf{(a)} Held-out web CE in all four branches. RMS and Taper-minus nearly coincide within each branch, and the
-Python branches show large forgetting. \textbf{(b)} The contrast $D(s)$ for each seed and their mean. The labelled
-horizontal lines are the pre-specified thresholds ($+0.03$ proceed, $+0.015$ small-effect bound, $-0.03$ opposite
-direction); the decision uses only $s = 6{,}104$ (and $s = 3{,}050$ for rule~4). \textbf{(c)} Non-whitespace code CE on
-the Python branch, showing near-identical adaptation in the two conditions.}
+\caption{Continuation trajectories on the full development sets (means over three seeds unless stated; $s$ is the
+continuation update). \textbf{(a)} Held-out web CE in all four branches. RMS and Taper-minus nearly coincide within
+each branch, and the Python branches show large forgetting. \textbf{(b)} The contrast $D(s)$ for each seed and
+their mean. The labelled horizontal lines are the pre-specified thresholds ($+0.03$ proceed, $+0.015$
+small-effect bound, $-0.03$ opposite direction); the decision uses only $s = 6{,}104$ (and $s = 3{,}050$ for
+rule~4). The shaded band marks the late window ($s \ge 5{,}185$) used in the post hoc description of
+\cref{sec:trajectory}. \textbf{(c)} Non-whitespace code CE on the Python branch, showing near-identical
+adaptation in the two conditions.}
 \label{fig:trajectories}
 \end{figure}
 
-The difference between the conditions is small in absolute terms: $|\bar D|$ is \DrelPct\% of the mean Python-branch
-forgetting, which is \FcodeMean{} nats/token. Its sign was also not stable during continuation
-(\cref{fig:trajectories}b):
+The difference between the conditions is small in absolute terms: $|\bar D|$ is \DrelPct\% of the mean
+Python-branch forgetting, which is \FcodeMean{} nats/token. The decision uses only the endpoint, but the
+full-development contrast was measured at 25 points (\cref{fig:trajectories}b). The windows below group those
+points after the fact; they describe the trajectory and were not part of the protocol.
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
-  \item A single seed's $D(s)$ changed by up to \maxJump{} between neighbouring full evaluations, and the
-        largest $|D(s)|$ of any seed was \seedAbsMax.
-  \item The seed-mean $D(s)$ ranged from \trajMin{} at $s = \trajMinAt$ to \trajMax{} at $s = \trajMaxAt$.
-  \item At $s = 1{,}525$ the seeds gave \DoneFiveA, \DoneFiveB{} and \DoneFiveC; at $s = 3{,}050$ the mean was
-        \DthreeMean, with mixed signs.
+  \item \textbf{Early} ($s = 10$--$305$): the seed-mean $D(s)$ was between \earlyLo{} and \earlyHi.
+  \item \textbf{Middle} ($s = 610$--$4{,}880$, \midCount{} points): the seed-mean $D(s)$ averaged \midMean{} and
+        ranged from \midMin{} to \midMax, with no consistent sign.
+  \item \textbf{Late} ($s = 5{,}185$--$6{,}104$, \lateCount{} points): the seed-mean $D(s)$ was negative at all
+        \lateNeg{} points and averaged \lateMean. Throughout this window the learning rate was within \lateLRpct\%
+        of its final value.
 \end{itemize}
-The quick-dev contrast never approached the transient threshold: its seed mean peaked at \earlyMax{} (at
-$s = \earlyMaxAt$) within the first 1{,}000 updates, against a threshold of 0.05.
+The seeds also agreed much more closely at the end. The across-seed SD of $D(s)$ averaged \midSD{} over the middle
+window but was \finalSD{} at the endpoint, \sdRatio{} times smaller. The negative endpoint therefore reflects a shift
+that appeared in all three seeds during the final, low-learning-rate phase, not a difference present throughout
+continuation. The pre-specified transient check was not triggered: the quick-dev seed-mean $D(s)$ peaked at
+\earlyMax{} (at $s = \earlyMaxAt$) within the first 1{,}000 updates, against a threshold of 0.05.
 
-The consistently negative endpoint is therefore one value from a fluctuating trajectory. It was pre-specified
-precisely so that no favourable checkpoint could be chosen afterwards.
+\subsection{Exploratory analyses (not pre-specified)}
+\label{sec:exploratory}
+
+The analyses in this subsection were chosen after the results were known. They are descriptive, and none of
+them enters the decision.
+
+\paragraph{Activation scales at the normalizer inputs.} The run logged forward-only probes of the activation
+$h$ entering each of the 12 internal normalizers, on the last 256 training windows of each domain (131{,}072
+positions per domain), at the switch and at the end of each branch. For each site we take the scale to be the
+root mean square of $\lVert h\rVert$ over the probe positions, compute log-ratios of scales, average them over
+the 12 sites and the 3 seeds, and report the result as a percentage. \Cref{tab:scales} gives three quantities:
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{The code-vs-web gap at the switch.} Code activations differed in scale from web activations by
+        \scaleGapR\% (RMS) and \scaleGapT\% (Taper-minus), in absolute value per site.
+  \item \textbf{The change in the web-probe scale during each branch.} In the RMS model, the scale changed by
+        about \scaleWebAbsR\% per site in the web branch and \scalePyAbsR\% in the Python branch, mostly by
+        shrinking (signed means $\scaleWebSignedR\%$ and $\scalePySignedR\%$). In Taper-minus it changed by only
+        \scaleWebAbsT\% and \scalePyAbsT\% (signed means $\scaleWebSignedT\%$ and $\scalePySignedT\%$).
+  \item \textbf{The code-specific part of that change} (Python branch minus web branch): \scaleSpecificR\%
+        (RMS) and \scaleSpecificT\% (Taper-minus) per site.
+\end{itemize}
+The largest scale change, the shrinkage in the RMS model, happened equally in both branches, so it was not caused
+by the code data. The code-specific change was small and the same size in both architectures.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Exploratory: scale of the activations entering the 12 internal normalizers, from the logged diagnostic
+probes. Values are geometric means over sites and seeds of per-site scale ratios, expressed as percentages;
+$|\cdot|$ marks averages of absolute per-site changes.}
+\label{tab:scales}
+\input{generated/table_scales.tex}
+\end{table}
+
+\paragraph{Document bootstrap.} To see how much of the uncertainty in $D$ comes from the finite development set,
+we resampled the \nDocsWeb{} web development documents with replacement (\bootB{} replicates; the same resampled
+documents for all arms and seeds) and recomputed the endpoint $D$. The 95\% percentile interval for mean $D$ is
+$[\bootLo, \bootHi]$, with a bootstrap standard error of \bootSE; per-seed standard errors are
+\bootSeedSElo--\bootSeedSEhi{} (\cref{app:extra}). This interval treats the trained models as fixed, so it
+measures only evaluation-sample noise. The between-seed SD of $D$ (\Dsd) is about \bootRatio{} times larger than
+that standard error. Uncertainty about $D$ is therefore dominated by training variation across seeds, and the
+bootstrap interval must not be read as uncertainty about the effect itself.
 
 \section{Discussion}
 
 \paragraph{What the result shows.} In this setting, replacing internal RMSNorm with TaperNorm did not increase
 persistent forgetting of web text after a switch to Python. The pre-specified screen for a meaningful excess
-($\bar D \ge 0.015$) was not met, and every seed's endpoint $D$ was below zero. Under the protocol's rules this direction is stopped. No seeds were
-added, no endpoint was changed and no follow-up was launched.
+($\bar D \ge 0.015$) was not met, and every seed's endpoint $D$ was below zero. Under the protocol's rules this
+direction is stopped. No seeds were added, no endpoint was changed and no follow-up was launched.
 
 \paragraph{What it does not show.} \emph{Stop} is not evidence of equivalence \citep{lakens2017equivalence}, and
 the negative endpoint is not evidence that TaperNorm protects against forgetting. That effect would have needed
-$\bar D \le -0.03$, which was not reached. The intermediate-checkpoint fluctuations in \cref{fig:trajectories}b
-are as large as the endpoint value. Seed-to-seed variation in neural-network training can be large
-\citep{dodge2020finetuning}, and three seeds estimate it poorly. The descriptive interval is conditional on one prepared corpus sample and one
-training recipe; it is not a population bound.
+$\bar D \le -0.03$, which was not reached. Apart from a brief early dip, the negative values appeared in the
+final, low-learning-rate phase, and the training regime, including learning-rate decay, is known to affect
+forgetting
+\citep{mirzadeh2020training}. Whether TaperNorm interacts with the end of the schedule is an open question that
+this pilot was not designed to answer. Seed-to-seed variation in neural-network training can be large
+\citep{dodge2020finetuning}, and three seeds estimate it poorly. The descriptive interval is conditional on one
+prepared corpus sample and one training recipe; it is not a population bound.
 
-\paragraph{Why the concern may not have materialized (conjecture).} We did not test mechanisms, but three
-features of the setting may matter.
+\paragraph{Why the feared mechanism may have had little to act on.} H1 rests on a story: training on code changes
+activation magnitudes, RMSNorm absorbs the change, and a fixed TaperNorm scale cannot. The exploratory scale
+analysis (\cref{sec:exploratory}) suggests that the starting condition of this story was only weakly present
+in our models:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
-  \item Taper-minus keeps the final RMSNorm, which \citet{kanavalau2026tapernorm} identify as the essential scale
-        anchor.
-  \item $\tilde\gamma$ and all weight matrices remain trainable after the taper, so scale changes can be absorbed
-        cheaply.
-  \item The forgetting here is very large in both conditions, which suggests that most of it comes from factors
-        the two architectures share.
+  \item At the switch, code and web activations differed in scale by only \scaleGapR--\scaleGapT\% on average.
+  \item The largest scale change during continuation, the shrinkage in the RMS model, occurred equally when
+        training simply continued on web text, so it was not a response to code.
+  \item The code-specific scale change was about \scaleSpecificR\% per site in both architectures.
 \end{itemize}
-Each of these is a hypothesis for a future study, not a finding of this one.
+A plausible reason for the RMS shrinkage is that RMSNorm makes each sub-layer's output invariant to the scale of
+the residual stream it reads, so weight decay can shrink the weights that set that scale without changing the
+function \citep{vanlaarhoven2017l2,zhang2019weightdecay}. Once its gate is zero, Taper-minus's internal layers
+depend on that scale, which would oppose the same shrinkage. We did not test this explanation. Two further
+features of the setting may also matter: Taper-minus keeps the final RMSNorm, which \citet{kanavalau2026tapernorm}
+identify as the essential scale anchor, and $\tilde\gamma$ and all weight matrices remain trainable after the
+taper.
+
+These observations carry four caveats. They are exploratory, not pre-specified. The probes use the last 256
+training windows of each domain, which the models may have seen during training. They describe mean scales over
+tokens, whereas RMSNorm also normalizes variation between individual tokens. And they are descriptive, not
+causal: they show that the premise was weak, not that this is why there was no effect.
 
 \section{Limitations}
 \label{sec:limitations}
@@ -494,32 +632,48 @@ Each of these is a hypothesis for a future study, not a finding of this one.
         corpus, and the interval in \cref{tab:primary} is descriptive. All measurements use development data; the
         reserved test sets remain sealed for any confirmatory study.
   \item \textbf{Pre-specification.} The protocol was kept privately and not registered externally. The earliest
-        public record of the protocol and analysis code, a git commit, postdates the start of the primary run
+        public record of the protocol and analysis code, a git commit, postdates the start of the primary run,
+        and it also postdates the appearance of seed 101's endpoint values in the run's live log
         (\cref{sec:prespec}). Git commit dates are set by the author's machine and are not independent
-        timestamps.
-  \item \textbf{Data audit.} The near-duplicate search is approximate, and the random audit of \auditPairs{}
-        cross-split document pairs (\auditFound{} found above threshold) has low power to detect rare leakage.
-        Repository names are an incomplete proxy for forks.
-  \item \textbf{Secondary analyses.} Matched adaptation interpolates between evaluated checkpoints and describes
-        curves; it does not evaluate an actual model. Activation and attention diagnostics were logged but are
-        not analysed here.
+        timestamps. The evidence that the analysis was fixed in advance is the configuration hash logged before
+        any outcome and the unchanged runner hash, not the commit date.
+  \item \textbf{Thresholds.} The decision thresholds were set as investment thresholds without a power analysis.
+  \item \textbf{Data audit.} The near-duplicate search is approximate. Its analytic recall is high for pairs above
+        the similarity threshold, but the random audit of \auditPairs{} cross-split document pairs has low power
+        to detect rare leakage, and repository names are an incomplete proxy for forks.
+  \item \textbf{Secondary and exploratory analyses.} Matched adaptation interpolates between evaluated
+        checkpoints and describes curves; it does not evaluate an actual model. The trajectory windows, the scale
+        analysis and the document bootstrap were chosen after the results were known. Attention-entropy and gain
+        diagnostics were logged but are not analysed here.
 \end{itemize}
 
 \section{Conclusion}
 
 A small pilot, specified before training, found no evidence that TaperNorm increases persistent forgetting after
-a web-to-code domain shift: mean $D$ = \Dmean{}~nats/token, against a pre-specified $+0.015$ bound. The
-difference pointed the other way at the endpoint, but it was small and unstable across checkpoints, so we draw
-no conclusion about protection. Testing H1 more broadly would need a new pre-specified study with larger models,
-more seeds and more than one domain shift. On its own, this pilot does not justify one.
+a web-to-code domain shift: mean $D$ = \Dmean{}~nats/token, against a pre-specified $+0.015$ bound. After a
+brief early dip, the difference stayed near zero until the final, low-learning-rate phase, when it turned
+negative; it was small, so we draw no conclusion about protection. Exploratory analyses suggest that the mechanism behind the concern had little to act on: the
+code-specific change in activation scale was small and similar in both architectures. Testing H1 more broadly
+would need a new pre-specified study with larger models, more seeds and more than one domain shift, ideally one
+that measures the scale premise directly. On its own, this pilot does not justify that study.
 
 \section*{Code and data availability}
-The code (data preparation, training, evaluation and the frozen analysis), the frozen configuration with data and
-source hashes, the decision report, and every evaluation record behind the tables and figures are available in
-the project repository:
+The following are available in the project repository:
 \begin{center}\url{https://github.com/Danieldotcomcoder/domain-shift-forgetting}\end{center}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+  \item the code for data preparation, training, evaluation and the frozen analysis;
+  \item the frozen configuration, with data and source hashes, and the decision report;
+  \item every evaluation record (per-document and per-class sufficient statistics, and the diagnostic probes);
+  \item the per-update training logs.
+\end{itemize}
 The script \texttt{paper/make\_assets.py} regenerates every number, table and figure in this paper from those
-records. C4 and The Stack are subject to their own licenses and terms of use; no corpus text is redistributed.
+records. Three things are not in the repository:
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+  \item the model checkpoints (switch states and branch-final weights, about 2~GB);
+  \item the prepared token arrays, which can be regenerated from the pinned dataset revisions with the released
+        preparation code;
+  \item any corpus text. C4 and The Stack are subject to their own licenses and terms of use.
+\end{itemize}
 
 \section*{Use of AI assistance}
 AI systems, including Claude (Anthropic), were used extensively in this project. They helped draft and revise
@@ -529,8 +683,10 @@ its numbers, tables and figures. The author directed the project, approved the s
 amendment and the decision to stop, and takes full responsibility for the content of this paper, including any
 errors.
 
+{\small
+\setlength{\bibsep}{3pt plus 1pt}
 \bibliographystyle{plainnat}
-\bibliography{refs}
+\bibliography{refs}}
 
 \clearpage
 \appendix
@@ -538,18 +694,18 @@ errors.
 \section{Evaluation schedule}
 \label{app:schedule}
 
-\paragraph{Full development evaluations (2{,}097{,}152 labels per domain).} Prefix: global updates 763, 3052,
-6104, 6409, 6714, 7019, 7324, 7629, 7934, 8239, 8544, 8849 and 9156. Continuation (each branch):
-$s \in \{0, 1, 10, 100\}$, every 305 updates from 305 to 6100, and 6104.
+\paragraph{Full development evaluations (2{,}097{,}152 labels per domain).} Prefix: global updates $u = 763$,
+3052, 6104, 6409, 6714, 7019, 7324, 7629, 7934, 8239, 8544, 8849 and 9156. Continuation (each branch):
+$s \in \{0, 1, 10, 100\}$, every 305 updates from $s = 305$ to 6100, and $s = 6104$.
 
 \paragraph{Quick development evaluations (262{,}144 labels per domain).} At the switch, and at continuation
-$s \in \{0, 1, 2, 5, 10, 20\}$, every 50 updates from 50 to 1000, every 100 updates from 1100 to 6100, and
-$\{1525, 3050, 6104\}$ (80 points). Quick-dev values describe transients and feed matched adaptation. They never
-enter the full-dev primary contrast.
+$s \in \{0, 1, 2, 5, 10, 20\}$, every 50 updates from $s = 50$ to 1000, every 100 updates from $s = 1100$ to
+6100, and $s \in \{1525, 3050, 6104\}$ (80 points). Quick-dev values describe transients and feed matched
+adaptation. They never enter the full-dev primary contrast.
 
 \paragraph{Diagnostics.} Forward-only activation, gain and attention-entropy probes on the last 256 training
-windows of each domain, at the switch and at $s \in \{0, 10, 100, 1525, 6104\}$. They are logged but not analysed
-here.
+windows of each domain, at the switch and at $s \in \{0, 10, 100, 1525, 6104\}$. The activation scales are
+analysed in \cref{sec:exploratory} (exploratory); the other diagnostics are logged but not analysed here.
 
 \section{Additional results}
 \label{app:extra}
@@ -557,8 +713,8 @@ here.
 \begin{table}[H]
 \centering
 \small
-\caption{Matched-adaptation differential forgetting (nats/token) and the interpolated Taper-minus update at which
-it reached each RMS code-CE target, with the observed bracket in parentheses.}
+\caption{Matched-adaptation differential forgetting (nats/token) and the interpolated Taper-minus continuation
+update $s$ at which it reached each RMS code-CE target, with the observed bracket in parentheses.}
 \input{generated/table_matched.tex}
 \end{table}
 
@@ -570,6 +726,15 @@ weighted by its label share; the four contributions sum to $D$), and summaries o
 the \nDocsWeb{} web development documents. ``Top-1\% sum'' is the signed contribution of the 1\% of documents
 with the largest positive contributions.}
 \input{generated/table_tails.tex}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Rare-token flag R (pre-specified; overlaps the four classes) and the exploratory document bootstrap of
+the endpoint $D$ (\bootB{} replicates, documents resampled jointly across arms and seeds; conditional on the
+trained models).}
+\input{generated/table_rare_bootstrap.tex}
 \end{table}
 
 \end{document}

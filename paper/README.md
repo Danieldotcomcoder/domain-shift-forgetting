@@ -16,4 +16,5 @@ Build the PDF with any LaTeX distribution, or upload the `paper/` folder to Over
 cd paper && tectonic main.tex   # or: pdflatex main && bibtex main && pdflatex main && pdflatex main
 ```
 
-For arXiv, submit `main.tex`, `refs.bib`, `generated/` and `figures/trajectories.pdf` as source.
+For arXiv, submit `main.tex`, `refs.bib`, `generated/` and `figures/trajectories.pdf` as source, and paste
+`arxiv-abstract.txt` (plain ASCII, generated from the same numbers as the PDF abstract) into the abstract field.

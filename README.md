@@ -4,7 +4,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c)
 ![Hardware](https://img.shields.io/badge/run%20on-Kaggle%20T4%20x2-20beff)
 
-A pre-registered pilot experiment that asks whether replacing a transformer's internal RMSNorm layers with
+A pre-specified pilot experiment that asks whether replacing a transformer's internal RMSNorm layers with
 **TaperNorm** (normalization that is gradually switched off during training) makes the model forget more of
 what it learned when its training data switches domain.
 
@@ -15,10 +15,13 @@ what it learned when its training data switches domain.
 The protocol, data splits, endpoints and decision rules were fixed before any training run. This is a
 screening pilot that decides whether a larger study is worth running. It is not a confirmatory result.
 
+**Paper:** a preprint describing the study is in [`paper/main.pdf`](paper/main.pdf) (source and asset
+generator in [`paper/`](paper/)).
+
 ## Result
 
 > **H1: No.** Taper-minus did not show more persistent web forgetting than RMSNorm after the switch to Python.
-> The pre-registered decision is **STOP — SMALL OBSERVED EFFECT**. Stage 1 is closed.
+> The pre-specified decision is **STOP — SMALL OBSERVED EFFECT**. Stage 1 is closed.
 
 The run was complete and valid. All three paired seeds finished, no events were missing, there were no
 numerical failures, and every guardrail passed.
@@ -42,27 +45,44 @@ numerical failures, and every guardrail passed.
 - **D points the opposite way to H1.** It is negative in all three seeds, meaning Taper-minus forgot slightly
   *less*. The difference sits in the Python branch itself: the web-control gap change G is about 0, so Q ≈ D.
 - **This is not a finding that TaperNorm protects against forgetting.** The effect is smaller than the
-  pre-registered "opposite direction" threshold (mean D ≤ −0.03). Its sign was also unstable earlier in
+  pre-specified "opposite direction" threshold (mean D ≤ −0.03). Its sign was also unstable earlier in
   continuation: D at 1525 was +0.037, +0.022 and −0.029 across the seeds, and D at 3050 was mixed.
 - **No early transient.** The largest early mean quick-dev D (update ≤ 1000) was +0.015, far below the 0.05
   transient threshold.
-- **The effect is broad, not driven by outliers.** Median per-document D is about −0.02 to −0.03, the top 1% of
-  documents do not dominate, and most of the contribution comes from alphanumeric tokens.
+- **The effect is broad, not driven by outliers.** Median per-document D is about −0.02 to −0.03 and the top 1%
+  of documents do not dominate. Alphanumeric tokens contribute negatively in every seed and most in two of
+  three; rare tokens contribute at most 3% of D.
 - **What the rules allow.** STOP means no convincing persistent excess forgetting within this pilot. It is not
   evidence of equivalence. Per protocol, no extra seeds, changed endpoints or follow-up study start
   automatically. Any new question, such as whether TaperNorm reduces forgetting, needs its own
-  pre-registered protocol.
+  pre-specified protocol.
+
+**Exploratory analyses** (chosen after the results; descriptive only, see the paper's §5.3–5.4)
+
+- After a brief early dip, D(s) stayed near zero for most of continuation and became negative only in the final
+  low-learning-rate phase (s ≥ 5,185, mean −0.020), when the three seeds also converged.
+- The premise of H1 was weak in these models: the code-specific change in activation scale at the internal
+  normalizer inputs was about 4% per site in both architectures, and the larger scale change in the RMS model
+  happened equally when training simply continued on web text.
+- A document bootstrap gives a mean-D interval of [−0.0235, −0.0211], conditional on the trained models;
+  seed-to-seed variation is about 6× larger than this evaluation noise.
 
 **Run record**
 
 - **One Kaggle session:** 9.36 h on 2x Tesla T4, PyTorch 2.11 / CUDA 12.8, with zero worker restarts.
 - **Configuration:** sha256 `c18441…` is recorded in [`config.json`](reports/h1-kaggle/h1state/config.json).
-- **Evidence in this repository:** [`decision-report.txt`](reports/h1-kaggle/h1state/decision-report.txt) and
-  [`decision-report.json`](reports/h1-kaggle/h1state/decision-report.json) (per-seed contrasts, persistence,
-  matching, tails, class contributions), [`sessions.jsonl`](reports/h1-kaggle/h1state/sessions.jsonl) and the
-  notebook log.
-- **Full state:** all checkpoints and per-evaluation sufficient statistics (about 2 GB) stay in the output of
-  the private Kaggle notebook `danny00/h1-single-notebook-run`.
+- **Evidence in this repository** (`reports/h1-kaggle/`):
+  [`decision-report.txt`](reports/h1-kaggle/h1state/decision-report.txt) and
+  [`decision-report.json`](reports/h1-kaggle/h1state/decision-report.json), the session record, the notebook
+  log, and for every run the evaluation records (`events.jsonl`: per-document and per-class sufficient
+  statistics and diagnostic probes), the per-update training logs (`train.jsonl`) and completion receipts.
+- **Withheld:** the model checkpoints (switch states and branch-final weights, about 2 GB) stay in the output of
+  the private Kaggle notebook `danny00/h1-single-notebook-run`. The prepared token arrays are not
+  redistributed; the preparation code regenerates them from the pinned dataset revisions.
+- **Pre-specification:** the decision thresholds are bound into the configuration hash the run logged at
+  12:19:23 UTC, before any outcome existed, and the runner script has the same SHA-256 in every commit. The
+  first public commit came after seed 101's endpoint values had appeared in the live log; the paper (§3.6)
+  discloses this timeline in full.
 
 ## Status
 
@@ -72,7 +92,7 @@ numerical failures, and every guardrail passed.
 | Corpus preparation (C4 English + The Stack dedup Python, GPT-2 tokens) | Done, hash-verified |
 | Implementation + equivalence tests | Done |
 | Kaggle smoke test (T4 x2) | Passed 2026-10-03 |
-| Primary run (3 seeds x 2 conditions x 3 phases) | Complete 2026-10-04 |
+| Primary run (3 seeds x 2 conditions x 3 phases) | Complete 2026-10-03 (12:18–21:40 UTC) |
 | **Decision on H1** | **No: STOP — SMALL OBSERVED EFFECT. Stage 1 closed.** |
 
 ## Experimental design
@@ -117,7 +137,7 @@ $$
 reports actual forgetting F, the web-control gap change G, the direct differential forgetting Q = D − G,
 matched-adaptation forgetting, per-document tails and per-token-class contributions.
 
-### Pre-registered decision rules
+### Pre-specified decision rules
 
 The rules are applied in this order after all three paired seeds complete:
 
@@ -182,7 +202,7 @@ These figures come from the Kaggle smoke run with both workers running at once:
 | Training throughput, Taper-minus | ~42–43k tokens/s per T4 |
 | One full-development evaluation (both domains) | ~37 s |
 | Projected total | ~9–10 h per GPU, typically one 11¼-hour session |
-| Actual primary run (2026-10-04) | 9.36 h, one session, no restarts |
+| Actual primary run (2026-10-03, UTC) | 9.36 h, one session, no restarts |
 
 Kaggle's weekly GPU quota applies, and T4 x2 may be billed above 1x elapsed time.
 
@@ -273,7 +293,9 @@ configs/                   Protocol values (stage1.v3.json) and earlier Kaggle c
 docs/                      Implementation notes and earlier runbooks
 notebooks/, scripts/       Earlier Kaggle workflows (superseded by kaggle_h1/ for execution)
 Domain-Shift Forgetting · Stage 1 — H1 Research Pi/   Protocol export: the scientific source of truth
-reports/h1-kaggle/         Final H1 decision report, frozen config, session record, run log
+reports/h1-kaggle/         Decision report, frozen config, session record, run log, and per-run
+                           evaluation records, training logs and completion receipts
+paper/                     Preprint source, compiled PDF, and the script that generates its numbers
 manifests/, registry/      Manifest templates and run/task registries
 data/, artifacts/          Local data and checkpoints (contents git-ignored)
 ```
@@ -306,8 +328,8 @@ The original protocol pages remain the scientific source of truth:
 
 ## References
 
-- TaperNorm: [arXiv:2602.10408](https://arxiv.org/html/2602.10408v1). The operator and calibration are reused;
-  the training setup is this project's own.
+- TaperNorm: [arXiv:2602.10408v1](https://arxiv.org/abs/2602.10408v1) (version 1; later versions carry a
+  different title). The operator and calibration are reused; the training setup is this project's own.
 - [nanoGPT](https://github.com/karpathy/nanoGPT): model starting point.
 - [C4](https://huggingface.co/datasets/allenai/c4) and
   [The Stack (dedup)](https://huggingface.co/datasets/bigcode/the-stack-dedup): data sources. Their own
@@ -315,5 +337,5 @@ The original protocol pages remain the scientific source of truth:
 
 ## License
 
-No license has been chosen yet. Until a `LICENSE` file is added, default copyright applies to the code in this
-repository.
+Released under the [MIT License](LICENSE). The license covers this repository's code and documents; it does
+not extend to the C4 or The Stack datasets, which keep their own licenses and terms of use.

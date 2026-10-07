@@ -7,12 +7,16 @@ analysis output before writing anything. Nothing in the manuscript is typed by h
 
   python paper/make_assets.py
 """
+import hashlib
 import json
 import math
+import re
 import statistics
+import subprocess
 import datetime as dt
 from pathlib import Path
 
+import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -48,6 +52,199 @@ def load():
                 r = json.loads(line)
                 events[seed, cond, r["stage"], r["step"], r["role"], r["domain"]] = r
     return report, config, session, events, completion
+
+
+def mm(x, digits=4, sign=True):
+    return "\\ensuremath{" + (f"{x:+.{digits}f}" if sign else f"{x:.{digits}f}").replace("+", "{+}") + "}"
+
+
+def learning_rate(u):
+    if u <= 305:
+        return 0.0006 * u / 305
+    return 0.00006 + 0.5 * (0.0006 - 0.00006) * (1 + math.cos(math.pi * (u - 305) / (15260 - 305)))
+
+
+def second_draft_analyses(ev, rows, config, session):
+    """Integrity timeline, per-phase clipping, trajectory windows, R contribution, document
+    bootstrap, activation-scale analysis (Finding A) and LSH recall. Returns macros."""
+    out = {}
+    # ---- integrity: the logged configuration hash covers the thresholds and is recomputable
+    body = {k: v for k, v in config.items() if k not in ("config_sha256", "checkpoint_seconds")}
+    digest = hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    assert digest == config["config_sha256"], "config hash does not recompute"
+    log = json.loads((ROOT / "reports" / "h1-kaggle" / "h1-single-notebook-run.log").read_text(encoding="utf-8"))
+    lines = [line for entry in log for line in entry.get("data", "").splitlines()]
+
+    def stamp(needle):
+        hit = next(line for line in lines if needle in line)
+        return re.search(r"\[(\d\d:\d\d:\d\d)\]", hit).group(1)
+
+    out["logConfigTime"] = stamp("NEW experiment created")
+    assert config["config_sha256"][:16] in next(l for l in lines if "NEW experiment created" in l)
+    s101 = sorted(stamp(f"S101-{c} {b}@6104") for c in CONDS for b in ("web", "python"))
+    out["seedOneFirst"], out["seedOneLast"] = s101[0][:5], s101[-1][:5]
+    commit_iso = subprocess.check_output(["git", "show", "-s", "--format=%cI", "3ee1dc4"], cwd=ROOT, text=True).strip()
+    commit_utc = dt.datetime.fromisoformat(commit_iso).astimezone(dt.UTC)
+    out["commitTime"] = commit_utc.strftime("%H:%M")
+    assert s101[-1][:5] < out["commitTime"], "seed 101 endpoints were logged before the commit"
+    commits = subprocess.check_output(["git", "rev-list", "HEAD"], cwd=ROOT, text=True).split()
+    for commit in commits:
+        blob = subprocess.check_output(["git", "show", f"{commit}:kaggle_h1/h1_run.py"], cwd=ROOT)
+        assert hashlib.sha256(blob).hexdigest() == session["code_sha256"], f"runner differs at {commit}"
+    runner = (ROOT / "kaggle_h1" / "h1_run.py").read_text(encoding="utf-8").splitlines()
+    out["thresholdLine"] = str(next(i for i, l in enumerate(runner, 1) if l.startswith("DECISION_THRESHOLDS = {")))
+
+    # ---- per-phase gradient clipping from the per-update training logs
+    train = {}
+    for seed in SEEDS:
+        for cond in CONDS:
+            path = STATE / "runs" / f"S{seed}-{cond}" / "train.jsonl"
+            train[seed, cond] = [json.loads(l) for l in path.read_text().splitlines()]
+            assert len(train[seed, cond]) == PREFIX_END + 2 * CONT
+    phases = [("Prefix, $u \\le 763$ (calibration)", lambda r: r["stage"] == "prefix" and r["u"] <= 763),
+              ("Prefix, $764 \\le u \\le 6{,}103$ (gate decaying)", lambda r: r["stage"] == "prefix" and 764 <= r["u"] <= 6103),
+              ("Prefix, $6{,}104 \\le u \\le 9{,}156$ (gate zero)", lambda r: r["stage"] == "prefix" and r["u"] >= 6104),
+              ("Web branch", lambda r: r["stage"] == "web"), ("Python branch", lambda r: r["stage"] == "python")]
+    table = ["\\begin{tabular}{@{}lrcc@{}}", "\\toprule", "Phase & Updates & RMS & Taper-minus \\\\", "\\midrule"]
+    phase_means = {}
+    for name, keep in phases:
+        cells = []
+        for cond in CONDS:
+            fr = [100 * np.mean([r["clip"] for r in train[s, cond] if keep(r)]) for s in SEEDS]
+            phase_means[name, cond] = float(np.mean(fr))
+            cells.append(f"{np.mean(fr):.1f}\\% ({min(fr):.1f}--{max(fr):.1f})")
+        n = sum(1 for r in train[101, "RMS"] if keep(r))
+        table.append(f"{name} & " + f"{n:,}".replace(",", "{,}") + " & " + " & ".join(cells) + " \\\\")
+    table += ["\\bottomrule", "\\end{tabular}"]
+    (OUT / "table_clipping.tex").write_text("\n".join(table) + "\n", encoding="utf-8")
+    branch_means = [phase_means[name, c] for name, _ in phases[3:] for c in CONDS]
+    out["clipBranchLo"], out["clipBranchHi"] = f"{min(branch_means):.0f}", f"{max(branch_means):.0f}"
+    out["clipGateZeroRMS"] = f"{phase_means[phases[2][0], 'RMS']:.0f}"
+    out["clipGateZeroTaper"] = f"{phase_means[phases[2][0], 'Taper-minus']:.0f}"
+    out["clipEarlyHi"] = f"{max(phase_means[phases[i][0], c] for i in (0, 1) for c in CONDS):.0f}"
+    assert abs(phase_means[phases[0][0], "RMS"] - phase_means[phases[0][0], "Taper-minus"]) < 1e-9
+    out["clipCalib"] = f"{phase_means[phases[0][0], 'RMS']:.0f}"
+    out["clipDecayRMS"] = f"{phase_means[phases[1][0], 'RMS']:.0f}"
+    out["clipDecayTaper"] = f"{phase_means[phases[1][0], 'Taper-minus']:.0f}"
+    out["maxLossScale"] = f"{max(r['scale'] for k in train for r in train[k]):,.0f}"
+
+    # ---- trajectory windows (post hoc grouping of the pre-specified full-dev points)
+    point_mean = {u: statistics.mean(rows[s]["full_D"][u] for s in SEEDS) for u in FULL_CONT}
+    point_sd = {u: statistics.stdev(rows[s]["full_D"][u] for s in SEEDS) for u in FULL_CONT}
+    early = [10, 100, 305]
+    middle = [u for u in FULL_CONT if 610 <= u <= 4880]
+    late = [u for u in FULL_CONT if u >= 5185]
+    out["earlyLo"] = mm(min(point_mean[u] for u in early), 3)
+    out["earlyHi"] = mm(max(point_mean[u] for u in early), 3)
+    out["midMean"] = mm(statistics.mean(point_mean[u] for u in middle), 3)
+    out["midMin"] = mm(min(point_mean[u] for u in middle), 3)
+    out["midMax"] = mm(max(point_mean[u] for u in middle), 3)
+    out["midCount"] = str(len(middle))
+    out["lateMean"] = mm(statistics.mean(point_mean[u] for u in late), 3)
+    out["lateCount"] = str(len(late))
+    mid_sd = statistics.mean(point_sd[u] for u in middle)
+    out["midSD"] = mm(mid_sd, 4, sign=False)
+    out["finalSD"] = mm(point_sd[CONT], 4, sign=False)
+    out["sdRatio"] = f"{mid_sd / point_sd[CONT]:.1f}"
+    out["lateLRpct"] = f"{(learning_rate(PREFIX_END + late[0]) / 6e-5 - 1) * 100:.0f}"
+    out["lateNeg"] = str(sum(point_mean[u] < 0 for u in late))
+
+    # ---- pre-specified rare-token (R) contribution at the endpoint (overlaps W/A/P/X)
+    rare_rows, r_contrib, r_mean, r_count = [], [], [], []
+    for seed in SEEDS:
+        g = lambda c, b: ev[seed, c, b, CONT, "full", "web"]["rare"]
+        tp, tw, rp, rw = g("Taper-minus", "python"), g("Taper-minus", "web"), g("RMS", "python"), g("RMS", "web")
+        assert len({tp[1], tw[1], rp[1], rw[1]}) == 1
+        total = ev[seed, "RMS", "web", CONT, "full", "web"]["total"][1]
+        diff = (tp[0] - tw[0]) - (rp[0] - rw[0])
+        r_count.append(tp[1]); r_mean.append(diff / tp[1]); r_contrib.append(diff / total)
+    out["Rlabels"] = f"{min(r_count):,}--{max(r_count):,}"
+    out["RmeanLo"], out["RmeanHi"] = mm(min(r_mean), 3), mm(max(r_mean), 3)
+    out["RcontribLo"], out["RcontribHi"] = mm(min(r_contrib)), mm(max(r_contrib))
+    out["RsharePct"] = f"{max(abs(r_contrib[i] / rows[s]['D']) for i, s in enumerate(SEEDS)) * 100:.0f}"
+
+    # ---- document bootstrap at the endpoint (paired across arms and seeds; conditional on models)
+    rng = np.random.default_rng(20261007)
+    deltas, counts = [], None
+    for seed in SEEDS:
+        arr = lambda c, b: np.array(ev[seed, c, b, CONT, "full", "web"]["doc_sums"])
+        deltas.append((arr("Taper-minus", "python") - arr("Taper-minus", "web")) - (arr("RMS", "python") - arr("RMS", "web")))
+        cnt = np.array(ev[seed, "RMS", "web", CONT, "full", "web"]["doc_counts"])
+        counts = cnt if counts is None else counts
+        assert (cnt == counts).all()
+    deltas = np.array(deltas)[:, counts > 0]
+    counts = counts[counts > 0]
+    assert np.allclose(deltas.sum(1) / counts.sum(), [rows[s]["D"] for s in SEEDS], atol=1e-9)
+    B, n_docs = 10_000, len(counts)
+    reps = np.empty((B, len(SEEDS)))
+    for start in range(0, B, 500):
+        idx = rng.integers(0, n_docs, size=(500, n_docs))
+        w = np.stack([np.bincount(row, minlength=n_docs) for row in idx])
+        reps[start:start + 500] = (w @ deltas.T) / (w @ counts)[:, None]
+    mean_reps = reps.mean(1)
+    lo, hi = np.percentile(mean_reps, [2.5, 97.5])
+    out["bootB"], out["bootLo"], out["bootHi"] = f"{B:,}", mm(lo), mm(hi)
+    out["bootSE"] = mm(mean_reps.std(ddof=1), 4, sign=False)
+    out["bootSeedSElo"] = mm(reps.std(0, ddof=1).min(), 4, sign=False)
+    out["bootSeedSEhi"] = mm(reps.std(0, ddof=1).max(), 4, sign=False)
+    out["bootRatio"] = f"{statistics.stdev(rows[s]['D'] for s in SEEDS) / mean_reps.std(ddof=1):.0f}"
+    seed_ci = [np.percentile(reps[:, i], [2.5, 97.5]) for i in range(len(SEEDS))]
+    supp = ["\\begin{tabular}{@{}lrrrr@{}}", "\\toprule",
+            "Seed & R labels & Mean $D$ on R & R contribution to $D$ & Document-bootstrap 95\\% interval for $D$ \\\\",
+            "\\midrule"]
+    for i, seed in enumerate(SEEDS):
+        supp.append(f"{seed} & {r_count[i]:,} & ".replace(",", "{,}") + f"${r_mean[i]:+.3f}$ & ${r_contrib[i]:+.4f}$ & "
+                    f"$[{seed_ci[i][0]:+.4f}, {seed_ci[i][1]:+.4f}]$ \\\\".replace("+", "{+}"))
+    supp.append(f"Mean of seeds & & & & $[{lo:+.4f}, {hi:+.4f}]$ \\\\".replace("+", "{+}"))
+    supp += ["\\bottomrule", "\\end{tabular}"]
+    (OUT / "table_rare_bootstrap.tex").write_text("\n".join(supp) + "\n", encoding="utf-8")
+
+    # ---- Finding A: activation scales at the 12 internal normalizer inputs (diagnostic probes)
+    sites = [f"{i}.{b}" for i in range(6) for b in ("attention", "mlp")]
+    scale = {}
+    for cond in CONDS:
+        gap, w_signed, p_signed, w_abs, p_abs, specific = [], [], [], [], [], []
+        for seed in SEEDS:
+            diag = {(k[2], k[3]): r["measurement"] for k, r in ev.items()
+                    if k[0] == seed and k[1] == cond and k[4] == "diag"}
+            for site in sites:
+                E = lambda when, dom: diag[when]["sites"][f"{site}.h"]["all"][dom]["mean_squared_norm"]
+                switch, web_end, py_end = ("prefix", PREFIX_END), ("web", CONT), ("python", CONT)
+                gap.append(abs(0.5 * math.log(E(switch, "python") / E(switch, "web"))))
+                lw = 0.5 * math.log(E(web_end, "web") / E(switch, "web"))
+                lp = 0.5 * math.log(E(py_end, "web") / E(switch, "web"))
+                w_signed.append(lw); p_signed.append(lp); w_abs.append(abs(lw)); p_abs.append(abs(lp))
+                specific.append(abs(lp - lw))
+        pct = lambda logs: (math.exp(statistics.mean(logs)) - 1) * 100
+        scale[cond] = {"gap": pct(gap), "w_signed": pct(w_signed), "p_signed": pct(p_signed),
+                       "w_abs": pct(w_abs), "p_abs": pct(p_abs), "specific": pct(specific)}
+    tag = {"RMS": "R", "Taper-minus": "T"}
+    for cond in CONDS:
+        for key, value in scale[cond].items():
+            name = {"gap": "Gap", "w_signed": "WebSigned", "p_signed": "PySigned", "w_abs": "WebAbs",
+                    "p_abs": "PyAbs", "specific": "Specific"}[key]
+            out[f"scale{name}{tag[cond]}"] = f"{value:+.1f}" if "Signed" in name else f"{value:.1f}"
+    t = ["\\begin{tabular}{@{}lrr@{}}", "\\toprule", "Measure (mean over 12 sites and 3 seeds) & RMS & Taper-minus \\\\",
+         "\\midrule",
+         f"Code-vs-web scale gap at the switch, $|\\cdot|$ & {scale['RMS']['gap']:.1f}\\% & {scale['Taper-minus']['gap']:.1f}\\% \\\\",
+         f"Change in web-probe scale, web branch, $|\\cdot|$ & {scale['RMS']['w_abs']:.1f}\\% & {scale['Taper-minus']['w_abs']:.1f}\\% \\\\",
+         f"Change in web-probe scale, Python branch, $|\\cdot|$ & {scale['RMS']['p_abs']:.1f}\\% & {scale['Taper-minus']['p_abs']:.1f}\\% \\\\",
+         f"\\quad signed, web branch & ${scale['RMS']['w_signed']:+.1f}\\%$ & ${scale['Taper-minus']['w_signed']:+.1f}\\%$ \\\\",
+         f"\\quad signed, Python branch & ${scale['RMS']['p_signed']:+.1f}\\%$ & ${scale['Taper-minus']['p_signed']:+.1f}\\%$ \\\\",
+         f"Code-specific change (Python minus web branch), $|\\cdot|$ & {scale['RMS']['specific']:.1f}\\% & {scale['Taper-minus']['specific']:.1f}\\% \\\\",
+         "\\bottomrule", "\\end{tabular}"]
+    (OUT / "table_scales.tex").write_text("\n".join(t).replace("+", "{+}") + "\n", encoding="utf-8")
+
+    # ---- LSH recall (32 bands x 4 rows): candidate probability for a pair with Jaccard J
+    p = lambda J: 1 - (1 - J ** 4) ** 32
+    miss = 1 - p(0.85)
+    exponent = math.floor(math.log10(miss))
+    out["lshMiss"] = f"\\ensuremath{{{miss / 10 ** exponent:.1f}\\times10^{{{exponent}}}}}"
+    out["lshRecallSeventy"] = f"{p(0.70):.4f}"
+    audit = json.loads((ONLINE / "audit.json").read_text())
+    out["shortDocs"] = str(audit["short_shingle_documents"])
+    assert audit["missed_candidate_pairs_found"] == 0  # the manuscript says "none reached 0.85"
+    return out
 
 
 def main():
@@ -143,6 +340,7 @@ def main():
         "overflowRetries": f"{retries}",
         "secRMS": f"{sec_per_update['RMS']:.2f}", "secTaper": f"{sec_per_update['Taper-minus']:.2f}",
         "sessionHours": f"{session['hours']:.2f}",
+        "sessionStartTime": start.strftime("%H:%M"), "sessionEndTime": end.strftime("%H:%M"),
         "sessionStart": f"{start.day} {start.strftime('%B %Y')}, {start.strftime('%H:%M')}",
         "sessionEnd": f"{end.day} {end.strftime('%B %Y')}, {end.strftime('%H:%M')}",
         "torchVersion": session["torch"].split("+")[0], "cudaVersion": session["cuda"],
@@ -184,6 +382,29 @@ def main():
     for seed, letter in zip(SEEDS, "ABC"):
         macros[f"D{letter}"] = m(rows[seed]["D"])
         macros[f"DoneFive{letter}"] = m(rows[seed]["D1525"], 3)
+    macros.update(second_draft_analyses(ev, rows, config, session))
+
+    # ---- abstract: one ASCII text for both the PDF and the arXiv metadata field
+    seeds_txt = ", ".join(f"{rows[s]['D']:.3f}" for s in SEEDS)
+    abstract = (
+        "TaperNorm replaces a pre-norm Transformer's internal normalization with a gated map that acts like "
+        "RMSNorm early in training and then becomes a fixed, calibrated linear scaling. Without per-token "
+        "normalization, such a model might forget more after a shift in the training data. We tested this in a "
+        "small pilot with design, endpoint and decision rules fixed before training. Paired "
+        "17.7M-parameter models with internal RMSNorm or TaperNorm (three seeds) were trained on 150M web "
+        "tokens, then continued for 100M tokens on web text or Python code. The primary endpoint is a "
+        "difference-in-differences D in held-out web "
+        "cross-entropy; positive D means extra forgetting under TaperNorm. Switching to Python raised web "
+        f"cross-entropy by about {mean_f_code:.2f} nats/token in both models. Mean D was {mean_d:.3f} nats/token "
+        f"(seeds {seeds_txt}), below the pre-specified +0.015 bound, so the pre-specified decision is to stop: "
+        "we find no evidence that TaperNorm increases persistent forgetting in this setting. In exploratory "
+        "analyses, D was near zero for most of continuation (after a brief early dip) and became negative as "
+        "the learning rate annealed, and the code-specific activation-scale shift that motivated the hypothesis "
+        "was small in both models. Code and all evaluation records are released.")
+    assert abstract.isascii(), "abstract must be plain ASCII"
+    (ROOT / "paper" / "arxiv-abstract.txt").write_text(abstract + "\n", encoding="ascii")
+    (OUT / "abstract.tex").write_text(abstract + "\n", encoding="utf-8")
+    print(f"abstract: {len(abstract)} characters, ASCII")
     lines = ["% Generated by paper/make_assets.py from reports/h1-kaggle -- do not edit by hand."]
     # Thousands separators as {,} so numbers typeset correctly in both text and math mode.
     lines += [f"\\newcommand{{\\{k}}}{{{v.replace(',', '{,}')}}}" for k, v in macros.items()]
@@ -291,6 +512,7 @@ def main():
 
     # (b) D(s) per seed and mean; pre-registered thresholds are the labeled y-ticks
     ax = axes[1]
+    ax.axvspan((4880 + 5185) / 2, 6300, color="#f0efec", zorder=0, linewidth=0)  # post hoc late window
     for y in (0.03, 0.015, -0.03):
         ax.axhline(y, color=MUTED, linewidth=0.6)
     ax.axhline(0, color=INK2, linewidth=0.7)
