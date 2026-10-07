@@ -146,8 +146,13 @@ def second_draft_analyses(ev, rows, config, session):
     out["midSD"] = mm(mid_sd, 4, sign=False)
     out["finalSD"] = mm(point_sd[CONT], 4, sign=False)
     out["sdRatio"] = f"{mid_sd / point_sd[CONT]:.1f}"
-    out["lateLRpct"] = f"{(learning_rate(PREFIX_END + late[0]) / 6e-5 - 1) * 100:.0f}"
+    # Upper bound, rounded up, so "within N%" is true throughout the late window.
+    out["lateLRpct"] = str(math.ceil((learning_rate(PREFIX_END + late[0]) / 6e-5 - 1) * 100))
     out["lateNeg"] = str(sum(point_mean[u] < 0 for u in late))
+    out["lateNegSeedPoints"] = str(sum(rows[s]["full_D"][u] < 0 for s in SEEDS for u in late))
+    out["lateSeedPoints"] = str(len(SEEDS) * len(late))
+    out["dipMean"] = mm(point_mean[100], 4)
+    out["dipSD"] = mm(point_sd[100], 4, sign=False)
 
     # ---- pre-specified rare-token (R) contribution at the endpoint (overlaps W/A/P/X)
     rare_rows, r_contrib, r_mean, r_count = [], [], [], []
@@ -187,7 +192,11 @@ def second_draft_analyses(ev, rows, config, session):
     out["bootSE"] = mm(mean_reps.std(ddof=1), 4, sign=False)
     out["bootSeedSElo"] = mm(reps.std(0, ddof=1).min(), 4, sign=False)
     out["bootSeedSEhi"] = mm(reps.std(0, ddof=1).max(), 4, sign=False)
-    out["bootRatio"] = f"{statistics.stdev(rows[s]['D'] for s in SEEDS) / mean_reps.std(ddof=1):.0f}"
+    # Compare like with like: seed SD vs per-seed bootstrap SE, and seed SE of the mean vs bootstrap SE of the mean.
+    seed_sd = statistics.stdev(rows[s]["D"] for s in SEEDS)
+    out["bootRatioSeed"] = f"{seed_sd / reps.std(0, ddof=1).mean():.1f}"
+    out["seedSEmean"] = mm(seed_sd / math.sqrt(len(SEEDS)), 4, sign=False)
+    out["bootRatioMean"] = f"{seed_sd / math.sqrt(len(SEEDS)) / mean_reps.std(ddof=1):.1f}"
     seed_ci = [np.percentile(reps[:, i], [2.5, 97.5]) for i in range(len(SEEDS))]
     supp = ["\\begin{tabular}{@{}lrrrr@{}}", "\\toprule",
             "Seed & R labels & Mean $D$ on R & R contribution to $D$ & Document-bootstrap 95\\% interval for $D$ \\\\",
@@ -210,30 +219,47 @@ def second_draft_analyses(ev, rows, config, session):
             for site in sites:
                 E = lambda when, dom: diag[when]["sites"][f"{site}.h"]["all"][dom]["mean_squared_norm"]
                 switch, web_end, py_end = ("prefix", PREFIX_END), ("web", CONT), ("python", CONT)
-                gap.append(abs(0.5 * math.log(E(switch, "python") / E(switch, "web"))))
-                lw = 0.5 * math.log(E(web_end, "web") / E(switch, "web"))
-                lp = 0.5 * math.log(E(py_end, "web") / E(switch, "web"))
-                w_signed.append(lw); p_signed.append(lp); w_abs.append(abs(lw)); p_abs.append(abs(lp))
-                specific.append(abs(lp - lw))
-        pct = lambda logs: (math.exp(statistics.mean(logs)) - 1) * 100
-        scale[cond] = {"gap": pct(gap), "w_signed": pct(w_signed), "p_signed": pct(p_signed),
-                       "w_abs": pct(w_abs), "p_abs": pct(p_abs), "specific": pct(specific)}
+                gap.append(0.5 * math.log(E(switch, "python") / E(switch, "web")))
+                w_signed.append(0.5 * math.log(E(web_end, "web") / E(switch, "web")))
+                p_signed.append(0.5 * math.log(E(py_end, "web") / E(switch, "web")))
+                specific.append(p_signed[-1] - w_signed[-1])
+        # Natural-log scale ratios: |.| rows take the absolute value per seed and site, then the mean over the
+        # 36 site-seed pairs; signed rows are means of the signed values (also shown as factors exp(mean)).
+        scale[cond] = {"gap": np.mean(np.abs(gap)), "w_abs": np.mean(np.abs(w_signed)),
+                       "p_abs": np.mean(np.abs(p_signed)), "w_signed": np.mean(w_signed),
+                       "p_signed": np.mean(p_signed), "specific": np.mean(np.abs(specific)),
+                       "w_shrink": int(np.sum(np.array(w_signed) < 0)), "p_shrink": int(np.sum(np.array(p_signed) < 0)),
+                       "pairs": len(w_signed)}
     tag = {"RMS": "R", "Taper-minus": "T"}
     for cond in CONDS:
-        for key, value in scale[cond].items():
-            name = {"gap": "Gap", "w_signed": "WebSigned", "p_signed": "PySigned", "w_abs": "WebAbs",
-                    "p_abs": "PyAbs", "specific": "Specific"}[key]
-            out[f"scale{name}{tag[cond]}"] = f"{value:+.1f}" if "Signed" in name else f"{value:.1f}"
-    t = ["\\begin{tabular}{@{}lrr@{}}", "\\toprule", "Measure (mean over 12 sites and 3 seeds) & RMS & Taper-minus \\\\",
-         "\\midrule",
-         f"Code-vs-web scale gap at the switch, $|\\cdot|$ & {scale['RMS']['gap']:.1f}\\% & {scale['Taper-minus']['gap']:.1f}\\% \\\\",
-         f"Change in web-probe scale, web branch, $|\\cdot|$ & {scale['RMS']['w_abs']:.1f}\\% & {scale['Taper-minus']['w_abs']:.1f}\\% \\\\",
-         f"Change in web-probe scale, Python branch, $|\\cdot|$ & {scale['RMS']['p_abs']:.1f}\\% & {scale['Taper-minus']['p_abs']:.1f}\\% \\\\",
-         f"\\quad signed, web branch & ${scale['RMS']['w_signed']:+.1f}\\%$ & ${scale['Taper-minus']['w_signed']:+.1f}\\%$ \\\\",
-         f"\\quad signed, Python branch & ${scale['RMS']['p_signed']:+.1f}\\%$ & ${scale['Taper-minus']['p_signed']:+.1f}\\%$ \\\\",
-         f"Code-specific change (Python minus web branch), $|\\cdot|$ & {scale['RMS']['specific']:.1f}\\% & {scale['Taper-minus']['specific']:.1f}\\% \\\\",
+        v = scale[cond]
+        out[f"scaleGap{tag[cond]}"] = f"{v['gap']:.3f}"
+        out[f"scaleGapPct{tag[cond]}"] = f"{(math.exp(v['gap']) - 1) * 100:.0f}"
+        out[f"scaleWebAbs{tag[cond]}"] = f"{v['w_abs']:.3f}"
+        out[f"scalePyAbs{tag[cond]}"] = f"{v['p_abs']:.3f}"
+        out[f"scaleWebSigned{tag[cond]}"] = mm(v["w_signed"], 3)
+        out[f"scalePySigned{tag[cond]}"] = mm(v["p_signed"], 3)
+        out[f"scaleWebFactor{tag[cond]}"] = f"{math.exp(v['w_signed']):.2f}"
+        out[f"scalePyFactor{tag[cond]}"] = f"{math.exp(v['p_signed']):.2f}"
+        out[f"scaleSpecific{tag[cond]}"] = f"{v['specific']:.3f}"
+        out[f"scaleSpecificPct{tag[cond]}"] = f"{(math.exp(v['specific']) - 1) * 100:.0f}"
+        out[f"scaleWebShrink{tag[cond]}"] = str(v["w_shrink"])
+        out[f"scalePyShrink{tag[cond]}"] = str(v["p_shrink"])
+    out["scalePairs"] = str(scale["RMS"]["pairs"])
+    R, T = scale["RMS"], scale["Taper-minus"]
+    fmt_signed = lambda x: f"${x:+.3f}$ ($\\times{math.exp(x):.2f}$)".replace("+", "{+}")
+    t = ["\\begin{tabular}{@{}lrr@{}}", "\\toprule",
+         "Natural-log scale ratio (mean over 12 sites $\\times$ 3 seeds) & RMS & Taper-minus \\\\", "\\midrule",
+         f"Code vs.\\ web at the switch, $|\\cdot|$ & {R['gap']:.3f} & {T['gap']:.3f} \\\\",
+         f"Web-probe change, web branch, $|\\cdot|$ & {R['w_abs']:.3f} & {T['w_abs']:.3f} \\\\",
+         f"Web-probe change, Python branch, $|\\cdot|$ & {R['p_abs']:.3f} & {T['p_abs']:.3f} \\\\",
+         f"\\quad signed, web branch (factor) & {fmt_signed(R['w_signed'])} & {fmt_signed(T['w_signed'])} \\\\",
+         f"\\quad signed, Python branch (factor) & {fmt_signed(R['p_signed'])} & {fmt_signed(T['p_signed'])} \\\\",
+         f"\\quad site--seed pairs that shrank, web / Python branch & {R['w_shrink']} / {R['p_shrink']} of {R['pairs']} & "
+         f"{T['w_shrink']} / {T['p_shrink']} of {T['pairs']} \\\\",
+         f"Code-specific change (Python minus web branch), $|\\cdot|$ & {R['specific']:.3f} & {T['specific']:.3f} \\\\",
          "\\bottomrule", "\\end{tabular}"]
-    (OUT / "table_scales.tex").write_text("\n".join(t).replace("+", "{+}") + "\n", encoding="utf-8")
+    (OUT / "table_scales.tex").write_text("\n".join(t) + "\n", encoding="utf-8")
 
     # ---- LSH recall (32 bands x 4 rows): candidate probability for a pair with Jaccard J
     p = lambda J: 1 - (1 - J ** 4) ** 32
@@ -537,7 +563,7 @@ def main():
     style(ax, "(c) Code adaptation")
     ax.set_ylabel("Full-dev non-W code CE (nats/token)")
     ax.legend(loc="upper right", frameon=False)
-    fig.savefig(FIG / "trajectories.pdf")
+    fig.savefig(FIG / "trajectories.pdf", metadata={"CreationDate": None})  # no timestamp: byte-reproducible
     fig.savefig(FIG / "trajectories.png", dpi=220)
     plt.close(fig)
 

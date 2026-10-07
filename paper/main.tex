@@ -98,6 +98,7 @@ our Taper-minus condition keeps the final RMSNorm.
 \paragraph{Normalization, weight decay and effective learning rate.} When a normalizer makes a network's output
 invariant to the scale of some weights, weight decay no longer regularizes those weights in the usual sense;
 it shrinks them and thereby raises their effective learning rate \citep{vanlaarhoven2017l2,zhang2019weightdecay}.
+\citet{dohare2024loss} document a loss of plasticity in deep continual learning, and
 \citet{lyle2024normalization} connect normalization and effective learning rates to the loss of plasticity under
 nonstationary training. These results bear on our exploratory scale analysis (\cref{sec:exploratory}).
 
@@ -276,9 +277,11 @@ removed \exactRemoved{} exact and \nearRemoved{} near duplicates. Documents shor
 
 \paragraph{Recall of the near-duplicate search.} With 32 bands of 4 rows, a pair with Jaccard similarity $J$
 becomes an LSH candidate with probability $1 - (1 - J^4)^{32}$. A pair at $J = 0.85$ is therefore missed with
-probability \lshMiss, and a pair at $J = 0.70$ is still found with probability \lshRecallSeventy. As an empirical
-check, a deterministic random sample of \auditPairs{} cross-split document pairs was compared by exact Jaccard,
-and none reached 0.85. That sampled audit has low power to detect rare leakage (\cref{sec:limitations}).
+probability \lshMiss, and a pair at $J = 0.70$ is still found with probability \lshRecallSeventy. This analytic
+recall is the evidence that near duplicates above the threshold were found. The preparation code also compared
+a deterministic random sample of \auditPairs{} cross-split document pairs by exact Jaccard, and none reached 0.85.
+Because two randomly chosen documents are almost never near duplicates, that comparison is a sanity check with
+negligible power to detect leakage, not evidence of its absence.
 
 \paragraph{Packing and quotas.} Text is tokenized with GPT-2 BPE, with one EOS appended per document, and packed
 into 513-token windows at stride 512 with no padding. Windows are packed across document boundaries without an
@@ -346,7 +349,12 @@ any primary-run update; none of them changes the model, data, token budgets, see
   \item \sessionStartTime: the run starts.
   \item \logConfigTime: the run log records the frozen configuration hash (\texttt{\configSha\ldots}). The
         hashed configuration contains the decision thresholds, and the hash can be recomputed from the released
-        \texttt{config.json}.
+        \texttt{config.json} by the runner's own procedure.\footnote{The hash is \emph{not} the SHA-256 of the
+        file itself; \texttt{sha256sum config.json} gives a different value. To reproduce it, load the JSON, remove
+        the keys \texttt{config\_sha256} and \texttt{checkpoint\_seconds}, serialize the rest as canonical JSON
+        (keys sorted, separators \texttt{","} and \texttt{":"}, no whitespace) and take the SHA-256 of the UTF-8
+        bytes. \texttt{paper/README.md} gives a one-line command, and \texttt{paper/make\_assets.py} asserts the
+        match on every build.}
   \item \seedOneFirst--\seedOneLast: seed 101's four endpoint cross-entropies (both conditions, both branches)
         appear in the run's live log. Seed 101's $D$ could have been computed from them.
   \item \commitTime: commit \texttt{3ee1dc4} is made, containing the protocol text and the runner script.
@@ -529,10 +537,13 @@ points after the fact; they describe the trajectory and were not part of the pro
         \lateNeg{} points and averaged \lateMean. Throughout this window the learning rate was within \lateLRpct\%
         of its final value.
 \end{itemize}
-The seeds also agreed much more closely at the end. The across-seed SD of $D(s)$ averaged \midSD{} over the middle
-window but was \finalSD{} at the endpoint, \sdRatio{} times smaller. The negative endpoint therefore reflects a shift
-that appeared in all three seeds during the final, low-learning-rate phase, not a difference present throughout
-continuation. The pre-specified transient check was not triggered: the quick-dev seed-mean $D(s)$ peaked at
+In the late window $D(s)$ was negative in every seed at every point (\lateNegSeedPoints{} of \lateSeedPoints{}
+seed--point values), and the across-seed SD fell from an average of \midSD{} over the middle window to \finalSD{}
+at the endpoint, \sdRatio{} times smaller. Seed agreement was not unique to the end, however: at $s = 100$ the
+seed-mean $D(s)$ was \dipMean{} with an across-seed SD of \dipSD. The trajectory therefore shows two
+seed-consistent negative phases, early and late, separated by a noisy middle, and low seed spread is not
+specific to the low-learning-rate phase. The negative endpoint reflects the late phase, not a difference present
+throughout continuation. The pre-specified transient check was not triggered: the quick-dev seed-mean $D(s)$ peaked at
 \earlyMax{} (at $s = \earlyMaxAt$) within the first 1{,}000 updates, against a threshold of 0.05.
 
 \subsection{Exploratory analyses (not pre-specified)}
@@ -544,27 +555,33 @@ them enters the decision.
 \paragraph{Activation scales at the normalizer inputs.} The run logged forward-only probes of the activation
 $h$ entering each of the 12 internal normalizers, on the last 256 training windows of each domain (131{,}072
 positions per domain), at the switch and at the end of each branch. For each site we take the scale to be the
-root mean square of $\lVert h\rVert$ over the probe positions, compute log-ratios of scales, average them over
-the 12 sites and the 3 seeds, and report the result as a percentage. \Cref{tab:scales} gives three quantities:
+root mean square of $\lVert h\rVert$ over the probe positions and work with natural-log ratios of scales, which
+treat growth and shrinkage symmetrically. For the absolute quantities ($|\cdot|$) we take the absolute log-ratio
+for each of the \scalePairs{} site--seed pairs and then average; the signed quantities are plain averages, also
+shown as multiplicative factors. \Cref{tab:scales} gives three quantities:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
-  \item \textbf{The code-vs-web gap at the switch.} Code activations differed in scale from web activations by
-        \scaleGapR\% (RMS) and \scaleGapT\% (Taper-minus), in absolute value per site.
-  \item \textbf{The change in the web-probe scale during each branch.} In the RMS model, the scale changed by
-        about \scaleWebAbsR\% per site in the web branch and \scalePyAbsR\% in the Python branch, mostly by
-        shrinking (signed means $\scaleWebSignedR\%$ and $\scalePySignedR\%$). In Taper-minus it changed by only
-        \scaleWebAbsT\% and \scalePyAbsT\% (signed means $\scaleWebSignedT\%$ and $\scalePySignedT\%$).
-  \item \textbf{The code-specific part of that change} (Python branch minus web branch): \scaleSpecificR\%
-        (RMS) and \scaleSpecificT\% (Taper-minus) per site.
+  \item \textbf{The code-vs-web gap at the switch.} The mean absolute log-ratio was \scaleGapR{} (RMS) and
+        \scaleGapT{} (Taper-minus): code and web activations differed in scale by roughly \scaleGapPctR\% and
+        \scaleGapPctT\%.
+  \item \textbf{The change in the web-probe scale during each branch.} In the RMS model the scale shrank, by a
+        factor of \scaleWebFactorR{} in the web branch (\scaleWebShrinkR{} of \scalePairs{} site--seed pairs
+        shrank) and \scalePyFactorR{} in the Python branch (\scalePyShrinkR{} of \scalePairs). In Taper-minus it
+        changed much less and mostly grew, by factors of \scaleWebFactorT{} and \scalePyFactorT{} (mean absolute
+        log-ratios \scaleWebAbsT{} and \scalePyAbsT).
+  \item \textbf{The code-specific part of that change} (Python branch minus web branch, per site and seed): a
+        mean absolute log-ratio of \scaleSpecificR{} (RMS) and \scaleSpecificT{} (Taper-minus), about
+        \scaleSpecificPctR\% in both.
 \end{itemize}
-The largest scale change, the shrinkage in the RMS model, happened equally in both branches, so it was not caused
-by the code data. The code-specific change was small and the same size in both architectures.
+The largest scale change, the shrinkage in the RMS model, happened in both branches, so it was not caused by the
+code data. The code-specific change was small and the same size in both architectures.
 
 \begin{table}[t]
 \centering
 \small
 \caption{Exploratory: scale of the activations entering the 12 internal normalizers, from the logged diagnostic
-probes. Values are geometric means over sites and seeds of per-site scale ratios, expressed as percentages;
-$|\cdot|$ marks averages of absolute per-site changes.}
+probes, as natural-log ratios of per-site scales. Rows marked $|\cdot|$ take the absolute log-ratio for each of
+the \scalePairs{} site--seed pairs and then the mean; signed rows are plain means, with the corresponding
+multiplicative factor in parentheses.}
 \label{tab:scales}
 \input{generated/table_scales.tex}
 \end{table}
@@ -574,9 +591,11 @@ we resampled the \nDocsWeb{} web development documents with replacement (\bootB{
 documents for all arms and seeds) and recomputed the endpoint $D$. The 95\% percentile interval for mean $D$ is
 $[\bootLo, \bootHi]$, with a bootstrap standard error of \bootSE; per-seed standard errors are
 \bootSeedSElo--\bootSeedSEhi{} (\cref{app:extra}). This interval treats the trained models as fixed, so it
-measures only evaluation-sample noise. The between-seed SD of $D$ (\Dsd) is about \bootRatio{} times larger than
-that standard error. Uncertainty about $D$ is therefore dominated by training variation across seeds, and the
-bootstrap interval must not be read as uncertainty about the effect itself.
+measures only evaluation-sample noise. Comparing like with like, the between-seed SD of $D$ (\Dsd) is about
+\bootRatioSeed{} times the per-seed bootstrap standard error, and the seed-based standard error of the mean
+(\seedSEmean) is about \bootRatioMean{} times the bootstrap standard error of the mean. Uncertainty about $D$ is
+therefore dominated by training variation across seeds, and the bootstrap interval must not be read as
+uncertainty about the effect itself.
 
 \section{Discussion}
 
@@ -600,10 +619,13 @@ activation magnitudes, RMSNorm absorbs the change, and a fixed TaperNorm scale c
 analysis (\cref{sec:exploratory}) suggests that the starting condition of this story was only weakly present
 in our models:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
-  \item At the switch, code and web activations differed in scale by only \scaleGapR--\scaleGapT\% on average.
-  \item The largest scale change during continuation, the shrinkage in the RMS model, occurred equally when
-        training simply continued on web text, so it was not a response to code.
-  \item The code-specific scale change was about \scaleSpecificR\% per site in both architectures.
+  \item At the switch, code and web activations differed in scale by only about \scaleGapPctR--\scaleGapPctT\% on
+        average (mean absolute log-ratios \scaleGapR{} and \scaleGapT).
+  \item The largest scale change during continuation, the shrinkage in the RMS model, occurred to a similar
+        extent when training simply continued on web text (factors \scaleWebFactorR{} and \scalePyFactorR), so
+        it was not a response to code.
+  \item The code-specific scale change was about \scaleSpecificPctR\% per site in both architectures (mean
+        absolute log-ratio \scaleSpecificR).
 \end{itemize}
 A plausible reason for the RMS shrinkage is that RMSNorm makes each sub-layer's output invariant to the scale of
 the residual stream it reads, so weight decay can shrink the weights that set that scale without changing the
@@ -639,8 +661,8 @@ causal: they show that the premise was weak, not that this is why there was no e
         any outcome and the unchanged runner hash, not the commit date.
   \item \textbf{Thresholds.} The decision thresholds were set as investment thresholds without a power analysis.
   \item \textbf{Data audit.} The near-duplicate search is approximate. Its analytic recall is high for pairs above
-        the similarity threshold, but the random audit of \auditPairs{} cross-split document pairs has low power
-        to detect rare leakage, and repository names are an incomplete proxy for forks.
+        the similarity threshold; the comparison of \auditPairs{} random cross-split document pairs is only a
+        sanity check with negligible power; and repository names are an incomplete proxy for forks.
   \item \textbf{Secondary and exploratory analyses.} Matched adaptation interpolates between evaluated
         checkpoints and describes curves; it does not evaluate an actual model. The trajectory windows, the scale
         analysis and the document bootstrap were chosen after the results were known. Attention-entropy and gain

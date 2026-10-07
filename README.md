@@ -59,13 +59,15 @@ numerical failures, and every guardrail passed.
 
 **Exploratory analyses** (chosen after the results; descriptive only, see the paper's §5.3–5.4)
 
-- After a brief early dip, D(s) stayed near zero for most of continuation and became negative only in the final
-  low-learning-rate phase (s ≥ 5,185, mean −0.020), when the three seeds also converged.
+- D(s) had two seed-consistent negative phases separated by a noisy middle: a brief early dip (s = 100: mean
+  −0.0185, seed SD 0.0021) and the final low-learning-rate phase (s ≥ 5,185: mean −0.020, negative in all 15
+  seed–point values). In between it stayed near zero.
 - The premise of H1 was weak in these models: the code-specific change in activation scale at the internal
   normalizer inputs was about 4% per site in both architectures, and the larger scale change in the RMS model
-  happened equally when training simply continued on web text.
+  (a shrinkage by a factor of about 0.81) happened to a similar extent when training simply continued on web
+  text.
 - A document bootstrap gives a mean-D interval of [−0.0235, −0.0211], conditional on the trained models;
-  seed-to-seed variation is about 6× larger than this evaluation noise.
+  seed-to-seed variation is about 3.5× larger than this evaluation noise (comparing like with like).
 
 **Run record**
 
