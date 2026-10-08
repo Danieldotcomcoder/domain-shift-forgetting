@@ -1,0 +1,21 @@
+{
+  "exact_frozen_removed": 0,
+  "exact_removed": 0,
+  "near_frozen_dev_removed": 0,
+  "near_removed": 698,
+  "short_shingle_documents": 0,
+  "missed_candidate_pairs_checked": 2443,
+  "missed_candidate_pairs_found": 0,
+  "frozen_pairs_checked": 2000,
+  "frozen_pairs_found": 0,
+  "retained_documents": {
+    "x_train": 62754,
+    "x_dev": 4872,
+    "x_test": 4895
+  },
+  "minhash_permutations": 128,
+  "seed": 20260911,
+  "lsh_bands": 32,
+  "lsh_rows": 4,
+  "jaccard_threshold": 0.85
+}

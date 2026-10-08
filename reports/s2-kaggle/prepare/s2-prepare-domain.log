@@ -1,0 +1,101 @@
+[{"stream_name":"stderr","time":9.102927238,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.103085835,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.103095268,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.103099693,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.898480458,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.898516487,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.898522365,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.898527146,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.26679235,"data":"Writing /kaggle/working/registration-manifest.json\n"}
+,{"stream_name":"stdout","time":14.214961404,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.2/107.2 kB 2.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.417617337,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.2/107.2 kB 2.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":16.925127811,"data":"Writing /kaggle/working/prepare_domain.py\n"}
+,{"stream_name":"stdout","time":20.944358526,"data":"[22:02:50] Preparing mc4-zh (allenai/c4 @ 1588ec454efa); tokenizer verified\n"}
+,{"stream_name":"stdout","time":21.148697929,"data":"[22:02:50] Preparing mc4-zh (allenai/c4 @ 1588ec454efa); tokenizer verified\n"}
+,{"stream_name":"stdout","time":38.280555202,"data":"[22:03:08] Frozen pilot reference: 598,380 exact hashes, 5,474 dev documents indexed (21s)\n"}
+,{"stream_name":"stdout","time":38.483343839,"data":"[22:03:08] Frozen pilot reference: 598,380 exact hashes, 5,474 dev documents indexed (21s)\n"}
+,{"stream_name":"stdout","time":81.998014626,"data":"[22:03:51] train: raw tokens {'train': 126503300}; shards ['multilingual/c4-zh.tfrecord-00314-of-01024.json.gz', 'multilingual/c4-zh.tfrecord-00305-of-01024.json.gz']\n"}
+,{"stream_name":"stdout","time":82.20370076,"data":"[22:03:51] train: raw tokens {'train': 126503300}; shards ['multilingual/c4-zh.tfrecord-00314-of-01024.json.gz', 'multilingual/c4-zh.tfrecord-00305-of-01024.json.gz']\n"}
+,{"stream_name":"stdout","time":89.304997295,"data":"[22:03:59] validation: raw tokens {'train': 126503300, 'dev': 9368252, 'test': 9663000}; shards ['multilingual/c4-zh-validation.tfrecord-00001-of-00002.json.gz']\n"}
+,{"stream_name":"stdout","time":89.507839607,"data":"[22:03:59] validation: raw tokens {'train': 126503300, 'dev': 9368252, 'test': 9663000}; shards ['multilingual/c4-zh-validation.tfrecord-00001-of-00002.json.gz']\n"}
+,{"stream_name":"stdout","time":448.059397078,"data":"[22:09:57] filter round 0: retained tokens {'x_train': 123237560, 'x_dev': 9316284, 'x_test': 9619279}; short: none\n"}
+,{"stream_name":"stdout","time":448.265567772,"data":"[22:09:57] filter round 0: retained tokens {'x_train': 123237560, 'x_dev': 9316284, 'x_test': 9619279}; short: none\n"}
+,{"stream_name":"stdout","time":464.848717685,"data":"[22:10:14] orders for seed 101: ['x']\n"}
+,{"stream_name":"stdout","time":465.051718139,"data":"[22:10:14] orders for seed 101: ['x']\n"}
+,{"stream_name":"stdout","time":466.040324943,"data":"[22:10:15] orders for seed 102: ['x']\n"}
+,{"stream_name":"stdout","time":466.243400836,"data":"[22:10:15] orders for seed 102: ['x']\n"}
+,{"stream_name":"stdout","time":467.247381108,"data":"[22:10:17] orders for seed 103: ['x']\n"}
+,{"stream_name":"stdout","time":467.450564483,"data":"[22:10:17] orders for seed 103: ['x']\n"}
+,{"stream_name":"stdout","time":468.436148839,"data":"[22:10:18] orders for seed 104: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":468.639318976,"data":"[22:10:18] orders for seed 104: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":469.635680496,"data":"[22:10:19] orders for seed 105: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":469.83874836,"data":"[22:10:19] orders for seed 105: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":470.841973472,"data":"[22:10:20] orders for seed 106: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":470.848468247,"data":"[22:10:20] Prepared mc4-zh in 7.6 min\n"}
+,{"stream_name":"stdout","time":471.044927946,"data":"[22:10:20] orders for seed 106: ['python', 'rare', 'web', 'x']\n"}
+,{"stream_name":"stdout","time":471.044963885,"data":"[22:10:20] Prepared mc4-zh in 7.6 min\n"}
+,{"stream_name":"stdout","time":479.328705113,"data":"{\n"}
+,{"stream_name":"stdout","time":479.328748474,"data":"  \"status\": \"accepted\",\n"}
+,{"stream_name":"stdout","time":479.328754994,"data":"  \"domain\": \"mc4-zh\",\n"}
+,{"stream_name":"stdout","time":479.328759591,"data":"  \"documents\": {\n"}
+,{"stream_name":"stdout","time":479.3287638,"data":"    \"x_train\": 56276,\n"}
+,{"stream_name":"stdout","time":479.328768832,"data":"    \"x_dev\": 1139,\n"}
+,{"stream_name":"stdout","time":479.328773793,"data":"    \"x_test\": 4201\n"}
+,{"stream_name":"stdout","time":479.328779302,"data":"  },\n"}
+,{"stream_name":"stdout","time":479.328783542,"data":"  \"tokens\": {\n"}
+,{"stream_name":"stdout","time":479.328787936,"data":"    \"x_train\": 110000129,\n"}
+,{"stream_name":"stdout","time":479.328792437,"data":"    \"x_dev\": 2097153\n"}
+,{"stream_name":"stdout","time":479.32879709,"data":"  },\n"}
+,{"stream_name":"stdout","time":479.328801858,"data":"  \"online_manifest_sha256\": \"5994e6fb6d8c2202bb77d6d5c11376ab074d5f1ff3f51858e03e9f2d5b9d94ca\",\n"}
+,{"stream_name":"stdout","time":479.328807318,"data":"  \"orders_manifest_sha256\": \"ba2596cebff919a8b10d8385c8b1748e95ca7a7ef8a7a5309f2e5c09de6a6f72\",\n"}
+,{"stream_name":"stdout","time":479.328812675,"data":"  \"raw_tokens\": {\n"}
+,{"stream_name":"stdout","time":479.328841385,"data":"    \"train\": 126503300,\n"}
+,{"stream_name":"stdout","time":479.328849025,"data":"    \"dev\": 9368252,\n"}
+,{"stream_name":"stdout","time":479.328853385,"data":"    \"test\": 9663000\n"}
+,{"stream_name":"stdout","time":479.328858151,"data":"  }\n"}
+,{"stream_name":"stdout","time":479.32886263,"data":"}\n"}
+,{"stream_name":"stdout","time":479.536480992,"data":"{\n"}
+,{"stream_name":"stdout","time":479.536512601,"data":"  \"status\": \"accepted\",\n"}
+,{"stream_name":"stdout","time":479.536519249,"data":"  \"domain\": \"mc4-zh\",\n"}
+,{"stream_name":"stdout","time":479.536524586,"data":"  \"documents\": {\n"}
+,{"stream_name":"stdout","time":479.536529706,"data":"    \"x_train\": 56276,\n"}
+,{"stream_name":"stdout","time":479.536534654,"data":"    \"x_dev\": 1139,\n"}
+,{"stream_name":"stdout","time":479.53653973,"data":"    \"x_test\": 4201\n"}
+,{"stream_name":"stdout","time":479.536544714,"data":"  },\n"}
+,{"stream_name":"stdout","time":479.536549528,"data":"  \"tokens\": {\n"}
+,{"stream_name":"stdout","time":479.536554347,"data":"    \"x_train\": 110000129,\n"}
+,{"stream_name":"stdout","time":479.536572522,"data":"    \"x_dev\": 2097153\n"}
+,{"stream_name":"stdout","time":479.536576709,"data":"  },\n"}
+,{"stream_name":"stdout","time":479.536580657,"data":"  \"online_manifest_sha256\": \"5994e6fb6d8c2202bb77d6d5c11376ab074d5f1ff3f51858e03e9f2d5b9d94ca\",\n"}
+,{"stream_name":"stdout","time":479.536585128,"data":"  \"orders_manifest_sha256\": \"ba2596cebff919a8b10d8385c8b1748e95ca7a7ef8a7a5309f2e5c09de6a6f72\",\n"}
+,{"stream_name":"stdout","time":479.536589262,"data":"  \"raw_tokens\": {\n"}
+,{"stream_name":"stdout","time":479.53659308,"data":"    \"train\": 126503300,\n"}
+,{"stream_name":"stdout","time":479.536596684,"data":"    \"dev\": 9368252,\n"}
+,{"stream_name":"stdout","time":479.53660037,"data":"    \"test\": 9663000\n"}
+,{"stream_name":"stdout","time":479.536604048,"data":"  }\n"}
+,{"stream_name":"stdout","time":479.536606419,"data":"}\n"}
+,{"stream_name":"stdout","time":482.269971404,"data":"preparation exit code: 0\n"}
+,{"stream_name":"stdout","time":482.285480227,"data":"{\n"}
+,{"stream_name":"stdout","time":482.285515611,"data":"  \"status\": \"accepted\",\n"}
+,{"stream_name":"stdout","time":482.285520611,"data":"  \"domain\": \"mc4-zh\",\n"}
+,{"stream_name":"stdout","time":482.285524706,"data":"  \"documents\": {\n"}
+,{"stream_name":"stdout","time":482.285528611,"data":"    \"x_train\": 56276,\n"}
+,{"stream_name":"stdout","time":482.285532413,"data":"    \"x_dev\": 1139,\n"}
+,{"stream_name":"stdout","time":482.285536433,"data":"    \"x_test\": 4201\n"}
+,{"stream_name":"stdout","time":482.285540207,"data":"  },\n"}
+,{"stream_name":"stdout","time":482.285544526,"data":"  \"tokens\": {\n"}
+,{"stream_name":"stdout","time":482.285548211,"data":"    \"x_train\": 110000129,\n"}
+,{"stream_name":"stdout","time":482.285552311,"data":"    \"x_dev\": 2097153\n"}
+,{"stream_name":"stdout","time":482.285556239,"data":"  },\n"}
+,{"stream_name":"stdout","time":482.285559955,"data":"  \"online_manifest_sha256\": \"5994e6fb6d8c2202bb77d6d5c11376ab074d5f1ff3f51858e03e9f2d5b9d94ca\",\n"}
+,{"stream_name":"stdout","time":482.285564222,"data":"  \"orders_manifest_sha256\": \"ba2596cebff919a8b10d8385c8b1748e95ca7a7ef8a7a5309f2e5c09de6a6f72\"\n"}
+,{"stream_name":"stdout","time":482.285568363,"data":"}\n"}
+,{"stream_name":"stderr","time":485.632942136,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":485.632977761,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":485.846923634,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":485.846956679,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":486.788576052,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":486.887935566,"data":"[NbConvertApp] Writing 80357 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":490.152687901,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":490.981408997,"data":"[NbConvertApp] Writing 558417 bytes to __results__.html\n"}
+]

@@ -1,0 +1,15 @@
+{
+  "status": "accepted",
+  "domain": "mc4-zh",
+  "documents": {
+    "x_train": 56276,
+    "x_dev": 1139,
+    "x_test": 4201
+  },
+  "tokens": {
+    "x_train": 110000129,
+    "x_dev": 2097153
+  },
+  "online_manifest_sha256": "5994e6fb6d8c2202bb77d6d5c11376ab074d5f1ff3f51858e03e9f2d5b9d94ca",
+  "orders_manifest_sha256": "ba2596cebff919a8b10d8385c8b1748e95ca7a7ef8a7a5309f2e5c09de6a6f72"
+}

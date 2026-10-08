@@ -1,0 +1,7 @@
+SELECTED: mc4-zh (selected)
+Python reference S = 0.1099 (RMS 0.0971, Taper-minus 0.1228)
+mc4-zh       S = 0.0934 (RMS 0.0757, Taper-minus 0.1111; halves 0.0931 / 0.0938)
+mc4-ru       S = 0.0893 (RMS 0.0732, Taper-minus 0.1054; halves 0.0887 / 0.0898)
+mc4-de       S = 0.0514 (RMS 0.0469, Taper-minus 0.0558; halves 0.0511 / 0.0518)
+openwebmath  S = 0.0119 (RMS 0.0126, Taper-minus 0.0112; halves 0.0116 / 0.0128)
+Reproduction of the pilot's switch energies: max rel diff 0.00e+00 (passed)

@@ -1,0 +1,19 @@
+{
+  "id": "danny00/s2-prepare-domain",
+  "title": "s2-prepare-domain",
+  "code_file": "s2-prepare-domain.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "danny00/stage1-online-inputes"
+  ],
+  "competition_sources": [],
+  "model_sources": [],
+  "kernel_sources": [
+    "danny00/s2-domain-probe"
+  ]
+}

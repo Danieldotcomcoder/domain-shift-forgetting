@@ -1,0 +1,68 @@
+[{"stream_name":"stderr","time":6.8842730880000005,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.884304082,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.88430998,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.884313934,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.466733265,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.466773623,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.466779142,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.466782761,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.57211739,"data":"Writing /kaggle/working/registration-manifest.json\n"}
+,{"stream_name":"stdout","time":10.995348534,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.2/107.2 kB 2.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":11.197752528,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.2/107.2 kB 2.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":13.302564108,"data":"Writing /kaggle/working/s2_run.py\n"}
+,{"stream_name":"stdout","time":13.33672048,"data":"Writing /kaggle/working/prepare_domain.py\n"}
+,{"stream_name":"stdout","time":13.356218142,"data":"Writing /kaggle/working/probe_domains.py\n"}
+,{"stream_name":"stdout","time":40.922699569,"data":"[21:58:17] Pilot switch states verified; device cuda (torch 2.11.0+cu128)\n"}
+,{"stream_name":"stdout","time":41.124682986,"data":"[21:58:17] Pilot switch states verified; device cuda (torch 2.11.0+cu128)\n"}
+,{"stream_name":"stdout","time":44.368338221,"data":"[21:58:20] probe sample mc4-de: 89 documents from multilingual/c4-de.tfrecord-01366-of-02048.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":44.574846867,"data":"[21:58:20] probe sample mc4-de: 89 documents from multilingual/c4-de.tfrecord-01366-of-02048.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":46.754810407,"data":"[21:58:23] probe sample mc4-ru: 46 documents from multilingual/c4-ru.tfrecord-01765-of-04096.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":46.9567602,"data":"[21:58:23] probe sample mc4-ru: 46 documents from multilingual/c4-ru.tfrecord-01765-of-04096.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":48.456439276,"data":"[21:58:24] probe sample mc4-zh: 69 documents from multilingual/c4-zh.tfrecord-00314-of-01024.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":48.658498056,"data":"[21:58:24] probe sample mc4-zh: 69 documents from multilingual/c4-zh.tfrecord-00314-of-01024.json.gz in 2s\n"}
+,{"stream_name":"stdout","time":51.866240916,"data":"[21:58:28] probe sample openwebmath: 21 documents from data/train-00004-of-00114-3158c787ea8296d3.parquet in 3s\n"}
+,{"stream_name":"stdout","time":52.068419481,"data":"[21:58:28] probe sample openwebmath: 21 documents from data/train-00004-of-00114-3158c787ea8296d3.parquet in 3s\n"}
+,{"stream_name":"stdout","time":79.64020773,"data":"[21:58:55] S101-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":79.847586762,"data":"[21:58:55] S101-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":94.178413216,"data":"[21:59:10] S101-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":94.380928673,"data":"[21:59:10] S101-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":108.278415913,"data":"[21:59:24] S102-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":108.480544266,"data":"[21:59:24] S102-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":122.505550001,"data":"[21:59:38] S102-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":122.714474815,"data":"[21:59:38] S102-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":136.678529757,"data":"[21:59:52] S103-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":136.881003521,"data":"[21:59:52] S103-RMS: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":151.04249818,"data":"[22:00:07] S103-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":151.09567137,"data":"SELECTED: mc4-zh (selected)\n"}
+,{"stream_name":"stdout","time":151.095691625,"data":"Python reference S = 0.1099 (RMS 0.0971, Taper-minus 0.1228)\n"}
+,{"stream_name":"stdout","time":151.095697053,"data":"mc4-zh       S = 0.0934 (RMS 0.0757, Taper-minus 0.1111; halves 0.0931 / 0.0938)\n"}
+,{"stream_name":"stdout","time":151.09570156,"data":"mc4-ru       S = 0.0893 (RMS 0.0732, Taper-minus 0.1054; halves 0.0887 / 0.0898)\n"}
+,{"stream_name":"stdout","time":151.095705967,"data":"mc4-de       S = 0.0514 (RMS 0.0469, Taper-minus 0.0558; halves 0.0511 / 0.0518)\n"}
+,{"stream_name":"stdout","time":151.095710353,"data":"openwebmath  S = 0.0119 (RMS 0.0126, Taper-minus 0.0112; halves 0.0116 / 0.0128)\n"}
+,{"stream_name":"stdout","time":151.095714665,"data":"Reproduction of the pilot's switch energies: max rel diff 0.00e+00 (passed)\n"}
+,{"stream_name":"stdout","time":151.244972202,"data":"[22:00:07] S103-Taper-minus: reproduction max rel diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":151.245009877,"data":"SELECTED: mc4-zh (selected)\n"}
+,{"stream_name":"stdout","time":151.245015481,"data":"Python reference S = 0.1099 (RMS 0.0971, Taper-minus 0.1228)\n"}
+,{"stream_name":"stdout","time":151.245020026,"data":"mc4-zh       S = 0.0934 (RMS 0.0757, Taper-minus 0.1111; halves 0.0931 / 0.0938)\n"}
+,{"stream_name":"stdout","time":151.245024242,"data":"mc4-ru       S = 0.0893 (RMS 0.0732, Taper-minus 0.1054; halves 0.0887 / 0.0898)\n"}
+,{"stream_name":"stdout","time":151.245028402,"data":"mc4-de       S = 0.0514 (RMS 0.0469, Taper-minus 0.0558; halves 0.0511 / 0.0518)\n"}
+,{"stream_name":"stdout","time":151.245032862,"data":"openwebmath  S = 0.0119 (RMS 0.0126, Taper-minus 0.0112; halves 0.0116 / 0.0128)\n"}
+,{"stream_name":"stdout","time":151.245037086,"data":"Reproduction of the pilot's switch energies: max rel diff 0.00e+00 (passed)\n"}
+,{"stream_name":"stdout","time":154.634736115,"data":"probe exit code: 0\n"}
+,{"stream_name":"stdout","time":154.649238687,"data":"SELECTED: mc4-zh (selected)\n"}
+,{"stream_name":"stdout","time":154.649266789,"data":"Python reference S = 0.1099 (RMS 0.0971, Taper-minus 0.1228)\n"}
+,{"stream_name":"stdout","time":154.64927139,"data":"mc4-zh       S = 0.0934 (RMS 0.0757, Taper-minus 0.1111; halves 0.0931 / 0.0938)\n"}
+,{"stream_name":"stdout","time":154.6492745,"data":"mc4-ru       S = 0.0893 (RMS 0.0732, Taper-minus 0.1054; halves 0.0887 / 0.0898)\n"}
+,{"stream_name":"stdout","time":154.6492776,"data":"mc4-de       S = 0.0514 (RMS 0.0469, Taper-minus 0.0558; halves 0.0511 / 0.0518)\n"}
+,{"stream_name":"stdout","time":154.64930877,"data":"openwebmath  S = 0.0119 (RMS 0.0126, Taper-minus 0.0112; halves 0.0116 / 0.0128)\n"}
+,{"stream_name":"stdout","time":154.649325514,"data":"Reproduction of the pilot's switch energies: max rel diff 0.00e+00 (passed)\n"}
+,{"stream_name":"stdout","time":154.649329665,"data":"\n"}
+,{"stream_name":"stderr","time":156.953897115,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":156.953948206,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":157.114945429,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":157.114991808,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":157.826484651,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":157.908788339,"data":"[NbConvertApp] Writing 251308 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":160.270575677,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":161.357682966,"data":"[NbConvertApp] Writing 1287868 bytes to __results__.html\n"}
+]
