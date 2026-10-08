@@ -21,3 +21,16 @@ Preparation details:
 - **Materialized.** X train 110,000,129 tokens (56,276 documents); X dev 2,097,153 (1,139 documents); reserved test 8,388,609 (4,201 documents, sealed).
 - **Orders.** The pilot's seed 101–103 orders were reproduced bit for bit (NumPy 2.1.3 on Kaggle).
 - **Manifest hashes.** Online manifest `5994e6fb…`; orders manifest `ba2596ce…`.
+
+| Time (UTC) | Step | Notes |
+|---|---|---|
+| 2026-10-08 22:27 | Download and check | Whole output fetched (752 MB). All 26 online and order files re-hashed against their manifests: no mismatch |
+| 2026-10-08 22:30 | Private dataset | `danny00/study2-online-inputs` created: s2online, s2orders, s2upstream; 27 files; no reserved test |
+| 2026-10-08 22:30 | Smoke pushed | `danny00/s2-single-notebook-smoke` version 1 (GPU T4 × 2) |
+| 2026-10-08 ~22:57 | Smoke **PASSED** | About 26 min; details below. Records in `reports/s2-kaggle/smoke/` |
+| 2026-10-08 22:58 | Main run: bootstrap | `danny00/s2-single-notebook-run` version 1 (CPU): writes the start marker only |
+
+Smoke test details:
+- **(A) Mini protocol.** Complete; no failures or problems; 24/24 lineage checks passed; resume across 3 sessions; a re-run does nothing. The mini decisions come from 20-update toy models and are meaningless.
+- **(B) Lineage of the six real pilot switch states.** Bit-exact: CE and all 24 per-site energies differ by 0.0.
+- **(C) Real protocol, seed 104 prefix only.** 0.381 s/update (RMS); 0.377 s during calibration and 0.391 s after it (Taper-minus); full-dev evaluation about 19–21 s per domain; no FP16 retries; resume works.

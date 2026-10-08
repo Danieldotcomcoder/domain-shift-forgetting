@@ -1,0 +1,934 @@
+[{"stream_name":"stderr","time":7.357612733,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.357658427,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.35766271,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.357665081,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.970628952,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.97065702,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.970661884,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.97066554,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.069653203,"data":"Writing /kaggle/working/registration-manifest.json\n"}
+,{"stream_name":"stdout","time":9.127915665,"data":"Writing /kaggle/working/h1_run.py\n"}
+,{"stream_name":"stdout","time":9.195310133,"data":"Writing /kaggle/working/s2_run.py\n"}
+,{"stream_name":"stdout","time":16.536078892,"data":"\n"}
+,{"stream_name":"stdout","time":16.536106488,"data":"########## A) MINI PROTOCOL END-TO-END (plumbing only) ##########\n"}
+,{"stream_name":"stdout","time":18.162632807,"data":"[22:31:15] H1 runner h1-single-notebook-1; session budget 0.50 h (0.50 h of work time left)\n"}
+,{"stream_name":"stdout","time":18.199703476,"data":"[22:31:15] Prepared corpus: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":29.258307135,"data":"[22:31:26] Data hashes verified in 11s; C4 rev 1588ec454efa, Stack rev 17cad72c886a\n"}
+,{"stream_name":"stdout","time":29.259863375,"data":"[22:31:26] NEW experiment created; config sha256 a0c5fc82dcadb5f5\n"}
+,{"stream_name":"stdout","time":29.327723219,"data":"[22:31:26] Session 1: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":31.780320641,"data":"[RMS] [22:31:28] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.49 h\n"}
+,{"stream_name":"stdout","time":31.783453616,"data":"[Taper-minus] [22:31:28] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.49 h\n"}
+,{"stream_name":"stdout","time":37.830374662,"data":"[RMS] [22:31:35] S101-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":37.831131898,"data":"[Taper-minus] [22:31:35] S101-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":41.736854307,"data":"[RMS] [22:31:38] S101-RMS prefix@6: full-dev web CE 9.7730, code non-W CE 10.2420\n"}
+,{"stream_name":"stdout","time":41.795269045,"data":"[Taper-minus] [22:31:38] S101-Taper-minus prefix@6: full-dev web CE 9.7730, code non-W CE 10.2420\n"}
+,{"stream_name":"stdout","time":43.662801084,"data":"[RMS] [22:31:40] S101-RMS prefix@10: full-dev web CE 9.2316, code non-W CE 9.9296\n"}
+,{"stream_name":"stdout","time":43.86566464,"data":"[Taper-minus] [22:31:41] S101-Taper-minus prefix@10: full-dev web CE 9.2509, code non-W CE 9.9292\n"}
+,{"stream_name":"stdout","time":45.585600649,"data":"[RMS] [22:31:42] S101-RMS prefix@14: full-dev web CE 8.8163, code non-W CE 9.6999\n"}
+,{"stream_name":"stdout","time":45.841200223,"data":"[Taper-minus] [22:31:43] S101-Taper-minus prefix@14: full-dev web CE 8.8591, code non-W CE 9.7072\n"}
+,{"stream_name":"stdout","time":46.835535876,"data":"[RMS] [22:31:44] S101-RMS prefix@16: full-dev web CE 8.6598, code non-W CE 9.6220\n"}
+,{"stream_name":"stdout","time":47.069103413,"data":"[Taper-minus] [22:31:44] S101-Taper-minus prefix@16: full-dev web CE 8.7179, code non-W CE 9.6333\n"}
+,{"stream_name":"stdout","time":47.740210626,"data":"[RMS] [22:31:44] S101-RMS prefix@17: full-dev web CE 8.5960, code non-W CE 9.5952\n"}
+,{"stream_name":"stdout","time":47.949641699,"data":"[Taper-minus] [22:31:45] S101-Taper-minus prefix@17: full-dev web CE 8.6586, code non-W CE 9.6035\n"}
+,{"stream_name":"stdout","time":48.643960514,"data":"[RMS] [22:31:45] S101-RMS prefix@18: full-dev web CE 8.5388, code non-W CE 9.5675\n"}
+,{"stream_name":"stdout","time":48.826298893,"data":"[Taper-minus] [22:31:46] S101-Taper-minus prefix@18: full-dev web CE 8.6083, code non-W CE 9.5763\n"}
+,{"stream_name":"stdout","time":49.542678934,"data":"[RMS] [22:31:46] S101-RMS prefix@19: full-dev web CE 8.4867, code non-W CE 9.5399\n"}
+,{"stream_name":"stdout","time":49.706425313,"data":"[Taper-minus] [22:31:46] S101-Taper-minus prefix@19: full-dev web CE 8.5535, code non-W CE 9.5513\n"}
+,{"stream_name":"stdout","time":51.123754886,"data":"[RMS] [22:31:48] S101-RMS prefix@20: full-dev web CE 8.4413, code non-W CE 9.5168\n"}
+,{"stream_name":"stdout","time":51.129589995,"data":"[Taper-minus] [22:31:48] S101-Taper-minus prefix@20: full-dev web CE 8.5029, code non-W CE 9.5292\n"}
+,{"stream_name":"stdout","time":57.248745544,"data":"[Taper-minus] [22:31:54] S101-Taper-minus: branch 'web' starts from switch 16d62136d8ca\n"}
+,{"stream_name":"stdout","time":57.255608054,"data":"[RMS] [22:31:54] S101-RMS: branch 'web' starts from switch bc1825f79563\n"}
+,{"stream_name":"stdout","time":58.159948661,"data":"[Taper-minus] [22:31:55] S101-Taper-minus web@0: full-dev web CE 8.5029, code non-W CE 9.5292\n"}
+,{"stream_name":"stdout","time":58.186979272,"data":"[RMS] [22:31:55] S101-RMS web@0: full-dev web CE 8.4413, code non-W CE 9.5168\n"}
+,{"stream_name":"stdout","time":59.187363374,"data":"[Taper-minus] [22:31:56] S101-Taper-minus web@1: full-dev web CE 8.4631, code non-W CE 9.5114\n"}
+,{"stream_name":"stdout","time":59.239442492,"data":"[RMS] [22:31:56] S101-RMS web@1: full-dev web CE 8.4012, code non-W CE 9.4991\n"}
+,{"stream_name":"stdout","time":60.83478018,"data":"[Taper-minus] [22:31:58] S101-Taper-minus web@3: full-dev web CE 8.3963, code non-W CE 9.4806\n"}
+,{"stream_name":"stdout","time":60.963758136,"data":"[RMS] [22:31:58] S101-RMS web@3: full-dev web CE 8.3364, code non-W CE 9.4720\n"}
+,{"stream_name":"stdout","time":62.821141359,"data":"[Taper-minus] [22:32:00] S101-Taper-minus web@6: full-dev web CE 8.3264, code non-W CE 9.4477\n"}
+,{"stream_name":"stdout","time":63.003938173,"data":"[RMS] [22:32:00] S101-RMS web@6: full-dev web CE 8.2699, code non-W CE 9.4372\n"}
+,{"stream_name":"stdout","time":64.544004646,"data":"[Taper-minus] [22:32:01] S101-Taper-minus web@9: full-dev web CE 8.2812, code non-W CE 9.4291\n"}
+,{"stream_name":"stdout","time":64.756197968,"data":"[RMS] [22:32:01] S101-RMS web@9: full-dev web CE 8.2281, code non-W CE 9.4185\n"}
+,{"stream_name":"stdout","time":66.541791521,"data":"[Taper-minus] [22:32:03] S101-Taper-minus web@12: full-dev web CE 8.2486, code non-W CE 9.4147\n"}
+,{"stream_name":"stdout","time":66.80513264,"data":"[RMS] [22:32:03] S101-RMS web@12: full-dev web CE 8.1986, code non-W CE 9.4061\n"}
+,{"stream_name":"stdout","time":69.978706776,"data":"[Taper-minus] [22:32:07] S101-Taper-minus: branch 'python' starts from switch 16d62136d8ca\n"}
+,{"stream_name":"stdout","time":70.016167894,"data":"[RMS] [22:32:07] S101-RMS: branch 'python' starts from switch bc1825f79563\n"}
+,{"stream_name":"stdout","time":70.907462238,"data":"[Taper-minus] [22:32:08] S101-Taper-minus python@0: full-dev web CE 8.5029, code non-W CE 9.5292\n"}
+,{"stream_name":"stdout","time":71.012830532,"data":"[RMS] [22:32:08] S101-RMS python@0: full-dev web CE 8.4413, code non-W CE 9.5168\n"}
+,{"stream_name":"stdout","time":71.949976973,"data":"[Taper-minus] [22:32:09] S101-Taper-minus python@1: full-dev web CE 8.4688, code non-W CE 9.5014\n"}
+,{"stream_name":"stdout","time":72.077428863,"data":"[RMS] [22:32:09] S101-RMS python@1: full-dev web CE 8.4065, code non-W CE 9.4870\n"}
+,{"stream_name":"stdout","time":73.600392633,"data":"[Taper-minus] [22:32:10] S101-Taper-minus python@3: full-dev web CE 8.4391, code non-W CE 9.4635\n"}
+,{"stream_name":"stdout","time":73.762789031,"data":"[RMS] [22:32:10] S101-RMS python@3: full-dev web CE 8.3650, code non-W CE 9.4362\n"}
+,{"stream_name":"stdout","time":75.603247153,"data":"[Taper-minus] [22:32:12] S101-Taper-minus python@6: full-dev web CE 8.5009, code non-W CE 9.4572\n"}
+,{"stream_name":"stdout","time":75.809177927,"data":"[RMS] [22:32:12] S101-RMS python@6: full-dev web CE 8.3580, code non-W CE 9.3844\n"}
+,{"stream_name":"stdout","time":77.313562947,"data":"[Taper-minus] [22:32:14] S101-Taper-minus python@9: full-dev web CE 8.5723, code non-W CE 9.4429\n"}
+,{"stream_name":"stdout","time":77.575575394,"data":"[RMS] [22:32:14] S101-RMS python@9: full-dev web CE 8.3891, code non-W CE 9.3647\n"}
+,{"stream_name":"stdout","time":79.325497577,"data":"[Taper-minus] [22:32:16] S101-Taper-minus python@12: full-dev web CE 8.7009, code non-W CE 9.5089\n"}
+,{"stream_name":"stdout","time":79.447586017,"data":"[Taper-minus] [22:32:16] S101-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":79.646457106,"data":"[RMS] [22:32:16] S101-RMS python@12: full-dev web CE 8.4494, code non-W CE 9.4104\n"}
+,{"stream_name":"stdout","time":79.758171541,"data":"[RMS] [22:32:16] S101-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":80.083264211,"data":"[Taper-minus] [22:32:17] S102-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":80.140461331,"data":"[RMS] [22:32:17] S102-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":82.831785131,"data":"[RMS] [22:32:20] S102-RMS prefix@6: full-dev web CE 9.8226, code non-W CE 10.2591\n"}
+,{"stream_name":"stdout","time":82.860210404,"data":"[Taper-minus] [22:32:20] S102-Taper-minus prefix@6: full-dev web CE 9.8226, code non-W CE 10.2591\n"}
+,{"stream_name":"stdout","time":84.80782385,"data":"[RMS] [22:32:21] S102-RMS prefix@10: full-dev web CE 9.2942, code non-W CE 9.9221\n"}
+,{"stream_name":"stdout","time":84.966918658,"data":"[Taper-minus] [22:32:22] S102-Taper-minus prefix@10: full-dev web CE 9.2985, code non-W CE 9.9227\n"}
+,{"stream_name":"stdout","time":86.786939172,"data":"[RMS] [22:32:23] S102-RMS prefix@14: full-dev web CE 8.8771, code non-W CE 9.7069\n"}
+,{"stream_name":"stdout","time":86.98057638,"data":"[Taper-minus] [22:32:24] S102-Taper-minus prefix@14: full-dev web CE 8.9013, code non-W CE 9.7121\n"}
+,{"stream_name":"stdout","time":88.069237936,"data":"[RMS] [22:32:25] S102-RMS prefix@16: full-dev web CE 8.7192, code non-W CE 9.6225\n"}
+,{"stream_name":"stdout","time":88.219938606,"data":"[Taper-minus] [22:32:25] S102-Taper-minus prefix@16: full-dev web CE 8.7464, code non-W CE 9.6293\n"}
+,{"stream_name":"stdout","time":88.995427216,"data":"[RMS] [22:32:26] S102-RMS prefix@17: full-dev web CE 8.6509, code non-W CE 9.5933\n"}
+,{"stream_name":"stdout","time":89.12650413,"data":"[Taper-minus] [22:32:26] S102-Taper-minus prefix@17: full-dev web CE 8.6819, code non-W CE 9.5986\n"}
+,{"stream_name":"stdout","time":89.921662973,"data":"[RMS] [22:32:27] S102-RMS prefix@18: full-dev web CE 8.5919, code non-W CE 9.5660\n"}
+,{"stream_name":"stdout","time":90.028444642,"data":"[Taper-minus] [22:32:27] S102-Taper-minus prefix@18: full-dev web CE 8.6226, code non-W CE 9.5690\n"}
+,{"stream_name":"stdout","time":90.847471393,"data":"[RMS] [22:32:28] S102-RMS prefix@19: full-dev web CE 8.5392, code non-W CE 9.5393\n"}
+,{"stream_name":"stdout","time":90.939156973,"data":"[Taper-minus] [22:32:28] S102-Taper-minus prefix@19: full-dev web CE 8.5681, code non-W CE 9.5495\n"}
+,{"stream_name":"stdout","time":92.080394558,"data":"[RMS] [22:32:29] S102-RMS prefix@20: full-dev web CE 8.4929, code non-W CE 9.5193\n"}
+,{"stream_name":"stdout","time":92.135646876,"data":"[Taper-minus] [22:32:29] S102-Taper-minus prefix@20: full-dev web CE 8.5254, code non-W CE 9.5377\n"}
+,{"stream_name":"stdout","time":98.10295843,"data":"[Taper-minus] [22:32:35] S102-Taper-minus: branch 'web' starts from switch 272e4835a0e5\n"}
+,{"stream_name":"stdout","time":98.107884125,"data":"[RMS] [22:32:35] S102-RMS: branch 'web' starts from switch 821da5ddd9c9\n"}
+,{"stream_name":"stdout","time":99.033591578,"data":"[Taper-minus] [22:32:36] S102-Taper-minus web@0: full-dev web CE 8.5254, code non-W CE 9.5377\n"}
+,{"stream_name":"stdout","time":99.067355009,"data":"[RMS] [22:32:36] S102-RMS web@0: full-dev web CE 8.4929, code non-W CE 9.5193\n"}
+,{"stream_name":"stdout","time":100.086400404,"data":"[Taper-minus] [22:32:37] S102-Taper-minus web@1: full-dev web CE 8.4793, code non-W CE 9.5137\n"}
+,{"stream_name":"stdout","time":100.142020879,"data":"[RMS] [22:32:37] S102-RMS web@1: full-dev web CE 8.4525, code non-W CE 9.5021\n"}
+,{"stream_name":"stdout","time":101.786343526,"data":"[Taper-minus] [22:32:38] S102-Taper-minus web@3: full-dev web CE 8.4138, code non-W CE 9.4775\n"}
+,{"stream_name":"stdout","time":101.889485237,"data":"[RMS] [22:32:39] S102-RMS web@3: full-dev web CE 8.3869, code non-W CE 9.4712\n"}
+,{"stream_name":"stdout","time":103.827407914,"data":"[Taper-minus] [22:32:41] S102-Taper-minus web@6: full-dev web CE 8.3441, code non-W CE 9.4566\n"}
+,{"stream_name":"stdout","time":103.984403432,"data":"[RMS] [22:32:41] S102-RMS web@6: full-dev web CE 8.3188, code non-W CE 9.4418\n"}
+,{"stream_name":"stdout","time":105.573901152,"data":"[Taper-minus] [22:32:42] S102-Taper-minus web@9: full-dev web CE 8.2999, code non-W CE 9.4292\n"}
+,{"stream_name":"stdout","time":105.79272327300001,"data":"[RMS] [22:32:42] S102-RMS web@9: full-dev web CE 8.2774, code non-W CE 9.4225\n"}
+,{"stream_name":"stdout","time":107.618314333,"data":"[Taper-minus] [22:32:44] S102-Taper-minus web@12: full-dev web CE 8.2676, code non-W CE 9.4149\n"}
+,{"stream_name":"stdout","time":107.90004036,"data":"[RMS] [22:32:45] S102-RMS web@12: full-dev web CE 8.2477, code non-W CE 9.4050\n"}
+,{"stream_name":"stdout","time":110.737190182,"data":"[Taper-minus] [22:32:47] S102-Taper-minus: branch 'python' starts from switch 272e4835a0e5\n"}
+,{"stream_name":"stdout","time":111.174662862,"data":"[RMS] [22:32:48] S102-RMS: branch 'python' starts from switch 821da5ddd9c9\n"}
+,{"stream_name":"stdout","time":111.667626023,"data":"[Taper-minus] [22:32:48] S102-Taper-minus python@0: full-dev web CE 8.5254, code non-W CE 9.5377\n"}
+,{"stream_name":"stdout","time":112.097594761,"data":"[RMS] [22:32:49] S102-RMS python@0: full-dev web CE 8.4929, code non-W CE 9.5193\n"}
+,{"stream_name":"stdout","time":112.722285104,"data":"[Taper-minus] [22:32:49] S102-Taper-minus python@1: full-dev web CE 8.5115, code non-W CE 9.5262\n"}
+,{"stream_name":"stdout","time":113.707722028,"data":"[RMS] [22:32:50] S102-RMS python@1: full-dev web CE 8.4570, code non-W CE 9.4969\n"}
+,{"stream_name":"stdout","time":114.851056317,"data":"[Taper-minus] [22:32:52] S102-Taper-minus python@3: full-dev web CE 8.5351, code non-W CE 9.5128\n"}
+,{"stream_name":"stdout","time":115.451612586,"data":"[RMS] [22:32:52] S102-RMS python@3: full-dev web CE 8.4184, code non-W CE 9.4791\n"}
+,{"stream_name":"stdout","time":116.895742812,"data":"[Taper-minus] [22:32:54] S102-Taper-minus python@6: full-dev web CE 8.5756, code non-W CE 9.4560\n"}
+,{"stream_name":"stdout","time":117.588634837,"data":"[RMS] [22:32:54] S102-RMS python@6: full-dev web CE 8.4142, code non-W CE 9.4385\n"}
+,{"stream_name":"stdout","time":118.650922327,"data":"[Taper-minus] [22:32:55] S102-Taper-minus python@9: full-dev web CE 8.7436, code non-W CE 9.4988\n"}
+,{"stream_name":"stdout","time":119.409636245,"data":"[RMS] [22:32:56] S102-RMS python@9: full-dev web CE 8.4378, code non-W CE 9.4097\n"}
+,{"stream_name":"stdout","time":120.722187013,"data":"[Taper-minus] [22:32:57] S102-Taper-minus python@12: full-dev web CE 8.8378, code non-W CE 9.5073\n"}
+,{"stream_name":"stdout","time":120.837126192,"data":"[Taper-minus] [22:32:58] S102-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":121.509958201,"data":"[Taper-minus] [22:32:58] S103-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":121.545630366,"data":"[RMS] [22:32:58] S102-RMS python@12: full-dev web CE 8.4783, code non-W CE 9.4416\n"}
+,{"stream_name":"stdout","time":121.661020942,"data":"[RMS] [22:32:58] S102-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":122.011336747,"data":"[RMS] [22:32:59] S103-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":124.344999906,"data":"[Taper-minus] [22:33:01] S103-Taper-minus prefix@6: full-dev web CE 9.8341, code non-W CE 10.2268\n"}
+,{"stream_name":"stdout","time":124.791661737,"data":"[RMS] [22:33:01] S103-RMS prefix@6: full-dev web CE 9.8341, code non-W CE 10.2268\n"}
+,{"stream_name":"stdout","time":126.51323369,"data":"[Taper-minus] [22:33:03] S103-Taper-minus prefix@10: full-dev web CE 9.3365, code non-W CE 9.9316\n"}
+,{"stream_name":"stdout","time":126.848393494,"data":"[RMS] [22:33:04] S103-RMS prefix@10: full-dev web CE 9.3235, code non-W CE 9.9351\n"}
+,{"stream_name":"stdout","time":128.592420208,"data":"[Taper-minus] [22:33:05] S103-Taper-minus prefix@14: full-dev web CE 8.9355, code non-W CE 9.7380\n"}
+,{"stream_name":"stdout","time":128.90209146,"data":"[RMS] [22:33:06] S103-RMS prefix@14: full-dev web CE 8.9091, code non-W CE 9.7224\n"}
+,{"stream_name":"stdout","time":129.872379194,"data":"[Taper-minus] [22:33:07] S103-Taper-minus prefix@16: full-dev web CE 8.7843, code non-W CE 9.6623\n"}
+,{"stream_name":"stdout","time":130.231599124,"data":"[RMS] [22:33:07] S103-RMS prefix@16: full-dev web CE 8.7476, code non-W CE 9.6438\n"}
+,{"stream_name":"stdout","time":130.802242086,"data":"[Taper-minus] [22:33:07] S103-Taper-minus prefix@17: full-dev web CE 8.7179, code non-W CE 9.6295\n"}
+,{"stream_name":"stdout","time":131.203296866,"data":"[RMS] [22:33:08] S103-RMS prefix@17: full-dev web CE 8.6801, code non-W CE 9.6122\n"}
+,{"stream_name":"stdout","time":131.73273253,"data":"[Taper-minus] [22:33:08] S103-Taper-minus prefix@18: full-dev web CE 8.6583, code non-W CE 9.6009\n"}
+,{"stream_name":"stdout","time":132.161548548,"data":"[RMS] [22:33:09] S103-RMS prefix@18: full-dev web CE 8.6196, code non-W CE 9.5845\n"}
+,{"stream_name":"stdout","time":132.665094673,"data":"[Taper-minus] [22:33:09] S103-Taper-minus prefix@19: full-dev web CE 8.6053, code non-W CE 9.5759\n"}
+,{"stream_name":"stdout","time":133.128686549,"data":"[RMS] [22:33:10] S103-RMS prefix@19: full-dev web CE 8.5664, code non-W CE 9.5603\n"}
+,{"stream_name":"stdout","time":133.917072228,"data":"[Taper-minus] [22:33:11] S103-Taper-minus prefix@20: full-dev web CE 8.5589, code non-W CE 9.5497\n"}
+,{"stream_name":"stdout","time":135.232321559,"data":"[RMS] [22:33:12] S103-RMS prefix@20: full-dev web CE 8.5197, code non-W CE 9.5350\n"}
+,{"stream_name":"stdout","time":138.299178066,"data":"[Taper-minus] [22:33:15] S103-Taper-minus: branch 'web' starts from switch 0b8efc62124d\n"}
+,{"stream_name":"stdout","time":139.557725263,"data":"[RMS] [22:33:16] S103-RMS: branch 'web' starts from switch e9b2e71b515b\n"}
+,{"stream_name":"stdout","time":140.095616354,"data":"[Taper-minus] [22:33:17] S103-Taper-minus web@0: full-dev web CE 8.5589, code non-W CE 9.5497\n"}
+,{"stream_name":"stdout","time":140.515370865,"data":"[RMS] [22:33:17] S103-RMS web@0: full-dev web CE 8.5197, code non-W CE 9.5350\n"}
+,{"stream_name":"stdout","time":141.186084436,"data":"[Taper-minus] [22:33:18] S103-Taper-minus web@1: full-dev web CE 8.5185, code non-W CE 9.5291\n"}
+,{"stream_name":"stdout","time":141.639146209,"data":"[RMS] [22:33:18] S103-RMS web@1: full-dev web CE 8.4784, code non-W CE 9.5139\n"}
+,{"stream_name":"stdout","time":142.925217622,"data":"[Taper-minus] [22:33:20] S103-Taper-minus web@3: full-dev web CE 8.4531, code non-W CE 9.4962\n"}
+,{"stream_name":"stdout","time":143.452738377,"data":"[RMS] [22:33:20] S103-RMS web@3: full-dev web CE 8.4101, code non-W CE 9.4784\n"}
+,{"stream_name":"stdout","time":145.028052037,"data":"[Taper-minus] [22:33:22] S103-Taper-minus web@6: full-dev web CE 8.3828, code non-W CE 9.4630\n"}
+,{"stream_name":"stdout","time":145.642086729,"data":"[RMS] [22:33:22] S103-RMS web@6: full-dev web CE 8.3410, code non-W CE 9.4406\n"}
+,{"stream_name":"stdout","time":146.840137402,"data":"[Taper-minus] [22:33:24] S103-Taper-minus web@9: full-dev web CE 8.3387, code non-W CE 9.4444\n"}
+,{"stream_name":"stdout","time":147.527246793,"data":"[RMS] [22:33:24] S103-RMS web@9: full-dev web CE 8.2966, code non-W CE 9.4226\n"}
+,{"stream_name":"stdout","time":148.95614189,"data":"[Taper-minus] [22:33:26] S103-Taper-minus web@12: full-dev web CE 8.3075, code non-W CE 9.4288\n"}
+,{"stream_name":"stdout","time":149.754772738,"data":"[RMS] [22:33:26] S103-RMS web@12: full-dev web CE 8.2651, code non-W CE 9.4095\n"}
+,{"stream_name":"stdout","time":151.942774604,"data":"[Taper-minus] [22:33:29] S103-Taper-minus: branch 'python' starts from switch 0b8efc62124d\n"}
+,{"stream_name":"stdout","time":152.78035851,"data":"[RMS] [22:33:29] S103-RMS: branch 'python' starts from switch e9b2e71b515b\n"}
+,{"stream_name":"stdout","time":153.370057975,"data":"[Taper-minus] [22:33:30] S103-Taper-minus python@0: full-dev web CE 8.5589, code non-W CE 9.5497\n"}
+,{"stream_name":"stdout","time":153.751537888,"data":"[RMS] [22:33:30] S103-RMS python@0: full-dev web CE 8.5197, code non-W CE 9.5350\n"}
+,{"stream_name":"stdout","time":154.469429098,"data":"[Taper-minus] [22:33:31] S103-Taper-minus python@1: full-dev web CE 8.5249, code non-W CE 9.5183\n"}
+,{"stream_name":"stdout","time":154.88316419,"data":"[RMS] [22:33:32] S103-RMS python@1: full-dev web CE 8.4829, code non-W CE 9.5009\n"}
+,{"stream_name":"stdout","time":156.222508438,"data":"[Taper-minus] [22:33:33] S103-Taper-minus python@3: full-dev web CE 8.4922, code non-W CE 9.4649\n"}
+,{"stream_name":"stdout","time":156.711136587,"data":"[RMS] [22:33:33] S103-RMS python@3: full-dev web CE 8.4364, code non-W CE 9.4403\n"}
+,{"stream_name":"stdout","time":158.345776824,"data":"[Taper-minus] [22:33:35] S103-Taper-minus python@6: full-dev web CE 8.5118, code non-W CE 9.4185\n"}
+,{"stream_name":"stdout","time":158.92711937,"data":"[RMS] [22:33:36] S103-RMS python@6: full-dev web CE 8.4222, code non-W CE 9.4012\n"}
+,{"stream_name":"stdout","time":160.177886691,"data":"[Taper-minus] [22:33:37] S103-Taper-minus python@9: full-dev web CE 8.5684, code non-W CE 9.4022\n"}
+,{"stream_name":"stdout","time":160.846893686,"data":"[RMS] [22:33:38] S103-RMS python@9: full-dev web CE 8.4434, code non-W CE 9.4056\n"}
+,{"stream_name":"stdout","time":162.319168909,"data":"[Taper-minus] [22:33:39] S103-Taper-minus python@12: full-dev web CE 8.6423, code non-W CE 9.4049\n"}
+,{"stream_name":"stdout","time":162.433912871,"data":"[Taper-minus] [22:33:39] S103-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":162.526301042,"data":"[Taper-minus] [22:33:39] worker Taper-minus: all assigned runs complete\n"}
+,{"stream_name":"stdout","time":163.090640735,"data":"[RMS] [22:33:40] S103-RMS python@12: full-dev web CE 8.4761, code non-W CE 9.4719\n"}
+,{"stream_name":"stdout","time":163.205901466,"data":"[RMS] [22:33:40] S103-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":163.297202355,"data":"[RMS] [22:33:40] worker RMS: all assigned runs complete\n"}
+,{"stream_name":"stdout","time":169.685016655,"data":"\n"}
+,{"stream_name":"stdout","time":169.686115172,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":169.687038681,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":169.687936389,"data":"  S101-RMS: complete\n"}
+,{"stream_name":"stdout","time":169.688834882,"data":"  S102-RMS: complete\n"}
+,{"stream_name":"stdout","time":169.689696691,"data":"  S103-RMS: complete\n"}
+,{"stream_name":"stdout","time":169.690476855,"data":"  S101-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":169.691328185,"data":"  S102-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":169.692118655,"data":"  S103-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":169.692984167,"data":"[22:33:46] RMS: 0 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":169.693864442,"data":"[22:33:46] Taper-minus: 0 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":169.694642664,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":169.695469258,"data":"H1 ANSWER: CANNOT ANSWER - a validity guardrail failed (prefix gap \u003e 2% or code adaptation \u003c 0.05 nats).\n"}
+,{"stream_name":"stdout","time":169.696268168,"data":"Decision category: COMPARABILITY / ADAPTATION LIMITED\n"}
+,{"stream_name":"stdout","time":169.697078314,"data":"Complete: True; paired seed groups with full evidence: 3/3; missing events: 0\n"}
+,{"stream_name":"stdout","time":169.697909872,"data":"Seed 101: D=+0.20147  D3050=+0.08640  Q=+0.18996  prefix gap=0.73%  code improvement RMS=0.1064 Taper=0.0203  matched={3: None, 6: None, 12: None}\n"}
+,{"stream_name":"stdout","time":169.698724855,"data":"Seed 102: D=+0.33963  D3050=+0.13615  Q=+0.32708  prefix gap=0.38%  code improvement RMS=0.0777 Taper=0.0304  matched={3: 0.09384, 6: None, 12: None}\n"}
+,{"stream_name":"stdout","time":169.699538888,"data":"Seed 103: D=+0.12377  D3050=+0.04783  Q=+0.12704  prefix gap=0.46%  code improvement RMS=0.0631 Taper=0.1448  matched={3: 0.01742, 6: 0.07345, 12: -0.00685}\n"}
+,{"stream_name":"stdout","time":169.700327894,"data":"Mean D = +0.22162 nats/token, SD 0.10933, descriptive t95 [-0.05000, +0.49325]\n"}
+,{"stream_name":"stdout","time":169.701164229,"data":"Reason: Primary guardrail failed for seed 101\n"}
+,{"stream_name":"stdout","time":169.701956134,"data":"Reason: Primary guardrail failed for seed 102\n"}
+,{"stream_name":"stdout","time":169.702776442,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":171.669926192,"data":"[22:33:48] Study 2 runner s2-single-notebook-1; session budget 0.03 h (0.03 h of work time left)\n"}
+,{"stream_name":"stdout","time":171.707500327,"data":"[22:33:48] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":171.709017444,"data":"[22:33:48] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":171.709459699,"data":"[22:33:48] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":171.710154492,"data":"[22:33:48] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":171.71084506,"data":"[22:33:48] pilot_state: /tmp/s2smoke/pilot/h1state\n"}
+,{"stream_name":"stdout","time":180.38885402,"data":"[22:33:57] Pilot assets and data hashes verified in 9s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":180.389653228,"data":"[22:33:57] NEW experiment created; config sha256 b48a95b8c201d013\n"}
+,{"stream_name":"stdout","time":180.461430067,"data":"[22:33:57] Session 1: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":183.083920528,"data":"[RMS] [22:34:00] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.03 h\n"}
+,{"stream_name":"stdout","time":183.118847645,"data":"[Taper-minus] [22:34:00] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.03 h\n"}
+,{"stream_name":"stdout","time":186.032692001,"data":"[RMS] [22:34:03] S101-RMS: branch 'x' starts from the pilot's switch bc1825f79563\n"}
+,{"stream_name":"stdout","time":186.334716874,"data":"[Taper-minus] [22:34:03] S101-Taper-minus: branch 'x' starts from the pilot's switch 16d62136d8ca\n"}
+,{"stream_name":"stdout","time":187.539729417,"data":"[RMS] [22:34:04] S101-RMS x@0: full-dev web CE 8.4413, x non-W CE 10.1640\n"}
+,{"stream_name":"stdout","time":187.573965867,"data":"[RMS] [22:34:04] S101-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":187.812372656,"data":"[Taper-minus] [22:34:04] S101-Taper-minus x@0: full-dev web CE 8.5029, x non-W CE 10.1453\n"}
+,{"stream_name":"stdout","time":187.851676871,"data":"[Taper-minus] [22:34:05] S101-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":188.776770728,"data":"[RMS] [22:34:05] S101-RMS x@1: full-dev web CE 8.4049, x non-W CE 10.1154\n"}
+,{"stream_name":"stdout","time":189.001373486,"data":"[Taper-minus] [22:34:06] S101-Taper-minus x@1: full-dev web CE 8.4671, x non-W CE 10.0951\n"}
+,{"stream_name":"stdout","time":190.701435962,"data":"[RMS] [22:34:07] S101-RMS x@3: full-dev web CE 8.3588, x non-W CE 9.9988\n"}
+,{"stream_name":"stdout","time":190.823321681,"data":"[Taper-minus] [22:34:08] S101-Taper-minus x@3: full-dev web CE 8.4322, x non-W CE 9.9708\n"}
+,{"stream_name":"stdout","time":193.11746244,"data":"[Taper-minus] [22:34:10] S101-Taper-minus x@6: full-dev web CE 8.4563, x non-W CE 9.8031\n"}
+,{"stream_name":"stdout","time":193.11826875,"data":"[RMS] [22:34:10] S101-RMS x@6: full-dev web CE 8.3431, x non-W CE 9.8391\n"}
+,{"stream_name":"stdout","time":194.896743161,"data":"[Taper-minus] [22:34:12] S101-Taper-minus x@9: full-dev web CE 8.4947, x non-W CE 9.6886\n"}
+,{"stream_name":"stdout","time":195.032002095,"data":"[RMS] [22:34:12] S101-RMS x@9: full-dev web CE 8.3546, x non-W CE 9.7239\n"}
+,{"stream_name":"stdout","time":197.065638751,"data":"[Taper-minus] [22:34:14] S101-Taper-minus x@12: full-dev web CE 8.5445, x non-W CE 9.6040\n"}
+,{"stream_name":"stdout","time":197.17359875,"data":"[Taper-minus] [22:34:14] S101-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":197.323752187,"data":"[RMS] [22:34:14] S101-RMS x@12: full-dev web CE 8.3761, x non-W CE 9.6338\n"}
+,{"stream_name":"stdout","time":197.425227443,"data":"[RMS] [22:34:14] S101-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":199.105757486,"data":"[RMS] [22:34:16] S102-RMS: branch 'x' starts from the pilot's switch 821da5ddd9c9\n"}
+,{"stream_name":"stdout","time":199.152920817,"data":"[Taper-minus] [22:34:16] S102-Taper-minus: branch 'x' starts from the pilot's switch 272e4835a0e5\n"}
+,{"stream_name":"stdout","time":200.189603462,"data":"[Taper-minus] [22:34:17] S102-Taper-minus x@0: full-dev web CE 8.5254, x non-W CE 10.7395\n"}
+,{"stream_name":"stdout","time":200.190730215,"data":"[RMS] [22:34:17] S102-RMS x@0: full-dev web CE 8.4929, x non-W CE 10.7355\n"}
+,{"stream_name":"stdout","time":200.215056088,"data":"[Taper-minus] [22:34:17] S102-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":200.223829716,"data":"[RMS] [22:34:17] S102-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":201.311236281,"data":"[Taper-minus] [22:34:18] S102-Taper-minus x@1: full-dev web CE 8.5014, x non-W CE 10.6702\n"}
+,{"stream_name":"stdout","time":201.398630702,"data":"[RMS] [22:34:18] S102-RMS x@1: full-dev web CE 8.4564, x non-W CE 10.6809\n"}
+,{"stream_name":"stdout","time":203.163881622,"data":"[Taper-minus] [22:34:20] S102-Taper-minus x@3: full-dev web CE 8.5175, x non-W CE 10.5104\n"}
+,{"stream_name":"stdout","time":203.358871836,"data":"[RMS] [22:34:20] S102-RMS x@3: full-dev web CE 8.4133, x non-W CE 10.5123\n"}
+,{"stream_name":"stdout","time":205.281332227,"data":"[Taper-minus] [22:34:22] S102-Taper-minus x@6: full-dev web CE 8.5694, x non-W CE 10.3204\n"}
+,{"stream_name":"stdout","time":205.655877498,"data":"[RMS] [22:34:22] S102-RMS x@6: full-dev web CE 8.3955, x non-W CE 10.3538\n"}
+,{"stream_name":"stdout","time":207.107677897,"data":"[Taper-minus] [22:34:24] S102-Taper-minus x@9: full-dev web CE 8.5927, x non-W CE 10.1885\n"}
+,{"stream_name":"stdout","time":207.638723892,"data":"[RMS] [22:34:24] S102-RMS x@9: full-dev web CE 8.3956, x non-W CE 10.2406\n"}
+,{"stream_name":"stdout","time":209.321030235,"data":"[Taper-minus] [22:34:26] S102-Taper-minus x@12: full-dev web CE 8.7119, x non-W CE 10.1128\n"}
+,{"stream_name":"stdout","time":209.425507059,"data":"[Taper-minus] [22:34:26] S102-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":210.009607617,"data":"[RMS] [22:34:27] S102-RMS x@12: full-dev web CE 8.4016, x non-W CE 10.1516\n"}
+,{"stream_name":"stdout","time":210.108165695,"data":"[RMS] [22:34:27] S102-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":211.426421664,"data":"[Taper-minus] [22:34:28] S103-Taper-minus: branch 'x' starts from the pilot's switch 0b8efc62124d\n"}
+,{"stream_name":"stdout","time":211.835275283,"data":"[RMS] [22:34:29] S103-RMS: branch 'x' starts from the pilot's switch e9b2e71b515b\n"}
+,{"stream_name":"stdout","time":212.443430151,"data":"[Taper-minus] [22:34:29] S103-Taper-minus x@0: full-dev web CE 8.5589, x non-W CE 10.2985\n"}
+,{"stream_name":"stdout","time":212.480067474,"data":"[Taper-minus] [22:34:29] S103-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":212.880596294,"data":"[RMS] [22:34:30] S103-RMS x@0: full-dev web CE 8.5197, x non-W CE 10.3062\n"}
+,{"stream_name":"stdout","time":212.914430714,"data":"[RMS] [22:34:30] S103-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":213.602894749,"data":"[Taper-minus] [22:34:30] S103-Taper-minus x@1: full-dev web CE 8.5235, x non-W CE 10.2483\n"}
+,{"stream_name":"stdout","time":214.121343109,"data":"[RMS] [22:34:31] S103-RMS x@1: full-dev web CE 8.4830, x non-W CE 10.2578\n"}
+,{"stream_name":"stdout","time":215.453310667,"data":"[Taper-minus] [22:34:32] S103-Taper-minus x@3: full-dev web CE 8.4810, x non-W CE 10.1308\n"}
+,{"stream_name":"stdout","time":216.129782297,"data":"[RMS] [22:34:33] S103-RMS x@3: full-dev web CE 8.4371, x non-W CE 10.1440\n"}
+,{"stream_name":"stdout","time":217.602544758,"data":"[Taper-minus] [22:34:34] S103-Taper-minus x@6: full-dev web CE 8.4817, x non-W CE 9.9702\n"}
+,{"stream_name":"stdout","time":218.464309131,"data":"[RMS] [22:34:35] S103-RMS x@6: full-dev web CE 8.4234, x non-W CE 9.9859\n"}
+,{"stream_name":"stdout","time":219.450706351,"data":"[Taper-minus] [22:34:36] S103-Taper-minus x@9: full-dev web CE 8.5233, x non-W CE 9.8564\n"}
+,{"stream_name":"stdout","time":220.475451798,"data":"[RMS] [22:34:37] S103-RMS x@9: full-dev web CE 8.4403, x non-W CE 9.8737\n"}
+,{"stream_name":"stdout","time":221.665170632,"data":"[Taper-minus] [22:34:38] S103-Taper-minus x@12: full-dev web CE 8.5740, x non-W CE 9.7724\n"}
+,{"stream_name":"stdout","time":221.77818279,"data":"[Taper-minus] [22:34:38] S103-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":222.362772831,"data":"[Taper-minus] [22:34:39] S104-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":222.852031018,"data":"[RMS] [22:34:40] S103-RMS x@12: full-dev web CE 8.4625, x non-W CE 9.7876\n"}
+,{"stream_name":"stdout","time":222.952911627,"data":"[RMS] [22:34:40] S103-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":223.283511174,"data":"[RMS] [22:34:40] S104-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":225.596613312,"data":"[Taper-minus] [22:34:42] S104-Taper-minus prefix@6: full-dev web CE 9.7774, python non-W CE 10.2109\n"}
+,{"stream_name":"stdout","time":226.286784458,"data":"[RMS] [22:34:43] S104-RMS prefix@6: full-dev web CE 9.7774, python non-W CE 10.2109\n"}
+,{"stream_name":"stdout","time":227.831667718,"data":"[Taper-minus] [22:34:45] S104-Taper-minus prefix@10: full-dev web CE 9.2574, python non-W CE 9.8700\n"}
+,{"stream_name":"stdout","time":228.47201081,"data":"[RMS] [22:34:45] S104-RMS prefix@10: full-dev web CE 9.2468, python non-W CE 9.8708\n"}
+,{"stream_name":"stdout","time":230.376824704,"data":"[Taper-minus] [22:34:47] S104-Taper-minus prefix@14: full-dev web CE 8.8589, python non-W CE 9.6570\n"}
+,{"stream_name":"stdout","time":230.627796918,"data":"[RMS] [22:34:47] S104-RMS prefix@14: full-dev web CE 8.8321, python non-W CE 9.6401\n"}
+,{"stream_name":"stdout","time":231.668319617,"data":"[Taper-minus] [22:34:48] S104-Taper-minus prefix@16: full-dev web CE 8.7037, python non-W CE 9.5657\n"}
+,{"stream_name":"stdout","time":232.013109834,"data":"[RMS] [22:34:49] S104-RMS prefix@16: full-dev web CE 8.6746, python non-W CE 9.5574\n"}
+,{"stream_name":"stdout","time":232.609150521,"data":"[Taper-minus] [22:34:49] S104-Taper-minus prefix@17: full-dev web CE 8.6395, python non-W CE 9.5301\n"}
+,{"stream_name":"stdout","time":233.014296296,"data":"[RMS] [22:34:50] S104-RMS prefix@17: full-dev web CE 8.6091, python non-W CE 9.5248\n"}
+,{"stream_name":"stdout","time":233.553011878,"data":"[Taper-minus] [22:34:50] S104-Taper-minus prefix@18: full-dev web CE 8.5799, python non-W CE 9.5002\n"}
+,{"stream_name":"stdout","time":234.013342429,"data":"[RMS] [22:34:51] S104-RMS prefix@18: full-dev web CE 8.5489, python non-W CE 9.4955\n"}
+,{"stream_name":"stdout","time":234.496781713,"data":"[Taper-minus] [22:34:51] S104-Taper-minus prefix@19: full-dev web CE 8.5255, python non-W CE 9.4762\n"}
+,{"stream_name":"stdout","time":235.011186115,"data":"[RMS] [22:34:52] S104-RMS prefix@19: full-dev web CE 8.4968, python non-W CE 9.4717\n"}
+,{"stream_name":"stdout","time":235.804019377,"data":"[Taper-minus] [22:34:52] S104-Taper-minus prefix@20: full-dev web CE 8.4812, python non-W CE 9.4587\n"}
+,{"stream_name":"stdout","time":237.189663025,"data":"[RMS] [22:34:54] S104-RMS prefix@20: full-dev web CE 8.4520, python non-W CE 9.4530\n"}
+,{"stream_name":"stdout","time":240.152537729,"data":"[Taper-minus] [22:34:57] S104-Taper-minus: branch 'web' starts from switch 32c9ab852dd1\n"}
+,{"stream_name":"stdout","time":241.523837158,"data":"[RMS] [22:34:58] S104-RMS: branch 'web' starts from switch 34ea2dd3b64a\n"}
+,{"stream_name":"stdout","time":241.56747402,"data":"[Taper-minus] [22:34:58] S104-Taper-minus web@0: full-dev web CE 8.4812, python non-W CE 9.4587\n"}
+,{"stream_name":"stdout","time":241.584164146,"data":"[Taper-minus] [22:34:58] S104-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":242.552967642,"data":"[RMS] [22:34:59] S104-RMS web@0: full-dev web CE 8.4520, python non-W CE 9.4530\n"}
+,{"stream_name":"stdout","time":242.580221814,"data":"[RMS] [22:34:59] S104-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":242.661417838,"data":"[Taper-minus] [22:34:59] S104-Taper-minus web@1: full-dev web CE 8.4415, python non-W CE 9.4410\n"}
+,{"stream_name":"stdout","time":243.708143848,"data":"[RMS] [22:35:00] S104-RMS web@1: full-dev web CE 8.4119, python non-W CE 9.4338\n"}
+,{"stream_name":"stdout","time":244.459298768,"data":"[Taper-minus] [22:35:01] S104-Taper-minus web@3: full-dev web CE 8.3726, python non-W CE 9.4109\n"}
+,{"stream_name":"stdout","time":245.602432711,"data":"[RMS] [22:35:02] S104-RMS web@3: full-dev web CE 8.3458, python non-W CE 9.4036\n"}
+,{"stream_name":"stdout","time":246.555761379,"data":"[Taper-minus] [22:35:03] S104-Taper-minus web@6: full-dev web CE 8.3008, python non-W CE 9.3862\n"}
+,{"stream_name":"stdout","time":247.797629877,"data":"[RMS] [22:35:04] S104-RMS web@6: full-dev web CE 8.2774, python non-W CE 9.3795\n"}
+,{"stream_name":"stdout","time":248.347122144,"data":"[Taper-minus] [22:35:05] S104-Taper-minus web@9: full-dev web CE 8.2576, python non-W CE 9.3710\n"}
+,{"stream_name":"stdout","time":249.684320608,"data":"[RMS] [22:35:06] S104-RMS web@9: full-dev web CE 8.2353, python non-W CE 9.3663\n"}
+,{"stream_name":"stdout","time":250.493862023,"data":"[Taper-minus] [22:35:07] S104-Taper-minus web@12: full-dev web CE 8.2267, python non-W CE 9.3610\n"}
+,{"stream_name":"stdout","time":252.787155161,"data":"[RMS] [22:35:09] S104-RMS web@12: full-dev web CE 8.2052, python non-W CE 9.3557\n"}
+,{"stream_name":"stdout","time":253.147994194,"data":"[Taper-minus] [22:35:10] S104-Taper-minus: branch 'python' starts from switch 32c9ab852dd1\n"}
+,{"stream_name":"stdout","time":255.002017083,"data":"[Taper-minus] [22:35:12] S104-Taper-minus python@0: full-dev web CE 8.4812, python non-W CE 9.4587\n"}
+,{"stream_name":"stdout","time":255.040887429,"data":"[Taper-minus] [22:35:12] S104-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":255.407968338,"data":"[RMS] [22:35:12] S104-RMS: branch 'python' starts from switch 34ea2dd3b64a\n"}
+,{"stream_name":"stdout","time":256.121845629,"data":"[Taper-minus] [22:35:13] S104-Taper-minus python@1: full-dev web CE 8.4521, python non-W CE 9.4379\n"}
+,{"stream_name":"stdout","time":256.443426869,"data":"[RMS] [22:35:13] S104-RMS python@0: full-dev web CE 8.4520, python non-W CE 9.4530\n"}
+,{"stream_name":"stdout","time":256.472090097,"data":"[RMS] [22:35:13] S104-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":257.603972033,"data":"[RMS] [22:35:14] S104-RMS python@1: full-dev web CE 8.4183, python non-W CE 9.4369\n"}
+,{"stream_name":"stdout","time":257.933999281,"data":"[Taper-minus] [22:35:15] S104-Taper-minus python@3: full-dev web CE 8.4820, python non-W CE 9.4364\n"}
+,{"stream_name":"stdout","time":260.192402563,"data":"[RMS] [22:35:17] S104-RMS python@3: full-dev web CE 8.3827, python non-W CE 9.4358\n"}
+,{"stream_name":"stdout","time":260.661206811,"data":"[Taper-minus] [22:35:17] S104-Taper-minus python@6: full-dev web CE 8.5043, python non-W CE 9.4001\n"}
+,{"stream_name":"stdout","time":262.416431412,"data":"[RMS] [22:35:19] S104-RMS python@6: full-dev web CE 8.3706, python non-W CE 9.3600\n"}
+,{"stream_name":"stdout","time":262.435390446,"data":"[Taper-minus] [22:35:19] S104-Taper-minus python@9: full-dev web CE 8.5531, python non-W CE 9.3988\n"}
+,{"stream_name":"stdout","time":264.328203118,"data":"[RMS] [22:35:21] S104-RMS python@9: full-dev web CE 8.4015, python non-W CE 9.3629\n"}
+,{"stream_name":"stdout","time":264.602904662,"data":"[Taper-minus] [22:35:21] S104-Taper-minus python@12: full-dev web CE 8.6265, python non-W CE 9.4027\n"}
+,{"stream_name":"stdout","time":267.199085403,"data":"[Taper-minus] [22:35:24] S104-Taper-minus: branch 'x' starts from switch 32c9ab852dd1\n"}
+,{"stream_name":"stdout","time":267.309224933,"data":"[RMS] [22:35:24] S104-RMS python@12: full-dev web CE 8.4532, python non-W CE 9.3969\n"}
+,{"stream_name":"stdout","time":268.227766998,"data":"[Taper-minus] [22:35:25] S104-Taper-minus x@0: full-dev web CE 8.4812, x non-W CE 10.8113\n"}
+,{"stream_name":"stdout","time":268.270016835,"data":"[Taper-minus] [22:35:25] S104-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":269.799698443,"data":"[Taper-minus] [22:35:26] S104-Taper-minus x@1: full-dev web CE 8.4490, x non-W CE 10.7285\n"}
+,{"stream_name":"stdout","time":269.958053299,"data":"[RMS] [22:35:27] S104-RMS: branch 'x' starts from switch 34ea2dd3b64a\n"}
+,{"stream_name":"stdout","time":271.034602378,"data":"[RMS] [22:35:28] S104-RMS x@0: full-dev web CE 8.4520, x non-W CE 10.8224\n"}
+,{"stream_name":"stdout","time":271.073365764,"data":"[RMS] [22:35:28] S104-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":271.627595694,"data":"[Taper-minus] [22:35:28] S104-Taper-minus x@3: full-dev web CE 8.4351, x non-W CE 10.5277\n"}
+,{"stream_name":"stdout","time":272.236339998,"data":"[RMS] [22:35:29] S104-RMS x@1: full-dev web CE 8.4173, x non-W CE 10.7687\n"}
+,{"stream_name":"stdout","time":273.74463719,"data":"[Taper-minus] [22:35:30] S104-Taper-minus x@6: full-dev web CE 8.4647, x non-W CE 10.3854\n"}
+,{"stream_name":"stdout","time":274.164770507,"data":"[RMS] [22:35:31] S104-RMS x@3: full-dev web CE 8.3755, x non-W CE 10.6100\n"}
+,{"stream_name":"stdout","time":277.130416011,"data":"[Taper-minus] [22:35:34] worker Taper-minus: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":277.135644768,"data":"[RMS] [22:35:34] worker RMS: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":281.018632031,"data":"\n"}
+,{"stream_name":"stdout","time":281.020183065,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":281.021366202,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":281.021887662,"data":"  S101-RMS: complete\n"}
+,{"stream_name":"stdout","time":281.022868609,"data":"  S102-RMS: complete\n"}
+,{"stream_name":"stdout","time":281.023721702,"data":"  S103-RMS: complete\n"}
+,{"stream_name":"stdout","time":281.024633777,"data":"  S104-RMS: x step 4/12\n"}
+,{"stream_name":"stdout","time":281.025428011,"data":"  S105-RMS: not started\n"}
+,{"stream_name":"stdout","time":281.026361501,"data":"  S106-RMS: not started\n"}
+,{"stream_name":"stdout","time":281.027063276,"data":"  S101-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":281.027969712,"data":"  S102-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":281.02882858,"data":"  S103-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":281.029805111,"data":"  S104-Taper-minus: x step 8/12\n"}
+,{"stream_name":"stdout","time":281.030770453,"data":"  S105-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":281.031653982,"data":"  S106-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":281.032561802,"data":"[22:35:38] RMS: 120 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":281.033490181,"data":"[22:35:38] Taper-minus: 116 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":281.034387792,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":281.035284471,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":281.036120687,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":281.037229483,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":281.037923123,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":281.038715559,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 3/6, R2 1/3; missing events: 484; incomplete runs: 6\n"}
+,{"stream_name":"stdout","time":281.039429471,"data":"H2 seed 101: D=+0.11835  D3050=+0.05666  Q=+0.10684  prefix gap=0.73%  adaptation RMS=0.5302 Taper=0.5413  matched={3: 0.0192, 6: 0.04543, 12: 0.08736}\n"}
+,{"stream_name":"stdout","time":281.040167186,"data":"H2 seed 102: D=+0.29039  D3050=+0.14866  Q=+0.27784  prefix gap=0.38%  adaptation RMS=0.5838 Taper=0.6267  matched={3: 0.06241, 6: 0.16183, 12: 0.1886}\n"}
+,{"stream_name":"stdout","time":281.040960084,"data":"H2 seed 103: D=+0.06905  D3050=+0.01653  Q=+0.07232  prefix gap=0.46%  adaptation RMS=0.5187 Taper=0.5261  matched={3: 0.00886, 6: 0.01599, 12: 0.0609}\n"}
+,{"stream_name":"stdout","time":281.041717995,"data":"R2 seed 104: D=+0.15177  D3050=+0.11028  Q=+0.14418  prefix gap=0.34%  adaptation RMS=0.0561 Taper=0.0560  matched={3: 0.03983, 6: None, 12: 0.02504}\n"}
+,{"stream_name":"stdout","time":281.042434364,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":281.043097847,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":281.043808169,"data":"Manipulation check: {'switch_gap_larger_for_x': True, 'specific_change_larger_for_x': False}\n"}
+,{"stream_name":"stdout","time":281.044530026,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":281.04519755,"data":"NOT FINISHED: run this notebook again (Save Version -\u003e Save \u0026 Run All). It resumes automatically from this output.\n"}
+,{"stream_name":"stdout","time":283.049748472,"data":"[22:35:40] Study 2 runner s2-single-notebook-1; session budget 0.03 h (0.03 h of work time left)\n"}
+,{"stream_name":"stdout","time":283.538585757,"data":"[22:35:40] Restored previous session state from /tmp/s2smoke/m1/s2state in 0s\n"}
+,{"stream_name":"stdout","time":283.539441317,"data":"[22:35:40] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":283.540426327,"data":"[22:35:40] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":283.541147353,"data":"[22:35:40] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":283.541864169,"data":"[22:35:40] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":283.542581922,"data":"[22:35:40] pilot_state: /tmp/s2smoke/pilot/h1state\n"}
+,{"stream_name":"stdout","time":290.488585047,"data":"[22:35:47] Pilot assets and data hashes verified in 7s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":290.561371478,"data":"[22:35:47] Session 2: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":293.504165963,"data":"[Taper-minus] [22:35:50] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.03 h\n"}
+,{"stream_name":"stdout","time":293.511629165,"data":"[RMS] [22:35:50] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.03 h\n"}
+,{"stream_name":"stdout","time":295.957655976,"data":"[RMS] [22:35:53] S104-RMS: resumed at x step 4 (global update 24)\n"}
+,{"stream_name":"stdout","time":296.229328201,"data":"[Taper-minus] [22:35:53] S104-Taper-minus: resumed at x step 8 (global update 28)\n"}
+,{"stream_name":"stdout","time":298.443304549,"data":"[Taper-minus] [22:35:55] S104-Taper-minus x@9: full-dev web CE 8.5316, x non-W CE 10.2731\n"}
+,{"stream_name":"stdout","time":299.205704509,"data":"[RMS] [22:35:56] S104-RMS x@6: full-dev web CE 8.3604, x non-W CE 10.4468\n"}
+,{"stream_name":"stdout","time":302.119687779,"data":"[Taper-minus] [22:35:59] S104-Taper-minus x@12: full-dev web CE 8.6373, x non-W CE 10.1840\n"}
+,{"stream_name":"stdout","time":302.239900311,"data":"[Taper-minus] [22:35:59] S104-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":302.417416418,"data":"[RMS] [22:35:59] S104-RMS x@9: full-dev web CE 8.3652, x non-W CE 10.3091\n"}
+,{"stream_name":"stdout","time":302.845113858,"data":"[Taper-minus] [22:36:00] S105-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":304.850783053,"data":"[RMS] [22:36:02] S104-RMS x@12: full-dev web CE 8.3773, x non-W CE 10.2243\n"}
+,{"stream_name":"stdout","time":304.963359489,"data":"[RMS] [22:36:02] S104-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":305.301564243,"data":"[RMS] [22:36:02] S105-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":305.710354749,"data":"[Taper-minus] [22:36:02] S105-Taper-minus prefix@6: full-dev web CE 9.8362, python non-W CE 10.2525\n"}
+,{"stream_name":"stdout","time":307.915853887,"data":"[Taper-minus] [22:36:05] S105-Taper-minus prefix@10: full-dev web CE 9.3145, python non-W CE 9.9330\n"}
+,{"stream_name":"stdout","time":308.231328727,"data":"[RMS] [22:36:05] S105-RMS prefix@6: full-dev web CE 9.8362, python non-W CE 10.2525\n"}
+,{"stream_name":"stdout","time":310.020632604,"data":"[Taper-minus] [22:36:07] S105-Taper-minus prefix@14: full-dev web CE 8.9075, python non-W CE 9.7122\n"}
+,{"stream_name":"stdout","time":310.405574703,"data":"[RMS] [22:36:07] S105-RMS prefix@10: full-dev web CE 9.3102, python non-W CE 9.9311\n"}
+,{"stream_name":"stdout","time":311.322991216,"data":"[Taper-minus] [22:36:08] S105-Taper-minus prefix@16: full-dev web CE 8.7519, python non-W CE 9.6370\n"}
+,{"stream_name":"stdout","time":312.270394545,"data":"[Taper-minus] [22:36:09] S105-Taper-minus prefix@17: full-dev web CE 8.6895, python non-W CE 9.6055\n"}
+,{"stream_name":"stdout","time":312.585001484,"data":"[RMS] [22:36:09] S105-RMS prefix@14: full-dev web CE 8.8915, python non-W CE 9.7085\n"}
+,{"stream_name":"stdout","time":313.219094626,"data":"[Taper-minus] [22:36:10] S105-Taper-minus prefix@18: full-dev web CE 8.6306, python non-W CE 9.5790\n"}
+,{"stream_name":"stdout","time":313.989962413,"data":"[RMS] [22:36:11] S105-RMS prefix@16: full-dev web CE 8.7355, python non-W CE 9.6288\n"}
+,{"stream_name":"stdout","time":314.170981067,"data":"[Taper-minus] [22:36:11] S105-Taper-minus prefix@19: full-dev web CE 8.5799, python non-W CE 9.5571\n"}
+,{"stream_name":"stdout","time":315.012351201,"data":"[RMS] [22:36:12] S105-RMS prefix@17: full-dev web CE 8.6686, python non-W CE 9.5936\n"}
+,{"stream_name":"stdout","time":315.488283815,"data":"[Taper-minus] [22:36:12] S105-Taper-minus prefix@20: full-dev web CE 8.5316, python non-W CE 9.5389\n"}
+,{"stream_name":"stdout","time":316.660617642,"data":"[RMS] [22:36:13] S105-RMS prefix@18: full-dev web CE 8.6087, python non-W CE 9.5639\n"}
+,{"stream_name":"stdout","time":317.69358091,"data":"[RMS] [22:36:14] S105-RMS prefix@19: full-dev web CE 8.5553, python non-W CE 9.5402\n"}
+,{"stream_name":"stdout","time":319.785695066,"data":"[Taper-minus] [22:36:16] S105-Taper-minus: branch 'web' starts from switch c12712eff8bd\n"}
+,{"stream_name":"stdout","time":319.904655396,"data":"[RMS] [22:36:17] S105-RMS prefix@20: full-dev web CE 8.5079, python non-W CE 9.5213\n"}
+,{"stream_name":"stdout","time":321.446754685,"data":"[Taper-minus] [22:36:18] S105-Taper-minus web@0: full-dev web CE 8.5316, python non-W CE 9.5389\n"}
+,{"stream_name":"stdout","time":321.464499433,"data":"[Taper-minus] [22:36:18] S105-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":322.568337917,"data":"[Taper-minus] [22:36:19] S105-Taper-minus web@1: full-dev web CE 8.4898, python non-W CE 9.5230\n"}
+,{"stream_name":"stdout","time":324.181850531,"data":"[RMS] [22:36:21] S105-RMS: branch 'web' starts from switch 8604fc4aaf40\n"}
+,{"stream_name":"stdout","time":325.013611615,"data":"[Taper-minus] [22:36:22] S105-Taper-minus web@3: full-dev web CE 8.4232, python non-W CE 9.4959\n"}
+,{"stream_name":"stdout","time":325.225568593,"data":"[RMS] [22:36:22] S105-RMS web@0: full-dev web CE 8.5079, python non-W CE 9.5213\n"}
+,{"stream_name":"stdout","time":325.243478799,"data":"[RMS] [22:36:22] S105-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":326.45089933,"data":"[RMS] [22:36:23] S105-RMS web@1: full-dev web CE 8.4674, python non-W CE 9.5061\n"}
+,{"stream_name":"stdout","time":327.164812718,"data":"[Taper-minus] [22:36:24] S105-Taper-minus web@6: full-dev web CE 8.3528, python non-W CE 9.4598\n"}
+,{"stream_name":"stdout","time":328.444503128,"data":"[RMS] [22:36:25] S105-RMS web@3: full-dev web CE 8.4010, python non-W CE 9.4788\n"}
+,{"stream_name":"stdout","time":329.004421565,"data":"[Taper-minus] [22:36:26] S105-Taper-minus web@9: full-dev web CE 8.3086, python non-W CE 9.4368\n"}
+,{"stream_name":"stdout","time":330.774530506,"data":"[RMS] [22:36:27] S105-RMS web@6: full-dev web CE 8.3307, python non-W CE 9.4443\n"}
+,{"stream_name":"stdout","time":332.132687684,"data":"[Taper-minus] [22:36:29] S105-Taper-minus web@12: full-dev web CE 8.2760, python non-W CE 9.4219\n"}
+,{"stream_name":"stdout","time":333.261204881,"data":"[RMS] [22:36:30] S105-RMS web@9: full-dev web CE 8.2883, python non-W CE 9.4237\n"}
+,{"stream_name":"stdout","time":334.769010258,"data":"[Taper-minus] [22:36:31] S105-Taper-minus: branch 'python' starts from switch c12712eff8bd\n"}
+,{"stream_name":"stdout","time":335.817048602,"data":"[Taper-minus] [22:36:33] S105-Taper-minus python@0: full-dev web CE 8.5316, python non-W CE 9.5389\n"}
+,{"stream_name":"stdout","time":335.850480341,"data":"[Taper-minus] [22:36:33] S105-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":336.066448057,"data":"[RMS] [22:36:33] S105-RMS web@12: full-dev web CE 8.2574, python non-W CE 9.4112\n"}
+,{"stream_name":"stdout","time":338.235980013,"data":"[Taper-minus] [22:36:35] S105-Taper-minus python@1: full-dev web CE 8.4938, python non-W CE 9.5119\n"}
+,{"stream_name":"stdout","time":338.754839708,"data":"[RMS] [22:36:35] S105-RMS: branch 'python' starts from switch 8604fc4aaf40\n"}
+,{"stream_name":"stdout","time":339.809459622,"data":"[RMS] [22:36:36] S105-RMS python@0: full-dev web CE 8.5079, python non-W CE 9.5213\n"}
+,{"stream_name":"stdout","time":339.841431106,"data":"[RMS] [22:36:37] S105-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":340.101279784,"data":"[Taper-minus] [22:36:37] S105-Taper-minus python@3: full-dev web CE 8.4520, python non-W CE 9.4766\n"}
+,{"stream_name":"stdout","time":341.021462595,"data":"[RMS] [22:36:38] S105-RMS python@1: full-dev web CE 8.4712, python non-W CE 9.4922\n"}
+,{"stream_name":"stdout","time":342.250066488,"data":"[Taper-minus] [22:36:39] S105-Taper-minus python@6: full-dev web CE 8.4772, python non-W CE 9.4431\n"}
+,{"stream_name":"stdout","time":342.959738397,"data":"[RMS] [22:36:40] S105-RMS python@3: full-dev web CE 8.4271, python non-W CE 9.4534\n"}
+,{"stream_name":"stdout","time":344.082439795,"data":"[Taper-minus] [22:36:41] S105-Taper-minus python@9: full-dev web CE 8.5546, python non-W CE 9.4263\n"}
+,{"stream_name":"stdout","time":345.210311207,"data":"[RMS] [22:36:42] S105-RMS python@6: full-dev web CE 8.4153, python non-W CE 9.4325\n"}
+,{"stream_name":"stdout","time":346.296463104,"data":"[Taper-minus] [22:36:43] S105-Taper-minus python@12: full-dev web CE 8.6926, python non-W CE 9.4977\n"}
+,{"stream_name":"stdout","time":347.147450961,"data":"[RMS] [22:36:44] S105-RMS python@9: full-dev web CE 8.4299, python non-W CE 9.4144\n"}
+,{"stream_name":"stdout","time":348.932267578,"data":"[Taper-minus] [22:36:46] S105-Taper-minus: branch 'x' starts from switch c12712eff8bd\n"}
+,{"stream_name":"stdout","time":349.960458004,"data":"[Taper-minus] [22:36:47] S105-Taper-minus x@0: full-dev web CE 8.5316, x non-W CE 10.7611\n"}
+,{"stream_name":"stdout","time":350.002495606,"data":"[Taper-minus] [22:36:47] S105-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":350.190558217,"data":"[RMS] [22:36:47] S105-RMS python@12: full-dev web CE 8.4564, python non-W CE 9.4369\n"}
+,{"stream_name":"stdout","time":351.101240641,"data":"[Taper-minus] [22:36:48] S105-Taper-minus x@1: full-dev web CE 8.4953, x non-W CE 10.6972\n"}
+,{"stream_name":"stdout","time":352.884605532,"data":"[RMS] [22:36:50] S105-RMS: branch 'x' starts from switch 8604fc4aaf40\n"}
+,{"stream_name":"stdout","time":353.699002426,"data":"[Taper-minus] [22:36:50] S105-Taper-minus x@3: full-dev web CE 8.4575, x non-W CE 10.5220\n"}
+,{"stream_name":"stdout","time":353.932375544,"data":"[RMS] [22:36:51] S105-RMS x@0: full-dev web CE 8.5079, x non-W CE 10.7614\n"}
+,{"stream_name":"stdout","time":353.979181459,"data":"[RMS] [22:36:51] S105-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":355.147266461,"data":"[RMS] [22:36:52] S105-RMS x@1: full-dev web CE 8.4710, x non-W CE 10.7097\n"}
+,{"stream_name":"stdout","time":355.806294556,"data":"[Taper-minus] [22:36:52] S105-Taper-minus x@6: full-dev web CE 8.4498, x non-W CE 10.3525\n"}
+,{"stream_name":"stdout","time":357.0145931,"data":"[RMS] [22:36:54] S105-RMS x@3: full-dev web CE 8.4230, x non-W CE 10.5353\n"}
+,{"stream_name":"stdout","time":357.623274978,"data":"[Taper-minus] [22:36:54] S105-Taper-minus x@9: full-dev web CE 8.4686, x non-W CE 10.2397\n"}
+,{"stream_name":"stdout","time":359.217671797,"data":"[RMS] [22:36:56] S105-RMS x@6: full-dev web CE 8.3948, x non-W CE 10.3612\n"}
+,{"stream_name":"stdout","time":359.811307411,"data":"[Taper-minus] [22:36:56] S105-Taper-minus x@12: full-dev web CE 8.5084, x non-W CE 10.1480\n"}
+,{"stream_name":"stdout","time":359.927621387,"data":"[Taper-minus] [22:36:57] S105-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":360.573409129,"data":"[Taper-minus] [22:36:57] S106-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":361.118039116,"data":"[RMS] [22:36:58] S105-RMS x@9: full-dev web CE 8.3903, x non-W CE 10.2697\n"}
+,{"stream_name":"stdout","time":363.519951001,"data":"[Taper-minus] [22:37:00] S106-Taper-minus prefix@6: full-dev web CE 9.8309, python non-W CE 10.2199\n"}
+,{"stream_name":"stdout","time":363.588121653,"data":"[RMS] [22:37:00] S105-RMS x@12: full-dev web CE 8.3910, x non-W CE 10.1816\n"}
+,{"stream_name":"stdout","time":363.695054301,"data":"[RMS] [22:37:00] S105-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":364.036813493,"data":"[RMS] [22:37:01] S106-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":365.714157236,"data":"[Taper-minus] [22:37:02] S106-Taper-minus prefix@10: full-dev web CE 9.3291, python non-W CE 9.8855\n"}
+,{"stream_name":"stdout","time":366.905965907,"data":"[RMS] [22:37:04] S106-RMS prefix@6: full-dev web CE 9.8309, python non-W CE 10.2199\n"}
+,{"stream_name":"stdout","time":367.820930154,"data":"[Taper-minus] [22:37:05] S106-Taper-minus prefix@14: full-dev web CE 8.9231, python non-W CE 9.6701\n"}
+,{"stream_name":"stdout","time":369.222913365,"data":"[RMS] [22:37:06] S106-RMS prefix@10: full-dev web CE 9.2973, python non-W CE 9.8768\n"}
+,{"stream_name":"stdout","time":369.22442862,"data":"[Taper-minus] [22:37:06] S106-Taper-minus prefix@16: full-dev web CE 8.7582, python non-W CE 9.5969\n"}
+,{"stream_name":"stdout","time":370.161923317,"data":"[Taper-minus] [22:37:07] S106-Taper-minus prefix@17: full-dev web CE 8.6923, python non-W CE 9.5664\n"}
+,{"stream_name":"stdout","time":371.099541446,"data":"[Taper-minus] [22:37:08] S106-Taper-minus prefix@18: full-dev web CE 8.6344, python non-W CE 9.5362\n"}
+,{"stream_name":"stdout","time":371.335543846,"data":"[RMS] [22:37:08] S106-RMS prefix@14: full-dev web CE 8.8801, python non-W CE 9.6586\n"}
+,{"stream_name":"stdout","time":372.034018233,"data":"[Taper-minus] [22:37:09] S106-Taper-minus prefix@19: full-dev web CE 8.5808, python non-W CE 9.5185\n"}
+,{"stream_name":"stdout","time":372.699004115,"data":"[RMS] [22:37:09] S106-RMS prefix@16: full-dev web CE 8.7243, python non-W CE 9.5836\n"}
+,{"stream_name":"stdout","time":373.339944027,"data":"[Taper-minus] [22:37:10] S106-Taper-minus prefix@20: full-dev web CE 8.5347, python non-W CE 9.5025\n"}
+,{"stream_name":"stdout","time":374.50723283,"data":"[RMS] [22:37:11] S106-RMS prefix@17: full-dev web CE 8.6580, python non-W CE 9.5546\n"}
+,{"stream_name":"stdout","time":375.491130355,"data":"[RMS] [22:37:12] S106-RMS prefix@18: full-dev web CE 8.5979, python non-W CE 9.5292\n"}
+,{"stream_name":"stdout","time":377.055089817,"data":"[RMS] [22:37:14] S106-RMS prefix@19: full-dev web CE 8.5445, python non-W CE 9.5069\n"}
+,{"stream_name":"stdout","time":377.617800574,"data":"[Taper-minus] [22:37:14] S106-Taper-minus: branch 'web' starts from switch 0e35cbc753ca\n"}
+,{"stream_name":"stdout","time":378.467735621,"data":"[RMS] [22:37:15] S106-RMS prefix@20: full-dev web CE 8.4984, python non-W CE 9.4873\n"}
+,{"stream_name":"stdout","time":379.622375045,"data":"[Taper-minus] [22:37:16] S106-Taper-minus web@0: full-dev web CE 8.5347, python non-W CE 9.5025\n"}
+,{"stream_name":"stdout","time":379.638949979,"data":"[Taper-minus] [22:37:16] S106-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":380.720280709,"data":"[Taper-minus] [22:37:17] S106-Taper-minus web@1: full-dev web CE 8.4909, python non-W CE 9.4791\n"}
+,{"stream_name":"stdout","time":382.713576946,"data":"[RMS] [22:37:19] S106-RMS: branch 'web' starts from switch 998a46e7eede\n"}
+,{"stream_name":"stdout","time":382.796054224,"data":"[Taper-minus] [22:37:19] S106-Taper-minus web@3: full-dev web CE 8.4237, python non-W CE 9.4503\n"}
+,{"stream_name":"stdout","time":383.942616351,"data":"[RMS] [22:37:21] S106-RMS web@0: full-dev web CE 8.4984, python non-W CE 9.4873\n"}
+,{"stream_name":"stdout","time":383.960390422,"data":"[RMS] [22:37:21] S106-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":384.883117595,"data":"[Taper-minus] [22:37:22] S106-Taper-minus web@6: full-dev web CE 8.3547, python non-W CE 9.4267\n"}
+,{"stream_name":"stdout","time":385.114149499,"data":"[RMS] [22:37:22] S106-RMS web@1: full-dev web CE 8.4570, python non-W CE 9.4700\n"}
+,{"stream_name":"stdout","time":387.549346376,"data":"[RMS] [22:37:24] worker RMS: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":388.122435742,"data":"[Taper-minus] [22:37:25] worker Taper-minus: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":391.466374157,"data":"\n"}
+,{"stream_name":"stdout","time":391.467118645,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":391.468323586,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":391.46937519,"data":"  S101-RMS: complete\n"}
+,{"stream_name":"stdout","time":391.470387704,"data":"  S102-RMS: complete\n"}
+,{"stream_name":"stdout","time":391.471500869,"data":"  S103-RMS: complete\n"}
+,{"stream_name":"stdout","time":391.472569943,"data":"  S104-RMS: complete\n"}
+,{"stream_name":"stdout","time":391.473560202,"data":"  S105-RMS: complete\n"}
+,{"stream_name":"stdout","time":391.474638578,"data":"  S106-RMS: web step 2/12\n"}
+,{"stream_name":"stdout","time":391.47571817,"data":"  S101-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":391.476991071,"data":"  S102-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":391.47810972,"data":"  S103-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":391.479208737,"data":"  S104-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":391.480189088,"data":"  S105-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":391.481343601,"data":"  S106-Taper-minus: web step 8/12\n"}
+,{"stream_name":"stdout","time":391.483421017,"data":"[22:37:28] RMS: 34 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":391.4843491,"data":"[22:37:28] Taper-minus: 28 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":391.484363753,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":391.485314043,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":391.486349907,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":391.48716594,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":391.487904311,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":391.488716729,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 5/6, R2 2/3; missing events: 162; incomplete runs: 2\n"}
+,{"stream_name":"stdout","time":391.489461722,"data":"H2 seed 101: D=+0.11835  D3050=+0.05666  Q=+0.10684  prefix gap=0.73%  adaptation RMS=0.5302 Taper=0.5413  matched={3: 0.0192, 6: 0.04543, 12: 0.08736}\n"}
+,{"stream_name":"stdout","time":391.490192243,"data":"H2 seed 102: D=+0.29039  D3050=+0.14866  Q=+0.27784  prefix gap=0.38%  adaptation RMS=0.5838 Taper=0.6267  matched={3: 0.06241, 6: 0.16183, 12: 0.1886}\n"}
+,{"stream_name":"stdout","time":391.490865746,"data":"H2 seed 103: D=+0.06905  D3050=+0.01653  Q=+0.07232  prefix gap=0.46%  adaptation RMS=0.5187 Taper=0.5261  matched={3: 0.00886, 6: 0.01599, 12: 0.0609}\n"}
+,{"stream_name":"stdout","time":391.49166734,"data":"H2 seed 104: D=+0.23846  D3050=+0.08088  Q=+0.23086  prefix gap=0.34%  adaptation RMS=0.5980 Taper=0.6273  matched={3: 0.03211, 6: 0.0549, 12: 0.14412}\n"}
+,{"stream_name":"stdout","time":391.49245421,"data":"H2 seed 105: D=+0.09886  D3050=+0.03295  Q=+0.09368  prefix gap=0.28%  adaptation RMS=0.5798 Taper=0.6131  matched={3: 0.01892, 6: 0.03157, 12: 0.06909}\n"}
+,{"stream_name":"stdout","time":391.493204601,"data":"R2 seed 104: D=+0.15177  D3050=+0.11028  Q=+0.14418  prefix gap=0.34%  adaptation RMS=0.0561 Taper=0.0560  matched={3: 0.03983, 6: None, 12: 0.02504}\n"}
+,{"stream_name":"stdout","time":391.493932642,"data":"R2 seed 105: D=+0.21761  D3050=+0.03979  Q=+0.21243  prefix gap=0.28%  adaptation RMS=0.0844 Taper=0.0412  matched={3: 0.0195, 6: 0.05273, 12: 0.0005}\n"}
+,{"stream_name":"stdout","time":391.494740338,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":391.495501982,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":391.496206795,"data":"Manipulation check: {'switch_gap_larger_for_x': True, 'specific_change_larger_for_x': True}\n"}
+,{"stream_name":"stdout","time":391.496923163,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":391.497726426,"data":"NOT FINISHED: run this notebook again (Save Version -\u003e Save \u0026 Run All). It resumes automatically from this output.\n"}
+,{"stream_name":"stdout","time":393.520922426,"data":"[22:37:30] Study 2 runner s2-single-notebook-1; session budget 0.50 h (0.50 h of work time left)\n"}
+,{"stream_name":"stdout","time":394.482244953,"data":"[22:37:31] Restored previous session state from /tmp/s2smoke/m2/s2state in 1s\n"}
+,{"stream_name":"stdout","time":394.483845879,"data":"[22:37:31] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":394.485349318,"data":"[22:37:31] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":394.485987756,"data":"[22:37:31] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":394.486771889,"data":"[22:37:31] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":394.48755383,"data":"[22:37:31] pilot_state: /tmp/s2smoke/pilot/h1state\n"}
+,{"stream_name":"stdout","time":401.992124106,"data":"[22:37:39] Pilot assets and data hashes verified in 8s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":402.098849251,"data":"[22:37:39] Session 3: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":408.743520723,"data":"[RMS] [22:37:45] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.49 h\n"}
+,{"stream_name":"stdout","time":408.77076618,"data":"[Taper-minus] [22:37:45] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.49 h\n"}
+,{"stream_name":"stdout","time":411.17779588,"data":"[RMS] [22:37:48] S106-RMS: resumed at web step 2 (global update 22)\n"}
+,{"stream_name":"stdout","time":411.479419374,"data":"[Taper-minus] [22:37:48] S106-Taper-minus: resumed at web step 8 (global update 28)\n"}
+,{"stream_name":"stdout","time":413.023828169,"data":"[Taper-minus] [22:37:50] S106-Taper-minus web@9: full-dev web CE 8.3120, python non-W CE 9.4093\n"}
+,{"stream_name":"stdout","time":413.302393645,"data":"[RMS] [22:37:50] S106-RMS web@3: full-dev web CE 8.3901, python non-W CE 9.4428\n"}
+,{"stream_name":"stdout","time":415.294424121,"data":"[Taper-minus] [22:37:52] S106-Taper-minus web@12: full-dev web CE 8.2816, python non-W CE 9.4000\n"}
+,{"stream_name":"stdout","time":415.485242527,"data":"[RMS] [22:37:52] S106-RMS web@6: full-dev web CE 8.3221, python non-W CE 9.4163\n"}
+,{"stream_name":"stdout","time":417.708085875,"data":"[RMS] [22:37:54] S106-RMS web@9: full-dev web CE 8.2793, python non-W CE 9.4003\n"}
+,{"stream_name":"stdout","time":417.98462094,"data":"[Taper-minus] [22:37:55] S106-Taper-minus: branch 'python' starts from switch 0e35cbc753ca\n"}
+,{"stream_name":"stdout","time":418.9768084,"data":"[Taper-minus] [22:37:56] S106-Taper-minus python@0: full-dev web CE 8.5347, python non-W CE 9.5025\n"}
+,{"stream_name":"stdout","time":419.010451913,"data":"[Taper-minus] [22:37:56] S106-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":419.942317743,"data":"[RMS] [22:37:57] S106-RMS web@12: full-dev web CE 8.2485, python non-W CE 9.3887\n"}
+,{"stream_name":"stdout","time":420.086459731,"data":"[Taper-minus] [22:37:57] S106-Taper-minus python@1: full-dev web CE 8.5092, python non-W CE 9.4905\n"}
+,{"stream_name":"stdout","time":422.616983327,"data":"[RMS] [22:37:59] S106-RMS: branch 'python' starts from switch 998a46e7eede\n"}
+,{"stream_name":"stdout","time":422.692585822,"data":"[Taper-minus] [22:37:59] S106-Taper-minus python@3: full-dev web CE 8.4834, python non-W CE 9.4457\n"}
+,{"stream_name":"stdout","time":423.671426254,"data":"[RMS] [22:38:00] S106-RMS python@0: full-dev web CE 8.4984, python non-W CE 9.4873\n"}
+,{"stream_name":"stdout","time":423.712422111,"data":"[RMS] [22:38:00] S106-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":424.776950934,"data":"[Taper-minus] [22:38:01] S106-Taper-minus python@6: full-dev web CE 8.5155, python non-W CE 9.4241\n"}
+,{"stream_name":"stdout","time":424.855018712,"data":"[RMS] [22:38:02] S106-RMS python@1: full-dev web CE 8.4615, python non-W CE 9.4615\n"}
+,{"stream_name":"stdout","time":426.577851283,"data":"[Taper-minus] [22:38:03] S106-Taper-minus python@9: full-dev web CE 8.6959, python non-W CE 9.5240\n"}
+,{"stream_name":"stdout","time":426.77118757,"data":"[RMS] [22:38:03] S106-RMS python@3: full-dev web CE 8.4128, python non-W CE 9.4390\n"}
+,{"stream_name":"stdout","time":428.754315171,"data":"[Taper-minus] [22:38:05] S106-Taper-minus python@12: full-dev web CE 8.9535, python non-W CE 9.6816\n"}
+,{"stream_name":"stdout","time":429.01434144,"data":"[RMS] [22:38:06] S106-RMS python@6: full-dev web CE 8.3876, python non-W CE 9.3770\n"}
+,{"stream_name":"stdout","time":431.154059484,"data":"[RMS] [22:38:08] S106-RMS python@9: full-dev web CE 8.3981, python non-W CE 9.3816\n"}
+,{"stream_name":"stdout","time":431.445659278,"data":"[Taper-minus] [22:38:08] S106-Taper-minus: branch 'x' starts from switch 0e35cbc753ca\n"}
+,{"stream_name":"stdout","time":432.477820095,"data":"[Taper-minus] [22:38:09] S106-Taper-minus x@0: full-dev web CE 8.5347, x non-W CE 10.8869\n"}
+,{"stream_name":"stdout","time":432.529021164,"data":"[Taper-minus] [22:38:09] S106-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":433.488092033,"data":"[RMS] [22:38:10] S106-RMS python@12: full-dev web CE 8.4253, python non-W CE 9.4111\n"}
+,{"stream_name":"stdout","time":433.621707124,"data":"[Taper-minus] [22:38:10] S106-Taper-minus x@1: full-dev web CE 8.5087, x non-W CE 10.7779\n"}
+,{"stream_name":"stdout","time":438.264839717,"data":"[RMS] [22:38:15] S106-RMS: branch 'x' starts from switch 998a46e7eede\n"}
+,{"stream_name":"stdout","time":438.409984754,"data":"[Taper-minus] [22:38:15] S106-Taper-minus x@3: full-dev web CE 8.5344, x non-W CE 10.6566\n"}
+,{"stream_name":"stdout","time":439.318417794,"data":"[RMS] [22:38:16] S106-RMS x@0: full-dev web CE 8.4984, x non-W CE 10.9700\n"}
+,{"stream_name":"stdout","time":439.361842206,"data":"[RMS] [22:38:16] S106-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":440.707846087,"data":"[Taper-minus] [22:38:17] S106-Taper-minus x@6: full-dev web CE 9.1708, x non-W CE 10.5305\n"}
+,{"stream_name":"stdout","time":440.709520792,"data":"[RMS] [22:38:17] S106-RMS x@1: full-dev web CE 8.4617, x non-W CE 10.8835\n"}
+,{"stream_name":"stdout","time":442.528038296,"data":"[Taper-minus] [22:38:19] S106-Taper-minus x@9: full-dev web CE 9.3410, x non-W CE 10.4065\n"}
+,{"stream_name":"stdout","time":442.681867531,"data":"[RMS] [22:38:19] S106-RMS x@3: full-dev web CE 8.4124, x non-W CE 10.8076\n"}
+,{"stream_name":"stdout","time":444.720172692,"data":"[Taper-minus] [22:38:21] S106-Taper-minus x@12: full-dev web CE 9.3739, x non-W CE 10.3139\n"}
+,{"stream_name":"stdout","time":444.838419458,"data":"[Taper-minus] [22:38:22] S106-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":444.914306602,"data":"[Taper-minus] [22:38:22] worker Taper-minus: all assigned runs complete\n"}
+,{"stream_name":"stdout","time":445.011973101,"data":"[RMS] [22:38:22] S106-RMS x@6: full-dev web CE 8.3758, x non-W CE 10.5276\n"}
+,{"stream_name":"stdout","time":447.023656663,"data":"[RMS] [22:38:24] S106-RMS x@9: full-dev web CE 8.3661, x non-W CE 10.4654\n"}
+,{"stream_name":"stdout","time":449.428924244,"data":"[RMS] [22:38:26] S106-RMS x@12: full-dev web CE 8.3653, x non-W CE 10.3762\n"}
+,{"stream_name":"stdout","time":449.522232496,"data":"[RMS] [22:38:26] S106-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":449.602387432,"data":"[RMS] [22:38:26] worker RMS: all assigned runs complete\n"}
+,{"stream_name":"stdout","time":451.797860526,"data":"\n"}
+,{"stream_name":"stdout","time":451.798927166,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":451.799862137,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":451.800777186,"data":"  S101-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.801617257,"data":"  S102-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.802624891,"data":"  S103-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.803596696,"data":"  S104-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.80444959,"data":"  S105-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.805452491,"data":"  S106-RMS: complete\n"}
+,{"stream_name":"stdout","time":451.806301236,"data":"  S101-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.807208116,"data":"  S102-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.808151044,"data":"  S103-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.808996906,"data":"  S104-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.80992192,"data":"  S105-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.810954965,"data":"  S106-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":451.811795615,"data":"[22:38:28] RMS: 0 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":451.812700845,"data":"[22:38:28] Taper-minus: 0 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":451.813700745,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":451.81468818,"data":"H2 ANSWER (web -\u003e mc4-zh): YES - H2 supported at the screening level: after the switch to the selected domain, Taper-minus shows more persistent web forgetting than RMS, meeting every pre-registered criterion.\n"}
+,{"stream_name":"stdout","time":451.815725704,"data":"H2 decision category: PROCEED TO DESIGN THE NEXT STUDY\n"}
+,{"stream_name":"stdout","time":451.816626992,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): CANNOT ANSWER - a validity guardrail failed on a fresh seed.\n"}
+,{"stream_name":"stdout","time":451.817690281,"data":"R2 decision category: COMPARABILITY / ADAPTATION LIMITED\n"}
+,{"stream_name":"stdout","time":451.818675483,"data":"Complete: H2 True, R2 True; seed groups with full evidence: H2 6/6, R2 3/3; missing events: 0; incomplete runs: 0\n"}
+,{"stream_name":"stdout","time":451.81959862,"data":"H2 seed 101: D=+0.11835  D3050=+0.05666  Q=+0.10684  prefix gap=0.73%  adaptation RMS=0.5302 Taper=0.5413  matched={3: 0.0192, 6: 0.04543, 12: 0.08736}\n"}
+,{"stream_name":"stdout","time":451.820613444,"data":"H2 seed 102: D=+0.29039  D3050=+0.14866  Q=+0.27784  prefix gap=0.38%  adaptation RMS=0.5838 Taper=0.6267  matched={3: 0.06241, 6: 0.16183, 12: 0.1886}\n"}
+,{"stream_name":"stdout","time":451.821541688,"data":"H2 seed 103: D=+0.06905  D3050=+0.01653  Q=+0.07232  prefix gap=0.46%  adaptation RMS=0.5187 Taper=0.5261  matched={3: 0.00886, 6: 0.01599, 12: 0.0609}\n"}
+,{"stream_name":"stdout","time":451.822662333,"data":"H2 seed 104: D=+0.23846  D3050=+0.08088  Q=+0.23086  prefix gap=0.34%  adaptation RMS=0.5980 Taper=0.6273  matched={3: 0.03211, 6: 0.0549, 12: 0.14412}\n"}
+,{"stream_name":"stdout","time":451.823702991,"data":"H2 seed 105: D=+0.09886  D3050=+0.03295  Q=+0.09368  prefix gap=0.28%  adaptation RMS=0.5798 Taper=0.6131  matched={3: 0.01892, 6: 0.03157, 12: 0.06909}\n"}
+,{"stream_name":"stdout","time":451.824572121,"data":"H2 seed 106: D=+0.97564  D3050=+0.76243  Q=+0.97232  prefix gap=0.43%  adaptation RMS=0.5938 Taper=0.5729  matched={3: 0.0628, 6: 0.5133, 12: 0.96603}\n"}
+,{"stream_name":"stdout","time":451.825458782,"data":"R2 seed 104: D=+0.15177  D3050=+0.11028  Q=+0.14418  prefix gap=0.34%  adaptation RMS=0.0561 Taper=0.0560  matched={3: 0.03983, 6: None, 12: 0.02504}\n"}
+,{"stream_name":"stdout","time":451.82618056,"data":"R2 seed 105: D=+0.21761  D3050=+0.03979  Q=+0.21243  prefix gap=0.28%  adaptation RMS=0.0844 Taper=0.0412  matched={3: 0.0195, 6: 0.05273, 12: 0.0005}\n"}
+,{"stream_name":"stdout","time":451.826920633,"data":"R2 seed 106: D=+0.49521  D3050=+0.09526  Q=+0.49189  prefix gap=0.43%  adaptation RMS=0.0762 Taper=-0.1790  matched={3: 0.03358, 6: None, 12: None}\n"}
+,{"stream_name":"stdout","time":451.827746219,"data":"H2: mean D = +0.29846, SD 0.34268, t95 [-0.06122, +0.65814], t90 [+0.01656, +0.58035] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":451.828564731,"data":"R2: mean D = +0.28820, SD 0.18228, t95 [-0.16464, +0.74104], t90 [-0.01910, +0.59549] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":451.829318198,"data":"Pooled web-\u003ePython (descriptive): mean D = +0.25491, SD 0.13929, t95 [+0.10871, +0.40111], t90 [+0.14033, +0.36949] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":451.830037535,"data":"H2 mean_D = +0.29846\n"}
+,{"stream_name":"stdout","time":451.830804364,"data":"H2 mean_D3050 = +0.18302\n"}
+,{"stream_name":"stdout","time":451.831583127,"data":"H2 mean_Q = +0.29231\n"}
+,{"stream_name":"stdout","time":451.832349717,"data":"H2 mean_matched_difference = +0.25268\n"}
+,{"stream_name":"stdout","time":451.833117072,"data":"H2 reason: All screening criteria met; no confirmatory claim\n"}
+,{"stream_name":"stdout","time":451.833920171,"data":"R2 reason: Primary guardrail failed for seed 105\n"}
+,{"stream_name":"stdout","time":451.834733168,"data":"R2 reason: Primary guardrail failed for seed 106\n"}
+,{"stream_name":"stdout","time":451.835514948,"data":"Manipulation check: {'switch_gap_larger_for_x': True, 'specific_change_larger_for_x': True}\n"}
+,{"stream_name":"stdout","time":451.836233701,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":454.075101051,"data":"[22:38:31] Study 2 runner s2-single-notebook-1; session budget 0.50 h (0.50 h of work time left)\n"}
+,{"stream_name":"stdout","time":455.034414425,"data":"[22:38:32] Restored previous session state from /tmp/s2smoke/m3/s2state in 1s\n"}
+,{"stream_name":"stdout","time":455.036095725,"data":"[22:38:32] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":455.037814634,"data":"[22:38:32] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":455.039306987,"data":"[22:38:32] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":455.040658554,"data":"[22:38:32] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":455.042206959,"data":"[22:38:32] pilot_state: /tmp/s2smoke/pilot/h1state\n"}
+,{"stream_name":"stdout","time":462.747071369,"data":"[22:38:39] Pilot assets and data hashes verified in 8s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":462.822327116,"data":"[22:38:40] Session 4: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":463.660019874,"data":"[22:38:40] Nothing to train: experiment already finished or has a recorded failure.\n"}
+,{"stream_name":"stdout","time":463.663354215,"data":"H2 ANSWER (web -\u003e mc4-zh): YES - H2 supported at the screening level: after the switch to the selected domain, Taper-minus shows more persistent web forgetting than RMS, meeting every pre-registered criterion.\n"}
+,{"stream_name":"stdout","time":463.664627466,"data":"H2 decision category: PROCEED TO DESIGN THE NEXT STUDY\n"}
+,{"stream_name":"stdout","time":463.665950684,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): CANNOT ANSWER - a validity guardrail failed on a fresh seed.\n"}
+,{"stream_name":"stdout","time":463.667442633,"data":"R2 decision category: COMPARABILITY / ADAPTATION LIMITED\n"}
+,{"stream_name":"stdout","time":463.66939061,"data":"Complete: H2 True, R2 True; seed groups with full evidence: H2 6/6, R2 3/3; missing events: 0; incomplete runs: 0\n"}
+,{"stream_name":"stdout","time":463.670997107,"data":"H2 seed 101: D=+0.11835  D3050=+0.05666  Q=+0.10684  prefix gap=0.73%  adaptation RMS=0.5302 Taper=0.5413  matched={3: 0.0192, 6: 0.04543, 12: 0.08736}\n"}
+,{"stream_name":"stdout","time":463.673215081,"data":"H2 seed 102: D=+0.29039  D3050=+0.14866  Q=+0.27784  prefix gap=0.38%  adaptation RMS=0.5838 Taper=0.6267  matched={3: 0.06241, 6: 0.16183, 12: 0.1886}\n"}
+,{"stream_name":"stdout","time":463.673951823,"data":"H2 seed 103: D=+0.06905  D3050=+0.01653  Q=+0.07232  prefix gap=0.46%  adaptation RMS=0.5187 Taper=0.5261  matched={3: 0.00886, 6: 0.01599, 12: 0.0609}\n"}
+,{"stream_name":"stdout","time":463.675232118,"data":"H2 seed 104: D=+0.23846  D3050=+0.08088  Q=+0.23086  prefix gap=0.34%  adaptation RMS=0.5980 Taper=0.6273  matched={3: 0.03211, 6: 0.0549, 12: 0.14412}\n"}
+,{"stream_name":"stdout","time":463.676577607,"data":"H2 seed 105: D=+0.09886  D3050=+0.03295  Q=+0.09368  prefix gap=0.28%  adaptation RMS=0.5798 Taper=0.6131  matched={3: 0.01892, 6: 0.03157, 12: 0.06909}\n"}
+,{"stream_name":"stdout","time":463.677926316,"data":"H2 seed 106: D=+0.97564  D3050=+0.76243  Q=+0.97232  prefix gap=0.43%  adaptation RMS=0.5938 Taper=0.5729  matched={3: 0.0628, 6: 0.5133, 12: 0.96603}\n"}
+,{"stream_name":"stdout","time":463.679564554,"data":"R2 seed 104: D=+0.15177  D3050=+0.11028  Q=+0.14418  prefix gap=0.34%  adaptation RMS=0.0561 Taper=0.0560  matched={3: 0.03983, 6: None, 12: 0.02504}\n"}
+,{"stream_name":"stdout","time":463.680512322,"data":"R2 seed 105: D=+0.21761  D3050=+0.03979  Q=+0.21243  prefix gap=0.28%  adaptation RMS=0.0844 Taper=0.0412  matched={3: 0.0195, 6: 0.05273, 12: 0.0005}\n"}
+,{"stream_name":"stdout","time":463.683038229,"data":"R2 seed 106: D=+0.49521  D3050=+0.09526  Q=+0.49189  prefix gap=0.43%  adaptation RMS=0.0762 Taper=-0.1790  matched={3: 0.03358, 6: None, 12: None}\n"}
+,{"stream_name":"stdout","time":463.684245726,"data":"H2: mean D = +0.29846, SD 0.34268, t95 [-0.06122, +0.65814], t90 [+0.01656, +0.58035] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":463.685332213,"data":"R2: mean D = +0.28820, SD 0.18228, t95 [-0.16464, +0.74104], t90 [-0.01910, +0.59549] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":463.686678008,"data":"Pooled web-\u003ePython (descriptive): mean D = +0.25491, SD 0.13929, t95 [+0.10871, +0.40111], t90 [+0.14033, +0.36949] (equivalent within +/-0.015: False)\n"}
+,{"stream_name":"stdout","time":463.688485502,"data":"H2 mean_D = +0.29846\n"}
+,{"stream_name":"stdout","time":463.689140459,"data":"H2 mean_D3050 = +0.18302\n"}
+,{"stream_name":"stdout","time":463.690399711,"data":"H2 mean_Q = +0.29231\n"}
+,{"stream_name":"stdout","time":463.6917006,"data":"H2 mean_matched_difference = +0.25268\n"}
+,{"stream_name":"stdout","time":463.692946156,"data":"H2 reason: All screening criteria met; no confirmatory claim\n"}
+,{"stream_name":"stdout","time":463.694329534,"data":"R2 reason: Primary guardrail failed for seed 105\n"}
+,{"stream_name":"stdout","time":463.695538062,"data":"R2 reason: Primary guardrail failed for seed 106\n"}
+,{"stream_name":"stdout","time":463.696809038,"data":"Manipulation check: {'switch_gap_larger_for_x': True, 'specific_change_larger_for_x': True}\n"}
+,{"stream_name":"stdout","time":464.093229253,"data":"MINI RESULT: {\n"}
+,{"stream_name":"stdout","time":464.093284206,"data":" \"pilot_exit\": 0,\n"}
+,{"stream_name":"stdout","time":464.093292824,"data":" \"exit_codes\": [\n"}
+,{"stream_name":"stdout","time":464.09329776,"data":"  0,\n"}
+,{"stream_name":"stdout","time":464.093302599,"data":"  0,\n"}
+,{"stream_name":"stdout","time":464.093307344,"data":"  0,\n"}
+,{"stream_name":"stdout","time":464.0933118,"data":"  0\n"}
+,{"stream_name":"stdout","time":464.093316047,"data":" ],\n"}
+,{"stream_name":"stdout","time":464.093320203,"data":" \"complete\": true,\n"}
+,{"stream_name":"stdout","time":464.093325144,"data":" \"h2\": \"PROCEED TO DESIGN THE NEXT STUDY\",\n"}
+,{"stream_name":"stdout","time":464.093330306,"data":" \"r2\": \"COMPARABILITY / ADAPTATION LIMITED\",\n"}
+,{"stream_name":"stdout","time":464.093335192,"data":" \"h2_seed_groups\": 6,\n"}
+,{"stream_name":"stdout","time":464.093341214,"data":" \"failures\": [],\n"}
+,{"stream_name":"stdout","time":464.093345948,"data":" \"problems\": [],\n"}
+,{"stream_name":"stdout","time":464.093350442,"data":" \"lineage\": {\n"}
+,{"stream_name":"stdout","time":464.093355,"data":"  \"S101-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.093359424,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093365062,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093369798,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.09339452,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093398187,"data":"  \"S101-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.093401774,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093405265,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093409205,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093412716,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093416296,"data":"  \"S102-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.093419866,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093423622,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093427442,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.09343078,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093434002,"data":"  \"S102-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.093437415,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093440805,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093444529,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093447871,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093451081,"data":"  \"S103-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.093454591,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093458276,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093462037,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093465704,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093469271,"data":"  \"S103-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.093472368,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093475622,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093479276,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093482862,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093486063,"data":"  \"S104-RMS/web\": {\n"}
+,{"stream_name":"stdout","time":464.09348949,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093492962,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093496532,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093500153,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.09350356,"data":"  \"S104-RMS/python\": {\n"}
+,{"stream_name":"stdout","time":464.093506826,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093510524,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.0935143,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093517704,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093521282,"data":"  \"S104-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.093524908,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093528268,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093531566,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093534962,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093538205,"data":"  \"S104-Taper-minus/web\": {\n"}
+,{"stream_name":"stdout","time":464.093541672,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093545216,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093548536,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093556941,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093560508,"data":"  \"S104-Taper-minus/python\": {\n"}
+,{"stream_name":"stdout","time":464.093564005,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093567664,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093571398,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093575086,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093578578,"data":"  \"S104-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.09358234,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093586018,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093589713,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.09359343,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093596946,"data":"  \"S105-RMS/web\": {\n"}
+,{"stream_name":"stdout","time":464.093600604,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.09360408,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093607414,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.09361087,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093614466,"data":"  \"S105-RMS/python\": {\n"}
+,{"stream_name":"stdout","time":464.093617967,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093631252,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093635152,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093638639,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093642069,"data":"  \"S105-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.093645636,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093649176,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093652756,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093656296,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093660478,"data":"  \"S105-Taper-minus/web\": {\n"}
+,{"stream_name":"stdout","time":464.09366453,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093668266,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093672104,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093675501,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093678894,"data":"  \"S105-Taper-minus/python\": {\n"}
+,{"stream_name":"stdout","time":464.093682463,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.09368616,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093689594,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093700206,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093704104,"data":"  \"S105-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.09370774,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093711502,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.09371813,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093721614,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093725089,"data":"  \"S106-RMS/web\": {\n"}
+,{"stream_name":"stdout","time":464.09372871,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093732146,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093735642,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093744175,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093747748,"data":"  \"S106-RMS/python\": {\n"}
+,{"stream_name":"stdout","time":464.093751375,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093754941,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093758639,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093762418,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093765841,"data":"  \"S106-RMS/x\": {\n"}
+,{"stream_name":"stdout","time":464.09376928,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.09377281,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093776312,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093779835,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093783254,"data":"  \"S106-Taper-minus/web\": {\n"}
+,{"stream_name":"stdout","time":464.09378689,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093790521,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093794288,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093797907,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.09380145,"data":"  \"S106-Taper-minus/python\": {\n"}
+,{"stream_name":"stdout","time":464.09380518,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093808905,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.09381265,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093816451,"data":"  },\n"}
+,{"stream_name":"stdout","time":464.093822248,"data":"  \"S106-Taper-minus/x\": {\n"}
+,{"stream_name":"stdout","time":464.093825776,"data":"   \"max_ce_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093829205,"data":"   \"max_energy_rel_diff\": 0.0,\n"}
+,{"stream_name":"stdout","time":464.093832704,"data":"   \"passed\": true\n"}
+,{"stream_name":"stdout","time":464.093836228,"data":"  }\n"}
+,{"stream_name":"stdout","time":464.093839725,"data":" },\n"}
+,{"stream_name":"stdout","time":464.093843271,"data":" \"rerun_noop\": true,\n"}
+,{"stream_name":"stdout","time":464.093847132,"data":" \"sessions\": 3\n"}
+,{"stream_name":"stdout","time":464.093850856,"data":"}\n"}
+,{"stream_name":"stdout","time":464.095132294,"data":"\n"}
+,{"stream_name":"stdout","time":464.095143367,"data":"########## B) LINEAGE OF THE REAL PILOT SWITCH STATES ##########\n"}
+,{"stream_name":"stdout","time":539.364289608,"data":"[22:39:56] S101-RMS: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":588.910246592,"data":"[22:40:46] S101-Taper-minus: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":639.413868303,"data":"[22:41:36] S102-RMS: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":689.039370849,"data":"[22:42:26] S102-Taper-minus: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":739.422226331,"data":"[22:43:16] S103-RMS: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":789.265757325,"data":"[22:44:06] S103-Taper-minus: {'compared': ['full-python', 'full-web', 'quick-python', 'quick-web'], 'max_ce_diff': 0.0, 'max_energy_rel_diff': 0.0, 'energy_compared': 24, 'diag_compared': True, 'passed': True}\n"}
+,{"stream_name":"stdout","time":789.298970398,"data":"[22:44:06] Lineage PASSED -\u003e /tmp/s2smoke/lineage.json\n"}
+,{"stream_name":"stdout","time":790.135151038,"data":"\n"}
+,{"stream_name":"stdout","time":790.135181546,"data":"########## C) REAL PROTOCOL THROUGHPUT + RESUME (seed 104 prefix only) ##########\n"}
+,{"stream_name":"stdout","time":791.852236989,"data":"[22:44:09] Study 2 runner s2-single-notebook-1; session budget 0.25 h (0.25 h of work time left)\n"}
+,{"stream_name":"stdout","time":791.892840814,"data":"[22:44:09] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":791.894008111,"data":"[22:44:09] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":791.89482523,"data":"[22:44:09] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":791.895648149,"data":"[22:44:09] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":791.896532143,"data":"[22:44:09] pilot_state: /kaggle/input/notebooks/danny00/h1-single-notebook-run/h1state\n"}
+,{"stream_name":"stdout","time":801.106043331,"data":"[22:44:18] Pilot assets and data hashes verified in 9s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":801.106972719,"data":"[22:44:18] NEW experiment created; config sha256 3d4f14683ea892e4\n"}
+,{"stream_name":"stdout","time":801.178582619,"data":"[22:44:18] Session 1: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":804.974234418,"data":"[Taper-minus] [22:44:22] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.15 h\n"}
+,{"stream_name":"stdout","time":805.009387135,"data":"[RMS] [22:44:22] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.15 h\n"}
+,{"stream_name":"stdout","time":806.856024109,"data":"[RMS] [22:44:24] S104-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":807.017800862,"data":"[Taper-minus] [22:44:24] S104-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":900.063911138,"data":"[Taper-minus] [22:45:57] S104-Taper-minus prefix 250/9156 u=250 ce=6.6952 gn=0.513 scale=128.0 44,082 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":903.079048331,"data":"[RMS] [22:46:00] S104-RMS prefix 250/9156 u=250 ce=6.6953 gn=0.515 scale=128.0 42,568 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":994.978401822,"data":"[Taper-minus] [22:47:32] S104-Taper-minus prefix 500/9156 u=500 ce=6.3380 gn=0.495 scale=128.0 43,113 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":998.183142637,"data":"[RMS] [22:47:35] S104-RMS prefix 500/9156 u=500 ce=6.3379 gn=0.495 scale=128.0 43,069 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1089.803563844,"data":"[Taper-minus] [22:49:06] S104-Taper-minus prefix 750/9156 u=750 ce=6.0032 gn=0.558 scale=128.0 43,195 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1093.176568116,"data":"[RMS] [22:49:10] S104-RMS prefix 750/9156 u=750 ce=6.0029 gn=0.556 scale=128.0 43,119 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1096.487816898,"data":"[Taper-minus] [22:49:13] worker Taper-minus: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":1099.808288314,"data":"[RMS] [22:49:16] worker RMS: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":1102.880693764,"data":"\n"}
+,{"stream_name":"stdout","time":1102.882041521,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1102.883087963,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":1102.884516455,"data":"  S101-RMS: not started\n"}
+,{"stream_name":"stdout","time":1102.885558898,"data":"  S102-RMS: not started\n"}
+,{"stream_name":"stdout","time":1102.886559621,"data":"  S103-RMS: not started\n"}
+,{"stream_name":"stdout","time":1102.887413381,"data":"  S104-RMS: prefix step 763/9156\n"}
+,{"stream_name":"stdout","time":1102.888425589,"data":"  S105-RMS: not started\n"}
+,{"stream_name":"stdout","time":1102.889486767,"data":"  S106-RMS: not started\n"}
+,{"stream_name":"stdout","time":1102.890362526,"data":"  S101-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1102.891318262,"data":"  S102-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1102.89237195,"data":"  S103-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1102.893231296,"data":"  S104-Taper-minus: prefix step 763/9156\n"}
+,{"stream_name":"stdout","time":1102.894193331,"data":"  S105-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1102.895229095,"data":"  S106-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1102.896051528,"data":"[22:49:20] RMS: 99,953 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":1102.897030954,"data":"[22:49:20] Taper-minus: 99,953 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":1102.897957569,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1102.898744748,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":1102.899527949,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":1102.900277929,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":1102.900997408,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":1102.901750547,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 0/6, R2 0/3; missing events: 5208; incomplete runs: 12\n"}
+,{"stream_name":"stdout","time":1102.902499969,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":1102.903211673,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":1102.903920225,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1102.904680791,"data":"NOT FINISHED: run this notebook again (Save Version -\u003e Save \u0026 Run All). It resumes automatically from this output.\n"}
+,{"stream_name":"stdout","time":1104.969322028,"data":"[22:49:22] Study 2 runner s2-single-notebook-1; session budget 0.20 h (0.20 h of work time left)\n"}
+,{"stream_name":"stdout","time":1105.113612353,"data":"[22:49:22] Restored previous session state from /tmp/s2smoke/r1/s2state in 0s\n"}
+,{"stream_name":"stdout","time":1105.114608989,"data":"[22:49:22] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":1105.115316962,"data":"[22:49:22] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":1105.115954255,"data":"[22:49:22] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":1105.116690092,"data":"[22:49:22] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":1105.117438496,"data":"[22:49:22] pilot_state: /kaggle/input/notebooks/danny00/h1-single-notebook-run/h1state\n"}
+,{"stream_name":"stdout","time":1114.371548878,"data":"[22:49:31] Pilot assets and data hashes verified in 9s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":1114.445693432,"data":"[22:49:31] Session 2: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":1118.265335228,"data":"[Taper-minus] [22:49:35] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 0.10 h\n"}
+,{"stream_name":"stdout","time":1118.294332209,"data":"[RMS] [22:49:35] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 0.10 h\n"}
+,{"stream_name":"stdout","time":1120.878889974,"data":"[RMS] [22:49:38] S104-RMS: resumed at prefix step 763 (global update 763)\n"}
+,{"stream_name":"stdout","time":1121.087497131,"data":"[Taper-minus] [22:49:38] S104-Taper-minus: resumed at prefix step 763 (global update 763)\n"}
+,{"stream_name":"stdout","time":1159.386240988,"data":"[Taper-minus] [22:50:16] S104-Taper-minus prefix@763: full-dev web CE 6.0104, python non-W CE 8.4067\n"}
+,{"stream_name":"stdout","time":1161.137319517,"data":"[RMS] [22:50:18] S104-RMS prefix@763: full-dev web CE 6.0103, python non-W CE 8.4065\n"}
+,{"stream_name":"stdout","time":1256.718294218,"data":"[RMS] [22:51:53] S104-RMS prefix 1013/9156 u=1013 ce=5.9001 gn=0.754 scale=128.0 30,150 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1257.268350645,"data":"[Taper-minus] [22:51:54] S104-Taper-minus prefix 1013/9156 u=1013 ce=5.8995 gn=0.747 scale=128.0 30,077 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1352.016401355,"data":"[RMS] [22:53:29] S104-RMS prefix 1263/9156 u=1263 ce=5.6152 gn=0.924 scale=128.0 42,981 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1355.028943898,"data":"[Taper-minus] [22:53:32] S104-Taper-minus prefix 1263/9156 u=1263 ce=5.6151 gn=0.911 scale=128.0 41,898 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1447.354221323,"data":"[RMS] [22:55:04] S104-RMS prefix 1513/9156 u=1513 ce=5.5013 gn=0.731 scale=128.0 42,963 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1452.702600757,"data":"[Taper-minus] [22:55:09] S104-Taper-minus prefix 1513/9156 u=1513 ce=5.5015 gn=0.739 scale=128.0 41,936 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1466.290211815,"data":"[RMS] [22:55:23] worker RMS: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":1466.298902384,"data":"[Taper-minus] [22:55:23] worker Taper-minus: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":1471.190016518,"data":"\n"}
+,{"stream_name":"stdout","time":1471.190656319,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1471.191608132,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":1471.192567511,"data":"  S101-RMS: not started\n"}
+,{"stream_name":"stdout","time":1471.193508026,"data":"  S102-RMS: not started\n"}
+,{"stream_name":"stdout","time":1471.194531115,"data":"  S103-RMS: not started\n"}
+,{"stream_name":"stdout","time":1471.195449187,"data":"  S104-RMS: prefix step 1556/9156\n"}
+,{"stream_name":"stdout","time":1471.196425275,"data":"  S105-RMS: not started\n"}
+,{"stream_name":"stdout","time":1471.197344961,"data":"  S106-RMS: not started\n"}
+,{"stream_name":"stdout","time":1471.198323032,"data":"  S101-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1471.199305639,"data":"  S102-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1471.200145735,"data":"  S103-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1471.200987629,"data":"  S104-Taper-minus: prefix step 1541/9156\n"}
+,{"stream_name":"stdout","time":1471.201938238,"data":"  S105-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1471.202868418,"data":"  S106-Taper-minus: not started\n"}
+,{"stream_name":"stdout","time":1471.203983191,"data":"[22:55:28] RMS: 99,160 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":1471.20480909,"data":"[22:55:28] Taper-minus: 99,175 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":1471.205722858,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1471.206498368,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":1471.207213122,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":1471.207938995,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":1471.208708731,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":1471.209467438,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 0/6, R2 0/3; missing events: 5204; incomplete runs: 12\n"}
+,{"stream_name":"stdout","time":1471.210181132,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":1471.210902759,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":1471.211651961,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":1471.212399242,"data":"NOT FINISHED: run this notebook again (Save Version -\u003e Save \u0026 Run All). It resumes automatically from this output.\n"}
+,{"stream_name":"stdout","time":1471.635235168,"data":"REAL RESULT: {\n"}
+,{"stream_name":"stdout","time":1471.635278985,"data":" \"exit_codes\": [\n"}
+,{"stream_name":"stdout","time":1471.63528561,"data":"  0,\n"}
+,{"stream_name":"stdout","time":1471.635289246,"data":"  0\n"}
+,{"stream_name":"stdout","time":1471.635292436,"data":" ],\n"}
+,{"stream_name":"stdout","time":1471.635300093,"data":" \"RMS\": {\n"}
+,{"stream_name":"stdout","time":1471.635303271,"data":"  \"last_update\": 1556,\n"}
+,{"stream_name":"stdout","time":1471.635305573,"data":"  \"sec_per_update_calibration\": [\n"}
+,{"stream_name":"stdout","time":1471.63530796,"data":"   0.38122244623655915,\n"}
+,{"stream_name":"stdout","time":1471.635310211,"data":"   744\n"}
+,{"stream_name":"stdout","time":1471.635312377,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1471.635314577,"data":"  \"sec_per_update_after\": [\n"}
+,{"stream_name":"stdout","time":1471.635316939,"data":"   0.38138562421185374,\n"}
+,{"stream_name":"stdout","time":1471.635319177,"data":"   793\n"}
+,{"stream_name":"stdout","time":1471.63532126,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1471.635323348,"data":"  \"max_overflow_retries\": 0,\n"}
+,{"stream_name":"stdout","time":1471.635325551,"data":"  \"final_scale\": 128.0,\n"}
+,{"stream_name":"stdout","time":1471.635327832,"data":"  \"eval_seconds\": {\n"}
+,{"stream_name":"stdout","time":1471.635330048,"data":"   \"full-web\": 19.7,\n"}
+,{"stream_name":"stdout","time":1471.635341384,"data":"   \"full-python\": 20.6\n"}
+,{"stream_name":"stdout","time":1471.635343736,"data":"  }\n"}
+,{"stream_name":"stdout","time":1471.635345883,"data":" },\n"}
+,{"stream_name":"stdout","time":1471.635347967,"data":" \"Taper-minus\": {\n"}
+,{"stream_name":"stdout","time":1471.635350133,"data":"  \"last_update\": 1541,\n"}
+,{"stream_name":"stdout","time":1471.635352349,"data":"  \"sec_per_update_calibration\": [\n"}
+,{"stream_name":"stdout","time":1471.635354622,"data":"   0.3767064516129033,\n"}
+,{"stream_name":"stdout","time":1471.635356817,"data":"   744\n"}
+,{"stream_name":"stdout","time":1471.635358908,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1471.635360978,"data":"  \"sec_per_update_after\": [\n"}
+,{"stream_name":"stdout","time":1471.635363225,"data":"   0.39108213367609257,\n"}
+,{"stream_name":"stdout","time":1471.635365378,"data":"   778\n"}
+,{"stream_name":"stdout","time":1471.635367458,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1471.635369792,"data":"  \"max_overflow_retries\": 0,\n"}
+,{"stream_name":"stdout","time":1471.635372312,"data":"  \"final_scale\": 128.0,\n"}
+,{"stream_name":"stdout","time":1471.635374484,"data":"  \"eval_seconds\": {\n"}
+,{"stream_name":"stdout","time":1471.635376636,"data":"   \"full-web\": 18.9,\n"}
+,{"stream_name":"stdout","time":1471.635378813,"data":"   \"full-python\": 19.3\n"}
+,{"stream_name":"stdout","time":1471.635381117,"data":"  }\n"}
+,{"stream_name":"stdout","time":1471.635383198,"data":" },\n"}
+,{"stream_name":"stdout","time":1471.635385297,"data":" \"resume_lines\": 2\n"}
+,{"stream_name":"stdout","time":1471.635387472,"data":"}\n"}
+,{"stream_name":"stdout","time":1471.650137101,"data":"SMOKE PASSED\n"}
+,{"stream_name":"stderr","time":1474.725347399,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1474.725379156,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1474.904044633,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1474.904067452,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1475.648110356,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1475.808318588,"data":"[NbConvertApp] Writing 353836 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1478.24048621,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1479.413096603,"data":"[NbConvertApp] Writing 1523553 bytes to __results__.html\n"}
+]

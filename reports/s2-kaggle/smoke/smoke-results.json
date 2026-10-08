@@ -1,0 +1,269 @@
+{
+ "mini": {
+  "pilot_exit": 0,
+  "exit_codes": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "complete": true,
+  "h2": "PROCEED TO DESIGN THE NEXT STUDY",
+  "r2": "COMPARABILITY / ADAPTATION LIMITED",
+  "h2_seed_groups": 6,
+  "failures": [],
+  "problems": [],
+  "lineage": {
+   "S101-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S101-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S102-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S102-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S103-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S103-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-RMS/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-RMS/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-Taper-minus/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-Taper-minus/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S104-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-RMS/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-RMS/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-Taper-minus/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-Taper-minus/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S105-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-RMS/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-RMS/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-RMS/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-Taper-minus/web": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-Taper-minus/python": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   },
+   "S106-Taper-minus/x": {
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "passed": true
+   }
+  },
+  "rerun_noop": true,
+  "sessions": 3
+ },
+ "lineage": {
+  "passed": true,
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "device": "cuda",
+  "runs": {
+   "S101-RMS": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   },
+   "S101-Taper-minus": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   },
+   "S102-RMS": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   },
+   "S102-Taper-minus": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   },
+   "S103-RMS": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   },
+   "S103-Taper-minus": {
+    "compared": [
+     "full-python",
+     "full-web",
+     "quick-python",
+     "quick-web"
+    ],
+    "max_ce_diff": 0.0,
+    "max_energy_rel_diff": 0.0,
+    "energy_compared": 24,
+    "diag_compared": true,
+    "passed": true
+   }
+  },
+  "exit": 0
+ },
+ "real": {
+  "exit_codes": [
+   0,
+   0
+  ],
+  "RMS": {
+   "last_update": 1556,
+   "sec_per_update_calibration": [
+    0.38122244623655915,
+    744
+   ],
+   "sec_per_update_after": [
+    0.38138562421185374,
+    793
+   ],
+   "max_overflow_retries": 0,
+   "final_scale": 128.0,
+   "eval_seconds": {
+    "full-web": 19.7,
+    "full-python": 20.6
+   }
+  },
+  "Taper-minus": {
+   "last_update": 1541,
+   "sec_per_update_calibration": [
+    0.3767064516129033,
+    744
+   ],
+   "sec_per_update_after": [
+    0.39108213367609257,
+    778
+   ],
+   "max_overflow_retries": 0,
+   "final_scale": 128.0,
+   "eval_seconds": {
+    "full-web": 18.9,
+    "full-python": 19.3
+   }
+  },
+  "resume_lines": 2
+ }
+}

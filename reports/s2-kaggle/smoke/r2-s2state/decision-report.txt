@@ -1,0 +1,7 @@
+H2 ANSWER (web -> mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.
+H2 decision category: INVALID OR INCOMPLETE
+R2 ANSWER (web -> Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.
+R2 decision category: INVALID OR INCOMPLETE
+Complete: H2 False, R2 False; seed groups with full evidence: H2 0/6, R2 0/3; missing events: 5204; incomplete runs: 12
+H2 reason: Missing or duplicate planned primary seed
+R2 reason: Missing or duplicate planned primary seed

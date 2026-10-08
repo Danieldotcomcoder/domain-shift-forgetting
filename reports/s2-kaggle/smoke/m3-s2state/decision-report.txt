@@ -1,0 +1,25 @@
+H2 ANSWER (web -> mc4-zh): YES - H2 supported at the screening level: after the switch to the selected domain, Taper-minus shows more persistent web forgetting than RMS, meeting every pre-registered criterion.
+H2 decision category: PROCEED TO DESIGN THE NEXT STUDY
+R2 ANSWER (web -> Python, seeds 104-106): CANNOT ANSWER - a validity guardrail failed on a fresh seed.
+R2 decision category: COMPARABILITY / ADAPTATION LIMITED
+Complete: H2 True, R2 True; seed groups with full evidence: H2 6/6, R2 3/3; missing events: 0; incomplete runs: 0
+H2 seed 101: D=+0.11835  D3050=+0.05666  Q=+0.10684  prefix gap=0.73%  adaptation RMS=0.5302 Taper=0.5413  matched={3: 0.0192, 6: 0.04543, 12: 0.08736}
+H2 seed 102: D=+0.29039  D3050=+0.14866  Q=+0.27784  prefix gap=0.38%  adaptation RMS=0.5838 Taper=0.6267  matched={3: 0.06241, 6: 0.16183, 12: 0.1886}
+H2 seed 103: D=+0.06905  D3050=+0.01653  Q=+0.07232  prefix gap=0.46%  adaptation RMS=0.5187 Taper=0.5261  matched={3: 0.00886, 6: 0.01599, 12: 0.0609}
+H2 seed 104: D=+0.23846  D3050=+0.08088  Q=+0.23086  prefix gap=0.34%  adaptation RMS=0.5980 Taper=0.6273  matched={3: 0.03211, 6: 0.0549, 12: 0.14412}
+H2 seed 105: D=+0.09886  D3050=+0.03295  Q=+0.09368  prefix gap=0.28%  adaptation RMS=0.5798 Taper=0.6131  matched={3: 0.01892, 6: 0.03157, 12: 0.06909}
+H2 seed 106: D=+0.97564  D3050=+0.76243  Q=+0.97232  prefix gap=0.43%  adaptation RMS=0.5938 Taper=0.5729  matched={3: 0.0628, 6: 0.5133, 12: 0.96603}
+R2 seed 104: D=+0.15177  D3050=+0.11028  Q=+0.14418  prefix gap=0.34%  adaptation RMS=0.0561 Taper=0.0560  matched={3: 0.03983, 6: None, 12: 0.02504}
+R2 seed 105: D=+0.21761  D3050=+0.03979  Q=+0.21243  prefix gap=0.28%  adaptation RMS=0.0844 Taper=0.0412  matched={3: 0.0195, 6: 0.05273, 12: 0.0005}
+R2 seed 106: D=+0.49521  D3050=+0.09526  Q=+0.49189  prefix gap=0.43%  adaptation RMS=0.0762 Taper=-0.1790  matched={3: 0.03358, 6: None, 12: None}
+H2: mean D = +0.29846, SD 0.34268, t95 [-0.06122, +0.65814], t90 [+0.01656, +0.58035] (equivalent within +/-0.015: False)
+R2: mean D = +0.28820, SD 0.18228, t95 [-0.16464, +0.74104], t90 [-0.01910, +0.59549] (equivalent within +/-0.015: False)
+Pooled web->Python (descriptive): mean D = +0.25491, SD 0.13929, t95 [+0.10871, +0.40111], t90 [+0.14033, +0.36949] (equivalent within +/-0.015: False)
+H2 mean_D = +0.29846
+H2 mean_D3050 = +0.18302
+H2 mean_Q = +0.29231
+H2 mean_matched_difference = +0.25268
+H2 reason: All screening criteria met; no confirmatory claim
+R2 reason: Primary guardrail failed for seed 105
+R2 reason: Primary guardrail failed for seed 106
+Manipulation check: {'switch_gap_larger_for_x': True, 'specific_change_larger_for_x': True}

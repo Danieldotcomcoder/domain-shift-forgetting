@@ -1,0 +1,241 @@
+{
+  "protocol": "study2-v1-kaggle-fp16-paired-single-notebook",
+  "config_sha256": "3d4f14683ea892e49e65a19896d568b68b004e9fea499f0703da0efc18a19b09",
+  "domain": {
+    "id": "mc4-zh",
+    "label": "Chinese web text (mC4 zh)",
+    "repo": "allenai/c4",
+    "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+    "selection_sha256": "f44706ceac6e3300c394ba734b4d990d5f6acfa39b712051bad7ef4056e2085b",
+    "selection_rank": 0
+  },
+  "complete": false,
+  "h2": {
+    "decision": {
+      "category": "INVALID OR INCOMPLETE",
+      "reasons": [
+        "Missing or duplicate planned primary seed"
+      ],
+      "common_target_update": null,
+      "statistics": {}
+    },
+    "answer": "NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.",
+    "complete": false,
+    "seeds": [],
+    "uncertainty": null,
+    "fresh_seed_sensitivity": null
+  },
+  "r2": {
+    "decision": {
+      "category": "INVALID OR INCOMPLETE",
+      "reasons": [
+        "Missing or duplicate planned primary seed"
+      ],
+      "common_target_update": null,
+      "statistics": {}
+    },
+    "answer": "NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.",
+    "complete": false,
+    "seeds": [],
+    "uncertainty": null
+  },
+  "pooled_python_descriptive": null,
+  "manipulation_check": {
+    "x": {
+      "RMS": {
+        "seeds": [],
+        "pairs": 0
+      },
+      "Taper-minus": {
+        "seeds": [],
+        "pairs": 0
+      }
+    },
+    "python": {
+      "RMS": {
+        "seeds": [
+          101,
+          102,
+          103
+        ],
+        "pairs": 36,
+        "switch_gap_abs": 0.09706878669016106,
+        "switch_gap_signed": -0.025802912616515905,
+        "web_branch_change_abs": 0.20601447996991976,
+        "shift_branch_change_abs": 0.2072902094852003,
+        "web_branch_change_signed": -0.20601447996991976,
+        "shift_branch_change_signed": -0.19580103169941718,
+        "specific_change_abs": 0.0421616330727796,
+        "web_branch_shrank": 36,
+        "shift_branch_shrank": 30
+      },
+      "Taper-minus": {
+        "seeds": [
+          101,
+          102,
+          103
+        ],
+        "pairs": 36,
+        "switch_gap_abs": 0.12276287048227703,
+        "switch_gap_signed": 0.08831635872826234,
+        "web_branch_change_abs": 0.05364174805972882,
+        "shift_branch_change_abs": 0.076656652687595,
+        "web_branch_change_signed": 0.03965455195721067,
+        "shift_branch_change_signed": 0.05960628781999398,
+        "specific_change_abs": 0.04212622639238522,
+        "web_branch_shrank": 6,
+        "shift_branch_shrank": 3
+      }
+    }
+  },
+  "document_bootstrap": null,
+  "lineage": {},
+  "clipping": {
+    "RMS": {
+      "prefix_calibration": {
+        "mean": 0.15858453473132372,
+        "min": 0.15858453473132372,
+        "max": 0.15858453473132372,
+        "runs": 1
+      },
+      "prefix_gate_decay": {
+        "mean": 0.0012610340479192938,
+        "min": 0.0012610340479192938,
+        "max": 0.0012610340479192938,
+        "runs": 1
+      }
+    },
+    "Taper-minus": {
+      "prefix_calibration": {
+        "mean": 0.15858453473132372,
+        "min": 0.15858453473132372,
+        "max": 0.15858453473132372,
+        "runs": 1
+      },
+      "prefix_gate_decay": {
+        "mean": 0.0012853470437017994,
+        "min": 0.0012853470437017994,
+        "max": 0.0012853470437017994,
+        "runs": 1
+      }
+    }
+  },
+  "missing_event_count": 5204,
+  "missing_events_first_50": [
+    "s2:S101-RMS/x-0-full-web",
+    "s2:S101-RMS/x-0-full-x",
+    "s2:S101-RMS/x-1-full-web",
+    "s2:S101-RMS/x-1-full-x",
+    "s2:S101-RMS/x-10-full-web",
+    "s2:S101-RMS/x-10-full-x",
+    "s2:S101-RMS/x-100-full-web",
+    "s2:S101-RMS/x-100-full-x",
+    "s2:S101-RMS/x-305-full-web",
+    "s2:S101-RMS/x-305-full-x",
+    "s2:S101-RMS/x-610-full-web",
+    "s2:S101-RMS/x-610-full-x",
+    "s2:S101-RMS/x-915-full-web",
+    "s2:S101-RMS/x-915-full-x",
+    "s2:S101-RMS/x-1220-full-web",
+    "s2:S101-RMS/x-1220-full-x",
+    "s2:S101-RMS/x-1525-full-web",
+    "s2:S101-RMS/x-1525-full-x",
+    "s2:S101-RMS/x-1830-full-web",
+    "s2:S101-RMS/x-1830-full-x",
+    "s2:S101-RMS/x-2135-full-web",
+    "s2:S101-RMS/x-2135-full-x",
+    "s2:S101-RMS/x-2440-full-web",
+    "s2:S101-RMS/x-2440-full-x",
+    "s2:S101-RMS/x-2745-full-web",
+    "s2:S101-RMS/x-2745-full-x",
+    "s2:S101-RMS/x-3050-full-web",
+    "s2:S101-RMS/x-3050-full-x",
+    "s2:S101-RMS/x-3355-full-web",
+    "s2:S101-RMS/x-3355-full-x",
+    "s2:S101-RMS/x-3660-full-web",
+    "s2:S101-RMS/x-3660-full-x",
+    "s2:S101-RMS/x-3965-full-web",
+    "s2:S101-RMS/x-3965-full-x",
+    "s2:S101-RMS/x-4270-full-web",
+    "s2:S101-RMS/x-4270-full-x",
+    "s2:S101-RMS/x-4575-full-web",
+    "s2:S101-RMS/x-4575-full-x",
+    "s2:S101-RMS/x-4880-full-web",
+    "s2:S101-RMS/x-4880-full-x",
+    "s2:S101-RMS/x-5185-full-web",
+    "s2:S101-RMS/x-5185-full-x",
+    "s2:S101-RMS/x-5490-full-web",
+    "s2:S101-RMS/x-5490-full-x",
+    "s2:S101-RMS/x-5795-full-web",
+    "s2:S101-RMS/x-5795-full-x",
+    "s2:S101-RMS/x-6100-full-web",
+    "s2:S101-RMS/x-6100-full-x",
+    "s2:S101-RMS/x-6104-full-web",
+    "s2:S101-RMS/x-6104-full-x"
+  ],
+  "incomplete_runs": [
+    "S101-RMS",
+    "S101-Taper-minus",
+    "S102-RMS",
+    "S102-Taper-minus",
+    "S103-RMS",
+    "S103-Taper-minus",
+    "S104-RMS",
+    "S104-Taper-minus",
+    "S105-RMS",
+    "S105-Taper-minus",
+    "S106-RMS",
+    "S106-Taper-minus"
+  ],
+  "failures": [],
+  "problems": [],
+  "latest_observations": [
+    {
+      "seed": 104,
+      "condition": "RMS",
+      "stage": "prefix",
+      "step": 763,
+      "web_full_ce": 6.010317495338182
+    },
+    {
+      "seed": 104,
+      "condition": "Taper-minus",
+      "stage": "prefix",
+      "step": 763,
+      "web_full_ce": 6.0103662376022395
+    }
+  ],
+  "thresholds": {
+    "prefix_gap": 0.02,
+    "adaptation": 0.05,
+    "proceed_d": 0.03,
+    "proceed_d3050": 0.015,
+    "q_fraction": 0.5,
+    "opposite_d": -0.03,
+    "small_d": 0.015,
+    "transient_d": 0.05
+  },
+  "analysis": {
+    "t95": {
+      "3": 4.303,
+      "6": 2.571
+    },
+    "t90": {
+      "3": 2.92,
+      "6": 2.015
+    },
+    "equivalence_bound": 0.015,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261011
+  },
+  "interpretation": "Fixed-sample development-data screening with pre-registered rules. Positive D = more excess web forgetting for Taper-minus under the domain shift.",
+  "summary_lines": [
+    "H2 ANSWER (web -> mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.",
+    "H2 decision category: INVALID OR INCOMPLETE",
+    "R2 ANSWER (web -> Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.",
+    "R2 decision category: INVALID OR INCOMPLETE",
+    "Complete: H2 False, R2 False; seed groups with full evidence: H2 0/6, R2 0/3; missing events: 5204; incomplete runs: 12",
+    "H2 reason: Missing or duplicate planned primary seed",
+    "R2 reason: Missing or duplicate planned primary seed"
+  ]
+}
