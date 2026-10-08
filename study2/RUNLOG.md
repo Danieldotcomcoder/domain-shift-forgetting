@@ -28,7 +28,8 @@ Preparation details:
 | 2026-10-08 22:30 | Private dataset | `danny00/study2-online-inputs` created: s2online, s2orders, s2upstream; 27 files; no reserved test |
 | 2026-10-08 22:30 | Smoke pushed | `danny00/s2-single-notebook-smoke` version 1 (GPU T4 × 2) |
 | 2026-10-08 ~22:57 | Smoke **PASSED** | About 26 min; details below. Records in `reports/s2-kaggle/smoke/` |
-| 2026-10-08 22:58 | Main run: bootstrap | `danny00/s2-single-notebook-run` version 1 (CPU): writes the start marker only |
+| 2026-10-08 22:58 | Main run: bootstrap | `danny00/s2-single-notebook-run` version 1 (CPU): wrote `S2-BOOTSTRAP.json` |
+| 2026-10-08 22:59 | Main run: session 1 | Version 2 (GPU T4 × 2, pinned image, SESSION_HOURS 11.25). GPU used before it: about 0.5 h of 18 |
 
 Smoke test details:
 - **(A) Mini protocol.** Complete; no failures or problems; 24/24 lineage checks passed; resume across 3 sessions; a re-run does nothing. The mini decisions come from 20-update toy models and are meaningless.

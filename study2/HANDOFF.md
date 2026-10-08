@@ -3,7 +3,29 @@
 Start here if you are a new Claude Code session continuing this project. Read this whole file before doing
 anything. Branch: `study2` (created from `main` at `4de359f`, the reviewer-verified paper commit).
 
-## Status (updated 2026-10-08): protocol and all code written and CPU-tested; NOTHING has run on Kaggle/GPU
+## EXECUTION STATUS (2026-10-08 23:00 UTC): Study 2 is RUNNING. See `study2/RUNLOG.md` for every step
+
+- **Decisions (2026-10-08).** The author chose to run before the OSF registration, with a hash-timestamp first
+  (Protocol Amendment 1). The design was approved as written.
+- **Committed locally only; never pushed to GitHub (the user's wish).**
+  - Amendment 1, the code changes and the Docker pin: `321e783`.
+  - Registration manifest `3eeda992…`: `fa09196`.
+  - OpenTimestamps proof `study2/registration-manifest.json.ots`: `bc515cd`. It is pending Bitcoin attestation; run
+    `.venv\Scripts\python study2\timestamp.py upgrade study2\registration-manifest.json.ots` and commit the result.
+- **Done.**
+  - Probe: **mc4-zh** selected (S 0.0934 < Python 0.1099, so Protocol 4.6 applies); reproduction exact.
+  - Preparation: accepted.
+  - Private dataset: `danny00/study2-online-inputs`.
+  - Smoke test: PASSED; the lineage of the real switch states is bit-exact.
+- **Running.** `danny00/s2-single-notebook-run`: version 1 was the CPU bootstrap; version 2 (main session 1, GPU,
+  11.25 h) was pushed at 22:59 UTC.
+- **Next.** When session 1 ends, run `s2_status.py run` to check it. Then rebuild with `build_notebooks.py run --phase
+  gpu --session-hours <=remaining quota - 0.5>` and push with `s2_status.py run --push`.
+  - Quota: 18 h at 21:54 UTC, of which about 0.5 h was used before session 1; the weekly reset to 30 h comes around
+    00:00 UTC on 10 October.
+  - Session 2 needs about 4.7 h.
+
+## Status (updated 2026-10-08): protocol and all code written and CPU-tested
 
 - `study2/PROTOCOL.md` is the pre-registration document. It is complete and consistent with the code; a test checks
   that it quotes every pin and constant.
