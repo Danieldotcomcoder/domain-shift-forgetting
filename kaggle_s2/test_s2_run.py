@@ -1033,9 +1033,14 @@ def test_protocol_states_the_constants_the_code_uses():
 def test_notebooks_embed_exactly_the_repository_code(tmp_path, monkeypatch):
     monkeypatch.setattr(BUILD, "KERNELS_DIR", tmp_path)
     monkeypatch.setattr(BUILD, "ENVIRONMENT", tmp_path / "environment.json")
+    monkeypatch.setattr(BUILD, "REGISTRATION", tmp_path / "registration-manifest.json")
+    with pytest.raises(SystemExit):  # no notebook without the frozen registration manifest
+        BUILD.build_probe()
+    (tmp_path / "registration-manifest.json").write_bytes(b'{\n  "schema": "s2-registration-1"\n}\n')
     folders = {"probe": BUILD.build_probe(), "prepare": BUILD.build_prepare(), "smoke": BUILD.build_smoke()}
     expected_files = {"s2_run.py": HERE / "s2_run.py", "prepare_domain.py": HERE / "prepare_domain.py",
-                      "probe_domains.py": HERE / "probe_domains.py", "h1_run.py": ROOT / "kaggle_h1" / "h1_run.py"}
+                      "probe_domains.py": HERE / "probe_domains.py", "h1_run.py": ROOT / "kaggle_h1" / "h1_run.py",
+                      "registration-manifest.json": tmp_path / "registration-manifest.json"}
     for phase in ("bootstrap", "gpu"):
         folders[f"run-{phase}"] = shutil.copytree(BUILD.build_run(phase), tmp_path / f"copy-{phase}")
     for name, folder in folders.items():
@@ -1050,8 +1055,11 @@ def test_notebooks_embed_exactly_the_repository_code(tmp_path, monkeypatch):
                 assert body == BUILD.source(expected_files[Path(first.split()[1]).name]), (name, first)
             else:
                 compile(text, f"{name}-cell", "exec")
+        written = ["".join(c["source"]).split("\n", 1)[0] for c in notebook["cells"] if c["cell_type"] == "code"]
+        assert "%%writefile /kaggle/working/registration-manifest.json" in written, name
     smoke = json.loads((folders["smoke"] / "s2-single-notebook-smoke.ipynb").read_text(encoding="utf-8"))
-    h1_cell = "".join(smoke["cells"][1]["source"]).split("\n", 1)[1]
+    h1_cell = next("".join(c["source"]) for c in smoke["cells"]
+                   if "".join(c["source"]).startswith("%%writefile /kaggle/working/h1_run.py")).split("\n", 1)[1]
     assert hashlib.sha256(h1_cell.encode()).hexdigest() == S2.PILOT_PINS["runner_sha256"]
     meta = {n: json.loads((f / "kernel-metadata.json").read_text()) for n, f in folders.items()}
     assert (meta["probe"]["enable_gpu"], meta["probe"]["enable_internet"]) == (True, True)
@@ -1064,6 +1072,10 @@ def test_notebooks_embed_exactly_the_repository_code(tmp_path, monkeypatch):
     assert meta["run-gpu"]["dataset_sources"] == [BUILD.PILOT_DATASET, BUILD.S2_DATASET]
     assert not any("docker_image" in m for m in meta.values())
     (tmp_path / "environment.json").write_text(json.dumps({"docker_image": "gcr.io/kaggle-gpu-images/python@sha256:x"}))
-    pinned = json.loads((BUILD.build_run("gpu") / "kernel-metadata.json").read_text())
+    pinned = json.loads((BUILD.build_run("gpu", 4.5) / "kernel-metadata.json").read_text())
     assert pinned["docker_image"] == "gcr.io/kaggle-gpu-images/python@sha256:x"
+    capped = (tmp_path / "kernel-run" / f"{BUILD.RUN_SLUG}.ipynb").read_text(encoding="utf-8")
+    assert "SESSION_HOURS = 4.5" in capped
+    with pytest.raises(ValueError):
+        BUILD.build_run("gpu", 12)
     assert "docker_image" not in json.loads((BUILD.build_prepare() / "kernel-metadata.json").read_text())

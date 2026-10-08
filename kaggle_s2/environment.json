@@ -1,0 +1,11 @@
+{
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f",
+  "source_kernel": "danny00/h1-single-notebook-run",
+  "retrieved_utc": "2026-10-08T21:54:14+00:00",
+  "pilot_stack": {
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "driver": "580.178.04",
+    "python": "3.13.15"
+  }
+}

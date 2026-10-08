@@ -149,6 +149,7 @@ def run(inputs: Path, output: Path, cache: Path, windows_dir: Path | None, eval_
         "probe_windows_manifest_sha256": PD.sha256_file(windows_dir / "manifest.json"),
         "code_sha256": {name: PD.sha256_file(Path(__file__).resolve().parent / name)
                         for name in ("probe_domains.py", "prepare_domain.py", "s2_run.py")},
+        "registration_manifest_sha256": PD.registration_sha256(),
         "environment": {"torch": torch.__version__, "cuda": torch.version.cuda, "device": str(device),
                         "gpu": torch.cuda.get_device_name(0) if device.type == "cuda" else None},
         "eval_microbatch": eval_microbatch, "seconds": time.time() - tick}

@@ -8,11 +8,11 @@ A pre-registered second-domain test of H1, with an independent web→Python repl
 | Date | 8 October 2026 |
 | Author | Daniel Shdeed |
 | Repository | github.com/Danieldotcomcoder/domain-shift-forgetting, branch `study2` |
-| Registration | to be filled in at registration (registry, DOI, timestamp) |
+| Registration | hash-timestamped (OpenTimestamps) before any Study 2 run; public registry entry filed after execution (Amendment 1, Section 15) |
 | Code freeze | `study2/registration-manifest.json` (SHA-256 of this protocol and of every Study 2 code file) |
 | Predecessor | Study 1, the H1 pilot (protocol v3; result STOP, small observed effect). Paper in `paper/` |
 
-**Status at registration.** No Study 2 job has run on any GPU or in any Kaggle session. The domain that Study 2 will use is
+**Status at freeze (9 October 2026).** No Study 2 job has run on any GPU or in any Kaggle session. The domain that Study 2 will use is
 not yet known. No activation of any candidate domain has been measured. No outcome of Study 2 exists.
 Section 12.2 lists everything that was known or looked at before registration.
 
@@ -665,6 +665,26 @@ Switch states and final weights (several GB) stay in the Kaggle notebook output.
 - Every decision is reported with its pre-registered wording (Section 9.4).
 - Results are reported whatever their direction, including INVALID, LIMITED or INCONCLUSIVE outcomes.
 - The study will be reported as a separate, pre-registered study alongside the pilot, which remains unchanged.
+
+## 15. Amendment log
+
+**Amendment 1 (9 October 2026; decided by the author before any Study 2 job).** This concerns registration timing.
+The author chose to execute Study 2 before filing the public registry entry; Sections 12.1 and 12.4 assumed the
+reverse. Four measures keep the plan verifiably fixed before any run:
+- **Timestamp.** The registration manifest `study2/registration-manifest.json` (the SHA-256 of this protocol,
+  including this amendment, and of every Study 2 file, with the git commit) was timestamped with OpenTimestamps
+  before the first Study 2 Kaggle job. The proof is `study2/registration-manifest.json.ots`. Only the manifest's
+  SHA-256 left the author's computer.
+- **Embedding.** Every Study 2 notebook embeds the manifest byte for byte, so each Kaggle version carries a
+  server-side timestamp. The probe, the preparation and the runner record its SHA-256 in their outputs.
+- **Later registration.** The public registration (for example on OSF) will be filed after execution, together with
+  the manifest, the proof and this amendment. Study 2 will therefore be reported as "specified in advance and
+  hash-timestamped before any run; publicly registered after execution", not as conventionally pre-registered.
+- **Session cap.** A main-run session may be capped below 11.25 h to fit the remaining weekly Kaggle GPU quota. The
+  runner then stops and saves early, and the next session resumes. This is an operational change only.
+
+No scientific content changed: the design, data, analysis and decision rules are those of commit `0b3a2ce`. The
+author approved the design as written on the same date, including the equivalence reading of Section 8.5.
 
 ---
 

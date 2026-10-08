@@ -258,6 +258,12 @@ def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def registration_sha256() -> str | None:
+    """SHA-256 of the registration manifest each notebook writes next to this script (None when absent)."""
+    path = Path(__file__).resolve().parent / "registration-manifest.json"
+    return sha256_file(path) if path.exists() else None
+
+
 def write_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + ".tmp")
@@ -2231,7 +2237,8 @@ def main(args) -> int:
     session = {"session": marker.get("sessions_completed", 0) + 1, "started_unix": t0,
                "runner": RUNNER_VERSION, "code_sha256": sha256_file(Path(__file__)),
                "python": sys.version.split()[0], "torch": torch.__version__,
-               "cuda": torch.version.cuda, "gpus": gpu_count(), "only_seeds": only_seeds or None}
+               "cuda": torch.version.cuda, "gpus": gpu_count(), "only_seeds": only_seeds or None,
+               "registration_manifest_sha256": registration_sha256()}
     try:
         session["gpu_names"] = subprocess.check_output(
             ["nvidia-smi", "--query-gpu=name,driver_version", "--format=csv,noheader"], text=True).strip().splitlines()

@@ -32,7 +32,8 @@ SMOKE_SLUG = "s2-single-notebook-smoke"
 RUN_SLUG = "s2-single-notebook-run"
 ENVIRONMENT = HERE / "environment.json"
 KERNELS_DIR = HERE  # notebooks are written to KERNELS_DIR / "kernel-<name>" (tests redirect this)
-CODE_FILES =("s2_run.py", "prepare_domain.py", "probe_domains.py", "build_notebooks.py", "s2_status.py",
+REGISTRATION = ROOT / "study2" / "registration-manifest.json"
+CODE_FILES = ("s2_run.py", "prepare_domain.py", "probe_domains.py", "build_notebooks.py", "s2_status.py",
               "test_s2_run.py")
 
 
@@ -65,6 +66,19 @@ def notebook(cells: list) -> dict:
                                                         "name": "python3"},
                                          "language_info": {"name": "python"}},
             "nbformat": 4, "nbformat_minor": 5}
+
+
+def registration_cells() -> list:
+    """Every notebook embeds the frozen registration manifest, so each Kaggle version (timestamped server-side) carries
+    the protocol and code hashes; the scripts record its SHA-256 in their outputs."""
+    if not REGISTRATION.exists():
+        raise SystemExit("Run `build_notebooks.py freeze` (and commit) first: every notebook embeds the registration "
+                         "manifest")
+    text = source(REGISTRATION)
+    digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    return [markdown(f"**Registration manifest** — SHA-256 `{digest}`: the frozen protocol and code hashes, "
+                     "timestamped before any Study 2 run (study2/PROTOCOL.md, Amendment 1).\n"),
+            code("%%writefile /kaggle/working/registration-manifest.json\n" + text)]
 
 
 def docker_image() -> str | None:
@@ -119,7 +133,7 @@ proc = subprocess.run([sys.executable, '-u', '/kaggle/working/probe_domains.py',
 print('probe exit code:', proc.returncode)
 """
     show = "print(open('/kaggle/working/s2probe/selection.txt').read())\n"
-    cells = [markdown(intro), code(PIP), writefile("s2_run.py", HERE / "s2_run.py"),
+    cells = [markdown(intro), *registration_cells(), code(PIP), writefile("s2_run.py", HERE / "s2_run.py"),
              writefile("prepare_domain.py", HERE / "prepare_domain.py"),
              writefile("probe_domains.py", HERE / "probe_domains.py"), code(run), code(show)]
     return write_kernel("kernel-probe", PROBE_SLUG, cells, gpu=True, internet=True, datasets=[PILOT_DATASET],
@@ -147,7 +161,7 @@ proc = subprocess.run([sys.executable, '-u', '/kaggle/working/prepare_domain.py'
 print('preparation exit code:', proc.returncode)
 """
     show = "print(open('/kaggle/working/s2prep/acceptance.json').read())\n"
-    cells = [markdown(intro), code(NO_GPU_CHECK), code(PIP),
+    cells = [markdown(intro), *registration_cells(), code(NO_GPU_CHECK), code(PIP),
              writefile("prepare_domain.py", HERE / "prepare_domain.py"), code(run), code(show)]
     return write_kernel("kernel-prepare", PREPARE_SLUG, cells, gpu=False, internet=True, datasets=[PILOT_DATASET],
                         kernels=[f"{USER}/{PROBE_SLUG}"], pin=False)
@@ -182,11 +196,14 @@ print(report.read_text() if report.exists() else "No report yet (bootstrap run o
 """
 
 
-def build_run(phase: str) -> Path:
+def build_run(phase: str, session_hours: float = 11.25) -> Path:
+    """``session_hours`` < 11.25 only to fit the remaining weekly GPU quota (the runner then stops and saves early)."""
+    if not 0.5 <= session_hours <= 11.25:
+        raise ValueError("A session must be between 0.5 and 11.25 hours (Kaggle's limit is 12 h)")
     gpu = phase == "gpu"
-    cells = [markdown(RUN_INTRO),
+    cells = [markdown(RUN_INTRO), *registration_cells(),
              code("import time\nT0 = time.time()          # session clock starts here\n"
-                  "SESSION_HOURS = 11.25  # Kaggle limit is 12 h; keep the margin\n"),
+                  f"SESSION_HOURS = {session_hours}  # Kaggle limit is 12 h; keep the margin\n"),
              writefile("s2_run.py", HERE / "s2_run.py"), code(LAUNCH), code(SHOW)]
     return write_kernel("kernel-run", RUN_SLUG, cells, gpu=gpu, internet=False,
                         datasets=[PILOT_DATASET, S2_DATASET],
@@ -285,7 +302,7 @@ A) mini protocol end-to-end on a mini "pilot" made by the pilot's own runner, wi
 B) lineage of the six real pilot switch states (forward passes only); C) real-protocol throughput and resume on
 seed 104's web prefix only. **Settings:** GPU T4 x2, Internet off.
 """
-    cells = [markdown(intro), writefile("h1_run.py", ROOT / "kaggle_h1" / "h1_run.py"),
+    cells = [markdown(intro), *registration_cells(), writefile("h1_run.py", ROOT / "kaggle_h1" / "h1_run.py"),
              writefile("s2_run.py", HERE / "s2_run.py"), code(SMOKE)]
     return write_kernel("kernel-smoke", SMOKE_SLUG, cells, gpu=True, internet=False,
                         datasets=[PILOT_DATASET, S2_DATASET], kernels=[PILOT_RUN], pin=True)
@@ -314,11 +331,11 @@ def pin_image() -> Path:
         image = json.loads(meta_path.read_text(encoding="utf-8")).get("docker_image")
     if not image:
         raise SystemExit("The pilot notebook's metadata has no docker_image; GPU notebooks will use the current image.")
-    ENVIRONMENT.write_text(json.dumps({"docker_image": image, "source_kernel": PILOT_RUN,
-                                       "retrieved_utc": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
-                                       "pilot_stack": {"torch": "2.11.0+cu128", "cuda": "12.8",
-                                                       "driver": "580.178.04", "python": "3.13.15"}},
-                                      indent=2) + "\n", encoding="utf-8")
+    ENVIRONMENT.write_bytes((json.dumps({"docker_image": image, "source_kernel": PILOT_RUN,
+                                         "retrieved_utc": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
+                                         "pilot_stack": {"torch": "2.11.0+cu128", "cuda": "12.8",
+                                                         "driver": "580.178.04", "python": "3.13.15"}},
+                                        indent=2) + "\n").encode("utf-8"))
     return ENVIRONMENT
 
 
@@ -347,8 +364,8 @@ def freeze() -> Path:
                            "smoke": f"{USER}/{SMOKE_SLUG}", "run": f"{USER}/{RUN_SLUG}", "dataset": S2_DATASET,
                            "pilot_run": PILOT_RUN, "pilot_dataset": PILOT_DATASET,
                            "docker_image": docker_image()}}
-    path = ROOT / "study2" / "registration-manifest.json"
-    path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    path = REGISTRATION
+    path.write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))  # LF: the bytes Kaggle and OTS see
     if dirty:
         print("WARNING: kaggle_s2/ or study2/ has uncommitted changes; commit, then run `freeze` again so the "
               "registration names a commit that contains exactly these files.", file=sys.stderr)
@@ -366,6 +383,7 @@ if __name__ == "__main__":
     parser.add_argument("which", choices=["probe", "prepare", "smoke", "run", "dataset", "pin-image", "freeze"])
     parser.add_argument("--phase", choices=["bootstrap", "gpu"], default="gpu")
     parser.add_argument("--rank", type=int, choices=[0, 1], default=0, help="prepare: 1 = pre-registered fallback")
+    parser.add_argument("--session-hours", type=float, default=11.25, help="run: cap to the remaining GPU quota")
     parser.add_argument("--prepared", type=Path, default=ROOT / "data" / "s2-prep" / "s2prep")
     parser.add_argument("--output", type=Path, default=ROOT / "data" / "s2-dataset-online")
     args = parser.parse_args()
@@ -376,7 +394,7 @@ if __name__ == "__main__":
     elif args.which == "smoke":
         print(build_smoke())
     elif args.which == "run":
-        print(build_run(args.phase))
+        print(build_run(args.phase, args.session_hours))
     elif args.which == "dataset":
         print(build_dataset(args.prepared, args.output))
     elif args.which == "pin-image":

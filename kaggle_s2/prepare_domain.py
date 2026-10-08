@@ -105,6 +105,12 @@ def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def registration_sha256() -> str | None:
+    """SHA-256 of the registration manifest each notebook writes next to this script (None when absent)."""
+    path = Path(__file__).resolve().parent / "registration-manifest.json"
+    return sha256_file(path) if path.exists() else None
+
+
 def json_write(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -844,6 +850,7 @@ def finalize(db, retained: dict, audit: dict, *, selection_path: Path, pilot_onl
                                  "labels": sealed["splits"]["x_test"]["labels"], "online_path_included": False},
         "upstream_evidence_sha256": sha256_file(output / "s2upstream" / "source-evidence.json"),
         "preparation_code_sha256": sha256_file(Path(__file__)),
+        "registration_manifest_sha256": registration_sha256(),
         "preparation_packages": {name: _version(name) for name in
                                  ("numpy", "tiktoken", "pyarrow", "datasketch", "requests")},
         "preparation_status": "prepared_requires_acceptance_validation"}

@@ -27,9 +27,13 @@ git add study2/registration-manifest.json; git commit -m "Study 2: registration 
 
 - `pin-image` records the image in `kaggle_s2/environment.json`, which `freeze` then hashes. If the pilot's
   image cannot be read, GPU notebooks use Kaggle's current image (Protocol 11), and the deviation is recorded.
-- Register `study2/PROTOCOL.md` and `study2/registration-manifest.json` publicly (for example on OSF), naming the
-  commit. Write the registry link and timestamp into the protocol header.
-- **No Study 2 notebook may be pushed before the registration timestamp.**
+- Timestamp the manifest before any Study 2 notebook is pushed (Protocol Amendment 1). Only its SHA-256 is sent:
+  `.venv\Scripts\ots stamp study2\registration-manifest.json`. Commit the `.ots` proof. A few hours later, run
+  `.venv\Scripts\ots upgrade study2\registration-manifest.json.ots` to complete the Bitcoin attestation, and commit
+  again.
+- Every notebook embeds the manifest byte for byte, and the builder refuses to build without it.
+- File the public registration (for example on OSF) with `study2/PROTOCOL.md`, the manifest, the `.ots` proof and
+  the commit.
 
 ## 1. Domain-selection probe (GPU T4, internet on, ~0.3 h)
 
