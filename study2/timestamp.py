@@ -60,17 +60,27 @@ def load(proof: Path) -> DetachedTimestampFile:
         return DetachedTimestampFile.deserialize(StreamDeserializationContext(stream))
 
 
+def attested(stamp):
+    """Sub-timestamps that carry attestations (the ots client's directly_verified walk)."""
+    if stamp.attestations:
+        yield stamp
+    else:
+        for child in stamp.ops.values():
+            yield from attested(child)
+
+
 def upgrade(proof: Path) -> bool:
     detached = load(proof)
     changed = False
-    for sub, attestation in list(detached.timestamp.all_attestations()):
-        if not isinstance(attestation, PendingAttestation) or not trusted(attestation.uri):
-            continue
-        try:
-            sub.merge(RemoteCalendar(attestation.uri).get_timestamp(sub.msg, timeout=30))
-            changed = True
-        except Exception as exc:  # not yet in a Bitcoin block: try again later
-            print(f"{attestation.uri}: not upgraded yet ({type(exc).__name__})", file=sys.stderr)
+    for sub in list(attested(detached.timestamp)):
+        for attestation in list(sub.attestations):
+            if not isinstance(attestation, PendingAttestation) or not trusted(attestation.uri):
+                continue
+            try:
+                sub.merge(RemoteCalendar(attestation.uri).get_timestamp(sub.msg, timeout=30))
+                changed = True
+            except Exception as exc:  # not yet in a Bitcoin block: try again later
+                print(f"{attestation.uri}: not upgraded yet ({type(exc).__name__})", file=sys.stderr)
     complete = any(isinstance(a, BitcoinBlockHeaderAttestation) for _, a in detached.timestamp.all_attestations())
     if changed:
         temporary = proof.with_name(proof.name + ".tmp")
