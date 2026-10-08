@@ -1,0 +1,71 @@
+{
+  "schema": "s2-registration-1",
+  "created_utc": "2026-10-08T21:54:41+00:00",
+  "git_commit": "321e7838693b695d4ad645a601b0e1d0876ccc43",
+  "uncommitted_changes_in_study2_or_kaggle_s2": false,
+  "hash_convention": "SHA-256 of the file's UTF-8 text with LF line endings (the bytes run on Kaggle)",
+  "files_sha256": {
+    "kaggle_s2/s2_run.py": "5aa02b3efcffd3eb9e77cf887c8e4b9ed16680be6ba771ae3be783723da50469",
+    "kaggle_s2/prepare_domain.py": "36386df7a67ac0f420ab8922882924fe67f5c7c07d0b77f876a8806e4109d723",
+    "kaggle_s2/probe_domains.py": "e8987fa5f645105c6c23fff4fe01ecd87fd2c059a2714298b29bff85cc7a9db6",
+    "kaggle_s2/build_notebooks.py": "10a9a4102f6bbcb8ec87947d12834a2c9dd88855bf2a7c8d93226b73621091c2",
+    "kaggle_s2/s2_status.py": "b8e893e5fa1e8c466d017982408f32dd011b078ff5970332a11c14c135bb81a7",
+    "kaggle_s2/test_s2_run.py": "6d0b8f851e4eab6d323ced6497e33698b023945df7a89a6f07d34c51a1010b7e",
+    "study2/PROTOCOL.md": "1c34f675e1352bddf5f6a91e9c44ff77dc8bf50358401d1492fa6a3f6dad15d2",
+    "kaggle_h1/h1_run.py (pilot runner, unchanged; used by the smoke test)": "66769e7de30ec36f13a5acfa275d2691cb30251a08b9354a5c5063bd813cb83b",
+    "kaggle_s2/environment.json": "251cea1b55c3b85a17f0f4ed8e0bb3a70e0a962e86b62bcf6e4e4e2aaf79796a"
+  },
+  "candidates": {
+    "mc4-de": {
+      "repo": "allenai/c4",
+      "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+      "upstreams": {
+        "train": "multilingual/c4-de\\.tfrecord-\\d{5}-of-02048\\.json\\.gz",
+        "validation": "multilingual/c4-de-validation\\.tfrecord-\\d{5}-of-00016\\.json\\.gz"
+      },
+      "split_rule": "c4-official"
+    },
+    "mc4-ru": {
+      "repo": "allenai/c4",
+      "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+      "upstreams": {
+        "train": "multilingual/c4-ru\\.tfrecord-\\d{5}-of-04096\\.json\\.gz",
+        "validation": "multilingual/c4-ru-validation\\.tfrecord-\\d{5}-of-00032\\.json\\.gz"
+      },
+      "split_rule": "c4-official"
+    },
+    "mc4-zh": {
+      "repo": "allenai/c4",
+      "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+      "upstreams": {
+        "train": "multilingual/c4-zh\\.tfrecord-\\d{5}-of-01024\\.json\\.gz",
+        "validation": "multilingual/c4-zh-validation\\.tfrecord-\\d{5}-of-00002\\.json\\.gz"
+      },
+      "split_rule": "c4-official"
+    },
+    "openwebmath": {
+      "repo": "open-web-math/open-web-math",
+      "revision": "fde8ef8de2300f5e778f56261843dab89f230815",
+      "upstreams": {
+        "train": "data/train-\\d{5}-of-00114-[0-9a-f]+\\.parquet"
+      },
+      "split_rule": "url-group"
+    }
+  },
+  "candidate_order": [
+    "mc4-de",
+    "mc4-ru",
+    "mc4-zh",
+    "openwebmath"
+  ],
+  "kaggle": {
+    "probe": "danny00/s2-domain-probe",
+    "prepare": "danny00/s2-prepare-domain",
+    "smoke": "danny00/s2-single-notebook-smoke",
+    "run": "danny00/s2-single-notebook-run",
+    "dataset": "danny00/study2-online-inputs",
+    "pilot_run": "danny00/h1-single-notebook-run",
+    "pilot_dataset": "danny00/stage1-online-inputes",
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f"
+  }
+}
