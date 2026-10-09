@@ -30,6 +30,19 @@ Preparation details:
 | 2026-10-08 ~22:57 | Smoke **PASSED** | About 26 min; details below. Records in `reports/s2-kaggle/smoke/` |
 | 2026-10-08 22:58 | Main run: bootstrap | `danny00/s2-single-notebook-run` version 1 (CPU): wrote `S2-BOOTSTRAP.json` |
 | 2026-10-08 22:59 | Main run: session 1 | Version 2 (GPU T4 × 2, pinned image, SESSION_HOURS 11.25). GPU used before it: about 0.5 h of 18 |
+| 2026-10-09 10:07 | Session 1 ended | 11.12 h; exit codes 0/0; no restarts; runner SHA-256 `5aa02b3e…` = registered; registration manifest hash logged (details below) |
+| 2026-10-09 21:36 | Main run: session 2 | Version 3 (GPU T4 × 2, pinned image, SESSION_HOURS 11.25; about 4.1 h needed). GPU used before it: about 11.7 h of 18 (weekly reset around 00:00 UTC on 10 October) |
+| 2026-10-09 21:38 | Timestamp upgraded | The proof now holds a **Bitcoin attestation in block 970,569** (hash `000…1d6cde1`, mined 2026-10-09 01:59:53 UTC). Exact scope below |
+
+Session 1 details:
+- **Completed.** Seeds 101–103 (X branch, both conditions) and seeds 104–105 (prefix, web, Python and X).
+- **Lineage.** All 30 branch-start checks were bit-exact (max |dCE| 0.0, max relative dE 0.0).
+- **Stopped at.** Seed 106 at prefix step 763 in both workers; 26,705 updates remain per worker.
+
+What the timestamp evidence establishes:
+- **Bitcoin.** The block proves that the manifest (protocol and code hashes) existed by 01:59 UTC on 9 October. At that time session 1 had completed no seed: S102's X branches finished at 00:57 and 00:58, but nobody saw results before the session's output appeared at 10:07.
+- **Before the first job.** The digest was submitted to the calendars at 21:55 UTC on 8 October, before the first Study 2 job at 21:56. The calendars' receipts are in the proof, but that earlier time is not Bitcoin-anchored.
+- **Kaggle.** Every Study 2 notebook version embeds the manifest byte for byte: the probe at 21:56, the preparation at 22:01, the smoke test at 22:30, and the main run at 22:58 and 22:59 UTC on 8 October. The probe's selection, the preparation manifest and every runner session record its SHA-256. These are server-side timestamps, verifiable once the notebooks are made public.
 
 Smoke test details:
 - **(A) Mini protocol.** Complete; no failures or problems; 24/24 lineage checks passed; resume across 3 sessions; a re-run does nothing. The mini decisions come from 20-update toy models and are meaningless.

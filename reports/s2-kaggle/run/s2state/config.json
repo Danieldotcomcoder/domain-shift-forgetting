@@ -1,0 +1,359 @@
+{
+  "protocol": "study2-v1-kaggle-fp16-paired-single-notebook",
+  "runner": "s2-single-notebook-1",
+  "mini_protocol": false,
+  "hypotheses": {
+    "H2": "Primary: excess persistent web forgetting of Taper-minus vs RMS after a web -> X switch (X = the pre-registered selection), seeds 101-106.",
+    "R2": "Secondary: the pilot's H1 (web -> Python) on independent seeds 104-106, pilot rules."
+  },
+  "amendments": [
+    "Carried from the pilot (unchanged): Tesla T4 FP16 autocast + GradScaler, FP32 master weights/moments, FP32 norm/EMA reductions and FP32 loss; RMS and Taper-minus as independent workers on two T4s; microbatch 8 x accumulation 4; eval microbatch 16; self-resuming single notebook.",
+    "Weight snapshots: only switch states and branch-final weights are kept (storage); every full-dev point keeps per-document/per-class sufficient statistics.",
+    "Seeds 101-103 reuse the pilot's switch states and the pilot's prefix/web/Python evaluation records (pinned by hash); only their X branch is new."
+  ],
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "pilot_seeds": [
+    101,
+    102,
+    103
+  ],
+  "fresh_seeds": [
+    104,
+    105,
+    106
+  ],
+  "conditions": [
+    "RMS",
+    "Taper-minus"
+  ],
+  "jobs": {
+    "101": [
+      "x"
+    ],
+    "102": [
+      "x"
+    ],
+    "103": [
+      "x"
+    ],
+    "104": [
+      "prefix",
+      "web",
+      "python",
+      "x"
+    ],
+    "105": [
+      "prefix",
+      "web",
+      "python",
+      "x"
+    ],
+    "106": [
+      "prefix",
+      "web",
+      "python",
+      "x"
+    ]
+  },
+  "domain": {
+    "id": "mc4-zh",
+    "label": "Chinese web text (mC4 zh)",
+    "repo": "allenai/c4",
+    "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+    "selection_sha256": "f44706ceac6e3300c394ba734b4d990d5f6acfa39b712051bad7ef4056e2085b",
+    "selection_rank": 0
+  },
+  "pilot": {
+    "config_sha256": "c18441799eee2b6a78b257e2e22c6ac32ddb7c30cd81d6eb57e488b2b173ce10",
+    "experiment_id": "c18441799eee2b6a-6ac0f2cb",
+    "runner_sha256": "66769e7de30ec36f13a5acfa275d2691cb30251a08b9354a5c5063bd813cb83b",
+    "online_manifest_sha256": "290886d93760f5a66f1e55b3c4730a02dfddf1b8153ba12ed78fba6374ab87d7",
+    "orders_manifest_sha256": "bd7abf44121a7402acc1d9603d3d29f20a1074a97cd202e0e2f964406bcc9bac",
+    "switch_sha256": {
+      "101/RMS": "6e890478d28826c4ba020e674717b87ffbbd3dd363d478876b96ef944f0a292d",
+      "101/Taper-minus": "223da6d23881954c96928e36d9d5e74270ae16ab296ce0dbffb7a45078f727c2",
+      "102/RMS": "0f0f603bf4546d1955f0e75fe3c4dc6af1514dc8bb01c0166f1830b739a82b12",
+      "102/Taper-minus": "78fde02da7e9d922edf6918e86487193931a83331196f4f1bbf58c620db251b2",
+      "103/RMS": "e7b5c32566bc6ba137f52492f27475891bceb9c0fbfe85bd7ae43b6c706ea94c",
+      "103/Taper-minus": "1e457bd6fb889c7a717deac80f3eb9e85a5e007bed7728f587a501c8c80e9f5d"
+    },
+    "events_digest": {
+      "101/RMS": "2d8aced7560ca17f28fb6b70c19d7fa519920dbe99234dab570fcdb98cd4e02f",
+      "101/Taper-minus": "9a013705584eef64ce6ef16c7fe3b0e55037b794491ab6c56234466e12fa216b",
+      "102/RMS": "53060b9a3f5e95ebc47a3a9640142e0efaf5b7befef3c8f5b707cf988d455e49",
+      "102/Taper-minus": "8f782648ef6759b7c26c586cb26a6b0922663adedfaf8e403f0d497e39e43c28",
+      "103/RMS": "65f3caf2ce6016d8f475b19946e317f575e014453ac423432ae5444c840b894c",
+      "103/Taper-minus": "d0df7be0c88a3a6ca3a0a8e52e603fe2d73c374f9412c302d375c01386663ea0"
+    }
+  },
+  "model": {
+    "layers": 6,
+    "width": 256,
+    "heads": 4,
+    "mlp": 1024,
+    "context": 512,
+    "vocab": 50257,
+    "tied_embeddings": true,
+    "final_norm": "RMSNorm"
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "lr_peak": 0.0006,
+    "lr_final": 6e-05,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "eps": 1e-08,
+    "matrix_weight_decay": 0.1,
+    "gain_weight_decay": 0.0,
+    "clip": 1.0
+  },
+  "precision": "fp16",
+  "microbatch": 8,
+  "accumulation": 4,
+  "eval_microbatch": 16,
+  "timeline": {
+    "warmup_end": 305,
+    "calibration_end": 763,
+    "gate_end": 6104,
+    "prefix_end": 9156,
+    "continuation_updates": 6104,
+    "trajectory_end": 15260
+  },
+  "schedule": {
+    "full_prefix": [
+      763,
+      3052,
+      6104,
+      6409,
+      6714,
+      7019,
+      7324,
+      7629,
+      7934,
+      8239,
+      8544,
+      8849,
+      9156
+    ],
+    "quick_continuation": [
+      0,
+      1,
+      2,
+      5,
+      10,
+      20,
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      550,
+      600,
+      650,
+      700,
+      750,
+      800,
+      850,
+      900,
+      950,
+      1000,
+      1100,
+      1200,
+      1300,
+      1400,
+      1500,
+      1525,
+      1600,
+      1700,
+      1800,
+      1900,
+      2000,
+      2100,
+      2200,
+      2300,
+      2400,
+      2500,
+      2600,
+      2700,
+      2800,
+      2900,
+      3000,
+      3050,
+      3100,
+      3200,
+      3300,
+      3400,
+      3500,
+      3600,
+      3700,
+      3800,
+      3900,
+      4000,
+      4100,
+      4200,
+      4300,
+      4400,
+      4500,
+      4600,
+      4700,
+      4800,
+      4900,
+      5000,
+      5100,
+      5200,
+      5300,
+      5400,
+      5500,
+      5600,
+      5700,
+      5800,
+      5900,
+      6000,
+      6100,
+      6104
+    ],
+    "full_continuation": [
+      0,
+      1,
+      10,
+      100,
+      305,
+      610,
+      915,
+      1220,
+      1525,
+      1830,
+      2135,
+      2440,
+      2745,
+      3050,
+      3355,
+      3660,
+      3965,
+      4270,
+      4575,
+      4880,
+      5185,
+      5490,
+      5795,
+      6100,
+      6104
+    ],
+    "diagnostic_continuation": [
+      0,
+      10,
+      100,
+      1525,
+      6104
+    ],
+    "persistence_points": [
+      1525,
+      3050,
+      6104
+    ],
+    "full_windows": 4096,
+    "quick_windows": 512,
+    "diag_windows": 256,
+    "stage_domains": {
+      "prefix": [
+        "web",
+        "python"
+      ],
+      "web": [
+        "web",
+        "python"
+      ],
+      "python": [
+        "web",
+        "python"
+      ],
+      "x": [
+        "web",
+        "x"
+      ]
+    },
+    "diag_domains": [
+      "web",
+      "python",
+      "x"
+    ]
+  },
+  "lineage_tolerance": {
+    "ce_nats": 0.001,
+    "energy_relative": 0.001
+  },
+  "decision_thresholds": {
+    "prefix_gap": 0.02,
+    "adaptation": 0.05,
+    "proceed_d": 0.03,
+    "proceed_d3050": 0.015,
+    "q_fraction": 0.5,
+    "opposite_d": -0.03,
+    "small_d": 0.015,
+    "transient_d": 0.05
+  },
+  "analysis": {
+    "t95": {
+      "3": 4.303,
+      "6": 2.571
+    },
+    "t90": {
+      "3": 2.92,
+      "6": 2.015
+    },
+    "equivalence_bound": 0.015,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261011
+  },
+  "data": {
+    "pilot_online_manifest_sha256": "290886d93760f5a66f1e55b3c4730a02dfddf1b8153ba12ed78fba6374ab87d7",
+    "pilot_orders_manifest_sha256": "bd7abf44121a7402acc1d9603d3d29f20a1074a97cd202e0e2f964406bcc9bac",
+    "s2_online_manifest_sha256": "5994e6fb6d8c2202bb77d6d5c11376ab074d5f1ff3f51858e03e9f2d5b9d94ca",
+    "s2_orders_manifest_sha256": "ba2596cebff919a8b10d8385c8b1748e95ca7a7ef8a7a5309f2e5c09de6a6f72",
+    "selection_sha256": "f44706ceac6e3300c394ba734b4d990d5f6acfa39b712051bad7ef4056e2085b",
+    "sources": {
+      "web": {
+        "repo": "allenai/c4",
+        "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2"
+      },
+      "python": {
+        "repo": "bigcode/the-stack-dedup",
+        "revision": "17cad72c886a2858e08d4c349a00d6466f54df63"
+      },
+      "x": {
+        "repo": "allenai/c4",
+        "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2"
+      }
+    },
+    "files_sha256": {
+      "web_train.bin": "0db33183f032fe51d1a383605b69fd396ff7cc20826c8a32c2cd17592d94a540",
+      "python_train.bin": "acf3a9574c51131db67bba392b91a9dbffe74495fe416afa555733e909b5a2a8",
+      "web_dev.bin": "7a65edcbef0bec4a37a2cf6b2a7880ad6c759968ad6662e05bdf197f0e91bd19",
+      "web_dev.owners.bin": "502b413f9eb8375d827e399d772580b753097a64f276e4e0366bab9ed2ee08d6",
+      "web_dev.documents.json": "e6eb33dd7d7e558e6be4925bbaae92c9668231c3317ee0d99befbf86405aae86",
+      "python_dev.bin": "e421d2241506f09f5d5293a37008194073ff0a41a32c79bebc98260c25336b16",
+      "python_dev.owners.bin": "de2d60e21b458fef7eb2796df0e35d9f20d8a039aebed99855f559bcfd9724d9",
+      "python_dev.documents.json": "480122e3b43c6b0cd822c1013faf20731a70450874e35a33efd625746b7a9d6e",
+      "x_train.bin": "99a483316bc114fe17bc35d7348e97d7742938819a9eefde2ae178441c8c30ad",
+      "x_dev.bin": "928b52ec31bdd746bc046b7c4eb7ce18beacb4eeb95e1cbddccf3c2f27295317",
+      "x_dev.owners.bin": "b2621d528b43fec08bd8f53f5236f767f5d922eb423303562ec7f8828de7ea9c",
+      "x_dev.documents.json": "a41638224fe369cba0777a510ae795dcaf9da06ef84c97718f1185ec3dd53bd1"
+    }
+  },
+  "config_sha256": "3d4f14683ea892e49e65a19896d568b68b004e9fea499f0703da0efc18a19b09",
+  "checkpoint_seconds": 900
+}

@@ -1,0 +1,1224 @@
+[{"stream_name":"stderr","time":7.483711858,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.483757612,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.483762178,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.483764753,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.122870261,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.122896342,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.122903589,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.122906043,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.295143625,"data":"Writing /kaggle/working/registration-manifest.json\n"}
+,{"stream_name":"stdout","time":9.384136199,"data":"Writing /kaggle/working/s2_run.py\n"}
+,{"stream_name":"stdout","time":16.621183553,"data":"[23:00:01] Study 2 runner s2-single-notebook-1; session budget 11.25 h (11.25 h of work time left)\n"}
+,{"stream_name":"stdout","time":16.92591286,"data":"[23:00:01] pilot_online: /kaggle/input/datasets/danny00/stage1-online-inputes/online\n"}
+,{"stream_name":"stdout","time":16.926765164,"data":"[23:00:01] pilot_orders: /kaggle/input/datasets/danny00/stage1-online-inputes/orders\n"}
+,{"stream_name":"stdout","time":16.927547335,"data":"[23:00:01] s2_online: /kaggle/input/datasets/danny00/study2-online-inputs/s2online\n"}
+,{"stream_name":"stdout","time":16.928288405,"data":"[23:00:01] s2_orders: /kaggle/input/datasets/danny00/study2-online-inputs/s2orders\n"}
+,{"stream_name":"stdout","time":16.929051709,"data":"[23:00:01] pilot_state: /kaggle/input/h1-single-notebook-run/h1state\n"}
+,{"stream_name":"stdout","time":47.717216554,"data":"[23:00:32] Pilot assets and data hashes verified in 31s; selected domain mc4-zh (allenai/c4 @ 1588ec454efa)\n"}
+,{"stream_name":"stdout","time":47.718139163000004,"data":"[23:00:32] NEW experiment created; config sha256 3d4f14683ea892e4\n"}
+,{"stream_name":"stdout","time":47.787554252,"data":"[23:00:32] Session 1: torch 2.11.0+cu128 CUDA 12.8, GPUs ['Tesla T4, 580.178.04', 'Tesla T4, 580.178.04']\n"}
+,{"stream_name":"stdout","time":51.715518258,"data":"[RMS] [23:00:36] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 11.14 h\n"}
+,{"stream_name":"stdout","time":51.716173154,"data":"[Taper-minus] [23:00:36] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 11.14 h\n"}
+,{"stream_name":"stdout","time":59.642773258,"data":"[Taper-minus] [23:00:44] S101-Taper-minus: branch 'x' starts from the pilot's switch 223da6d23881\n"}
+,{"stream_name":"stdout","time":59.64368084,"data":"[RMS] [23:00:44] S101-RMS: branch 'x' starts from the pilot's switch 6e890478d288\n"}
+,{"stream_name":"stdout","time":104.401431789,"data":"[Taper-minus] [23:01:28] S101-Taper-minus x@0: full-dev web CE 4.5716, x non-W CE 4.3175\n"}
+,{"stream_name":"stdout","time":104.402982106,"data":"[RMS] [23:01:28] S101-RMS x@0: full-dev web CE 4.5846, x non-W CE 4.3027\n"}
+,{"stream_name":"stdout","time":104.601956133,"data":"[Taper-minus] [23:01:29] S101-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":104.618782752,"data":"[RMS] [23:01:29] S101-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":144.815888412,"data":"[RMS] [23:02:09] S101-RMS x@1: full-dev web CE 4.5897, x non-W CE 4.2250\n"}
+,{"stream_name":"stdout","time":145.875917341,"data":"[Taper-minus] [23:02:10] S101-Taper-minus x@1: full-dev web CE 4.5759, x non-W CE 4.2259\n"}
+,{"stream_name":"stdout","time":201.020703398,"data":"[RMS] [23:03:05] S101-RMS x@10: full-dev web CE 4.7020, x non-W CE 3.8868\n"}
+,{"stream_name":"stdout","time":204.912607035,"data":"[Taper-minus] [23:03:09] S101-Taper-minus x@10: full-dev web CE 4.6786, x non-W CE 3.8876\n"}
+,{"stream_name":"stdout","time":286.663495591,"data":"[RMS] [23:04:31] S101-RMS x@100: full-dev web CE 4.8718, x non-W CE 2.8252\n"}
+,{"stream_name":"stdout","time":292.184700043,"data":"[Taper-minus] [23:04:36] S101-Taper-minus x@100: full-dev web CE 4.8277, x non-W CE 2.8272\n"}
+,{"stream_name":"stdout","time":349.466166957,"data":"[RMS] [23:05:33] S101-RMS x 250/6104 u=9406 ce=2.3336 gn=1.862 scale=2048.0 14,133 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":354.884664845,"data":"[Taper-minus] [23:05:39] S101-Taper-minus x 250/6104 u=9406 ce=2.3381 gn=1.679 scale=2048.0 13,873 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":414.801288715,"data":"[RMS] [23:06:39] S101-RMS x@305: full-dev web CE 5.1075, x non-W CE 2.5245\n"}
+,{"stream_name":"stdout","time":420.746885896,"data":"[Taper-minus] [23:06:45] S101-Taper-minus x@305: full-dev web CE 5.1438, x non-W CE 2.5225\n"}
+,{"stream_name":"stdout","time":498.638820186,"data":"[RMS] [23:08:03] S101-RMS x 500/6104 u=9656 ce=2.2901 gn=1.301 scale=2048.0 27,458 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":503.738507457,"data":"[Taper-minus] [23:08:08] S101-Taper-minus x 500/6104 u=9656 ce=2.2708 gn=1.189 scale=2048.0 27,517 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":588.654850071,"data":"[RMS] [23:09:33] S101-RMS x@610: full-dev web CE 5.6156, x non-W CE 2.3725\n"}
+,{"stream_name":"stdout","time":593.759389002,"data":"[Taper-minus] [23:09:38] S101-Taper-minus x@610: full-dev web CE 5.5590, x non-W CE 2.3596\n"}
+,{"stream_name":"stdout","time":648.311822345,"data":"[RMS] [23:10:32] S101-RMS x 750/6104 u=9906 ce=2.3041 gn=1.385 scale=2048.0 27,367 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":652.847376047,"data":"[Taper-minus] [23:10:37] S101-Taper-minus x 750/6104 u=9906 ce=2.2937 gn=1.250 scale=2048.0 27,470 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":763.136447109,"data":"[RMS] [23:12:27] S101-RMS x@915: full-dev web CE 5.9731, x non-W CE 2.2925\n"}
+,{"stream_name":"stdout","time":767.275632954,"data":"[Taper-minus] [23:12:31] S101-Taper-minus x@915: full-dev web CE 5.9796, x non-W CE 2.2762\n"}
+,{"stream_name":"stdout","time":798.428425421,"data":"[RMS] [23:13:02] S101-RMS x 1000/6104 u=10156 ce=2.2445 gn=1.343 scale=4096.0 27,285 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":802.187983902,"data":"[Taper-minus] [23:13:06] S101-Taper-minus x 1000/6104 u=10156 ce=2.2262 gn=1.239 scale=4096.0 27,427 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":928.222591748,"data":"[RMS] [23:15:12] S101-RMS x@1220: full-dev web CE 6.2205, x non-W CE 2.2360\n"}
+,{"stream_name":"stdout","time":931.452932292,"data":"[Taper-minus] [23:15:15] S101-Taper-minus x@1220: full-dev web CE 6.2441, x non-W CE 2.2217\n"}
+,{"stream_name":"stdout","time":939.052317922,"data":"[RMS] [23:15:23] S101-RMS x 1250/6104 u=10406 ce=2.1848 gn=1.219 scale=4096.0 29,126 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":942.140522667,"data":"[Taper-minus] [23:15:26] S101-Taper-minus x 1250/6104 u=10406 ce=2.1691 gn=1.264 scale=4096.0 29,267 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1040.313284396,"data":"[RMS] [23:17:04] S101-RMS x 1500/6104 u=10656 ce=1.8461 gn=1.022 scale=4096.0 40,453 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1042.288594631,"data":"[Taper-minus] [23:17:06] S101-Taper-minus x 1500/6104 u=10656 ce=1.8326 gn=1.094 scale=4096.0 40,900 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1099.554626971,"data":"[RMS] [23:18:04] S101-RMS x@1525: full-dev web CE 6.4086, x non-W CE 2.1969\n"}
+,{"stream_name":"stdout","time":1101.75760345,"data":"[Taper-minus] [23:18:06] S101-Taper-minus x@1525: full-dev web CE 6.4382, x non-W CE 2.1808\n"}
+,{"stream_name":"stdout","time":1190.190393762,"data":"[RMS] [23:19:34] S101-RMS x 1750/6104 u=10906 ce=2.0302 gn=1.240 scale=4096.0 27,329 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1191.301789141,"data":"[Taper-minus] [23:19:35] S101-Taper-minus x 1750/6104 u=10906 ce=2.0171 gn=1.291 scale=4096.0 27,487 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1260.451816587,"data":"[RMS] [23:20:44] S101-RMS x@1830: full-dev web CE 6.6472, x non-W CE 2.1671\n"}
+,{"stream_name":"stdout","time":1261.619464025,"data":"[Taper-minus] [23:20:46] S101-Taper-minus x@1830: full-dev web CE 6.6311, x non-W CE 2.1522\n"}
+,{"stream_name":"stdout","time":1326.5366418,"data":"[RMS] [23:21:51] S101-RMS x 2000/6104 u=11156 ce=2.0404 gn=1.132 scale=4096.0 30,041 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1326.790595936,"data":"[Taper-minus] [23:21:51] S101-Taper-minus x 2000/6104 u=11156 ce=2.0329 gn=1.267 scale=4096.0 30,231 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1421.033877118,"data":"[Taper-minus] [23:23:25] S101-Taper-minus x@2135: full-dev web CE 6.6648, x non-W CE 2.1284\n"}
+,{"stream_name":"stdout","time":1421.239613113,"data":"[RMS] [23:23:25] S101-RMS x@2135: full-dev web CE 6.6651, x non-W CE 2.1436\n"}
+,{"stream_name":"stdout","time":1466.759076642,"data":"[Taper-minus] [23:24:11] S101-Taper-minus x 2250/6104 u=11406 ce=1.9644 gn=1.160 scale=4096.0 29,265 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1467.435860587,"data":"[RMS] [23:24:11] S101-RMS x 2250/6104 u=11406 ce=1.9825 gn=1.205 scale=4096.0 29,069 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1580.939989252,"data":"[Taper-minus] [23:26:05] S101-Taper-minus x@2440: full-dev web CE 6.7644, x non-W CE 2.1084\n"}
+,{"stream_name":"stdout","time":1582.025393844,"data":"[RMS] [23:26:06] S101-RMS x@2440: full-dev web CE 6.7742, x non-W CE 2.1195\n"}
+,{"stream_name":"stdout","time":1602.302850896,"data":"[Taper-minus] [23:26:26] S101-Taper-minus x 2500/6104 u=11656 ce=2.0089 gn=1.064 scale=4096.0 30,217 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1603.712720177,"data":"[RMS] [23:26:28] S101-RMS x 2500/6104 u=11656 ce=2.0320 gn=1.090 scale=4096.0 30,056 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1740.831335988,"data":"[Taper-minus] [23:28:45] S101-Taper-minus x@2745: full-dev web CE 6.8612, x non-W CE 2.0876\n"}
+,{"stream_name":"stdout","time":1742.601549701,"data":"[Taper-minus] [23:28:47] S101-Taper-minus x 2750/6104 u=11906 ce=1.8640 gn=1.238 scale=4096.0 29,195 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1742.876718322,"data":"[RMS] [23:28:47] S101-RMS x@2745: full-dev web CE 6.8610, x non-W CE 2.1008\n"}
+,{"stream_name":"stdout","time":1744.680162778,"data":"[RMS] [23:28:49] S101-RMS x 2750/6104 u=11906 ce=1.8704 gn=1.067 scale=4096.0 29,056 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1840.955373989,"data":"[Taper-minus] [23:30:25] S101-Taper-minus x 3000/6104 u=12156 ce=2.1838 gn=1.184 scale=8192.0 41,652 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1844.323198633,"data":"[RMS] [23:30:28] S101-RMS x 3000/6104 u=12156 ce=2.1978 gn=1.092 scale=8192.0 41,107 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1906.954246421,"data":"[Taper-minus] [23:31:31] S101-Taper-minus x@3050: full-dev web CE 6.8609, x non-W CE 2.0715\n"}
+,{"stream_name":"stdout","time":1910.035996761,"data":"[RMS] [23:31:34] S101-RMS x@3050: full-dev web CE 6.9010, x non-W CE 2.0852\n"}
+,{"stream_name":"stdout","time":1987.513362726,"data":"[Taper-minus] [23:32:52] S101-Taper-minus x 3250/6104 u=12406 ce=1.9790 gn=1.160 scale=8192.0 27,947 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":1991.64204251,"data":"[RMS] [23:32:56] S101-RMS x 3250/6104 u=12406 ce=1.9963 gn=1.099 scale=8192.0 27,804 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2066.609593037,"data":"[Taper-minus] [23:34:11] S101-Taper-minus x@3355: full-dev web CE 6.8398, x non-W CE 2.0582\n"}
+,{"stream_name":"stdout","time":2070.865746451,"data":"[RMS] [23:34:15] S101-RMS x@3355: full-dev web CE 6.8838, x non-W CE 2.0735\n"}
+,{"stream_name":"stdout","time":2122.842771987,"data":"[Taper-minus] [23:35:07] S101-Taper-minus x 3500/6104 u=12656 ce=1.9452 gn=1.109 scale=8192.0 30,267 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2127.80077052,"data":"[RMS] [23:35:12] S101-RMS x 3500/6104 u=12656 ce=1.9577 gn=1.130 scale=8192.0 30,082 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2225.996723428,"data":"[Taper-minus] [23:36:50] S101-Taper-minus x@3660: full-dev web CE 6.8786, x non-W CE 2.0467\n"}
+,{"stream_name":"stdout","time":2231.361655132,"data":"[RMS] [23:36:55] S101-RMS x@3660: full-dev web CE 6.9443, x non-W CE 2.0608\n"}
+,{"stream_name":"stdout","time":2262.593940224,"data":"[Taper-minus] [23:37:27] S101-Taper-minus x 3750/6104 u=12906 ce=2.1923 gn=1.116 scale=8192.0 29,309 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2268.319039117,"data":"[RMS] [23:37:32] S101-RMS x 3750/6104 u=12906 ce=2.2096 gn=1.078 scale=8192.0 29,149 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2385.383683788,"data":"[Taper-minus] [23:39:29] S101-Taper-minus x@3965: full-dev web CE 6.9063, x non-W CE 2.0355\n"}
+,{"stream_name":"stdout","time":2391.810306764,"data":"[RMS] [23:39:36] S101-RMS x@3965: full-dev web CE 6.9322, x non-W CE 2.0481\n"}
+,{"stream_name":"stdout","time":2397.81118987,"data":"[Taper-minus] [23:39:42] S101-Taper-minus x 4000/6104 u=13156 ce=1.8245 gn=1.188 scale=8192.0 30,290 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2404.446437822,"data":"[RMS] [23:39:48] S101-RMS x 4000/6104 u=13156 ce=1.8367 gn=1.024 scale=8192.0 30,090 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2500.585931352,"data":"[Taper-minus] [23:41:25] S101-Taper-minus x 4250/6104 u=13406 ce=2.0662 gn=1.121 scale=8192.0 39,857 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2508.316125807,"data":"[RMS] [23:41:32] S101-RMS x 4250/6104 u=13406 ce=2.0937 gn=1.237 scale=8192.0 39,434 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2544.744129659,"data":"[Taper-minus] [23:42:09] S101-Taper-minus x@4270: full-dev web CE 6.9233, x non-W CE 2.0264\n"}
+,{"stream_name":"stdout","time":2552.292362411,"data":"[RMS] [23:42:16] S101-RMS x@4270: full-dev web CE 6.9583, x non-W CE 2.0407\n"}
+,{"stream_name":"stdout","time":2635.748886561,"data":"[Taper-minus] [23:43:40] S101-Taper-minus x 4500/6104 u=13656 ce=1.8311 gn=1.113 scale=8192.0 30,304 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2644.544692703,"data":"[RMS] [23:43:49] S101-RMS x 4500/6104 u=13656 ce=1.8403 gn=1.087 scale=8192.0 30,067 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2704.211488582,"data":"[Taper-minus] [23:44:48] S101-Taper-minus x@4575: full-dev web CE 6.9253, x non-W CE 2.0184\n"}
+,{"stream_name":"stdout","time":2712.943264015,"data":"[RMS] [23:44:57] S101-RMS x@4575: full-dev web CE 6.9503, x non-W CE 2.0315\n"}
+,{"stream_name":"stdout","time":2777.461508668,"data":"[Taper-minus] [23:46:01] S101-Taper-minus x 4750/6104 u=13906 ce=1.9844 gn=1.100 scale=8192.0 28,904 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2787.19150296,"data":"[RMS] [23:46:11] S101-RMS x 4750/6104 u=13906 ce=1.9963 gn=1.057 scale=8192.0 28,714 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2865.686655821,"data":"[Taper-minus] [23:47:30] S101-Taper-minus x@4880: full-dev web CE 6.9159, x non-W CE 2.0120\n"}
+,{"stream_name":"stdout","time":2875.52868355,"data":"[RMS] [23:47:40] S101-RMS x@4880: full-dev web CE 6.9718, x non-W CE 2.0245\n"}
+,{"stream_name":"stdout","time":2913.097046397,"data":"[Taper-minus] [23:48:17] S101-Taper-minus x 5000/6104 u=14156 ce=1.7962 gn=1.072 scale=16384.0 30,199 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":2923.525553425,"data":"[RMS] [23:48:28] S101-RMS x 5000/6104 u=14156 ce=1.8053 gn=1.072 scale=16384.0 30,044 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3025.316442043,"data":"[Taper-minus] [23:50:09] S101-Taper-minus x@5185: full-dev web CE 6.9391, x non-W CE 2.0052\n"}
+,{"stream_name":"stdout","time":3036.225250639,"data":"[RMS] [23:50:20] S101-RMS x@5185: full-dev web CE 6.9884, x non-W CE 2.0186\n"}
+,{"stream_name":"stdout","time":3053.14579593,"data":"[Taper-minus] [23:50:37] S101-Taper-minus x 5250/6104 u=14406 ce=1.9010 gn=1.113 scale=16384.0 29,245 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3064.412493745,"data":"[RMS] [23:50:48] S101-RMS x 5250/6104 u=14406 ce=1.9171 gn=1.080 scale=16384.0 29,075 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3185.086298354,"data":"[Taper-minus] [23:52:49] S101-Taper-minus x@5490: full-dev web CE 6.9915, x non-W CE 2.0003\n"}
+,{"stream_name":"stdout","time":3188.634885997,"data":"[Taper-minus] [23:52:53] S101-Taper-minus x 5500/6104 u=14656 ce=1.9190 gn=1.196 scale=16384.0 30,231 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3197.198594734,"data":"[RMS] [23:53:01] S101-RMS x@5490: full-dev web CE 6.9846, x non-W CE 2.0121\n"}
+,{"stream_name":"stdout","time":3200.801490145,"data":"[RMS] [23:53:05] S101-RMS x 5500/6104 u=14656 ce=1.9286 gn=1.256 scale=16384.0 30,030 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3291.551250198,"data":"[Taper-minus] [23:54:36] S101-Taper-minus x 5750/6104 u=14906 ce=1.9570 gn=1.178 scale=16384.0 39,803 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3304.97621236,"data":"[RMS] [23:54:49] S101-RMS x 5750/6104 u=14906 ce=1.9658 gn=1.183 scale=16384.0 39,319 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3344.608737904,"data":"[Taper-minus] [23:55:29] S101-Taper-minus x@5795: full-dev web CE 7.0171, x non-W CE 1.9957\n"}
+,{"stream_name":"stdout","time":3357.929465328,"data":"[RMS] [23:55:42] S101-RMS x@5795: full-dev web CE 7.0062, x non-W CE 2.0090\n"}
+,{"stream_name":"stdout","time":3426.828098279,"data":"[Taper-minus] [23:56:51] S101-Taper-minus x 6000/6104 u=15156 ce=1.8084 gn=1.096 scale=16384.0 30,279 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3441.223420451,"data":"[RMS] [23:57:05] S101-RMS x 6000/6104 u=15156 ce=1.8216 gn=1.090 scale=16384.0 30,063 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3508.658574589,"data":"[Taper-minus] [23:58:13] S101-Taper-minus x@6100: full-dev web CE 7.0374, x non-W CE 1.9912\n"}
+,{"stream_name":"stdout","time":3523.30071244,"data":"[RMS] [23:58:27] S101-RMS x@6100: full-dev web CE 7.0393, x non-W CE 2.0029\n"}
+,{"stream_name":"stdout","time":3555.833324608,"data":"[Taper-minus] [23:59:00] S101-Taper-minus x@6104: full-dev web CE 7.0290, x non-W CE 1.9914\n"}
+,{"stream_name":"stdout","time":3555.94405491,"data":"[Taper-minus] [23:59:00] S101-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":3557.912857645,"data":"[Taper-minus] [23:59:02] S102-Taper-minus: branch 'x' starts from the pilot's switch 78fde02da7e9\n"}
+,{"stream_name":"stdout","time":3569.881070562,"data":"[RMS] [23:59:14] S101-RMS x@6104: full-dev web CE 7.1299, x non-W CE 2.0043\n"}
+,{"stream_name":"stdout","time":3569.982025612,"data":"[RMS] [23:59:14] S101-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":3571.732483127,"data":"[RMS] [23:59:16] S102-RMS: branch 'x' starts from the pilot's switch 0f0f603bf454\n"}
+,{"stream_name":"stdout","time":3604.509552033,"data":"[Taper-minus] [23:59:49] S102-Taper-minus x@0: full-dev web CE 4.5666, x non-W CE 4.3252\n"}
+,{"stream_name":"stdout","time":3604.692724357,"data":"[Taper-minus] [23:59:49] S102-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":3617.420599765,"data":"[RMS] [00:00:01] S102-RMS x@0: full-dev web CE 4.5795, x non-W CE 4.3165\n"}
+,{"stream_name":"stdout","time":3617.636482059,"data":"[RMS] [00:00:02] S102-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":3646.988221924,"data":"[Taper-minus] [00:00:31] S102-Taper-minus x@1: full-dev web CE 4.5710, x non-W CE 4.2240\n"}
+,{"stream_name":"stdout","time":3659.290475381,"data":"[RMS] [00:00:43] S102-RMS x@1: full-dev web CE 4.5836, x non-W CE 4.2110\n"}
+,{"stream_name":"stdout","time":3705.837500968,"data":"[Taper-minus] [00:01:30] S102-Taper-minus x@10: full-dev web CE 4.6561, x non-W CE 3.7821\n"}
+,{"stream_name":"stdout","time":3717.252971404,"data":"[RMS] [00:01:41] S102-RMS x@10: full-dev web CE 4.6795, x non-W CE 3.7684\n"}
+,{"stream_name":"stdout","time":3793.524962741,"data":"[Taper-minus] [00:02:58] S102-Taper-minus x@100: full-dev web CE 4.8013, x non-W CE 2.8381\n"}
+,{"stream_name":"stdout","time":3804.794826305,"data":"[RMS] [00:03:09] S102-RMS x@100: full-dev web CE 4.8365, x non-W CE 2.8337\n"}
+,{"stream_name":"stdout","time":3856.476307292,"data":"[Taper-minus] [00:04:00] S102-Taper-minus x 250/6104 u=9406 ce=2.3634 gn=1.414 scale=2048.0 13,720 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3868.209115227,"data":"[RMS] [00:04:12] S102-RMS x 250/6104 u=9406 ce=2.3626 gn=1.399 scale=2048.0 13,816 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":3922.798077901,"data":"[Taper-minus] [00:05:07] S102-Taper-minus x@305: full-dev web CE 5.1052, x non-W CE 2.5174\n"}
+,{"stream_name":"stdout","time":3934.089703322,"data":"[RMS] [00:05:18] S102-RMS x@305: full-dev web CE 5.1145, x non-W CE 2.5298\n"}
+,{"stream_name":"stdout","time":4006.143742075,"data":"[Taper-minus] [00:06:30] S102-Taper-minus x 500/6104 u=9656 ce=2.2557 gn=1.245 scale=2048.0 27,367 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4018.363881106,"data":"[RMS] [00:06:42] S102-RMS x 500/6104 u=9656 ce=2.2713 gn=1.374 scale=2048.0 27,278 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4096.737684872,"data":"[Taper-minus] [00:08:01] S102-Taper-minus x@610: full-dev web CE 5.6356, x non-W CE 2.3592\n"}
+,{"stream_name":"stdout","time":4108.717363629,"data":"[RMS] [00:08:13] S102-RMS x@610: full-dev web CE 5.6538, x non-W CE 2.3746\n"}
+,{"stream_name":"stdout","time":4155.908622606,"data":"[Taper-minus] [00:09:00] S102-Taper-minus x 750/6104 u=9906 ce=2.2238 gn=1.333 scale=2048.0 27,350 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4168.453094218,"data":"[RMS] [00:09:12] S102-RMS x 750/6104 u=9906 ce=2.2397 gn=1.212 scale=2048.0 27,290 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4270.559272508,"data":"[Taper-minus] [00:10:55] S102-Taper-minus x@915: full-dev web CE 5.9940, x non-W CE 2.2784\n"}
+,{"stream_name":"stdout","time":4283.20646127,"data":"[RMS] [00:11:07] S102-RMS x@915: full-dev web CE 5.9840, x non-W CE 2.2951\n"}
+,{"stream_name":"stdout","time":4305.462575762,"data":"[Taper-minus] [00:11:29] S102-Taper-minus x 1000/6104 u=10156 ce=2.1134 gn=1.403 scale=4096.0 27,388 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4318.522422543,"data":"[RMS] [00:11:43] S102-RMS x 1000/6104 u=10156 ce=2.1337 gn=1.394 scale=4096.0 27,294 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4435.043369092,"data":"[Taper-minus] [00:13:39] S102-Taper-minus x@1220: full-dev web CE 6.2117, x non-W CE 2.2241\n"}
+,{"stream_name":"stdout","time":4445.746875623,"data":"[Taper-minus] [00:13:50] S102-Taper-minus x 1250/6104 u=10406 ce=2.0688 gn=1.250 scale=4096.0 29,195 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4448.58900804,"data":"[RMS] [00:13:53] S102-RMS x@1220: full-dev web CE 6.2391, x non-W CE 2.2440\n"}
+,{"stream_name":"stdout","time":4459.442737079,"data":"[RMS] [00:14:03] S102-RMS x 1250/6104 u=10406 ce=2.0848 gn=1.157 scale=4096.0 29,066 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4546.145801567,"data":"[Taper-minus] [00:15:30] S102-Taper-minus x 1500/6104 u=10656 ce=2.1494 gn=1.114 scale=4096.0 40,803 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4560.941997656,"data":"[RMS] [00:15:45] S102-RMS x 1500/6104 u=10656 ce=2.1714 gn=1.104 scale=4096.0 40,356 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4606.009757496,"data":"[Taper-minus] [00:16:30] S102-Taper-minus x@1525: full-dev web CE 6.3675, x non-W CE 2.1832\n"}
+,{"stream_name":"stdout","time":4620.396839589,"data":"[RMS] [00:16:44] S102-RMS x@1525: full-dev web CE 6.3789, x non-W CE 2.1996\n"}
+,{"stream_name":"stdout","time":4695.770033563,"data":"[Taper-minus] [00:18:00] S102-Taper-minus x 1750/6104 u=10906 ce=1.8896 gn=1.163 scale=4096.0 27,375 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4711.072907756,"data":"[RMS] [00:18:15] S102-RMS x 1750/6104 u=10906 ce=1.9073 gn=1.064 scale=4096.0 27,283 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4766.344258941,"data":"[Taper-minus] [00:19:10] S102-Taper-minus x@1830: full-dev web CE 6.5247, x non-W CE 2.1515\n"}
+,{"stream_name":"stdout","time":4781.429100245,"data":"[RMS] [00:19:25] S102-RMS x@1830: full-dev web CE 6.5906, x non-W CE 2.1731\n"}
+,{"stream_name":"stdout","time":4831.554667079,"data":"[Taper-minus] [00:20:16] S102-Taper-minus x 2000/6104 u=11156 ce=2.0785 gn=1.403 scale=4096.0 30,165 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4847.333045493,"data":"[RMS] [00:20:31] S102-RMS x 2000/6104 u=11156 ce=2.0946 gn=1.329 scale=4096.0 30,060 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4925.920832552,"data":"[Taper-minus] [00:21:50] S102-Taper-minus x@2135: full-dev web CE 6.6374, x non-W CE 2.1268\n"}
+,{"stream_name":"stdout","time":4941.924240187,"data":"[RMS] [00:22:06] S102-RMS x@2135: full-dev web CE 6.6233, x non-W CE 2.1439\n"}
+,{"stream_name":"stdout","time":4971.360040504,"data":"[Taper-minus] [00:22:35] S102-Taper-minus x 2250/6104 u=11406 ce=1.7470 gn=1.053 scale=4096.0 29,297 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":4988.041943278,"data":"[RMS] [00:22:52] S102-RMS x 2250/6104 u=11406 ce=1.7648 gn=1.069 scale=4096.0 29,110 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5085.770670365,"data":"[Taper-minus] [00:24:30] S102-Taper-minus x@2440: full-dev web CE 6.7236, x non-W CE 2.1043\n"}
+,{"stream_name":"stdout","time":5102.720459943,"data":"[RMS] [00:24:47] S102-RMS x@2440: full-dev web CE 6.7253, x non-W CE 2.1252\n"}
+,{"stream_name":"stdout","time":5107.12435765,"data":"[Taper-minus] [00:24:51] S102-Taper-minus x 2500/6104 u=11656 ce=2.2458 gn=1.123 scale=4096.0 30,168 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5124.391883969,"data":"[RMS] [00:25:08] S102-RMS x 2500/6104 u=11656 ce=2.2704 gn=1.177 scale=4096.0 30,043 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5245.366294863,"data":"[Taper-minus] [00:27:09] S102-Taper-minus x@2745: full-dev web CE 6.7690, x non-W CE 2.0883\n"}
+,{"stream_name":"stdout","time":5247.125297458,"data":"[Taper-minus] [00:27:11] S102-Taper-minus x 2750/6104 u=11906 ce=2.0547 gn=1.182 scale=4096.0 29,257 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5263.46979084,"data":"[RMS] [00:27:27] S102-RMS x@2745: full-dev web CE 6.8233, x non-W CE 2.1058\n"}
+,{"stream_name":"stdout","time":5265.270753159,"data":"[RMS] [00:27:29] S102-RMS x 2750/6104 u=11906 ce=2.0795 gn=1.095 scale=4096.0 29,072 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5345.52620386,"data":"[Taper-minus] [00:28:50] S102-Taper-minus x 3000/6104 u=12156 ce=1.9737 gn=1.113 scale=8192.0 41,632 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5364.918002153,"data":"[RMS] [00:29:09] S102-RMS x 3000/6104 u=12156 ce=1.9830 gn=1.056 scale=8192.0 41,105 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5411.816214531,"data":"[Taper-minus] [00:29:56] S102-Taper-minus x@3050: full-dev web CE 6.8336, x non-W CE 2.0708\n"}
+,{"stream_name":"stdout","time":5430.621602872,"data":"[RMS] [00:30:15] S102-RMS x@3050: full-dev web CE 6.8651, x non-W CE 2.0881\n"}
+,{"stream_name":"stdout","time":5492.364300855,"data":"[Taper-minus] [00:31:16] S102-Taper-minus x 3250/6104 u=12406 ce=1.9278 gn=1.101 scale=8192.0 27,895 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5512.053477067,"data":"[RMS] [00:31:36] S102-RMS x 3250/6104 u=12406 ce=1.9485 gn=1.139 scale=8192.0 27,838 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5571.629976445,"data":"[Taper-minus] [00:32:36] S102-Taper-minus x@3355: full-dev web CE 6.8555, x non-W CE 2.0562\n"}
+,{"stream_name":"stdout","time":5591.262856507,"data":"[RMS] [00:32:55] S102-RMS x@3355: full-dev web CE 6.9078, x non-W CE 2.0746\n"}
+,{"stream_name":"stdout","time":5627.865827108,"data":"[Taper-minus] [00:33:32] S102-Taper-minus x 3500/6104 u=12656 ce=1.9968 gn=1.141 scale=8192.0 30,228 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5648.091341393,"data":"[RMS] [00:33:52] S102-RMS x 3500/6104 u=12656 ce=2.0143 gn=1.058 scale=8192.0 30,109 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5731.126414996,"data":"[Taper-minus] [00:35:15] S102-Taper-minus x@3660: full-dev web CE 6.8358, x non-W CE 2.0479\n"}
+,{"stream_name":"stdout","time":5751.65581476,"data":"[RMS] [00:35:36] S102-RMS x@3660: full-dev web CE 6.8956, x non-W CE 2.0638\n"}
+,{"stream_name":"stdout","time":5767.714697594,"data":"[Taper-minus] [00:35:52] S102-Taper-minus x 3750/6104 u=12906 ce=2.1453 gn=1.127 scale=8192.0 29,289 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5788.708060846,"data":"[RMS] [00:36:13] S102-RMS x 3750/6104 u=12906 ce=2.1505 gn=1.119 scale=8192.0 29,129 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5890.639342414,"data":"[Taper-minus] [00:37:55] S102-Taper-minus x@3965: full-dev web CE 6.9132, x non-W CE 2.0369\n"}
+,{"stream_name":"stdout","time":5903.048732249,"data":"[Taper-minus] [00:38:07] S102-Taper-minus x 4000/6104 u=13156 ce=1.9925 gn=1.273 scale=8192.0 30,263 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":5912.346065499,"data":"[RMS] [00:38:16] S102-RMS x@3965: full-dev web CE 6.9251, x non-W CE 2.0527\n"}
+,{"stream_name":"stdout","time":5924.981006864,"data":"[RMS] [00:38:29] S102-RMS x 4000/6104 u=13156 ce=2.0070 gn=1.223 scale=8192.0 30,060 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6005.8773928,"data":"[Taper-minus] [00:39:50] S102-Taper-minus x 4250/6104 u=13406 ce=1.8152 gn=1.181 scale=8192.0 39,839 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6029.047684192,"data":"[RMS] [00:40:13] S102-RMS x 4250/6104 u=13406 ce=1.8290 gn=1.160 scale=8192.0 39,354 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6050.259500699,"data":"[Taper-minus] [00:40:34] S102-Taper-minus x@4270: full-dev web CE 6.9608, x non-W CE 2.0261\n"}
+,{"stream_name":"stdout","time":6073.00248047,"data":"[RMS] [00:40:57] S102-RMS x@4270: full-dev web CE 6.9500, x non-W CE 2.0423\n"}
+,{"stream_name":"stdout","time":6141.285343849,"data":"[Taper-minus] [00:42:05] S102-Taper-minus x 4500/6104 u=13656 ce=2.0310 gn=1.116 scale=8192.0 30,249 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6165.03058483,"data":"[RMS] [00:42:29] S102-RMS x 4500/6104 u=13656 ce=2.0562 gn=1.167 scale=8192.0 30,121 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6209.697175582,"data":"[Taper-minus] [00:43:14] S102-Taper-minus x@4575: full-dev web CE 6.9153, x non-W CE 2.0181\n"}
+,{"stream_name":"stdout","time":6233.307710207,"data":"[RMS] [00:43:37] S102-RMS x@4575: full-dev web CE 6.9186, x non-W CE 2.0322\n"}
+,{"stream_name":"stdout","time":6282.788583769,"data":"[Taper-minus] [00:44:27] S102-Taper-minus x 4750/6104 u=13906 ce=2.0368 gn=1.199 scale=8192.0 28,946 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6307.1446478,"data":"[RMS] [00:44:51] S102-RMS x 4750/6104 u=13906 ce=2.0676 gn=1.254 scale=8192.0 28,822 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6370.701376884,"data":"[Taper-minus] [00:45:55] S102-Taper-minus x@4880: full-dev web CE 6.9354, x non-W CE 2.0121\n"}
+,{"stream_name":"stdout","time":6395.109012505,"data":"[RMS] [00:46:19] S102-RMS x@4880: full-dev web CE 6.9609, x non-W CE 2.0265\n"}
+,{"stream_name":"stdout","time":6417.736245586,"data":"[Taper-minus] [00:46:42] S102-Taper-minus x 5000/6104 u=14156 ce=1.8760 gn=1.050 scale=16384.0 30,353 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6442.842908813,"data":"[RMS] [00:47:07] S102-RMS x 5000/6104 u=14156 ce=1.8868 gn=1.025 scale=16384.0 30,185 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6529.641291817,"data":"[Taper-minus] [00:48:34] S102-Taper-minus x@5185: full-dev web CE 6.9599, x non-W CE 2.0056\n"}
+,{"stream_name":"stdout","time":6555.20796635,"data":"[RMS] [00:48:59] S102-RMS x@5185: full-dev web CE 7.0424, x non-W CE 2.0196\n"}
+,{"stream_name":"stdout","time":6557.32292523,"data":"[Taper-minus] [00:49:01] S102-Taper-minus x 5250/6104 u=14406 ce=1.9875 gn=1.205 scale=16384.0 29,341 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6583.272659815,"data":"[RMS] [00:49:27] S102-RMS x 5250/6104 u=14406 ce=1.9980 gn=1.180 scale=16384.0 29,171 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6689.586821828,"data":"[Taper-minus] [00:51:14] S102-Taper-minus x@5490: full-dev web CE 6.9818, x non-W CE 1.9996\n"}
+,{"stream_name":"stdout","time":6693.135990751,"data":"[Taper-minus] [00:51:17] S102-Taper-minus x 5500/6104 u=14656 ce=2.1578 gn=1.359 scale=16384.0 30,159 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6716.080349087,"data":"[RMS] [00:51:40] S102-RMS x@5490: full-dev web CE 7.0019, x non-W CE 2.0134\n"}
+,{"stream_name":"stdout","time":6719.736216189,"data":"[RMS] [00:51:44] S102-RMS x 5500/6104 u=14656 ce=2.1707 gn=1.287 scale=16384.0 30,015 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6796.248634953,"data":"[Taper-minus] [00:53:00] S102-Taper-minus x 5750/6104 u=14906 ce=1.9611 gn=1.211 scale=16384.0 39,730 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6823.961496527,"data":"[RMS] [00:53:28] S102-RMS x 5750/6104 u=14906 ce=1.9780 gn=1.241 scale=16384.0 39,294 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6849.536055348,"data":"[Taper-minus] [00:53:54] S102-Taper-minus x@5795: full-dev web CE 7.0071, x non-W CE 1.9970\n"}
+,{"stream_name":"stdout","time":6876.977755491,"data":"[RMS] [00:54:21] S102-RMS x@5795: full-dev web CE 7.0124, x non-W CE 2.0110\n"}
+,{"stream_name":"stdout","time":6931.777257524,"data":"[Taper-minus] [00:55:16] S102-Taper-minus x 6000/6104 u=15156 ce=2.0811 gn=1.223 scale=16384.0 30,222 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":6960.287537795,"data":"[RMS] [00:55:44] S102-RMS x 6000/6104 u=15156 ce=2.1003 gn=1.309 scale=16384.0 30,046 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7013.952645532,"data":"[Taper-minus] [00:56:38] S102-Taper-minus x@6100: full-dev web CE 7.0131, x non-W CE 1.9908\n"}
+,{"stream_name":"stdout","time":7042.273685978,"data":"[RMS] [00:57:06] S102-RMS x@6100: full-dev web CE 7.0306, x non-W CE 2.0043\n"}
+,{"stream_name":"stdout","time":7061.13940452,"data":"[Taper-minus] [00:57:25] S102-Taper-minus x@6104: full-dev web CE 7.0449, x non-W CE 1.9912\n"}
+,{"stream_name":"stdout","time":7061.246549629,"data":"[Taper-minus] [00:57:25] S102-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":7063.261477746,"data":"[Taper-minus] [00:57:27] S103-Taper-minus: branch 'x' starts from the pilot's switch 1e457bd6fb88\n"}
+,{"stream_name":"stdout","time":7088.939584878,"data":"[RMS] [00:57:53] S102-RMS x@6104: full-dev web CE 7.0505, x non-W CE 2.0055\n"}
+,{"stream_name":"stdout","time":7089.048657774,"data":"[RMS] [00:57:53] S102-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":7090.780068071,"data":"[RMS] [00:57:55] S103-RMS: branch 'x' starts from the pilot's switch e7b5c32566bc\n"}
+,{"stream_name":"stdout","time":7109.528233241,"data":"[Taper-minus] [00:58:14] S103-Taper-minus x@0: full-dev web CE 4.5773, x non-W CE 4.2731\n"}
+,{"stream_name":"stdout","time":7109.727948582,"data":"[Taper-minus] [00:58:14] S103-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":7136.186503268,"data":"[RMS] [00:58:40] S103-RMS x@0: full-dev web CE 4.5931, x non-W CE 4.2492\n"}
+,{"stream_name":"stdout","time":7136.39814301,"data":"[RMS] [00:58:40] S103-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":7152.00598473,"data":"[Taper-minus] [00:58:56] S103-Taper-minus x@1: full-dev web CE 4.5817, x non-W CE 4.1954\n"}
+,{"stream_name":"stdout","time":7178.088283395,"data":"[RMS] [00:59:22] S103-RMS x@1: full-dev web CE 4.6000, x non-W CE 4.1892\n"}
+,{"stream_name":"stdout","time":7210.520782875,"data":"[Taper-minus] [00:59:55] S103-Taper-minus x@10: full-dev web CE 4.6795, x non-W CE 3.8245\n"}
+,{"stream_name":"stdout","time":7236.160642406,"data":"[RMS] [01:00:20] S103-RMS x@10: full-dev web CE 4.7610, x non-W CE 3.7914\n"}
+,{"stream_name":"stdout","time":7298.113259832,"data":"[Taper-minus] [01:01:22] S103-Taper-minus x@100: full-dev web CE 4.8991, x non-W CE 2.8573\n"}
+,{"stream_name":"stdout","time":7323.661666843,"data":"[RMS] [01:01:48] S103-RMS x@100: full-dev web CE 4.9187, x non-W CE 2.8661\n"}
+,{"stream_name":"stdout","time":7360.826059994,"data":"[Taper-minus] [01:02:25] S103-Taper-minus x 250/6104 u=9406 ce=2.6502 gn=1.613 scale=2048.0 13,766 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7386.898791308,"data":"[RMS] [01:02:51] S103-RMS x 250/6104 u=9406 ce=2.6672 gn=1.602 scale=2048.0 13,832 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7426.980949272,"data":"[Taper-minus] [01:03:31] S103-Taper-minus x@305: full-dev web CE 5.1118, x non-W CE 2.5373\n"}
+,{"stream_name":"stdout","time":7452.698570682,"data":"[RMS] [01:03:57] S103-RMS x@305: full-dev web CE 5.1448, x non-W CE 2.5594\n"}
+,{"stream_name":"stdout","time":7510.074707657,"data":"[Taper-minus] [01:04:54] S103-Taper-minus x 500/6104 u=9656 ce=2.4475 gn=1.278 scale=2048.0 27,444 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7536.717834337,"data":"[RMS] [01:05:21] S103-RMS x 500/6104 u=9656 ce=2.4643 gn=1.359 scale=2048.0 27,340 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7600.329746833,"data":"[Taper-minus] [01:06:24] S103-Taper-minus x@610: full-dev web CE 5.7051, x non-W CE 2.3798\n"}
+,{"stream_name":"stdout","time":7626.873376742,"data":"[RMS] [01:06:51] S103-RMS x@610: full-dev web CE 5.7597, x non-W CE 2.3973\n"}
+,{"stream_name":"stdout","time":7659.240415171,"data":"[Taper-minus] [01:07:23] S103-Taper-minus x 750/6104 u=9906 ce=2.1290 gn=1.408 scale=2048.0 27,460 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7686.463535559,"data":"[RMS] [01:07:50] S103-RMS x 750/6104 u=9906 ce=2.1493 gn=1.210 scale=2048.0 27,353 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7773.585233375,"data":"[Taper-minus] [01:09:18] S103-Taper-minus x@915: full-dev web CE 6.0157, x non-W CE 2.2921\n"}
+,{"stream_name":"stdout","time":7801.02400765,"data":"[RMS] [01:09:45] S103-RMS x@915: full-dev web CE 6.0649, x non-W CE 2.3098\n"}
+,{"stream_name":"stdout","time":7808.392259942,"data":"[Taper-minus] [01:09:52] S103-Taper-minus x 1000/6104 u=10156 ce=2.2837 gn=1.324 scale=4096.0 27,462 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7836.214864232,"data":"[RMS] [01:10:20] S103-RMS x 1000/6104 u=10156 ce=2.3024 gn=1.156 scale=4096.0 27,352 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7937.614209261,"data":"[Taper-minus] [01:12:02] S103-Taper-minus x@1220: full-dev web CE 6.2908, x non-W CE 2.2366\n"}
+,{"stream_name":"stdout","time":7948.221682029,"data":"[Taper-minus] [01:12:12] S103-Taper-minus x 1250/6104 u=10406 ce=2.1124 gn=1.124 scale=4096.0 29,289 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":7965.894522142,"data":"[RMS] [01:12:30] S103-RMS x@1220: full-dev web CE 6.3532, x non-W CE 2.2545\n"}
+,{"stream_name":"stdout","time":7976.722247813,"data":"[RMS] [01:12:41] S103-RMS x 1250/6104 u=10406 ce=2.1268 gn=1.162 scale=4096.0 29,155 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8048.04126573,"data":"[Taper-minus] [01:13:52] S103-Taper-minus x 1500/6104 u=10656 ce=1.8907 gn=1.152 scale=4096.0 41,041 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8077.5081534,"data":"[RMS] [01:14:22] S103-RMS x 1500/6104 u=10656 ce=1.9084 gn=1.015 scale=4096.0 40,634 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8107.644011545,"data":"[Taper-minus] [01:14:52] S103-Taper-minus x@1525: full-dev web CE 6.4564, x non-W CE 2.1950\n"}
+,{"stream_name":"stdout","time":8136.514002088,"data":"[RMS] [01:15:21] S103-RMS x@1525: full-dev web CE 6.5791, x non-W CE 2.2169\n"}
+,{"stream_name":"stdout","time":8196.926203243,"data":"[Taper-minus] [01:16:21] S103-Taper-minus x 1750/6104 u=10906 ce=2.0846 gn=1.227 scale=4096.0 27,511 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8226.684097308,"data":"[RMS] [01:16:51] S103-RMS x 1750/6104 u=10906 ce=2.1012 gn=1.157 scale=4096.0 27,457 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8267.094345947,"data":"[Taper-minus] [01:17:31] S103-Taper-minus x@1830: full-dev web CE 6.5118, x non-W CE 2.1662\n"}
+,{"stream_name":"stdout","time":8296.728801638,"data":"[RMS] [01:18:01] S103-RMS x@1830: full-dev web CE 6.7306, x non-W CE 2.1830\n"}
+,{"stream_name":"stdout","time":8332.011504456,"data":"[Taper-minus] [01:18:36] S103-Taper-minus x 2000/6104 u=11156 ce=2.1134 gn=1.350 scale=4096.0 30,321 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8362.506549377,"data":"[RMS] [01:19:07] S103-RMS x 2000/6104 u=11156 ce=2.1370 gn=1.395 scale=4096.0 30,161 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8426.472503866,"data":"[Taper-minus] [01:20:10] S103-Taper-minus x@2135: full-dev web CE 6.6690, x non-W CE 2.1394\n"}
+,{"stream_name":"stdout","time":8456.9790666,"data":"[RMS] [01:20:41] S103-RMS x@2135: full-dev web CE 6.8388, x non-W CE 2.1577\n"}
+,{"stream_name":"stdout","time":8471.852939805,"data":"[Taper-minus] [01:20:56] S103-Taper-minus x 2250/6104 u=11406 ce=1.9349 gn=1.117 scale=4096.0 29,287 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8503.039891519,"data":"[RMS] [01:21:27] S103-RMS x 2250/6104 u=11406 ce=1.9498 gn=1.206 scale=4096.0 29,146 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8586.074170085,"data":"[Taper-minus] [01:22:50] S103-Taper-minus x@2440: full-dev web CE 6.7001, x non-W CE 2.1133\n"}
+,{"stream_name":"stdout","time":8607.329814104,"data":"[Taper-minus] [01:23:11] S103-Taper-minus x 2500/6104 u=11656 ce=2.0143 gn=1.244 scale=4096.0 30,234 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8617.346946093,"data":"[RMS] [01:23:21] S103-RMS x@2440: full-dev web CE 6.7700, x non-W CE 2.1339\n"}
+,{"stream_name":"stdout","time":8638.912616608,"data":"[RMS] [01:23:43] S103-RMS x 2500/6104 u=11656 ce=2.0239 gn=1.149 scale=4096.0 30,142 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8745.217093625,"data":"[Taper-minus] [01:25:29] S103-Taper-minus x@2745: full-dev web CE 6.7957, x non-W CE 2.0958\n"}
+,{"stream_name":"stdout","time":8746.96245179,"data":"[Taper-minus] [01:25:31] S103-Taper-minus x 2750/6104 u=11906 ce=1.9974 gn=1.118 scale=4096.0 29,334 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8777.538329216,"data":"[RMS] [01:26:02] S103-RMS x@2745: full-dev web CE 6.8995, x non-W CE 2.1163\n"}
+,{"stream_name":"stdout","time":8779.328554488,"data":"[RMS] [01:26:03] S103-RMS x 2750/6104 u=11906 ce=2.0128 gn=1.060 scale=4096.0 29,171 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8844.799710884,"data":"[Taper-minus] [01:27:09] S103-Taper-minus x 3000/6104 u=12156 ce=1.7683 gn=1.072 scale=8192.0 41,873 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8878.470800562,"data":"[RMS] [01:27:42] S103-RMS x 3000/6104 u=12156 ce=1.7848 gn=0.983 scale=8192.0 41,322 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":8910.703236299,"data":"[Taper-minus] [01:28:15] S103-Taper-minus x@3050: full-dev web CE 6.7534, x non-W CE 2.0813\n"}
+,{"stream_name":"stdout","time":8944.031401516,"data":"[RMS] [01:28:48] S103-RMS x@3050: full-dev web CE 6.8405, x non-W CE 2.1001\n"}
+,{"stream_name":"stdout","time":8990.88396488,"data":"[Taper-minus] [01:29:35] S103-Taper-minus x 3250/6104 u=12406 ce=1.9258 gn=1.147 scale=8192.0 28,039 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9025.213054836,"data":"[RMS] [01:30:09] S103-RMS x 3250/6104 u=12406 ce=1.9500 gn=1.153 scale=8192.0 27,913 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9069.919488686,"data":"[Taper-minus] [01:30:54] S103-Taper-minus x@3355: full-dev web CE 6.8102, x non-W CE 2.0668\n"}
+,{"stream_name":"stdout","time":9104.278487129,"data":"[RMS] [01:31:28] S103-RMS x@3355: full-dev web CE 6.8947, x non-W CE 2.0858\n"}
+,{"stream_name":"stdout","time":9125.898485846,"data":"[Taper-minus] [01:31:50] S103-Taper-minus x 3500/6104 u=12656 ce=2.2605 gn=1.250 scale=8192.0 30,333 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9161.03907953,"data":"[RMS] [01:32:25] S103-RMS x 3500/6104 u=12656 ce=2.2770 gn=1.195 scale=8192.0 30,157 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9229.233057218,"data":"[Taper-minus] [01:33:33] S103-Taper-minus x@3660: full-dev web CE 6.8738, x non-W CE 2.0560\n"}
+,{"stream_name":"stdout","time":9264.522351694,"data":"[RMS] [01:34:09] S103-RMS x@3660: full-dev web CE 6.9129, x non-W CE 2.0722\n"}
+,{"stream_name":"stdout","time":9265.785175325,"data":"[Taper-minus] [01:34:10] S103-Taper-minus x 3750/6104 u=12906 ce=1.8555 gn=1.276 scale=8192.0 29,281 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9301.493171983,"data":"[RMS] [01:34:46] S103-RMS x 3750/6104 u=12906 ce=1.8674 gn=1.218 scale=8192.0 29,162 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9388.632105441,"data":"[Taper-minus] [01:36:13] S103-Taper-minus x@3965: full-dev web CE 6.8510, x non-W CE 2.0443\n"}
+,{"stream_name":"stdout","time":9401.043724128,"data":"[Taper-minus] [01:36:25] S103-Taper-minus x 4000/6104 u=13156 ce=1.9617 gn=1.153 scale=8192.0 30,283 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9424.750998923,"data":"[RMS] [01:36:49] S103-RMS x@3965: full-dev web CE 6.9239, x non-W CE 2.0611\n"}
+,{"stream_name":"stdout","time":9437.306659889,"data":"[RMS] [01:37:01] S103-RMS x 4000/6104 u=13156 ce=1.9901 gn=1.111 scale=8192.0 30,155 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9503.755810009,"data":"[Taper-minus] [01:38:08] S103-Taper-minus x 4250/6104 u=13406 ce=2.1281 gn=1.190 scale=8192.0 39,886 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9541.00103963,"data":"[RMS] [01:38:45] S103-RMS x 4250/6104 u=13406 ce=2.1484 gn=1.113 scale=8192.0 39,510 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9548.117743853,"data":"[Taper-minus] [01:38:52] S103-Taper-minus x@4270: full-dev web CE 6.8448, x non-W CE 2.0348\n"}
+,{"stream_name":"stdout","time":9584.900034458,"data":"[RMS] [01:39:29] S103-RMS x@4270: full-dev web CE 6.9198, x non-W CE 2.0520\n"}
+,{"stream_name":"stdout","time":9639.085578968,"data":"[Taper-minus] [01:40:23] S103-Taper-minus x 4500/6104 u=13656 ce=2.0742 gn=1.156 scale=8192.0 30,267 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9676.775709084,"data":"[RMS] [01:41:01] S103-RMS x 4500/6104 u=13656 ce=2.0951 gn=1.127 scale=8192.0 30,167 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9707.571478581,"data":"[Taper-minus] [01:41:32] S103-Taper-minus x@4575: full-dev web CE 6.8547, x non-W CE 2.0269\n"}
+,{"stream_name":"stdout","time":9745.043620904,"data":"[RMS] [01:42:09] S103-RMS x@4575: full-dev web CE 6.9207, x non-W CE 2.0436\n"}
+,{"stream_name":"stdout","time":9780.71901875,"data":"[Taper-minus] [01:42:45] S103-Taper-minus x 4750/6104 u=13906 ce=1.9648 gn=1.173 scale=8192.0 28,920 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9818.982530033,"data":"[RMS] [01:43:23] S103-RMS x 4750/6104 u=13906 ce=1.9772 gn=1.112 scale=8192.0 28,803 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9868.782237014,"data":"[Taper-minus] [01:44:13] S103-Taper-minus x@4880: full-dev web CE 6.8756, x non-W CE 2.0204\n"}
+,{"stream_name":"stdout","time":9907.005031996,"data":"[RMS] [01:44:51] S103-RMS x@4880: full-dev web CE 6.9290, x non-W CE 2.0369\n"}
+,{"stream_name":"stdout","time":9915.91426406,"data":"[Taper-minus] [01:45:00] S103-Taper-minus x 5000/6104 u=14156 ce=1.9780 gn=1.169 scale=16384.0 30,293 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":9954.852071175,"data":"[RMS] [01:45:39] S103-RMS x 5000/6104 u=14156 ce=2.0106 gn=1.125 scale=16384.0 30,147 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10028.098195411,"data":"[Taper-minus] [01:46:52] S103-Taper-minus x@5185: full-dev web CE 6.9361, x non-W CE 2.0144\n"}
+,{"stream_name":"stdout","time":10055.752685502,"data":"[Taper-minus] [01:47:20] S103-Taper-minus x 5250/6104 u=14406 ce=1.7102 gn=1.093 scale=16384.0 29,291 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10067.377249126,"data":"[RMS] [01:47:31] S103-RMS x@5185: full-dev web CE 6.9437, x non-W CE 2.0299\n"}
+,{"stream_name":"stdout","time":10095.356811524,"data":"[RMS] [01:47:59] S103-RMS x 5250/6104 u=14406 ce=1.7253 gn=1.143 scale=16384.0 29,148 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10187.437994949,"data":"[Taper-minus] [01:49:31] S103-Taper-minus x@5490: full-dev web CE 6.9571, x non-W CE 2.0072\n"}
+,{"stream_name":"stdout","time":10190.967906719,"data":"[Taper-minus] [01:49:35] S103-Taper-minus x 5500/6104 u=14656 ce=2.0008 gn=1.233 scale=16384.0 30,293 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10227.655238211,"data":"[RMS] [01:50:12] S103-RMS x@5490: full-dev web CE 6.9258, x non-W CE 2.0256\n"}
+,{"stream_name":"stdout","time":10231.238936506,"data":"[RMS] [01:50:15] S103-RMS x 5500/6104 u=14656 ce=2.0282 gn=1.230 scale=16384.0 30,144 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10293.654047543,"data":"[Taper-minus] [01:51:18] S103-Taper-minus x 5750/6104 u=14906 ce=1.8761 gn=1.119 scale=16384.0 39,895 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10335.136575267,"data":"[RMS] [01:51:59] S103-RMS x 5750/6104 u=14906 ce=1.8998 gn=1.110 scale=16384.0 39,431 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10346.782322215,"data":"[Taper-minus] [01:52:11] S103-Taper-minus x@5795: full-dev web CE 6.9285, x non-W CE 2.0032\n"}
+,{"stream_name":"stdout","time":10388.048460206,"data":"[RMS] [01:52:52] S103-RMS x@5795: full-dev web CE 6.9656, x non-W CE 2.0183\n"}
+,{"stream_name":"stdout","time":10428.786542766,"data":"[Taper-minus] [01:53:33] S103-Taper-minus x 6000/6104 u=15156 ce=1.9615 gn=1.173 scale=16384.0 30,311 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10471.100474561,"data":"[RMS] [01:54:15] S103-RMS x 6000/6104 u=15156 ce=1.9841 gn=1.150 scale=16384.0 30,126 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10510.733208851,"data":"[Taper-minus] [01:54:55] S103-Taper-minus x@6100: full-dev web CE 6.9054, x non-W CE 1.9985\n"}
+,{"stream_name":"stdout","time":10552.910276993,"data":"[RMS] [01:55:37] S103-RMS x@6100: full-dev web CE 6.9556, x non-W CE 2.0146\n"}
+,{"stream_name":"stdout","time":10557.971859326,"data":"[Taper-minus] [01:55:42] S103-Taper-minus x@6104: full-dev web CE 6.9169, x non-W CE 1.9988\n"}
+,{"stream_name":"stdout","time":10558.088439387,"data":"[Taper-minus] [01:55:42] S103-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":10558.695090403,"data":"[Taper-minus] [01:55:43] S104-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":10599.868806674,"data":"[RMS] [01:56:24] S103-RMS x@6104: full-dev web CE 6.9636, x non-W CE 2.0153\n"}
+,{"stream_name":"stdout","time":10599.961412254,"data":"[RMS] [01:56:24] S103-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":10600.299608955,"data":"[RMS] [01:56:24] S104-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":10653.727144621,"data":"[Taper-minus] [01:57:18] S104-Taper-minus prefix 250/9156 u=250 ce=6.6953 gn=0.514 scale=128.0 43,111 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10690.452094567,"data":"[RMS] [01:57:54] S104-RMS prefix 250/9156 u=250 ce=6.6948 gn=0.508 scale=128.0 45,444 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10748.802940865,"data":"[Taper-minus] [01:58:53] S104-Taper-minus prefix 500/9156 u=500 ce=6.3379 gn=0.495 scale=128.0 43,081 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10780.513030596,"data":"[RMS] [01:59:25] S104-RMS prefix 500/9156 u=500 ce=6.3380 gn=0.494 scale=128.0 45,481 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10843.779803913,"data":"[Taper-minus] [02:00:28] S104-Taper-minus prefix 750/9156 u=750 ce=6.0030 gn=0.556 scale=128.0 43,125 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10870.558058236,"data":"[RMS] [02:00:55] S104-RMS prefix 750/9156 u=750 ce=6.0040 gn=0.558 scale=128.0 45,478 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10886.537081282,"data":"[Taper-minus] [02:01:11] S104-Taper-minus prefix@763: full-dev web CE 6.0103, python non-W CE 8.4061\n"}
+,{"stream_name":"stdout","time":10911.990588491,"data":"[RMS] [02:01:36] S104-RMS prefix@763: full-dev web CE 6.0114, python non-W CE 8.4047\n"}
+,{"stream_name":"stdout","time":10979.328261489,"data":"[Taper-minus] [02:02:43] S104-Taper-minus prefix 1000/9156 u=1000 ce=5.7994 gn=0.690 scale=128.0 30,219 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":10997.4723062,"data":"[RMS] [02:03:02] S104-RMS prefix 1000/9156 u=1000 ce=5.7990 gn=0.685 scale=128.0 32,274 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11077.232836201,"data":"[Taper-minus] [02:04:21] S104-Taper-minus prefix 1250/9156 u=1250 ce=5.6898 gn=0.760 scale=128.0 41,837 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11087.599964349,"data":"[RMS] [02:04:32] S104-RMS prefix 1250/9156 u=1250 ce=5.6893 gn=0.748 scale=128.0 45,447 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11175.11185159,"data":"[Taper-minus] [02:05:59] S104-Taper-minus prefix 1500/9156 u=1500 ce=5.4694 gn=0.802 scale=128.0 41,848 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11177.724865276,"data":"[RMS] [02:06:02] S104-RMS prefix 1500/9156 u=1500 ce=5.4687 gn=0.778 scale=128.0 45,448 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11268.161454159,"data":"[RMS] [02:07:32] S104-RMS prefix 1750/9156 u=1750 ce=5.4570 gn=0.822 scale=128.0 45,303 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11273.361586988,"data":"[Taper-minus] [02:07:37] S104-Taper-minus prefix 1750/9156 u=1750 ce=5.4566 gn=0.824 scale=128.0 41,681 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11358.724923562,"data":"[RMS] [02:09:03] S104-RMS prefix 2000/9156 u=2000 ce=5.2705 gn=0.921 scale=256.0 45,228 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11371.822837151,"data":"[Taper-minus] [02:09:16] S104-Taper-minus prefix 2000/9156 u=2000 ce=5.2716 gn=0.927 scale=256.0 41,600 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11449.382946441,"data":"[RMS] [02:10:33] S104-RMS prefix 2250/9156 u=2250 ce=5.2018 gn=0.873 scale=256.0 45,176 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11472.292663102,"data":"[Taper-minus] [02:10:56] S104-Taper-minus prefix 2250/9156 u=2250 ce=5.2022 gn=0.926 scale=256.0 40,769 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11542.068736779,"data":"[RMS] [02:12:06] S104-RMS prefix 2500/9156 u=2500 ce=5.1849 gn=0.961 scale=256.0 44,197 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11571.24766869,"data":"[Taper-minus] [02:12:35] S104-Taper-minus prefix 2500/9156 u=2500 ce=5.1830 gn=0.937 scale=256.0 41,393 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11632.978241643,"data":"[RMS] [02:13:37] S104-RMS prefix 2750/9156 u=2750 ce=5.1015 gn=1.100 scale=256.0 45,056 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11670.221631099,"data":"[Taper-minus] [02:14:14] S104-Taper-minus prefix 2750/9156 u=2750 ce=5.0998 gn=1.035 scale=256.0 41,395 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11723.862348085,"data":"[RMS] [02:15:08] S104-RMS prefix 3000/9156 u=3000 ce=4.8759 gn=0.929 scale=256.0 45,068 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11769.148240484,"data":"[Taper-minus] [02:15:53] S104-Taper-minus prefix 3000/9156 u=3000 ce=4.8819 gn=0.946 scale=256.0 41,405 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11779.69226733,"data":"[RMS] [02:16:04] S104-RMS prefix@3052: full-dev web CE 5.0404, python non-W CE 6.8842\n"}
+,{"stream_name":"stdout","time":11829.673628256,"data":"[Taper-minus] [02:16:54] S104-Taper-minus prefix@3052: full-dev web CE 5.0397, python non-W CE 7.0734\n"}
+,{"stream_name":"stdout","time":11851.743365119,"data":"[RMS] [02:17:16] S104-RMS prefix 3250/9156 u=3250 ce=4.9822 gn=0.906 scale=256.0 32,024 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11908.059582477,"data":"[Taper-minus] [02:18:12] S104-Taper-minus prefix 3250/9156 u=3250 ce=4.9795 gn=0.889 scale=256.0 29,485 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":11942.703933478,"data":"[RMS] [02:18:47] S104-RMS prefix 3500/9156 u=3500 ce=4.8911 gn=0.852 scale=256.0 45,042 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12006.995970088,"data":"[Taper-minus] [02:19:51] S104-Taper-minus prefix 3500/9156 u=3500 ce=4.8922 gn=0.879 scale=256.0 41,401 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12033.590436779,"data":"[RMS] [02:20:18] S104-RMS prefix 3750/9156 u=3750 ce=4.9644 gn=0.920 scale=256.0 45,055 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12105.846218925,"data":"[Taper-minus] [02:21:30] S104-Taper-minus prefix 3750/9156 u=3750 ce=4.9687 gn=0.956 scale=256.0 41,437 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12124.586767325,"data":"[RMS] [02:21:49] S104-RMS prefix 4000/9156 u=4000 ce=4.8707 gn=0.789 scale=512.0 45,013 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12204.798414842,"data":"[Taper-minus] [02:23:09] S104-Taper-minus prefix 4000/9156 u=4000 ce=4.8746 gn=0.874 scale=512.0 41,395 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12215.798727128,"data":"[RMS] [02:23:20] S104-RMS prefix 4250/9156 u=4250 ce=4.9391 gn=0.887 scale=512.0 44,906 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12303.835260682,"data":"[Taper-minus] [02:24:48] S104-Taper-minus prefix 4250/9156 u=4250 ce=4.9369 gn=0.876 scale=512.0 41,357 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12306.978159693,"data":"[RMS] [02:24:51] S104-RMS prefix 4500/9156 u=4500 ce=4.8426 gn=0.911 scale=512.0 44,923 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12398.064731397,"data":"[RMS] [02:26:22] S104-RMS prefix 4750/9156 u=4750 ce=4.8012 gn=0.879 scale=512.0 44,981 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12404.91477035,"data":"[Taper-minus] [02:26:29] S104-Taper-minus prefix 4500/9156 u=4500 ce=4.8402 gn=0.936 scale=512.0 40,514 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12490.983710547,"data":"[RMS] [02:27:55] S104-RMS prefix 5000/9156 u=5000 ce=4.7686 gn=0.914 scale=512.0 44,087 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12504.07956432,"data":"[Taper-minus] [02:28:08] S104-Taper-minus prefix 4750/9156 u=4750 ce=4.8069 gn=0.936 scale=512.0 41,305 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12582.071223041,"data":"[RMS] [02:29:26] S104-RMS prefix 5250/9156 u=5250 ce=4.8570 gn=0.909 scale=512.0 44,962 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12603.084647122,"data":"[Taper-minus] [02:29:47] S104-Taper-minus prefix 5000/9156 u=5000 ce=4.7596 gn=0.932 scale=512.0 41,372 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12673.327660044,"data":"[RMS] [02:30:57] S104-RMS prefix 5500/9156 u=5500 ce=4.8088 gn=0.941 scale=512.0 44,953 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12702.188639912,"data":"[Taper-minus] [02:31:26] S104-Taper-minus prefix 5250/9156 u=5250 ce=4.8560 gn=0.955 scale=512.0 41,330 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12764.30602325,"data":"[RMS] [02:32:28] S104-RMS prefix 5750/9156 u=5750 ce=4.9165 gn=1.009 scale=512.0 44,953 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12801.348718688,"data":"[Taper-minus] [02:33:05] S104-Taper-minus prefix 5500/9156 u=5500 ce=4.8004 gn=0.905 scale=512.0 41,318 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12855.503588718,"data":"[RMS] [02:34:00] S104-RMS prefix 6000/9156 u=6000 ce=4.7453 gn=0.875 scale=1024.0 44,914 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12900.384760273,"data":"[Taper-minus] [02:34:44] S104-Taper-minus prefix 5750/9156 u=5750 ce=4.9106 gn=1.051 scale=512.0 41,359 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12930.522984615,"data":"[RMS] [02:35:15] S104-RMS prefix@6104: full-dev web CE 4.7345, python non-W CE 6.3325\n"}
+,{"stream_name":"stdout","time":12983.855287932,"data":"[RMS] [02:36:08] S104-RMS prefix 6250/9156 u=6250 ce=4.7668 gn=1.035 scale=1024.0 31,912 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":12999.414587394,"data":"[Taper-minus] [02:36:23] S104-Taper-minus prefix 6000/9156 u=6000 ce=4.7415 gn=0.938 scale=1024.0 41,350 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13078.247086397,"data":"[Taper-minus] [02:37:42] S104-Taper-minus prefix@6104: full-dev web CE 4.7260, python non-W CE 6.3968\n"}
+,{"stream_name":"stdout","time":13078.880637666,"data":"[RMS] [02:37:43] S104-RMS prefix@6409: full-dev web CE 4.7134, python non-W CE 6.1919\n"}
+,{"stream_name":"stdout","time":13112.172288664,"data":"[RMS] [02:38:16] S104-RMS prefix 6500/9156 u=6500 ce=4.6920 gn=0.915 scale=1024.0 31,921 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13131.073194603,"data":"[Taper-minus] [02:38:35] S104-Taper-minus prefix 6250/9156 u=6250 ce=4.7519 gn=0.952 scale=1024.0 31,111 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13225.890099421,"data":"[Taper-minus] [02:40:10] S104-Taper-minus prefix@6409: full-dev web CE 4.7049, python non-W CE 6.0627\n"}
+,{"stream_name":"stdout","time":13227.31740955,"data":"[RMS] [02:40:11] S104-RMS prefix@6714: full-dev web CE 4.6974, python non-W CE 6.2586\n"}
+,{"stream_name":"stdout","time":13240.447300943,"data":"[RMS] [02:40:24] S104-RMS prefix 6750/9156 u=6750 ce=4.5802 gn=0.924 scale=1024.0 31,925 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13258.698894672,"data":"[Taper-minus] [02:40:43] S104-Taper-minus prefix 6500/9156 u=6500 ce=4.6869 gn=0.955 scale=1024.0 32,101 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13333.747355736,"data":"[RMS] [02:41:58] S104-RMS prefix 7000/9156 u=7000 ce=4.6511 gn=0.928 scale=1024.0 43,914 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13375.137497371,"data":"[Taper-minus] [02:42:39] S104-Taper-minus prefix@6714: full-dev web CE 4.6883, python non-W CE 6.2268\n"}
+,{"stream_name":"stdout","time":13377.506473177,"data":"[RMS] [02:42:42] S104-RMS prefix@7019: full-dev web CE 4.6824, python non-W CE 6.0672\n"}
+,{"stream_name":"stdout","time":13388.075099102,"data":"[Taper-minus] [02:42:52] S104-Taper-minus prefix 6750/9156 u=6750 ce=4.5815 gn=0.930 scale=1024.0 31,653 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13461.940947628,"data":"[RMS] [02:44:06] S104-RMS prefix 7250/9156 u=7250 ce=4.7065 gn=0.990 scale=1024.0 31,952 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13478.234464803,"data":"[Taper-minus] [02:44:22] S104-Taper-minus prefix 7000/9156 u=7000 ce=4.6344 gn=0.947 scale=1024.0 45,431 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13522.75431222,"data":"[Taper-minus] [02:45:07] S104-Taper-minus prefix@7019: full-dev web CE 4.6740, python non-W CE 6.0879\n"}
+,{"stream_name":"stdout","time":13525.808310103,"data":"[RMS] [02:45:10] S104-RMS prefix@7324: full-dev web CE 4.6670, python non-W CE 6.2581\n"}
+,{"stream_name":"stdout","time":13590.082607996,"data":"[RMS] [02:46:14] S104-RMS prefix 7500/9156 u=7500 ce=4.6977 gn=0.994 scale=1024.0 31,963 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13606.095502883,"data":"[Taper-minus] [02:46:30] S104-Taper-minus prefix 7250/9156 u=7250 ce=4.6864 gn=1.008 scale=1024.0 32,035 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13670.342013364,"data":"[Taper-minus] [02:47:34] S104-Taper-minus prefix@7324: full-dev web CE 4.6586, python non-W CE 6.2560\n"}
+,{"stream_name":"stdout","time":13674.122888678,"data":"[RMS] [02:47:38] S104-RMS prefix@7629: full-dev web CE 4.6539, python non-W CE 6.0559\n"}
+,{"stream_name":"stdout","time":13718.265130242,"data":"[RMS] [02:48:22] S104-RMS prefix 7750/9156 u=7750 ce=4.6075 gn=1.041 scale=1024.0 31,956 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13733.85732741,"data":"[Taper-minus] [02:48:38] S104-Taper-minus prefix 7500/9156 u=7500 ce=4.6903 gn=1.038 scale=1024.0 32,060 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13817.969970746,"data":"[Taper-minus] [02:50:02] S104-Taper-minus prefix@7629: full-dev web CE 4.6429, python non-W CE 6.1254\n"}
+,{"stream_name":"stdout","time":13822.273359492,"data":"[RMS] [02:50:06] S104-RMS prefix@7934: full-dev web CE 4.6411, python non-W CE 6.2235\n"}
+,{"stream_name":"stdout","time":13846.369441718,"data":"[RMS] [02:50:30] S104-RMS prefix 8000/9156 u=8000 ce=4.6267 gn=1.050 scale=2048.0 31,967 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13861.585650625,"data":"[Taper-minus] [02:50:46] S104-Taper-minus prefix 7750/9156 u=7750 ce=4.5914 gn=0.976 scale=1024.0 32,073 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13965.188428511,"data":"[Taper-minus] [02:52:29] S104-Taper-minus prefix@7934: full-dev web CE 4.6290, python non-W CE 5.9986\n"}
+,{"stream_name":"stdout","time":13970.701505754,"data":"[RMS] [02:52:35] S104-RMS prefix@8239: full-dev web CE 4.6265, python non-W CE 6.0584\n"}
+,{"stream_name":"stdout","time":13974.719598648,"data":"[RMS] [02:52:39] S104-RMS prefix 8250/9156 u=8250 ce=4.6361 gn=0.960 scale=2048.0 31,913 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":13988.915974157,"data":"[Taper-minus] [02:52:53] S104-Taper-minus prefix 8000/9156 u=8000 ce=4.6214 gn=1.109 scale=2048.0 32,163 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14066.149175161,"data":"[RMS] [02:54:10] S104-RMS prefix 8500/9156 u=8500 ce=4.5654 gn=1.037 scale=2048.0 44,813 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14112.863590088,"data":"[Taper-minus] [02:54:57] S104-Taper-minus prefix@8239: full-dev web CE 4.6156, python non-W CE 6.1137\n"}
+,{"stream_name":"stdout","time":14116.792985529,"data":"[Taper-minus] [02:55:01] S104-Taper-minus prefix 8250/9156 u=8250 ce=4.6216 gn=0.941 scale=2048.0 32,031 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14119.237994996,"data":"[RMS] [02:55:03] S104-RMS prefix@8544: full-dev web CE 4.6128, python non-W CE 6.0503\n"}
+,{"stream_name":"stdout","time":14194.573528244,"data":"[RMS] [02:56:19] S104-RMS prefix 8750/9156 u=8750 ce=4.6711 gn=0.946 scale=2048.0 31,894 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14208.956472855,"data":"[Taper-minus] [02:56:33] S104-Taper-minus prefix 8500/9156 u=8500 ce=4.5507 gn=0.996 scale=2048.0 44,443 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14262.330312388,"data":"[Taper-minus] [02:57:26] S104-Taper-minus prefix@8544: full-dev web CE 4.6030, python non-W CE 6.0804\n"}
+,{"stream_name":"stdout","time":14269.584077861,"data":"[RMS] [02:57:34] S104-RMS prefix@8849: full-dev web CE 4.6017, python non-W CE 5.9611\n"}
+,{"stream_name":"stdout","time":14324.79184044,"data":"[RMS] [02:58:29] S104-RMS prefix 9000/9156 u=9000 ce=4.7072 gn=0.971 scale=2048.0 31,456 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14336.670594063,"data":"[Taper-minus] [02:58:41] S104-Taper-minus prefix 8750/9156 u=8750 ce=4.6569 gn=0.959 scale=2048.0 32,072 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14410.087242621,"data":"[Taper-minus] [02:59:54] S104-Taper-minus prefix@8849: full-dev web CE 4.5933, python non-W CE 6.0887\n"}
+,{"stream_name":"stdout","time":14427.622965556,"data":"[RMS] [03:00:12] S104-RMS prefix@9156: full-dev web CE 4.5919, python non-W CE 6.1123\n"}
+,{"stream_name":"stdout","time":14432.186681601,"data":"[RMS] [03:00:16] S104-RMS: branch 'web' starts from switch d58c2d991199\n"}
+,{"stream_name":"stdout","time":14464.768427675,"data":"[Taper-minus] [03:00:49] S104-Taper-minus prefix 9000/9156 u=9000 ce=4.6919 gn=1.007 scale=2048.0 31,983 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14478.030558975,"data":"[RMS] [03:01:02] S104-RMS web@0: full-dev web CE 4.5919, python non-W CE 6.1123\n"}
+,{"stream_name":"stdout","time":14478.084922938,"data":"[RMS] [03:01:02] S104-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":14519.838789598,"data":"[RMS] [03:01:44] S104-RMS web@1: full-dev web CE 4.5925, python non-W CE 6.0935\n"}
+,{"stream_name":"stdout","time":14567.597804031,"data":"[Taper-minus] [03:02:32] S104-Taper-minus prefix@9156: full-dev web CE 4.5798, python non-W CE 6.1892\n"}
+,{"stream_name":"stdout","time":14572.21168268,"data":"[Taper-minus] [03:02:36] S104-Taper-minus: branch 'web' starts from switch 09cd784dc8b7\n"}
+,{"stream_name":"stdout","time":14578.400329642,"data":"[RMS] [03:02:42] S104-RMS web@10: full-dev web CE 4.5903, python non-W CE 6.0893\n"}
+,{"stream_name":"stdout","time":14618.394674757,"data":"[RMS] [03:03:22] S104-RMS web 94/6104 u=9250 ce=4.6494 gn=0.981 scale=2048.0 13,951 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14619.139864611,"data":"[Taper-minus] [03:03:23] S104-Taper-minus web@0: full-dev web CE 4.5798, python non-W CE 6.1892\n"}
+,{"stream_name":"stdout","time":14619.190613231,"data":"[Taper-minus] [03:03:23] S104-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":14661.526689305,"data":"[Taper-minus] [03:04:06] S104-Taper-minus web@1: full-dev web CE 4.5809, python non-W CE 6.1831\n"}
+,{"stream_name":"stdout","time":14666.924938612,"data":"[RMS] [03:04:11] S104-RMS web@100: full-dev web CE 4.5868, python non-W CE 6.0497\n"}
+,{"stream_name":"stdout","time":14720.836599435,"data":"[Taper-minus] [03:05:05] S104-Taper-minus web@10: full-dev web CE 4.5792, python non-W CE 6.1710\n"}
+,{"stream_name":"stdout","time":14760.523291948,"data":"[Taper-minus] [03:05:45] S104-Taper-minus web 94/6104 u=9250 ce=4.6460 gn=1.039 scale=2048.0 13,849 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14797.230185353,"data":"[RMS] [03:06:21] S104-RMS web@305: full-dev web CE 4.5805, python non-W CE 5.9655\n"}
+,{"stream_name":"stdout","time":14809.20148379,"data":"[Taper-minus] [03:06:33] S104-Taper-minus web@100: full-dev web CE 4.5748, python non-W CE 5.8227\n"}
+,{"stream_name":"stdout","time":14811.493259681,"data":"[RMS] [03:06:36] S104-RMS web 344/6104 u=9500 ce=4.5441 gn=1.043 scale=2048.0 21,209 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14925.960291712,"data":"[RMS] [03:08:30] S104-RMS web 594/6104 u=9750 ce=4.6430 gn=1.062 scale=2048.0 35,792 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14939.467013395,"data":"[Taper-minus] [03:08:43] S104-Taper-minus web@305: full-dev web CE 4.5676, python non-W CE 5.9108\n"}
+,{"stream_name":"stdout","time":14953.54129946,"data":"[Taper-minus] [03:08:58] S104-Taper-minus web 344/6104 u=9500 ce=4.5383 gn=1.038 scale=2048.0 21,218 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":14973.317339513,"data":"[RMS] [03:09:17] S104-RMS web@610: full-dev web CE 4.5702, python non-W CE 6.0506\n"}
+,{"stream_name":"stdout","time":15067.388745994,"data":"[Taper-minus] [03:10:51] S104-Taper-minus web 594/6104 u=9750 ce=4.6242 gn=1.028 scale=2048.0 35,987 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15077.38457945,"data":"[RMS] [03:11:01] S104-RMS web 844/6104 u=10000 ce=4.5913 gn=1.048 scale=4096.0 27,044 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15115.468660745,"data":"[Taper-minus] [03:11:39] S104-Taper-minus web@610: full-dev web CE 4.5574, python non-W CE 5.9447\n"}
+,{"stream_name":"stdout","time":15149.659582205,"data":"[RMS] [03:12:14] S104-RMS web@915: full-dev web CE 4.5598, python non-W CE 5.9752\n"}
+,{"stream_name":"stdout","time":15218.790277668,"data":"[Taper-minus] [03:13:23] S104-Taper-minus web 844/6104 u=10000 ce=4.5798 gn=1.062 scale=4096.0 27,054 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15224.343234054,"data":"[RMS] [03:13:28] S104-RMS web 1094/6104 u=10250 ce=4.5911 gn=1.068 scale=4096.0 27,872 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15291.260349784,"data":"[Taper-minus] [03:14:35] S104-Taper-minus web@915: full-dev web CE 4.5477, python non-W CE 5.7803\n"}
+,{"stream_name":"stdout","time":15316.561684797,"data":"[RMS] [03:15:01] S104-RMS web@1220: full-dev web CE 4.5497, python non-W CE 6.0104\n"}
+,{"stream_name":"stdout","time":15365.453395078,"data":"[Taper-minus] [03:15:49] S104-Taper-minus web 1094/6104 u=10250 ce=4.5754 gn=1.051 scale=4096.0 27,927 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15368.413190778,"data":"[RMS] [03:15:52] S104-RMS web 1344/6104 u=10500 ce=4.4187 gn=1.051 scale=4096.0 28,431 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15457.98928491,"data":"[Taper-minus] [03:17:22] S104-Taper-minus web@1220: full-dev web CE 4.5388, python non-W CE 5.9665\n"}
+,{"stream_name":"stdout","time":15490.40740466,"data":"[RMS] [03:17:54] S104-RMS web@1525: full-dev web CE 4.5425, python non-W CE 5.9436\n"}
+,{"stream_name":"stdout","time":15509.491594936,"data":"[Taper-minus] [03:18:14] S104-Taper-minus web 1344/6104 u=10500 ce=4.4048 gn=1.038 scale=4096.0 28,432 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15515.657593591,"data":"[RMS] [03:18:20] S104-RMS web 1594/6104 u=10750 ce=4.4375 gn=1.007 scale=4096.0 27,818 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15631.127628147,"data":"[Taper-minus] [03:20:15] S104-Taper-minus web@1525: full-dev web CE 4.5298, python non-W CE 6.1213\n"}
+,{"stream_name":"stdout","time":15652.627571172,"data":"[RMS] [03:20:37] S104-RMS web@1830: full-dev web CE 4.5366, python non-W CE 5.9815\n"}
+,{"stream_name":"stdout","time":15656.143037028,"data":"[Taper-minus] [03:20:40] S104-Taper-minus web 1594/6104 u=10750 ce=4.4267 gn=0.987 scale=4096.0 27,930 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15657.745758996,"data":"[RMS] [03:20:42] S104-RMS web 1844/6104 u=11000 ce=4.5879 gn=1.096 scale=4096.0 28,827 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15758.816991655,"data":"[RMS] [03:22:23] S104-RMS web 2094/6104 u=11250 ce=4.3936 gn=1.036 scale=4096.0 40,538 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15793.194265618,"data":"[Taper-minus] [03:22:57] S104-Taper-minus web@1830: full-dev web CE 4.5255, python non-W CE 5.8819\n"}
+,{"stream_name":"stdout","time":15798.221685169,"data":"[Taper-minus] [03:23:02] S104-Taper-minus web 1844/6104 u=11000 ce=4.5747 gn=1.061 scale=4096.0 28,829 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15815.744739043,"data":"[RMS] [03:23:20] S104-RMS web@2135: full-dev web CE 4.5281, python non-W CE 6.0728\n"}
+,{"stream_name":"stdout","time":15898.01837425,"data":"[Taper-minus] [03:24:42] S104-Taper-minus web 2094/6104 u=11250 ce=4.3792 gn=1.011 scale=4096.0 41,054 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15902.023221775,"data":"[RMS] [03:24:46] S104-RMS web 2344/6104 u=11500 ce=4.4306 gn=1.134 scale=4096.0 28,596 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":15955.059273538,"data":"[Taper-minus] [03:25:39] S104-Taper-minus web@2135: full-dev web CE 4.5163, python non-W CE 5.8246\n"}
+,{"stream_name":"stdout","time":15979.190287819,"data":"[RMS] [03:26:03] S104-RMS web@2440: full-dev web CE 4.5218, python non-W CE 6.0327\n"}
+,{"stream_name":"stdout","time":16040.018088444,"data":"[Taper-minus] [03:27:04] S104-Taper-minus web 2344/6104 u=11500 ce=4.4159 gn=1.139 scale=4096.0 28,847 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16040.57000254,"data":"[RMS] [03:27:05] S104-RMS web 2594/6104 u=11750 ce=4.6398 gn=1.103 scale=4096.0 29,564 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16116.752479259,"data":"[Taper-minus] [03:28:21] S104-Taper-minus web@2440: full-dev web CE 4.5089, python non-W CE 5.7993\n"}
+,{"stream_name":"stdout","time":16142.768993814,"data":"[RMS] [03:28:47] S104-RMS web@2745: full-dev web CE 4.5145, python non-W CE 5.8404\n"}
+,{"stream_name":"stdout","time":16177.177982676,"data":"[Taper-minus] [03:29:21] S104-Taper-minus web 2594/6104 u=11750 ce=4.6331 gn=1.111 scale=4096.0 29,863 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16183.902433525,"data":"[RMS] [03:29:28] S104-RMS web 2844/6104 u=12000 ce=4.3349 gn=1.057 scale=8192.0 28,577 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16278.861490328,"data":"[Taper-minus] [03:31:03] S104-Taper-minus web@2745: full-dev web CE 4.5027, python non-W CE 5.8667\n"}
+,{"stream_name":"stdout","time":16313.046414236,"data":"[RMS] [03:31:37] S104-RMS web@3050: full-dev web CE 4.5085, python non-W CE 5.8503\n"}
+,{"stream_name":"stdout","time":16319.324421047,"data":"[Taper-minus] [03:31:43] S104-Taper-minus web 2844/6104 u=12000 ce=4.3213 gn=1.070 scale=8192.0 28,809 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16329.245424511,"data":"[RMS] [03:31:53] S104-RMS web 3094/6104 u=12250 ce=4.4864 gn=1.063 scale=8192.0 28,182 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16435.568880124,"data":"[RMS] [03:33:40] S104-RMS web 3344/6104 u=12500 ce=4.2880 gn=1.155 scale=8192.0 38,536 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16447.387152142,"data":"[Taper-minus] [03:33:51] S104-Taper-minus web@3050: full-dev web CE 4.4968, python non-W CE 5.8533\n"}
+,{"stream_name":"stdout","time":16463.297799293,"data":"[Taper-minus] [03:34:07] S104-Taper-minus web 3094/6104 u=12250 ce=4.4792 gn=1.077 scale=8192.0 28,450 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16476.847249604,"data":"[RMS] [03:34:21] S104-RMS web@3355: full-dev web CE 4.5001, python non-W CE 6.0289\n"}
+,{"stream_name":"stdout","time":16567.896254067,"data":"[Taper-minus] [03:35:52] S104-Taper-minus web 3344/6104 u=12500 ce=4.2716 gn=1.127 scale=8192.0 39,171 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16574.338985541,"data":"[RMS] [03:35:58] S104-RMS web 3594/6104 u=12750 ce=4.4422 gn=1.067 scale=8192.0 29,510 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16609.44249211,"data":"[Taper-minus] [03:36:33] S104-Taper-minus web@3355: full-dev web CE 4.4890, python non-W CE 5.8979\n"}
+,{"stream_name":"stdout","time":16640.640219662,"data":"[RMS] [03:37:05] S104-RMS web@3660: full-dev web CE 4.4946, python non-W CE 5.8256\n"}
+,{"stream_name":"stdout","time":16705.497552729,"data":"[Taper-minus] [03:38:09] S104-Taper-minus web 3594/6104 u=12750 ce=4.4358 gn=1.071 scale=8192.0 29,766 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16717.797537899,"data":"[RMS] [03:38:22] S104-RMS web 3844/6104 u=13000 ce=4.3833 gn=1.115 scale=8192.0 28,552 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16771.547186039,"data":"[Taper-minus] [03:39:16] S104-Taper-minus web@3660: full-dev web CE 4.4833, python non-W CE 5.8142\n"}
+,{"stream_name":"stdout","time":16804.360098346,"data":"[RMS] [03:39:48] S104-RMS web@3965: full-dev web CE 4.4902, python non-W CE 5.7877\n"}
+,{"stream_name":"stdout","time":16847.572757221,"data":"[Taper-minus] [03:40:32] S104-Taper-minus web 3844/6104 u=13000 ce=4.3771 gn=1.061 scale=8192.0 28,831 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16856.502454871,"data":"[RMS] [03:40:41] S104-RMS web 4094/6104 u=13250 ce=4.5381 gn=1.119 scale=8192.0 29,530 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16933.557344366,"data":"[Taper-minus] [03:41:58] S104-Taper-minus web@3965: full-dev web CE 4.4788, python non-W CE 5.8023\n"}
+,{"stream_name":"stdout","time":16967.870408017,"data":"[RMS] [03:42:32] S104-RMS web@4270: full-dev web CE 4.4843, python non-W CE 5.8440\n"}
+,{"stream_name":"stdout","time":16984.999876956,"data":"[Taper-minus] [03:42:49] S104-Taper-minus web 4094/6104 u=13250 ce=4.5293 gn=1.069 scale=8192.0 29,798 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":16999.79706981,"data":"[RMS] [03:43:04] S104-RMS web 4344/6104 u=13500 ce=4.4539 gn=1.082 scale=8192.0 28,591 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17095.825946053,"data":"[Taper-minus] [03:44:40] S104-Taper-minus web@4270: full-dev web CE 4.4735, python non-W CE 5.8173\n"}
+,{"stream_name":"stdout","time":17127.288341907,"data":"[Taper-minus] [03:45:11] S104-Taper-minus web 4344/6104 u=13500 ce=4.4402 gn=1.041 scale=8192.0 28,793 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17131.455720663,"data":"[RMS] [03:45:15] S104-RMS web@4575: full-dev web CE 4.4803, python non-W CE 5.8193\n"}
+,{"stream_name":"stdout","time":17140.305776936,"data":"[RMS] [03:45:24] S104-RMS web 4594/6104 u=13750 ce=4.3849 gn=1.165 scale=8192.0 29,145 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17246.562760896,"data":"[RMS] [03:47:11] S104-RMS web 4844/6104 u=14000 ce=4.6361 gn=1.176 scale=16384.0 38,560 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17257.831416731,"data":"[Taper-minus] [03:47:22] S104-Taper-minus web@4575: full-dev web CE 4.4701, python non-W CE 5.8317\n"}
+,{"stream_name":"stdout","time":17264.735289536,"data":"[Taper-minus] [03:47:29] S104-Taper-minus web 4594/6104 u=13750 ce=4.3702 gn=1.074 scale=8192.0 29,793 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17297.196099937,"data":"[RMS] [03:48:01] S104-RMS web@4880: full-dev web CE 4.4766, python non-W CE 5.8143\n"}
+,{"stream_name":"stdout","time":17371.589510544,"data":"[Taper-minus] [03:49:16] S104-Taper-minus web 4844/6104 u=14000 ce=4.6305 gn=1.155 scale=16384.0 38,345 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17385.601312137,"data":"[RMS] [03:49:30] S104-RMS web 5094/6104 u=14250 ce=4.5225 gn=1.144 scale=16384.0 29,452 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17422.153543996,"data":"[Taper-minus] [03:50:06] S104-Taper-minus web@4880: full-dev web CE 4.4660, python non-W CE 5.8868\n"}
+,{"stream_name":"stdout","time":17461.141612573,"data":"[RMS] [03:50:45] S104-RMS web@5185: full-dev web CE 4.4736, python non-W CE 5.7656\n"}
+,{"stream_name":"stdout","time":17509.157314112,"data":"[Taper-minus] [03:51:33] S104-Taper-minus web 5094/6104 u=14250 ce=4.5080 gn=1.156 scale=16384.0 29,774 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17529.032357056,"data":"[RMS] [03:51:53] S104-RMS web 5344/6104 u=14500 ce=4.3159 gn=1.155 scale=16384.0 28,557 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17584.264317131,"data":"[Taper-minus] [03:52:48] S104-Taper-minus web@5185: full-dev web CE 4.4633, python non-W CE 5.7956\n"}
+,{"stream_name":"stdout","time":17624.80248703,"data":"[RMS] [03:53:29] S104-RMS web@5490: full-dev web CE 4.4711, python non-W CE 5.8367\n"}
+,{"stream_name":"stdout","time":17651.349190284,"data":"[Taper-minus] [03:53:55] S104-Taper-minus web 5344/6104 u=14500 ce=4.2932 gn=1.103 scale=16384.0 28,799 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17667.816587292,"data":"[RMS] [03:54:12] S104-RMS web 5594/6104 u=14750 ce=4.1626 gn=1.141 scale=16384.0 29,520 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17746.455871698,"data":"[Taper-minus] [03:55:30] S104-Taper-minus web@5490: full-dev web CE 4.4617, python non-W CE 5.8330\n"}
+,{"stream_name":"stdout","time":17788.583375024,"data":"[RMS] [03:56:13] S104-RMS web@5795: full-dev web CE 4.4676, python non-W CE 5.8116\n"}
+,{"stream_name":"stdout","time":17788.828566147,"data":"[Taper-minus] [03:56:13] S104-Taper-minus web 5594/6104 u=14750 ce=4.1597 gn=1.140 scale=16384.0 29,794 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17811.288921229,"data":"[RMS] [03:56:35] S104-RMS web 5844/6104 u=15000 ce=4.5681 gn=1.122 scale=16384.0 28,543 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17908.601442364,"data":"[Taper-minus] [03:58:13] S104-Taper-minus web@5795: full-dev web CE 4.4583, python non-W CE 5.8225\n"}
+,{"stream_name":"stdout","time":17912.86053015,"data":"[RMS] [03:58:17] S104-RMS web 6094/6104 u=15250 ce=4.5998 gn=1.216 scale=16384.0 40,326 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17931.020736313,"data":"[Taper-minus] [03:58:35] S104-Taper-minus web 5844/6104 u=15000 ce=4.5589 gn=1.115 scale=16384.0 28,806 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":17957.040644448,"data":"[RMS] [03:59:01] S104-RMS web@6100: full-dev web CE 4.4657, python non-W CE 5.7783\n"}
+,{"stream_name":"stdout","time":18004.972566513,"data":"[RMS] [03:59:49] S104-RMS web@6104: full-dev web CE 4.4660, python non-W CE 5.7794\n"}
+,{"stream_name":"stdout","time":18007.79719629,"data":"[RMS] [03:59:52] S104-RMS: branch 'python' starts from switch d58c2d991199\n"}
+,{"stream_name":"stdout","time":18031.312608357,"data":"[Taper-minus] [04:00:15] S104-Taper-minus web 6094/6104 u=15250 ce=4.5859 gn=1.184 scale=16384.0 40,841 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18054.14359983,"data":"[RMS] [04:00:38] S104-RMS python@0: full-dev web CE 4.5919, python non-W CE 6.1123\n"}
+,{"stream_name":"stdout","time":18054.274184606,"data":"[RMS] [04:00:38] S104-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":18075.799589445,"data":"[Taper-minus] [04:01:00] S104-Taper-minus web@6100: full-dev web CE 4.4569, python non-W CE 5.8448\n"}
+,{"stream_name":"stdout","time":18096.582010838,"data":"[RMS] [04:01:21] S104-RMS python@1: full-dev web CE 4.5968, python non-W CE 5.8670\n"}
+,{"stream_name":"stdout","time":18124.015860286,"data":"[Taper-minus] [04:01:48] S104-Taper-minus web@6104: full-dev web CE 4.4565, python non-W CE 5.8422\n"}
+,{"stream_name":"stdout","time":18126.937171276,"data":"[Taper-minus] [04:01:51] S104-Taper-minus: branch 'python' starts from switch 09cd784dc8b7\n"}
+,{"stream_name":"stdout","time":18155.86736287,"data":"[RMS] [04:02:20] S104-RMS python@10: full-dev web CE 4.7244, python non-W CE 5.3773\n"}
+,{"stream_name":"stdout","time":18174.095889518,"data":"[Taper-minus] [04:02:38] S104-Taper-minus python@0: full-dev web CE 4.5798, python non-W CE 6.1892\n"}
+,{"stream_name":"stdout","time":18174.221685947,"data":"[Taper-minus] [04:02:38] S104-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":18216.713329394,"data":"[Taper-minus] [04:03:21] S104-Taper-minus python@1: full-dev web CE 4.5839, python non-W CE 5.9465\n"}
+,{"stream_name":"stdout","time":18244.808646737,"data":"[RMS] [04:03:49] S104-RMS python@100: full-dev web CE 4.8576, python non-W CE 3.8554\n"}
+,{"stream_name":"stdout","time":18276.07469801,"data":"[Taper-minus] [04:04:20] S104-Taper-minus python@10: full-dev web CE 4.7007, python non-W CE 5.3849\n"}
+,{"stream_name":"stdout","time":18305.436606989,"data":"[RMS] [04:04:49] S104-RMS python 240/6104 u=9396 ce=2.3802 gn=1.738 scale=2048.0 10,434 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18364.691579237,"data":"[Taper-minus] [04:05:49] S104-Taper-minus python@100: full-dev web CE 4.8351, python non-W CE 3.8495\n"}
+,{"stream_name":"stdout","time":18375.941933563,"data":"[RMS] [04:06:00] S104-RMS python@305: full-dev web CE 5.1531, python non-W CE 3.3249\n"}
+,{"stream_name":"stdout","time":18424.591625131,"data":"[Taper-minus] [04:06:49] S104-Taper-minus python 240/6104 u=9396 ce=2.3673 gn=1.501 scale=2048.0 10,416 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18457.795491895,"data":"[RMS] [04:07:22] S104-RMS python 490/6104 u=9646 ce=2.2044 gn=1.328 scale=2048.0 26,890 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18494.707520695,"data":"[Taper-minus] [04:07:59] S104-Taper-minus python@305: full-dev web CE 5.1440, python non-W CE 3.3082\n"}
+,{"stream_name":"stdout","time":18553.313220619,"data":"[RMS] [04:08:57] S104-RMS python@610: full-dev web CE 5.5481, python non-W CE 3.0964\n"}
+,{"stream_name":"stdout","time":18575.323272606,"data":"[Taper-minus] [04:09:19] S104-Taper-minus python 490/6104 u=9646 ce=2.2035 gn=1.816 scale=2048.0 27,168 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18610.282594534,"data":"[RMS] [04:09:54] S104-RMS python 740/6104 u=9896 ce=2.2121 gn=1.248 scale=2048.0 26,861 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18669.877579047,"data":"[Taper-minus] [04:10:54] S104-Taper-minus python@610: full-dev web CE 5.5304, python non-W CE 3.0787\n"}
+,{"stream_name":"stdout","time":18725.838543387,"data":"[Taper-minus] [04:11:50] S104-Taper-minus python 740/6104 u=9896 ce=2.2067 gn=1.519 scale=2048.0 27,220 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18730.471705829,"data":"[RMS] [04:11:55] S104-RMS python@915: full-dev web CE 5.7734, python non-W CE 2.9887\n"}
+,{"stream_name":"stdout","time":18762.670572528,"data":"[RMS] [04:12:27] S104-RMS python 990/6104 u=10146 ce=1.9199 gn=1.353 scale=4096.0 26,878 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18844.845471414,"data":"[Taper-minus] [04:13:49] S104-Taper-minus python@915: full-dev web CE 5.7669, python non-W CE 2.9758\n"}
+,{"stream_name":"stdout","time":18876.43161297,"data":"[Taper-minus] [04:14:20] S104-Taper-minus python 990/6104 u=10146 ce=1.8916 gn=1.093 scale=4096.0 27,199 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":18898.280162005,"data":"[RMS] [04:14:42] S104-RMS python@1220: full-dev web CE 5.9801, python non-W CE 2.9167\n"}
+,{"stream_name":"stdout","time":18905.603305375,"data":"[RMS] [04:14:50] S104-RMS python 1240/6104 u=10396 ce=1.6202 gn=1.099 scale=4096.0 28,651 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19008.46233625,"data":"[RMS] [04:16:32] S104-RMS python 1490/6104 u=10646 ce=1.8256 gn=1.144 scale=4096.0 39,836 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19010.429499531,"data":"[Taper-minus] [04:16:34] S104-Taper-minus python@1220: full-dev web CE 5.9440, python non-W CE 2.9033\n"}
+,{"stream_name":"stdout","time":19017.614918283,"data":"[Taper-minus] [04:16:42] S104-Taper-minus python 1240/6104 u=10396 ce=1.6298 gn=1.818 scale=4096.0 29,005 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19072.596108265,"data":"[RMS] [04:17:37] S104-RMS python@1525: full-dev web CE 5.9956, python non-W CE 2.8498\n"}
+,{"stream_name":"stdout","time":19118.949292179,"data":"[Taper-minus] [04:18:23] S104-Taper-minus python 1490/6104 u=10646 ce=1.8144 gn=1.692 scale=4096.0 40,434 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19160.91290275,"data":"[RMS] [04:19:05] S104-RMS python 1740/6104 u=10896 ce=1.9147 gn=1.203 scale=4096.0 26,869 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19182.741908675,"data":"[Taper-minus] [04:19:27] S104-Taper-minus python@1525: full-dev web CE 5.9885, python non-W CE 2.8561\n"}
+,{"stream_name":"stdout","time":19236.061207332,"data":"[RMS] [04:20:20] S104-RMS python@1830: full-dev web CE 6.0305, python non-W CE 2.8227\n"}
+,{"stream_name":"stdout","time":19269.381661183,"data":"[Taper-minus] [04:20:53] S104-Taper-minus python 1740/6104 u=10896 ce=1.8972 gn=1.192 scale=4096.0 27,229 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19299.345446928,"data":"[RMS] [04:21:23] S104-RMS python 1990/6104 u=11146 ce=1.8012 gn=1.021 scale=4096.0 29,579 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19343.883692048,"data":"[Taper-minus] [04:22:08] S104-Taper-minus python@1830: full-dev web CE 6.0287, python non-W CE 2.8010\n"}
+,{"stream_name":"stdout","time":19399.31945837,"data":"[RMS] [04:23:03] S104-RMS python@2135: full-dev web CE 6.0987, python non-W CE 2.7863\n"}
+,{"stream_name":"stdout","time":19406.164064745,"data":"[Taper-minus] [04:23:10] S104-Taper-minus python 1990/6104 u=11146 ce=1.8001 gn=1.136 scale=4096.0 29,938 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19442.469327776,"data":"[RMS] [04:23:46] S104-RMS python 2240/6104 u=11396 ce=1.9710 gn=1.270 scale=4096.0 28,626 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19505.012305285,"data":"[Taper-minus] [04:24:49] S104-Taper-minus python@2135: full-dev web CE 6.1075, python non-W CE 2.7742\n"}
+,{"stream_name":"stdout","time":19547.379963341,"data":"[Taper-minus] [04:25:31] S104-Taper-minus python 2240/6104 u=11396 ce=1.9643 gn=1.201 scale=4096.0 29,013 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19562.460586733,"data":"[RMS] [04:25:46] S104-RMS python@2440: full-dev web CE 6.1308, python non-W CE 2.7483\n"}
+,{"stream_name":"stdout","time":19580.7949626,"data":"[RMS] [04:26:05] S104-RMS python 2490/6104 u=11646 ce=1.7454 gn=1.483 scale=4096.0 29,611 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19666.090935569,"data":"[Taper-minus] [04:27:30] S104-Taper-minus python@2440: full-dev web CE 6.1151, python non-W CE 2.7371\n"}
+,{"stream_name":"stdout","time":19684.02817008,"data":"[Taper-minus] [04:27:48] S104-Taper-minus python 2490/6104 u=11646 ce=1.7437 gn=0.980 scale=4096.0 29,967 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19686.410185249,"data":"[RMS] [04:27:50] S104-RMS python 2740/6104 u=11896 ce=1.8460 gn=1.451 scale=4096.0 38,769 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19725.697665313,"data":"[RMS] [04:28:30] S104-RMS python@2745: full-dev web CE 6.1517, python non-W CE 2.7349\n"}
+,{"stream_name":"stdout","time":19787.941270052,"data":"[Taper-minus] [04:29:32] S104-Taper-minus python 2740/6104 u=11896 ce=1.8455 gn=1.125 scale=4096.0 39,432 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19826.758925612,"data":"[RMS] [04:30:11] S104-RMS python 2990/6104 u=12146 ce=1.5480 gn=1.162 scale=8192.0 29,192 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19827.182613378,"data":"[Taper-minus] [04:30:11] S104-Taper-minus python@2745: full-dev web CE 6.1462, python non-W CE 2.7284\n"}
+,{"stream_name":"stdout","time":19895.569064307,"data":"[RMS] [04:31:20] S104-RMS python@3050: full-dev web CE 6.1607, python non-W CE 2.7130\n"}
+,{"stream_name":"stdout","time":19924.61238925,"data":"[Taper-minus] [04:31:49] S104-Taper-minus python 2990/6104 u=12146 ce=1.5401 gn=1.093 scale=8192.0 29,961 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19974.524992272,"data":"[RMS] [04:32:39] S104-RMS python 3240/6104 u=12396 ce=1.9356 gn=1.178 scale=8192.0 27,720 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":19994.974795274,"data":"[Taper-minus] [04:32:59] S104-Taper-minus python@3050: full-dev web CE 6.1714, python non-W CE 2.7097\n"}
+,{"stream_name":"stdout","time":20058.805255587,"data":"[RMS] [04:34:03] S104-RMS python@3355: full-dev web CE 6.1661, python non-W CE 2.6958\n"}
+,{"stream_name":"stdout","time":20072.580271046,"data":"[Taper-minus] [04:34:17] S104-Taper-minus python 3240/6104 u=12396 ce=1.9343 gn=1.275 scale=8192.0 27,682 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20112.980820365,"data":"[RMS] [04:34:57] S104-RMS python 3490/6104 u=12646 ce=1.6804 gn=1.148 scale=8192.0 29,583 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20156.249286002,"data":"[Taper-minus] [04:35:40] S104-Taper-minus python@3355: full-dev web CE 6.1666, python non-W CE 2.6915\n"}
+,{"stream_name":"stdout","time":20209.53063714,"data":"[Taper-minus] [04:36:34] S104-Taper-minus python 3490/6104 u=12646 ce=1.6778 gn=1.108 scale=8192.0 29,917 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20222.112702103,"data":"[RMS] [04:36:46] S104-RMS python@3660: full-dev web CE 6.1824, python non-W CE 2.6873\n"}
+,{"stream_name":"stdout","time":20256.171849108,"data":"[RMS] [04:37:20] S104-RMS python 3740/6104 u=12896 ce=1.7077 gn=1.056 scale=8192.0 28,605 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20317.483374921,"data":"[Taper-minus] [04:38:21] S104-Taper-minus python@3660: full-dev web CE 6.1829, python non-W CE 2.6742\n"}
+,{"stream_name":"stdout","time":20350.900515925,"data":"[Taper-minus] [04:38:55] S104-Taper-minus python 3740/6104 u=12896 ce=1.7025 gn=1.091 scale=8192.0 28,974 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20385.567019403,"data":"[RMS] [04:39:30] S104-RMS python@3965: full-dev web CE 6.2067, python non-W CE 2.6732\n"}
+,{"stream_name":"stdout","time":20394.695166898,"data":"[RMS] [04:39:39] S104-RMS python 3990/6104 u=13146 ce=1.6570 gn=1.079 scale=8192.0 29,561 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20478.600785916,"data":"[Taper-minus] [04:41:03] S104-Taper-minus python@3965: full-dev web CE 6.2176, python non-W CE 2.6630\n"}
+,{"stream_name":"stdout","time":20487.577864047,"data":"[Taper-minus] [04:41:12] S104-Taper-minus python 3990/6104 u=13146 ce=1.6561 gn=1.133 scale=8192.0 29,960 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20500.484309844,"data":"[RMS] [04:41:25] S104-RMS python 4240/6104 u=13396 ce=1.6243 gn=1.664 scale=8192.0 38,718 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20549.051067515,"data":"[RMS] [04:42:13] S104-RMS python@4270: full-dev web CE 6.1968, python non-W CE 2.6584\n"}
+,{"stream_name":"stdout","time":20591.644220188,"data":"[Taper-minus] [04:42:56] S104-Taper-minus python 4240/6104 u=13396 ce=1.6185 gn=0.983 scale=8192.0 39,374 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20639.345540842,"data":"[RMS] [04:43:43] S104-RMS python 4490/6104 u=13646 ce=1.5155 gn=1.447 scale=8192.0 29,505 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20639.956557321,"data":"[Taper-minus] [04:43:44] S104-Taper-minus python@4270: full-dev web CE 6.1965, python non-W CE 2.6508\n"}
+,{"stream_name":"stdout","time":20712.689934894,"data":"[RMS] [04:44:57] S104-RMS python@4575: full-dev web CE 6.2297, python non-W CE 2.6491\n"}
+,{"stream_name":"stdout","time":20728.53717775,"data":"[Taper-minus] [04:45:13] S104-Taper-minus python 4490/6104 u=13646 ce=1.5099 gn=1.028 scale=8192.0 29,913 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20784.482520189,"data":"[RMS] [04:46:08] S104-RMS python 4740/6104 u=13896 ce=1.5340 gn=1.072 scale=8192.0 28,221 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20801.070458069,"data":"[Taper-minus] [04:46:25] S104-Taper-minus python@4575: full-dev web CE 6.2201, python non-W CE 2.6396\n"}
+,{"stream_name":"stdout","time":20871.539882841,"data":"[Taper-minus] [04:47:36] S104-Taper-minus python 4740/6104 u=13896 ce=1.5319 gn=1.110 scale=8192.0 28,651 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20877.798840874,"data":"[RMS] [04:47:42] S104-RMS python@4880: full-dev web CE 6.2084, python non-W CE 2.6348\n"}
+,{"stream_name":"stdout","time":20922.947831714,"data":"[RMS] [04:48:27] S104-RMS python 4990/6104 u=14146 ce=1.5340 gn=1.221 scale=16384.0 29,582 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":20963.921024003,"data":"[Taper-minus] [04:49:08] S104-Taper-minus python@4880: full-dev web CE 6.2176, python non-W CE 2.6325\n"}
+,{"stream_name":"stdout","time":21008.219351546,"data":"[Taper-minus] [04:49:52] S104-Taper-minus python 4990/6104 u=14146 ce=1.5310 gn=1.133 scale=16384.0 29,968 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21041.371789688,"data":"[RMS] [04:50:25] S104-RMS python@5185: full-dev web CE 6.2145, python non-W CE 2.6279\n"}
+,{"stream_name":"stdout","time":21066.199596782,"data":"[RMS] [04:50:50] S104-RMS python 5240/6104 u=14396 ce=1.5119 gn=1.255 scale=16384.0 28,585 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21125.091806078,"data":"[Taper-minus] [04:51:49] S104-Taper-minus python@5185: full-dev web CE 6.2403, python non-W CE 2.6245\n"}
+,{"stream_name":"stdout","time":21149.486256977,"data":"[Taper-minus] [04:52:14] S104-Taper-minus python 5240/6104 u=14396 ce=1.5024 gn=1.221 scale=16384.0 28,987 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21167.268065692,"data":"[RMS] [04:52:31] S104-RMS python 5490/6104 u=14646 ce=1.5391 gn=1.013 scale=16384.0 40,540 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21204.737106118,"data":"[RMS] [04:53:09] S104-RMS python@5490: full-dev web CE 6.2256, python non-W CE 2.6217\n"}
+,{"stream_name":"stdout","time":21248.71552495,"data":"[Taper-minus] [04:53:53] S104-Taper-minus python 5490/6104 u=14646 ce=1.5349 gn=0.927 scale=16384.0 41,294 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21286.179420264,"data":"[Taper-minus] [04:54:30] S104-Taper-minus python@5490: full-dev web CE 6.2269, python non-W CE 2.6159\n"}
+,{"stream_name":"stdout","time":21310.421446791,"data":"[RMS] [04:54:54] S104-RMS python 5740/6104 u=14896 ce=1.5819 gn=1.328 scale=16384.0 28,606 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21368.095263775,"data":"[RMS] [04:55:52] S104-RMS python@5795: full-dev web CE 6.2276, python non-W CE 2.6149\n"}
+,{"stream_name":"stdout","time":21390.035530731,"data":"[Taper-minus] [04:56:14] S104-Taper-minus python 5740/6104 u=14896 ce=1.5740 gn=1.122 scale=16384.0 28,976 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21447.276722067,"data":"[Taper-minus] [04:57:11] S104-Taper-minus python@5795: full-dev web CE 6.2316, python non-W CE 2.6121\n"}
+,{"stream_name":"stdout","time":21448.987516057,"data":"[RMS] [04:57:13] S104-RMS python 5990/6104 u=15146 ce=1.6754 gn=1.091 scale=16384.0 29,560 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21526.391523352,"data":"[Taper-minus] [04:58:30] S104-Taper-minus python 5990/6104 u=15146 ce=1.6774 gn=1.104 scale=16384.0 30,047 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21535.983550058,"data":"[RMS] [04:58:40] S104-RMS python@6100: full-dev web CE 6.2151, python non-W CE 2.6112\n"}
+,{"stream_name":"stdout","time":21583.851675465,"data":"[RMS] [04:59:28] S104-RMS python@6104: full-dev web CE 6.2189, python non-W CE 2.6110\n"}
+,{"stream_name":"stdout","time":21586.473826925,"data":"[RMS] [04:59:31] S104-RMS: branch 'x' starts from switch d58c2d991199\n"}
+,{"stream_name":"stdout","time":21612.222324667,"data":"[Taper-minus] [04:59:56] S104-Taper-minus python@6100: full-dev web CE 6.2158, python non-W CE 2.6081\n"}
+,{"stream_name":"stdout","time":21632.678377528,"data":"[RMS] [05:00:17] S104-RMS x@0: full-dev web CE 4.5919, x non-W CE 4.2194\n"}
+,{"stream_name":"stdout","time":21632.884080314,"data":"[RMS] [05:00:17] S104-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":21660.114272815,"data":"[Taper-minus] [05:00:44] S104-Taper-minus python@6104: full-dev web CE 6.2255, python non-W CE 2.6064\n"}
+,{"stream_name":"stdout","time":21662.885100019,"data":"[Taper-minus] [05:00:47] S104-Taper-minus: branch 'x' starts from switch 09cd784dc8b7\n"}
+,{"stream_name":"stdout","time":21675.149676955,"data":"[RMS] [05:00:59] S104-RMS x@1: full-dev web CE 4.5960, x non-W CE 4.1606\n"}
+,{"stream_name":"stdout","time":21709.541485584,"data":"[Taper-minus] [05:01:34] S104-Taper-minus x@0: full-dev web CE 4.5798, x non-W CE 4.2465\n"}
+,{"stream_name":"stdout","time":21709.748109616,"data":"[Taper-minus] [05:01:34] S104-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":21733.893688756,"data":"[RMS] [05:01:58] S104-RMS x@10: full-dev web CE 4.7046, x non-W CE 3.8082\n"}
+,{"stream_name":"stdout","time":21751.944705077,"data":"[Taper-minus] [05:02:16] S104-Taper-minus x@1: full-dev web CE 4.5833, x non-W CE 4.1743\n"}
+,{"stream_name":"stdout","time":21810.771105074,"data":"[Taper-minus] [05:03:15] S104-Taper-minus x@10: full-dev web CE 4.6712, x non-W CE 3.8121\n"}
+,{"stream_name":"stdout","time":21822.288244708,"data":"[RMS] [05:03:26] S104-RMS x@100: full-dev web CE 4.8855, x non-W CE 2.8391\n"}
+,{"stream_name":"stdout","time":21835.446666848,"data":"[RMS] [05:03:39] S104-RMS x 136/6104 u=9292 ce=2.6410 gn=1.400 scale=2048.0 10,599 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21898.647821496,"data":"[Taper-minus] [05:04:43] S104-Taper-minus x@100: full-dev web CE 4.8700, x non-W CE 2.8399\n"}
+,{"stream_name":"stdout","time":21911.488863516,"data":"[Taper-minus] [05:04:56] S104-Taper-minus x 136/6104 u=9292 ce=2.6406 gn=1.388 scale=2048.0 10,635 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":21952.788816932,"data":"[RMS] [05:05:37] S104-RMS x@305: full-dev web CE 5.0835, x non-W CE 2.5267\n"}
+,{"stream_name":"stdout","time":21986.911145867,"data":"[RMS] [05:06:11] S104-RMS x 386/6104 u=9542 ce=2.4441 gn=1.571 scale=2048.0 27,050 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22027.750139733,"data":"[Taper-minus] [05:06:52] S104-Taper-minus x@305: full-dev web CE 5.0816, x non-W CE 2.5265\n"}
+,{"stream_name":"stdout","time":22061.274336569,"data":"[Taper-minus] [05:07:25] S104-Taper-minus x 386/6104 u=9542 ce=2.4416 gn=1.271 scale=2048.0 27,353 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22128.605656468,"data":"[RMS] [05:08:33] S104-RMS x@610: full-dev web CE 5.7169, x non-W CE 2.3700\n"}
+,{"stream_name":"stdout","time":22137.988205225,"data":"[RMS] [05:08:42] S104-RMS x 636/6104 u=9792 ce=2.4079 gn=1.453 scale=2048.0 27,105 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22201.662662859,"data":"[Taper-minus] [05:09:46] S104-Taper-minus x@610: full-dev web CE 5.6631, x non-W CE 2.3716\n"}
+,{"stream_name":"stdout","time":22210.866062424,"data":"[Taper-minus] [05:09:55] S104-Taper-minus x 636/6104 u=9792 ce=2.4034 gn=1.358 scale=2048.0 27,374 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22251.932670886,"data":"[RMS] [05:10:36] S104-RMS x 886/6104 u=10042 ce=2.1859 gn=1.208 scale=4096.0 35,959 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22304.321968584,"data":"[RMS] [05:11:28] S104-RMS x@915: full-dev web CE 6.3154, x non-W CE 2.2882\n"}
+,{"stream_name":"stdout","time":22323.005057636,"data":"[Taper-minus] [05:11:47] S104-Taper-minus x 886/6104 u=10042 ce=2.1926 gn=1.211 scale=4096.0 36,526 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22375.310910045,"data":"[Taper-minus] [05:12:39] S104-Taper-minus x@915: full-dev web CE 6.1629, x non-W CE 2.2856\n"}
+,{"stream_name":"stdout","time":22398.391778542,"data":"[RMS] [05:13:02] S104-RMS x 1136/6104 u=10292 ce=2.1118 gn=1.309 scale=4096.0 27,960 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22467.79538338,"data":"[Taper-minus] [05:14:12] S104-Taper-minus x 1136/6104 u=10292 ce=2.1037 gn=1.142 scale=4096.0 28,296 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22470.677183487,"data":"[RMS] [05:14:15] S104-RMS x@1220: full-dev web CE 6.4384, x non-W CE 2.2412\n"}
+,{"stream_name":"stdout","time":22537.505090469,"data":"[RMS] [05:15:21] S104-RMS x 1386/6104 u=10542 ce=1.9538 gn=1.326 scale=4096.0 29,452 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22539.720753149,"data":"[Taper-minus] [05:15:24] S104-Taper-minus x@1220: full-dev web CE 6.4192, x non-W CE 2.2376\n"}
+,{"stream_name":"stdout","time":22605.601433878,"data":"[Taper-minus] [05:16:30] S104-Taper-minus x 1386/6104 u=10542 ce=1.9287 gn=1.172 scale=4096.0 29,724 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22643.489555887,"data":"[RMS] [05:17:07] S104-RMS x@1525: full-dev web CE 6.4324, x non-W CE 2.2011\n"}
+,{"stream_name":"stdout","time":22688.600034368,"data":"[RMS] [05:17:53] S104-RMS x 1636/6104 u=10792 ce=2.2593 gn=1.232 scale=4096.0 27,109 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22710.623463852,"data":"[Taper-minus] [05:18:15] S104-Taper-minus x@1525: full-dev web CE 6.3793, x non-W CE 2.1938\n"}
+,{"stream_name":"stdout","time":22755.004697466,"data":"[Taper-minus] [05:18:59] S104-Taper-minus x 1636/6104 u=10792 ce=2.2611 gn=1.161 scale=4096.0 27,416 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22805.611250538,"data":"[RMS] [05:19:50] S104-RMS x@1830: full-dev web CE 6.6032, x non-W CE 2.1667\n"}
+,{"stream_name":"stdout","time":22825.935159274,"data":"[RMS] [05:20:10] S104-RMS x 1886/6104 u=11042 ce=2.1895 gn=1.189 scale=4096.0 29,816 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22870.853825421,"data":"[Taper-minus] [05:20:55] S104-Taper-minus x@1830: full-dev web CE 6.5924, x non-W CE 2.1628\n"}
+,{"stream_name":"stdout","time":22890.748198335,"data":"[Taper-minus] [05:21:15] S104-Taper-minus x 1886/6104 u=11042 ce=2.1942 gn=1.128 scale=4096.0 30,166 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":22967.406817596,"data":"[RMS] [05:22:31] S104-RMS x@2135: full-dev web CE 6.7711, x non-W CE 2.1450\n"}
+,{"stream_name":"stdout","time":22967.734994399,"data":"[RMS] [05:22:32] S104-RMS x 2136/6104 u=11292 ce=1.9721 gn=1.147 scale=4096.0 28,886 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23030.783085411,"data":"[Taper-minus] [05:23:35] S104-Taper-minus x@2135: full-dev web CE 6.7312, x non-W CE 2.1384\n"}
+,{"stream_name":"stdout","time":23031.103473181,"data":"[Taper-minus] [05:23:35] S104-Taper-minus x 2136/6104 u=11292 ce=1.9595 gn=1.039 scale=4096.0 29,183 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23067.601395333,"data":"[RMS] [05:24:12] S104-RMS x 2386/6104 u=11542 ce=2.0665 gn=1.049 scale=4096.0 41,031 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23128.915086351,"data":"[RMS] [05:25:13] S104-RMS x@2440: full-dev web CE 6.7362, x non-W CE 2.1200\n"}
+,{"stream_name":"stdout","time":23129.301400328,"data":"[Taper-minus] [05:25:13] S104-Taper-minus x 2386/6104 u=11542 ce=2.0727 gn=1.034 scale=4096.0 41,712 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23190.463301812,"data":"[Taper-minus] [05:26:14] S104-Taper-minus x@2440: full-dev web CE 6.7218, x non-W CE 2.1150\n"}
+,{"stream_name":"stdout","time":23209.193563216,"data":"[RMS] [05:26:33] S104-RMS x 2636/6104 u=11792 ce=2.1298 gn=1.305 scale=4096.0 28,920 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23269.331946597,"data":"[Taper-minus] [05:27:33] S104-Taper-minus x 2636/6104 u=11792 ce=2.1235 gn=1.200 scale=4096.0 29,259 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23290.560699828,"data":"[RMS] [05:27:55] S104-RMS x@2745: full-dev web CE 6.7698, x non-W CE 2.1002\n"}
+,{"stream_name":"stdout","time":23346.394987289,"data":"[RMS] [05:28:50] S104-RMS x 2886/6104 u=12042 ce=2.1543 gn=1.234 scale=8192.0 29,862 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23349.990072991,"data":"[Taper-minus] [05:28:54] S104-Taper-minus x@2745: full-dev web CE 6.7335, x non-W CE 2.0972\n"}
+,{"stream_name":"stdout","time":23404.855370763,"data":"[Taper-minus] [05:29:49] S104-Taper-minus x 2886/6104 u=12042 ce=2.1414 gn=1.192 scale=8192.0 30,224 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23458.670002886,"data":"[RMS] [05:30:43] S104-RMS x@3050: full-dev web CE 6.8881, x non-W CE 2.0888\n"}
+,{"stream_name":"stdout","time":23494.488833227,"data":"[RMS] [05:31:18] S104-RMS x 3136/6104 u=12292 ce=2.0226 gn=1.257 scale=8192.0 27,658 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23515.947232797,"data":"[Taper-minus] [05:31:40] S104-Taper-minus x@3050: full-dev web CE 6.8836, x non-W CE 2.0826\n"}
+,{"stream_name":"stdout","time":23551.211214827,"data":"[Taper-minus] [05:32:15] S104-Taper-minus x 3136/6104 u=12292 ce=2.0069 gn=1.150 scale=8192.0 27,987 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23620.333649167,"data":"[RMS] [05:33:24] S104-RMS x@3355: full-dev web CE 7.0970, x non-W CE 2.0739\n"}
+,{"stream_name":"stdout","time":23631.557436191,"data":"[RMS] [05:33:36] S104-RMS x 3386/6104 u=12542 ce=2.0905 gn=1.153 scale=8192.0 29,875 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23675.370308067,"data":"[Taper-minus] [05:34:19] S104-Taper-minus x@3355: full-dev web CE 6.8628, x non-W CE 2.0696\n"}
+,{"stream_name":"stdout","time":23686.359934439,"data":"[Taper-minus] [05:34:30] S104-Taper-minus x 3386/6104 u=12542 ce=2.0863 gn=1.203 scale=8192.0 30,298 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23736.224738561,"data":"[RMS] [05:35:20] S104-RMS x 3636/6104 u=12792 ce=2.0562 gn=1.163 scale=8192.0 39,148 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23782.127519189,"data":"[RMS] [05:36:06] S104-RMS x@3660: full-dev web CE 6.8737, x non-W CE 2.0644\n"}
+,{"stream_name":"stdout","time":23789.002799271,"data":"[Taper-minus] [05:36:13] S104-Taper-minus x 3636/6104 u=12792 ce=2.0535 gn=1.262 scale=8192.0 39,905 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23834.72785834,"data":"[Taper-minus] [05:36:59] S104-Taper-minus x@3660: full-dev web CE 6.8351, x non-W CE 2.0595\n"}
+,{"stream_name":"stdout","time":23873.444811448,"data":"[RMS] [05:37:37] S104-RMS x 3886/6104 u=13042 ce=1.7335 gn=1.099 scale=8192.0 29,850 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23924.22772602,"data":"[Taper-minus] [05:38:28] S104-Taper-minus x 3886/6104 u=13042 ce=1.7269 gn=1.050 scale=8192.0 30,299 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":23943.825847209,"data":"[RMS] [05:38:48] S104-RMS x@3965: full-dev web CE 6.9655, x non-W CE 2.0535\n"}
+,{"stream_name":"stdout","time":23994.171470218,"data":"[Taper-minus] [05:39:38] S104-Taper-minus x@3965: full-dev web CE 6.8571, x non-W CE 2.0469\n"}
+,{"stream_name":"stdout","time":24015.240078712,"data":"[RMS] [05:39:59] S104-RMS x 4136/6104 u=13292 ce=1.9284 gn=1.137 scale=8192.0 28,879 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24064.633287921,"data":"[Taper-minus] [05:40:49] S104-Taper-minus x 4136/6104 u=13292 ce=1.9184 gn=1.077 scale=8192.0 29,172 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24106.054578792,"data":"[RMS] [05:41:30] S104-RMS x@4270: full-dev web CE 7.0259, x non-W CE 2.0461\n"}
+,{"stream_name":"stdout","time":24152.910316941,"data":"[RMS] [05:42:17] S104-RMS x 4386/6104 u=13542 ce=2.2046 gn=1.234 scale=8192.0 29,762 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24154.434436844,"data":"[Taper-minus] [05:42:18] S104-Taper-minus x@4270: full-dev web CE 6.8580, x non-W CE 2.0369\n"}
+,{"stream_name":"stdout","time":24200.380875528,"data":"[Taper-minus] [05:43:04] S104-Taper-minus x 4386/6104 u=13542 ce=2.2020 gn=1.181 scale=8192.0 30,175 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24268.159149849,"data":"[RMS] [05:44:12] S104-RMS x@4575: full-dev web CE 6.9279, x non-W CE 2.0338\n"}
+,{"stream_name":"stdout","time":24296.806231822,"data":"[RMS] [05:44:41] S104-RMS x 4636/6104 u=13792 ce=1.7774 gn=1.115 scale=8192.0 28,457 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24314.168928853,"data":"[Taper-minus] [05:44:58] S104-Taper-minus x@4575: full-dev web CE 6.8732, x non-W CE 2.0284\n"}
+,{"stream_name":"stdout","time":24340.513576021,"data":"[Taper-minus] [05:45:25] S104-Taper-minus x 4636/6104 u=13792 ce=1.7813 gn=1.159 scale=8192.0 29,221 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24432.015036307,"data":"[RMS] [05:46:56] S104-RMS x@4880: full-dev web CE 6.9710, x non-W CE 2.0287\n"}
+,{"stream_name":"stdout","time":24434.150564009,"data":"[RMS] [05:46:58] S104-RMS x 4886/6104 u=14042 ce=2.0186 gn=1.161 scale=16384.0 29,823 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24475.710581131,"data":"[Taper-minus] [05:47:40] S104-Taper-minus x@4880: full-dev web CE 6.9236, x non-W CE 2.0225\n"}
+,{"stream_name":"stdout","time":24477.80549372,"data":"[Taper-minus] [05:47:42] S104-Taper-minus x 4886/6104 u=14042 ce=2.0159 gn=1.217 scale=16384.0 29,834 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24538.781626305,"data":"[RMS] [05:48:43] S104-RMS x 5136/6104 u=14292 ce=1.7481 gn=1.207 scale=16384.0 39,163 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24580.618876401,"data":"[Taper-minus] [05:49:25] S104-Taper-minus x 5136/6104 u=14292 ce=1.7474 gn=1.162 scale=16384.0 39,855 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24593.608801634,"data":"[RMS] [05:49:38] S104-RMS x@5185: full-dev web CE 7.0018, x non-W CE 2.0216\n"}
+,{"stream_name":"stdout","time":24635.45258459,"data":"[Taper-minus] [05:50:19] S104-Taper-minus x@5185: full-dev web CE 6.9297, x non-W CE 2.0183\n"}
+,{"stream_name":"stdout","time":24675.864834493,"data":"[RMS] [05:51:00] S104-RMS x 5386/6104 u=14542 ce=1.8846 gn=1.168 scale=16384.0 29,880 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24716.38319066,"data":"[Taper-minus] [05:51:40] S104-Taper-minus x 5386/6104 u=14542 ce=1.8761 gn=1.102 scale=16384.0 30,170 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24755.333528167,"data":"[RMS] [05:52:19] S104-RMS x@5490: full-dev web CE 7.0430, x non-W CE 2.0159\n"}
+,{"stream_name":"stdout","time":24795.243124087,"data":"[Taper-minus] [05:52:59] S104-Taper-minus x@5490: full-dev web CE 6.9962, x non-W CE 2.0118\n"}
+,{"stream_name":"stdout","time":24817.479739908,"data":"[RMS] [05:53:22] S104-RMS x 5636/6104 u=14792 ce=2.0178 gn=1.138 scale=16384.0 28,915 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24856.484129904,"data":"[Taper-minus] [05:54:00] S104-Taper-minus x 5636/6104 u=14792 ce=2.0066 gn=1.221 scale=16384.0 29,236 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24916.836273986,"data":"[RMS] [05:55:01] S104-RMS x@5795: full-dev web CE 7.0810, x non-W CE 2.0107\n"}
+,{"stream_name":"stdout","time":24954.433239061,"data":"[RMS] [05:55:38] S104-RMS x 5886/6104 u=15042 ce=2.0241 gn=1.192 scale=16384.0 29,917 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":24954.795155967,"data":"[Taper-minus] [05:55:39] S104-Taper-minus x@5795: full-dev web CE 6.9272, x non-W CE 2.0066\n"}
+,{"stream_name":"stdout","time":24991.844261481,"data":"[Taper-minus] [05:56:16] S104-Taper-minus x 5886/6104 u=15042 ce=2.0182 gn=1.155 scale=16384.0 30,260 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25083.046556246,"data":"[RMS] [05:57:47] S104-RMS x@6100: full-dev web CE 6.9720, x non-W CE 2.0062\n"}
+,{"stream_name":"stdout","time":25119.180791531,"data":"[Taper-minus] [05:58:23] S104-Taper-minus x@6100: full-dev web CE 6.9315, x non-W CE 2.0016\n"}
+,{"stream_name":"stdout","time":25130.177276667,"data":"[RMS] [05:58:34] S104-RMS x@6104: full-dev web CE 6.9770, x non-W CE 2.0057\n"}
+,{"stream_name":"stdout","time":25130.290304119,"data":"[RMS] [05:58:34] S104-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":25130.735189455,"data":"[RMS] [05:58:35] S105-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":25167.056562883,"data":"[Taper-minus] [05:59:11] S104-Taper-minus x@6104: full-dev web CE 6.9162, x non-W CE 2.0016\n"}
+,{"stream_name":"stdout","time":25167.133282908,"data":"[Taper-minus] [05:59:11] S104-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":25167.78086418,"data":"[Taper-minus] [05:59:12] S105-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":25221.636093356,"data":"[RMS] [06:00:06] S105-RMS prefix 250/9156 u=250 ce=6.6279 gn=0.650 scale=128.0 45,074 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25263.019938683,"data":"[Taper-minus] [06:00:47] S105-Taper-minus prefix 250/9156 u=250 ce=6.6276 gn=0.644 scale=128.0 43,024 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25312.429954404,"data":"[RMS] [06:01:36] S105-RMS prefix 500/9156 u=500 ce=6.2698 gn=0.522 scale=128.0 45,120 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25358.10557664,"data":"[Taper-minus] [06:02:22] S105-Taper-minus prefix 500/9156 u=500 ce=6.2701 gn=0.524 scale=128.0 43,077 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25403.2800618,"data":"[RMS] [06:03:07] S105-RMS prefix 750/9156 u=750 ce=5.9452 gn=0.550 scale=128.0 45,085 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25445.218186051,"data":"[RMS] [06:03:49] S105-RMS prefix@763: full-dev web CE 6.0079, python non-W CE 8.5279\n"}
+,{"stream_name":"stdout","time":25453.336998296,"data":"[Taper-minus] [06:03:57] S105-Taper-minus prefix 750/9156 u=750 ce=5.9455 gn=0.555 scale=128.0 42,995 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25496.234022351,"data":"[Taper-minus] [06:04:40] S105-Taper-minus prefix@763: full-dev web CE 6.0091, python non-W CE 8.5572\n"}
+,{"stream_name":"stdout","time":25531.455844256,"data":"[RMS] [06:05:15] S105-RMS prefix 1000/9156 u=1000 ce=5.7959 gn=0.694 scale=128.0 31,957 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25589.213124516,"data":"[Taper-minus] [06:06:13] S105-Taper-minus prefix 1000/9156 u=1000 ce=5.7960 gn=0.704 scale=128.0 30,155 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25622.255749432,"data":"[RMS] [06:06:46] S105-RMS prefix 1250/9156 u=1250 ce=5.7599 gn=0.720 scale=128.0 45,109 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25687.30934856,"data":"[Taper-minus] [06:07:51] S105-Taper-minus prefix 1250/9156 u=1250 ce=5.7594 gn=0.712 scale=128.0 41,754 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25713.100881614,"data":"[RMS] [06:08:17] S105-RMS prefix 1500/9156 u=1500 ce=5.7454 gn=0.853 scale=128.0 45,067 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25785.393159002,"data":"[Taper-minus] [06:09:29] S105-Taper-minus prefix 1500/9156 u=1500 ce=5.7466 gn=0.854 scale=128.0 41,761 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25804.018265197,"data":"[RMS] [06:09:48] S105-RMS prefix 1750/9156 u=1750 ce=5.4750 gn=0.895 scale=128.0 45,052 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25883.494896231,"data":"[Taper-minus] [06:11:07] S105-Taper-minus prefix 1750/9156 u=1750 ce=5.4758 gn=0.870 scale=128.0 41,751 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25895.008193568,"data":"[RMS] [06:11:19] S105-RMS prefix 2000/9156 u=2000 ce=5.3062 gn=0.918 scale=256.0 45,016 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25981.449137348,"data":"[Taper-minus] [06:12:45] S105-Taper-minus prefix 2000/9156 u=2000 ce=5.3043 gn=0.927 scale=256.0 41,816 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":25986.079277636,"data":"[RMS] [06:12:50] S105-RMS prefix 2250/9156 u=2250 ce=5.2184 gn=0.953 scale=256.0 44,976 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26078.905888416,"data":"[RMS] [06:14:23] S105-RMS prefix 2500/9156 u=2500 ce=5.1645 gn=0.904 scale=256.0 44,145 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26081.133662839,"data":"[Taper-minus] [06:14:25] S105-Taper-minus prefix 2250/9156 u=2250 ce=5.2150 gn=0.923 scale=256.0 41,072 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26170.027020008,"data":"[RMS] [06:15:54] S105-RMS prefix 2750/9156 u=2750 ce=5.0452 gn=0.928 scale=256.0 44,947 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26179.380262144,"data":"[Taper-minus] [06:16:03] S105-Taper-minus prefix 2500/9156 u=2500 ce=5.1704 gn=0.966 scale=256.0 41,691 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26261.194885056,"data":"[RMS] [06:17:25] S105-RMS prefix 3000/9156 u=3000 ce=5.0607 gn=0.999 scale=256.0 44,932 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26277.38262741,"data":"[Taper-minus] [06:17:41] S105-Taper-minus prefix 2750/9156 u=2750 ce=5.0449 gn=0.991 scale=256.0 41,795 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26317.507464343,"data":"[RMS] [06:18:21] S105-RMS prefix@3052: full-dev web CE 5.0278, python non-W CE 6.5587\n"}
+,{"stream_name":"stdout","time":26375.545802453,"data":"[Taper-minus] [06:19:20] S105-Taper-minus prefix 3000/9156 u=3000 ce=5.0513 gn=0.914 scale=256.0 41,745 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26389.645235404,"data":"[RMS] [06:19:34] S105-RMS prefix 3250/9156 u=3250 ce=4.9625 gn=0.991 scale=256.0 31,878 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26435.823114742,"data":"[Taper-minus] [06:20:20] S105-Taper-minus prefix@3052: full-dev web CE 5.0211, python non-W CE 6.5236\n"}
+,{"stream_name":"stdout","time":26480.760875172,"data":"[RMS] [06:21:05] S105-RMS prefix 3500/9156 u=3500 ce=4.9642 gn=0.864 scale=256.0 44,975 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26513.676974806,"data":"[Taper-minus] [06:21:38] S105-Taper-minus prefix 3250/9156 u=3250 ce=4.9481 gn=0.893 scale=256.0 29,653 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26571.782880452,"data":"[RMS] [06:22:36] S105-RMS prefix 3750/9156 u=3750 ce=4.9235 gn=0.820 scale=256.0 44,996 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26611.975259029,"data":"[Taper-minus] [06:23:16] S105-Taper-minus prefix 3500/9156 u=3500 ce=4.9630 gn=0.898 scale=256.0 41,669 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26662.80911215,"data":"[RMS] [06:24:07] S105-RMS prefix 4000/9156 u=4000 ce=4.7691 gn=0.914 scale=512.0 45,002 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26710.226098423,"data":"[Taper-minus] [06:24:54] S105-Taper-minus prefix 3750/9156 u=3750 ce=4.9184 gn=0.860 scale=256.0 41,690 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26754.034280703,"data":"[RMS] [06:25:38] S105-RMS prefix 4250/9156 u=4250 ce=4.9231 gn=0.847 scale=512.0 44,892 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26808.488987338,"data":"[Taper-minus] [06:26:32] S105-Taper-minus prefix 4000/9156 u=4000 ce=4.7572 gn=0.868 scale=512.0 41,684 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26845.324146379,"data":"[RMS] [06:27:09] S105-RMS prefix 4500/9156 u=4500 ce=4.8125 gn=0.880 scale=512.0 44,876 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26907.231521194,"data":"[Taper-minus] [06:28:11] S105-Taper-minus prefix 4250/9156 u=4250 ce=4.9152 gn=0.889 scale=512.0 41,480 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":26938.651264949,"data":"[RMS] [06:28:43] S105-RMS prefix 4750/9156 u=4750 ce=4.6984 gn=0.860 scale=512.0 43,884 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27008.113843215,"data":"[Taper-minus] [06:29:52] S105-Taper-minus prefix 4500/9156 u=4500 ce=4.8071 gn=0.902 scale=512.0 40,606 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27030.253301132,"data":"[RMS] [06:30:14] S105-RMS prefix 5000/9156 u=5000 ce=4.7532 gn=0.842 scale=512.0 44,700 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27107.038884329,"data":"[Taper-minus] [06:31:31] S105-Taper-minus prefix 4750/9156 u=4750 ce=4.6904 gn=0.847 scale=512.0 41,402 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27121.710445186,"data":"[RMS] [06:31:46] S105-RMS prefix 5250/9156 u=5250 ce=4.6551 gn=0.837 scale=512.0 44,786 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27205.961197956,"data":"[Taper-minus] [06:33:10] S105-Taper-minus prefix 5000/9156 u=5000 ce=4.7397 gn=0.902 scale=512.0 41,407 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27213.26620216,"data":"[RMS] [06:33:17] S105-RMS prefix 5500/9156 u=5500 ce=4.7028 gn=0.865 scale=512.0 44,738 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27304.889346059,"data":"[RMS] [06:34:49] S105-RMS prefix 5750/9156 u=5750 ce=4.7025 gn=0.881 scale=512.0 44,727 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27304.890953973,"data":"[Taper-minus] [06:34:49] S105-Taper-minus prefix 5250/9156 u=5250 ce=4.6494 gn=0.923 scale=512.0 41,399 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27396.365322091,"data":"[RMS] [06:36:20] S105-RMS prefix 6000/9156 u=6000 ce=4.5794 gn=0.911 scale=1024.0 44,778 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27403.80630735,"data":"[Taper-minus] [06:36:28] S105-Taper-minus prefix 5500/9156 u=5500 ce=4.6969 gn=0.925 scale=512.0 41,396 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27471.658939228,"data":"[RMS] [06:37:36] S105-RMS prefix@6104: full-dev web CE 4.7196, python non-W CE 6.3773\n"}
+,{"stream_name":"stdout","time":27502.731272465,"data":"[Taper-minus] [06:38:07] S105-Taper-minus prefix 5750/9156 u=5750 ce=4.6942 gn=0.887 scale=512.0 41,424 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27525.060493717,"data":"[RMS] [06:38:29] S105-RMS prefix 6250/9156 u=6250 ce=4.4846 gn=0.935 scale=1024.0 31,816 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27601.727403534,"data":"[Taper-minus] [06:39:46] S105-Taper-minus prefix 6000/9156 u=6000 ce=4.5615 gn=0.938 scale=1024.0 41,381 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27620.512576013,"data":"[RMS] [06:40:05] S105-RMS prefix@6409: full-dev web CE 4.7075, python non-W CE 6.2811\n"}
+,{"stream_name":"stdout","time":27653.856391686,"data":"[RMS] [06:40:38] S105-RMS prefix 6500/9156 u=6500 ce=4.6858 gn=0.881 scale=1024.0 31,813 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27680.3097535,"data":"[Taper-minus] [06:41:04] S105-Taper-minus prefix@6104: full-dev web CE 4.7133, python non-W CE 6.2580\n"}
+,{"stream_name":"stdout","time":27733.036269088,"data":"[Taper-minus] [06:41:57] S105-Taper-minus prefix 6250/9156 u=6250 ce=4.4854 gn=1.008 scale=1024.0 31,191 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27769.447433445,"data":"[RMS] [06:42:33] S105-RMS prefix@6714: full-dev web CE 4.6893, python non-W CE 6.2592\n"}
+,{"stream_name":"stdout","time":27782.635314724,"data":"[RMS] [06:42:47] S105-RMS prefix 6750/9156 u=6750 ce=4.7607 gn=0.856 scale=1024.0 31,796 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27827.710214444,"data":"[Taper-minus] [06:43:32] S105-Taper-minus prefix@6409: full-dev web CE 4.7022, python non-W CE 6.1745\n"}
+,{"stream_name":"stdout","time":27860.460517854,"data":"[Taper-minus] [06:44:04] S105-Taper-minus prefix 6500/9156 u=6500 ce=4.6740 gn=0.921 scale=1024.0 32,146 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27875.995034834,"data":"[RMS] [06:44:20] S105-RMS prefix 7000/9156 u=7000 ce=4.7552 gn=0.964 scale=1024.0 43,873 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":27920.289789642,"data":"[RMS] [06:45:04] S105-RMS prefix@7019: full-dev web CE 4.6747, python non-W CE 6.0026\n"}
+,{"stream_name":"stdout","time":27976.744659204,"data":"[Taper-minus] [06:46:01] S105-Taper-minus prefix@6714: full-dev web CE 4.6828, python non-W CE 6.1735\n"}
+,{"stream_name":"stdout","time":27989.62116349,"data":"[Taper-minus] [06:46:14] S105-Taper-minus prefix 6750/9156 u=6750 ce=4.7516 gn=0.923 scale=1024.0 31,700 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28004.875476715,"data":"[RMS] [06:46:29] S105-RMS prefix 7250/9156 u=7250 ce=4.6701 gn=0.944 scale=1024.0 31,781 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28069.367758617,"data":"[RMS] [06:47:33] S105-RMS prefix@7324: full-dev web CE 4.6617, python non-W CE 5.9998\n"}
+,{"stream_name":"stdout","time":28079.390964514,"data":"[Taper-minus] [06:47:43] S105-Taper-minus prefix 7000/9156 u=7000 ce=4.7434 gn=0.949 scale=1024.0 45,628 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28123.666800453,"data":"[Taper-minus] [06:48:28] S105-Taper-minus prefix@7019: full-dev web CE 4.6665, python non-W CE 5.9438\n"}
+,{"stream_name":"stdout","time":28133.7681326,"data":"[RMS] [06:48:38] S105-RMS prefix 7500/9156 u=7500 ce=4.6717 gn=0.913 scale=1024.0 31,778 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28206.72310582,"data":"[Taper-minus] [06:49:51] S105-Taper-minus prefix 7250/9156 u=7250 ce=4.6611 gn=0.942 scale=1024.0 32,180 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28218.170215774,"data":"[RMS] [06:50:02] S105-RMS prefix@7629: full-dev web CE 4.6481, python non-W CE 6.0740\n"}
+,{"stream_name":"stdout","time":28262.450898344,"data":"[RMS] [06:50:46] S105-RMS prefix 7750/9156 u=7750 ce=4.6812 gn=1.016 scale=1024.0 31,842 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28270.602748782,"data":"[Taper-minus] [06:50:55] S105-Taper-minus prefix@7324: full-dev web CE 4.6511, python non-W CE 5.9641\n"}
+,{"stream_name":"stdout","time":28333.993683505,"data":"[Taper-minus] [06:51:58] S105-Taper-minus prefix 7500/9156 u=7500 ce=4.6639 gn=0.934 scale=1024.0 32,183 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28367.020087168,"data":"[RMS] [06:52:31] S105-RMS prefix@7934: full-dev web CE 4.6331, python non-W CE 6.0055\n"}
+,{"stream_name":"stdout","time":28391.12418481,"data":"[RMS] [06:52:55] S105-RMS prefix 8000/9156 u=8000 ce=4.7564 gn=0.936 scale=2048.0 31,821 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28417.732170726,"data":"[Taper-minus] [06:53:22] S105-Taper-minus prefix@7629: full-dev web CE 4.6417, python non-W CE 6.2069\n"}
+,{"stream_name":"stdout","time":28461.262370927,"data":"[Taper-minus] [06:54:05] S105-Taper-minus prefix 7750/9156 u=7750 ce=4.6717 gn=1.014 scale=1024.0 32,182 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28515.931594007,"data":"[RMS] [06:55:00] S105-RMS prefix@8239: full-dev web CE 4.6216, python non-W CE 5.9936\n"}
+,{"stream_name":"stdout","time":28519.919989006,"data":"[RMS] [06:55:04] S105-RMS prefix 8250/9156 u=8250 ce=4.5640 gn=0.928 scale=2048.0 31,802 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28564.882825695,"data":"[Taper-minus] [06:55:49] S105-Taper-minus prefix@7934: full-dev web CE 4.6263, python non-W CE 5.9690\n"}
+,{"stream_name":"stdout","time":28588.66614381,"data":"[Taper-minus] [06:56:13] S105-Taper-minus prefix 8000/9156 u=8000 ce=4.7525 gn=0.958 scale=2048.0 32,140 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28611.510507414,"data":"[RMS] [06:56:35] S105-RMS prefix 8500/9156 u=8500 ce=4.7023 gn=0.929 scale=2048.0 44,740 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28664.789655855,"data":"[RMS] [06:57:29] S105-RMS prefix@8544: full-dev web CE 4.6095, python non-W CE 6.1485\n"}
+,{"stream_name":"stdout","time":28712.158780212,"data":"[Taper-minus] [06:58:16] S105-Taper-minus prefix@8239: full-dev web CE 4.6113, python non-W CE 5.9978\n"}
+,{"stream_name":"stdout","time":28716.06148421,"data":"[Taper-minus] [06:58:20] S105-Taper-minus prefix 8250/9156 u=8250 ce=4.5542 gn=0.938 scale=2048.0 32,152 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28742.080939043,"data":"[RMS] [06:58:46] S105-RMS prefix 8750/9156 u=8750 ce=4.6065 gn=0.992 scale=2048.0 31,360 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28807.678722264,"data":"[Taper-minus] [06:59:52] S105-Taper-minus prefix 8500/9156 u=8500 ce=4.6892 gn=0.905 scale=2048.0 44,732 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28815.562255847,"data":"[RMS] [07:00:00] S105-RMS prefix@8849: full-dev web CE 4.5964, python non-W CE 6.0400\n"}
+,{"stream_name":"stdout","time":28861.172549582,"data":"[Taper-minus] [07:00:45] S105-Taper-minus prefix@8544: full-dev web CE 4.5998, python non-W CE 6.1043\n"}
+,{"stream_name":"stdout","time":28870.970084697,"data":"[RMS] [07:00:55] S105-RMS prefix 9000/9156 u=9000 ce=4.6048 gn=0.937 scale=2048.0 31,780 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28935.534318538,"data":"[Taper-minus] [07:02:00] S105-Taper-minus prefix 8750/9156 u=8750 ce=4.6007 gn=1.011 scale=2048.0 32,035 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":28974.639415558,"data":"[RMS] [07:02:39] S105-RMS prefix@9156: full-dev web CE 4.5860, python non-W CE 6.0329\n"}
+,{"stream_name":"stdout","time":28979.095402297,"data":"[RMS] [07:02:43] S105-RMS: branch 'web' starts from switch 1981c4abae47\n"}
+,{"stream_name":"stdout","time":29008.678376009,"data":"[Taper-minus] [07:03:13] S105-Taper-minus prefix@8849: full-dev web CE 4.5856, python non-W CE 6.1103\n"}
+,{"stream_name":"stdout","time":29025.164003149,"data":"[RMS] [07:03:29] S105-RMS web@0: full-dev web CE 4.5860, python non-W CE 6.0329\n"}
+,{"stream_name":"stdout","time":29025.213813317,"data":"[RMS] [07:03:29] S105-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":29062.971751367,"data":"[Taper-minus] [07:04:07] S105-Taper-minus prefix 9000/9156 u=9000 ce=4.5963 gn=0.935 scale=2048.0 32,142 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29067.353387095,"data":"[RMS] [07:04:11] S105-RMS web@1: full-dev web CE 4.5855, python non-W CE 6.0305\n"}
+,{"stream_name":"stdout","time":29126.021805971,"data":"[RMS] [07:05:10] S105-RMS web@10: full-dev web CE 4.5856, python non-W CE 6.0026\n"}
+,{"stream_name":"stdout","time":29165.770405103,"data":"[Taper-minus] [07:05:50] S105-Taper-minus prefix@9156: full-dev web CE 4.5754, python non-W CE 6.0456\n"}
+,{"stream_name":"stdout","time":29166.150078043,"data":"[RMS] [07:05:50] S105-RMS web 94/6104 u=9250 ce=4.6568 gn=0.950 scale=2048.0 13,876 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29170.323013836,"data":"[Taper-minus] [07:05:54] S105-Taper-minus: branch 'web' starts from switch a75487c067e1\n"}
+,{"stream_name":"stdout","time":29214.452189218,"data":"[RMS] [07:06:38] S105-RMS web@100: full-dev web CE 4.5812, python non-W CE 6.0490\n"}
+,{"stream_name":"stdout","time":29217.382062405,"data":"[Taper-minus] [07:06:41] S105-Taper-minus web@0: full-dev web CE 4.5754, python non-W CE 6.0456\n"}
+,{"stream_name":"stdout","time":29217.427000314,"data":"[Taper-minus] [07:06:41] S105-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":29259.594153949,"data":"[Taper-minus] [07:07:24] S105-Taper-minus web@1: full-dev web CE 4.5757, python non-W CE 6.0500\n"}
+,{"stream_name":"stdout","time":29318.513242742,"data":"[Taper-minus] [07:08:22] S105-Taper-minus web@10: full-dev web CE 4.5763, python non-W CE 6.0497\n"}
+,{"stream_name":"stdout","time":29345.22614051,"data":"[RMS] [07:08:49] S105-RMS web@305: full-dev web CE 4.5753, python non-W CE 6.0112\n"}
+,{"stream_name":"stdout","time":29358.137896715,"data":"[Taper-minus] [07:09:02] S105-Taper-minus web 94/6104 u=9250 ce=4.6451 gn=0.957 scale=2048.0 13,877 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29359.506616075,"data":"[RMS] [07:09:04] S105-RMS web 344/6104 u=9500 ce=4.6740 gn=0.999 scale=2048.0 21,184 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29406.644303393,"data":"[Taper-minus] [07:09:51] S105-Taper-minus web@100: full-dev web CE 4.5716, python non-W CE 5.9904\n"}
+,{"stream_name":"stdout","time":29474.395171356,"data":"[RMS] [07:10:58] S105-RMS web 594/6104 u=9750 ce=4.4610 gn=1.005 scale=2048.0 35,666 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29522.068598283,"data":"[RMS] [07:11:46] S105-RMS web@610: full-dev web CE 4.5646, python non-W CE 6.0661\n"}
+,{"stream_name":"stdout","time":29536.181248381,"data":"[Taper-minus] [07:12:00] S105-Taper-minus web@305: full-dev web CE 4.5661, python non-W CE 5.9403\n"}
+,{"stream_name":"stdout","time":29550.109835545,"data":"[Taper-minus] [07:12:14] S105-Taper-minus web 344/6104 u=9500 ce=4.6658 gn=0.973 scale=2048.0 21,331 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29626.185243955,"data":"[RMS] [07:13:30] S105-RMS web 844/6104 u=10000 ce=4.4724 gn=0.995 scale=4096.0 26,985 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29662.8827463,"data":"[Taper-minus] [07:14:07] S105-Taper-minus web 594/6104 u=9750 ce=4.4590 gn=0.990 scale=2048.0 36,336 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29698.634320146,"data":"[RMS] [07:14:43] S105-RMS web@915: full-dev web CE 4.5553, python non-W CE 5.8610\n"}
+,{"stream_name":"stdout","time":29710.537334926,"data":"[Taper-minus] [07:14:55] S105-Taper-minus web@610: full-dev web CE 4.5551, python non-W CE 6.0108\n"}
+,{"stream_name":"stdout","time":29773.337352086,"data":"[RMS] [07:15:57] S105-RMS web 1094/6104 u=10250 ce=4.5580 gn=1.023 scale=4096.0 27,834 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29812.933777027,"data":"[Taper-minus] [07:16:37] S105-Taper-minus web 844/6104 u=10000 ce=4.4531 gn=1.017 scale=4096.0 27,297 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29865.803833443,"data":"[RMS] [07:17:30] S105-RMS web@1220: full-dev web CE 4.5454, python non-W CE 6.0640\n"}
+,{"stream_name":"stdout","time":29884.975076754,"data":"[Taper-minus] [07:17:49] S105-Taper-minus web@915: full-dev web CE 4.5452, python non-W CE 5.7805\n"}
+,{"stream_name":"stdout","time":29917.66091869,"data":"[RMS] [07:18:22] S105-RMS web 1344/6104 u=10500 ce=4.4976 gn=1.116 scale=4096.0 28,379 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":29958.667620303,"data":"[Taper-minus] [07:19:03] S105-Taper-minus web 1094/6104 u=10250 ce=4.5462 gn=1.033 scale=4096.0 28,107 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30039.235771414,"data":"[RMS] [07:20:23] S105-RMS web@1525: full-dev web CE 4.5382, python non-W CE 6.0127\n"}
+,{"stream_name":"stdout","time":30050.379954644,"data":"[Taper-minus] [07:20:34] S105-Taper-minus web@1220: full-dev web CE 4.5372, python non-W CE 5.9400\n"}
+,{"stream_name":"stdout","time":30064.438127398,"data":"[RMS] [07:20:48] S105-RMS web 1594/6104 u=10750 ce=4.5426 gn=1.069 scale=4096.0 27,899 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30101.091740918,"data":"[Taper-minus] [07:21:25] S105-Taper-minus web 1344/6104 u=10500 ce=4.4843 gn=1.072 scale=4096.0 28,757 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30202.155832313,"data":"[RMS] [07:23:06] S105-RMS web@1830: full-dev web CE 4.5288, python non-W CE 5.9456\n"}
+,{"stream_name":"stdout","time":30207.229650019,"data":"[RMS] [07:23:11] S105-RMS web 1844/6104 u=11000 ce=4.4245 gn=1.027 scale=4096.0 28,685 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30221.62826615,"data":"[Taper-minus] [07:23:26] S105-Taper-minus web@1525: full-dev web CE 4.5293, python non-W CE 6.0031\n"}
+,{"stream_name":"stdout","time":30246.400414244,"data":"[Taper-minus] [07:23:50] S105-Taper-minus web 1594/6104 u=10750 ce=4.5367 gn=1.051 scale=4096.0 28,189 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30307.955593406,"data":"[RMS] [07:24:52] S105-RMS web 2094/6104 u=11250 ce=4.4339 gn=1.049 scale=4096.0 40,684 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30364.747050964,"data":"[RMS] [07:25:49] S105-RMS web@2135: full-dev web CE 4.5206, python non-W CE 5.8787\n"}
+,{"stream_name":"stdout","time":30382.315287333,"data":"[Taper-minus] [07:26:06] S105-Taper-minus web@1830: full-dev web CE 4.5209, python non-W CE 5.9172\n"}
+,{"stream_name":"stdout","time":30387.326102169,"data":"[Taper-minus] [07:26:11] S105-Taper-minus web 1844/6104 u=11000 ce=4.4112 gn=1.028 scale=4096.0 29,056 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30450.433476524,"data":"[RMS] [07:27:14] S105-RMS web 2344/6104 u=11500 ce=4.5454 gn=1.091 scale=4096.0 28,748 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30486.090597601,"data":"[Taper-minus] [07:27:50] S105-Taper-minus web 2094/6104 u=11250 ce=4.4200 gn=1.033 scale=4096.0 41,489 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30527.421640129,"data":"[RMS] [07:28:31] S105-RMS web@2440: full-dev web CE 4.5152, python non-W CE 6.0938\n"}
+,{"stream_name":"stdout","time":30542.683359724,"data":"[Taper-minus] [07:28:47] S105-Taper-minus web@2135: full-dev web CE 4.5127, python non-W CE 5.8347\n"}
+,{"stream_name":"stdout","time":30588.588812683,"data":"[RMS] [07:29:33] S105-RMS web 2594/6104 u=11750 ce=4.4659 gn=1.045 scale=4096.0 29,648 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30627.212512669,"data":"[Taper-minus] [07:30:11] S105-Taper-minus web 2344/6104 u=11500 ce=4.5275 gn=1.047 scale=4096.0 29,024 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30690.209616871,"data":"[RMS] [07:31:14] S105-RMS web@2745: full-dev web CE 4.5079, python non-W CE 5.9462\n"}
+,{"stream_name":"stdout","time":30703.554162364,"data":"[Taper-minus] [07:31:28] S105-Taper-minus web@2440: full-dev web CE 4.5057, python non-W CE 6.0803\n"}
+,{"stream_name":"stdout","time":30731.057219015,"data":"[RMS] [07:31:55] S105-RMS web 2844/6104 u=12000 ce=4.5775 gn=1.088 scale=8192.0 28,751 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30763.520667799,"data":"[Taper-minus] [07:32:28] S105-Taper-minus web 2594/6104 u=11750 ce=4.4578 gn=1.038 scale=4096.0 30,052 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30859.254353081,"data":"[RMS] [07:34:03] S105-RMS web@3050: full-dev web CE 4.5005, python non-W CE 5.9467\n"}
+,{"stream_name":"stdout","time":30864.257533446,"data":"[Taper-minus] [07:34:08] S105-Taper-minus web@2745: full-dev web CE 4.4984, python non-W CE 5.8450\n"}
+,{"stream_name":"stdout","time":30875.302235938,"data":"[RMS] [07:34:19] S105-RMS web 3094/6104 u=12250 ce=4.5311 gn=1.054 scale=8192.0 28,386 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30904.584344917,"data":"[Taper-minus] [07:34:49] S105-Taper-minus web 2844/6104 u=12000 ce=4.5617 gn=1.019 scale=8192.0 29,037 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":30981.061123205,"data":"[RMS] [07:36:05] S105-RMS web 3344/6104 u=12500 ce=4.4986 gn=1.071 scale=8192.0 38,748 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31022.396919683,"data":"[RMS] [07:36:46] S105-RMS web@3355: full-dev web CE 4.4955, python non-W CE 5.8806\n"}
+,{"stream_name":"stdout","time":31032.284564488,"data":"[Taper-minus] [07:36:56] S105-Taper-minus web@3050: full-dev web CE 4.4922, python non-W CE 5.8849\n"}
+,{"stream_name":"stdout","time":31048.111512265,"data":"[Taper-minus] [07:37:12] S105-Taper-minus web 3094/6104 u=12250 ce=4.5233 gn=1.041 scale=8192.0 28,528 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31119.303479819,"data":"[RMS] [07:38:23] S105-RMS web 3594/6104 u=12750 ce=4.4258 gn=1.045 scale=8192.0 29,626 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31152.309465627,"data":"[Taper-minus] [07:38:56] S105-Taper-minus web 3344/6104 u=12500 ce=4.4858 gn=1.055 scale=8192.0 39,329 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31185.36823886,"data":"[RMS] [07:39:29] S105-RMS web@3660: full-dev web CE 4.4898, python non-W CE 5.8681\n"}
+,{"stream_name":"stdout","time":31193.651803767,"data":"[Taper-minus] [07:39:38] S105-Taper-minus web@3355: full-dev web CE 4.4861, python non-W CE 5.8295\n"}
+,{"stream_name":"stdout","time":31262.020803202,"data":"[RMS] [07:40:46] S105-RMS web 3844/6104 u=13000 ce=4.3895 gn=1.079 scale=8192.0 28,703 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31289.088030057,"data":"[Taper-minus] [07:41:13] S105-Taper-minus web 3594/6104 u=12750 ce=4.4152 gn=0.973 scale=8192.0 29,935 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31348.084682471,"data":"[RMS] [07:42:12] S105-RMS web@3965: full-dev web CE 4.4864, python non-W CE 5.8313\n"}
+,{"stream_name":"stdout","time":31354.733709548,"data":"[Taper-minus] [07:42:19] S105-Taper-minus web@3660: full-dev web CE 4.4817, python non-W CE 5.8505\n"}
+,{"stream_name":"stdout","time":31399.878630199,"data":"[RMS] [07:43:04] S105-RMS web 4094/6104 u=13250 ce=4.6114 gn=1.070 scale=8192.0 29,711 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31430.145597831,"data":"[Taper-minus] [07:43:34] S105-Taper-minus web 3844/6104 u=13000 ce=4.3818 gn=1.060 scale=8192.0 29,046 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31510.683103904,"data":"[RMS] [07:44:55] S105-RMS web@4270: full-dev web CE 4.4813, python non-W CE 5.8293\n"}
+,{"stream_name":"stdout","time":31515.533513971,"data":"[Taper-minus] [07:45:00] S105-Taper-minus web@3965: full-dev web CE 4.4778, python non-W CE 5.8112\n"}
+,{"stream_name":"stdout","time":31542.395654196,"data":"[RMS] [07:45:26] S105-RMS web 4344/6104 u=13500 ce=4.3471 gn=1.122 scale=8192.0 28,741 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31566.627168834,"data":"[Taper-minus] [07:45:51] S105-Taper-minus web 4094/6104 u=13250 ce=4.5976 gn=1.088 scale=8192.0 30,003 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31673.387455387,"data":"[RMS] [07:47:37] S105-RMS web@4575: full-dev web CE 4.4772, python non-W CE 5.8023\n"}
+,{"stream_name":"stdout","time":31676.60662749,"data":"[Taper-minus] [07:47:41] S105-Taper-minus web@4270: full-dev web CE 4.4726, python non-W CE 5.7548\n"}
+,{"stream_name":"stdout","time":31680.291499564,"data":"[RMS] [07:47:44] S105-RMS web 4594/6104 u=13750 ce=4.5243 gn=1.133 scale=8192.0 29,693 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31707.868225793,"data":"[Taper-minus] [07:48:12] S105-Taper-minus web 4344/6104 u=13500 ce=4.3387 gn=1.066 scale=8192.0 29,010 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31787.530803449,"data":"[RMS] [07:49:32] S105-RMS web 4844/6104 u=14000 ce=4.3942 gn=1.085 scale=16384.0 38,211 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31837.529097867,"data":"[Taper-minus] [07:50:22] S105-Taper-minus web@4575: full-dev web CE 4.4692, python non-W CE 5.8620\n"}
+,{"stream_name":"stdout","time":31837.76319142,"data":"[RMS] [07:50:22] S105-RMS web@4880: full-dev web CE 4.4740, python non-W CE 5.6824\n"}
+,{"stream_name":"stdout","time":31844.297348769,"data":"[Taper-minus] [07:50:28] S105-Taper-minus web 4594/6104 u=13750 ce=4.5180 gn=1.054 scale=8192.0 30,012 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31925.464676308,"data":"[RMS] [07:51:49] S105-RMS web 5094/6104 u=14250 ce=4.3700 gn=1.120 scale=16384.0 29,697 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":31950.077358382,"data":"[Taper-minus] [07:52:14] S105-Taper-minus web 4844/6104 u=14000 ce=4.3912 gn=1.041 scale=16384.0 38,722 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32000.323691385,"data":"[Taper-minus] [07:53:04] S105-Taper-minus web@4880: full-dev web CE 4.4649, python non-W CE 5.6513\n"}
+,{"stream_name":"stdout","time":32000.555537575,"data":"[RMS] [07:53:05] S105-RMS web@5185: full-dev web CE 4.4705, python non-W CE 5.7792\n"}
+,{"stream_name":"stdout","time":32068.090034292,"data":"[RMS] [07:54:12] S105-RMS web 5344/6104 u=14500 ce=4.4465 gn=1.107 scale=16384.0 28,718 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32086.578802169,"data":"[Taper-minus] [07:54:31] S105-Taper-minus web 5094/6104 u=14250 ce=4.3665 gn=1.075 scale=16384.0 30,007 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32161.248288495,"data":"[Taper-minus] [07:55:45] S105-Taper-minus web@5185: full-dev web CE 4.4621, python non-W CE 5.9301\n"}
+,{"stream_name":"stdout","time":32163.28804183,"data":"[RMS] [07:55:47] S105-RMS web@5490: full-dev web CE 4.4668, python non-W CE 5.7865\n"}
+,{"stream_name":"stdout","time":32206.158397311,"data":"[RMS] [07:56:30] S105-RMS web 5594/6104 u=14750 ce=4.5430 gn=1.179 scale=16384.0 29,669 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32228.023106591,"data":"[Taper-minus] [07:56:52] S105-Taper-minus web 5344/6104 u=14500 ce=4.4417 gn=1.068 scale=16384.0 28,959 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32323.098230102,"data":"[Taper-minus] [07:58:27] S105-Taper-minus web@5490: full-dev web CE 4.4597, python non-W CE 5.8532\n"}
+,{"stream_name":"stdout","time":32326.613174757,"data":"[RMS] [07:58:31] S105-RMS web@5795: full-dev web CE 4.4656, python non-W CE 5.8153\n"}
+,{"stream_name":"stdout","time":32349.322384313,"data":"[RMS] [07:58:53] S105-RMS web 5844/6104 u=15000 ce=4.4591 gn=1.113 scale=16384.0 28,599 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32365.429207869,"data":"[Taper-minus] [07:59:09] S105-Taper-minus web 5594/6104 u=14750 ce=4.5318 gn=1.144 scale=16384.0 29,820 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32450.907872603,"data":"[RMS] [08:00:35] S105-RMS web 6094/6104 u=15250 ce=4.6011 gn=1.175 scale=16384.0 40,344 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32484.829183576,"data":"[Taper-minus] [08:01:09] S105-Taper-minus web@5795: full-dev web CE 4.4574, python non-W CE 5.8201\n"}
+,{"stream_name":"stdout","time":32494.997396508,"data":"[RMS] [08:01:19] S105-RMS web@6100: full-dev web CE 4.4630, python non-W CE 5.8396\n"}
+,{"stream_name":"stdout","time":32507.172467836,"data":"[Taper-minus] [08:01:31] S105-Taper-minus web 5844/6104 u=15000 ce=4.4558 gn=1.101 scale=16384.0 28,887 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32542.906310435,"data":"[RMS] [08:02:07] S105-RMS web@6104: full-dev web CE 4.4634, python non-W CE 5.8268\n"}
+,{"stream_name":"stdout","time":32545.603979894,"data":"[RMS] [08:02:10] S105-RMS: branch 'python' starts from switch 1981c4abae47\n"}
+,{"stream_name":"stdout","time":32592.159234043,"data":"[RMS] [08:02:56] S105-RMS python@0: full-dev web CE 4.5860, python non-W CE 6.0329\n"}
+,{"stream_name":"stdout","time":32592.303503303,"data":"[RMS] [08:02:56] S105-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":32607.262434023,"data":"[Taper-minus] [08:03:11] S105-Taper-minus web 6094/6104 u=15250 ce=4.5880 gn=1.065 scale=16384.0 40,923 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32634.605198844,"data":"[RMS] [08:03:39] S105-RMS python@1: full-dev web CE 4.5899, python non-W CE 5.8731\n"}
+,{"stream_name":"stdout","time":32651.606303934,"data":"[Taper-minus] [08:03:56] S105-Taper-minus web@6100: full-dev web CE 4.4556, python non-W CE 5.8348\n"}
+,{"stream_name":"stdout","time":32693.370391385,"data":"[RMS] [08:04:37] S105-RMS python@10: full-dev web CE 4.6717, python non-W CE 5.3921\n"}
+,{"stream_name":"stdout","time":32699.396173188,"data":"[Taper-minus] [08:04:43] S105-Taper-minus web@6104: full-dev web CE 4.4554, python non-W CE 5.8132\n"}
+,{"stream_name":"stdout","time":32702.196195001,"data":"[Taper-minus] [08:04:46] S105-Taper-minus: branch 'python' starts from switch a75487c067e1\n"}
+,{"stream_name":"stdout","time":32748.840309045,"data":"[Taper-minus] [08:05:33] S105-Taper-minus python@0: full-dev web CE 4.5754, python non-W CE 6.0456\n"}
+,{"stream_name":"stdout","time":32748.944908598,"data":"[Taper-minus] [08:05:33] S105-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":32781.968005373,"data":"[RMS] [08:06:06] S105-RMS python@100: full-dev web CE 4.8494, python non-W CE 3.8701\n"}
+,{"stream_name":"stdout","time":32791.281971627,"data":"[Taper-minus] [08:06:15] S105-Taper-minus python@1: full-dev web CE 4.5798, python non-W CE 5.8629\n"}
+,{"stream_name":"stdout","time":32842.475604573,"data":"[RMS] [08:07:06] S105-RMS python 240/6104 u=9396 ce=2.4386 gn=1.370 scale=2048.0 10,460 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32850.143529362,"data":"[Taper-minus] [08:07:14] S105-Taper-minus python@10: full-dev web CE 4.6811, python non-W CE 5.4347\n"}
+,{"stream_name":"stdout","time":32912.773139116,"data":"[RMS] [08:08:17] S105-RMS python@305: full-dev web CE 5.1352, python non-W CE 3.3646\n"}
+,{"stream_name":"stdout","time":32938.279590686,"data":"[Taper-minus] [08:08:42] S105-Taper-minus python@100: full-dev web CE 4.8366, python non-W CE 3.8424\n"}
+,{"stream_name":"stdout","time":32994.33731804,"data":"[RMS] [08:09:38] S105-RMS python 490/6104 u=9646 ce=1.9095 gn=1.370 scale=2048.0 26,971 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":32998.046349801,"data":"[Taper-minus] [08:09:42] S105-Taper-minus python 240/6104 u=9396 ce=2.4403 gn=1.731 scale=2048.0 10,481 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33068.10595534,"data":"[Taper-minus] [08:10:52] S105-Taper-minus python@305: full-dev web CE 5.1188, python non-W CE 3.3147\n"}
+,{"stream_name":"stdout","time":33089.437041046,"data":"[RMS] [08:11:13] S105-RMS python@610: full-dev web CE 5.5473, python non-W CE 3.0901\n"}
+,{"stream_name":"stdout","time":33146.262079612,"data":"[RMS] [08:12:10] S105-RMS python 740/6104 u=9896 ce=1.5442 gn=1.087 scale=2048.0 26,961 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33148.449474808,"data":"[Taper-minus] [08:12:12] S105-Taper-minus python 490/6104 u=9646 ce=1.8949 gn=1.478 scale=2048.0 27,234 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33242.777865633,"data":"[Taper-minus] [08:13:47] S105-Taper-minus python@610: full-dev web CE 5.5527, python non-W CE 3.0864\n"}
+,{"stream_name":"stdout","time":33266.015264972,"data":"[RMS] [08:14:10] S105-RMS python@915: full-dev web CE 5.7866, python non-W CE 2.9788\n"}
+,{"stream_name":"stdout","time":33298.119294363,"data":"[RMS] [08:14:42] S105-RMS python 990/6104 u=10146 ce=1.8127 gn=1.516 scale=4096.0 26,972 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33298.664283347,"data":"[Taper-minus] [08:14:43] S105-Taper-minus python 740/6104 u=9896 ce=1.5417 gn=1.204 scale=2048.0 27,268 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33417.583335113,"data":"[Taper-minus] [08:16:42] S105-Taper-minus python@915: full-dev web CE 5.7503, python non-W CE 2.9657\n"}
+,{"stream_name":"stdout","time":33433.312650082,"data":"[RMS] [08:16:57] S105-RMS python@1220: full-dev web CE 5.9022, python non-W CE 2.8927\n"}
+,{"stream_name":"stdout","time":33440.629399525,"data":"[RMS] [08:17:05] S105-RMS python 1240/6104 u=10396 ce=2.0458 gn=1.175 scale=4096.0 28,733 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33449.106584897,"data":"[Taper-minus] [08:17:13] S105-Taper-minus python 990/6104 u=10146 ce=1.7936 gn=1.268 scale=4096.0 27,236 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33543.126845189,"data":"[RMS] [08:18:47] S105-RMS python 1490/6104 u=10646 ce=1.4557 gn=1.063 scale=4096.0 39,980 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33582.828539275,"data":"[Taper-minus] [08:19:27] S105-Taper-minus python@1220: full-dev web CE 5.9273, python non-W CE 2.8960\n"}
+,{"stream_name":"stdout","time":33589.949413101,"data":"[Taper-minus] [08:19:34] S105-Taper-minus python 1240/6104 u=10396 ce=2.0422 gn=1.146 scale=4096.0 29,071 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33606.762658958,"data":"[RMS] [08:19:51] S105-RMS python@1525: full-dev web CE 6.0224, python non-W CE 2.8506\n"}
+,{"stream_name":"stdout","time":33691.08680127,"data":"[Taper-minus] [08:21:15] S105-Taper-minus python 1490/6104 u=10646 ce=1.4476 gn=1.140 scale=4096.0 40,518 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33694.661361437,"data":"[RMS] [08:21:19] S105-RMS python 1740/6104 u=10896 ce=1.8202 gn=1.130 scale=4096.0 27,021 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33754.459330433,"data":"[Taper-minus] [08:22:18] S105-Taper-minus python@1525: full-dev web CE 5.9978, python non-W CE 2.8449\n"}
+,{"stream_name":"stdout","time":33769.424034961,"data":"[RMS] [08:22:33] S105-RMS python@1830: full-dev web CE 6.0642, python non-W CE 2.7979\n"}
+,{"stream_name":"stdout","time":33832.600796019,"data":"[RMS] [08:23:37] S105-RMS python 1990/6104 u=11146 ce=1.7676 gn=1.111 scale=4096.0 29,705 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33840.925238129,"data":"[Taper-minus] [08:23:45] S105-Taper-minus python 1740/6104 u=10896 ce=1.8132 gn=1.673 scale=4096.0 27,329 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33915.178362324,"data":"[Taper-minus] [08:24:59] S105-Taper-minus python@1830: full-dev web CE 6.0577, python non-W CE 2.8035\n"}
+,{"stream_name":"stdout","time":33932.168513674,"data":"[RMS] [08:25:16] S105-RMS python@2135: full-dev web CE 6.0759, python non-W CE 2.7704\n"}
+,{"stream_name":"stdout","time":33975.310612468,"data":"[RMS] [08:25:59] S105-RMS python 2240/6104 u=11396 ce=1.7484 gn=1.539 scale=4096.0 28,704 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":33977.275689473,"data":"[Taper-minus] [08:26:01] S105-Taper-minus python 1990/6104 u=11146 ce=1.7646 gn=1.533 scale=4096.0 30,039 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34076.263871609,"data":"[Taper-minus] [08:27:40] S105-Taper-minus python@2135: full-dev web CE 6.0894, python non-W CE 2.7760\n"}
+,{"stream_name":"stdout","time":34095.023194823,"data":"[RMS] [08:27:59] S105-RMS python@2440: full-dev web CE 6.1361, python non-W CE 2.7518\n"}
+,{"stream_name":"stdout","time":34113.313000994,"data":"[RMS] [08:28:17] S105-RMS python 2490/6104 u=11646 ce=1.7095 gn=1.049 scale=4096.0 29,678 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34118.534877373,"data":"[Taper-minus] [08:28:23] S105-Taper-minus python 2240/6104 u=11396 ce=1.7355 gn=0.928 scale=4096.0 28,996 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34218.576335107,"data":"[RMS] [08:30:03] S105-RMS python 2740/6104 u=11896 ce=1.9206 gn=1.171 scale=4096.0 38,915 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34236.916840562,"data":"[Taper-minus] [08:30:21] S105-Taper-minus python@2440: full-dev web CE 6.1395, python non-W CE 2.7418\n"}
+,{"stream_name":"stdout","time":34254.874482222,"data":"[Taper-minus] [08:30:39] S105-Taper-minus python 2490/6104 u=11646 ce=1.7105 gn=1.364 scale=4096.0 30,056 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34257.622256309,"data":"[RMS] [08:30:42] S105-RMS python@2745: full-dev web CE 6.1527, python non-W CE 2.7314\n"}
+,{"stream_name":"stdout","time":34358.400683573,"data":"[RMS] [08:32:22] S105-RMS python 2990/6104 u=12146 ce=1.6626 gn=1.883 scale=8192.0 29,292 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34358.407191398,"data":"[Taper-minus] [08:32:22] S105-Taper-minus python 2740/6104 u=11896 ce=1.9155 gn=1.114 scale=4096.0 39,540 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34397.668685776,"data":"[Taper-minus] [08:33:02] S105-Taper-minus python@2745: full-dev web CE 6.1618, python non-W CE 2.7297\n"}
+,{"stream_name":"stdout","time":34427.037982315,"data":"[RMS] [08:33:31] S105-RMS python@3050: full-dev web CE 6.1843, python non-W CE 2.7125\n"}
+,{"stream_name":"stdout","time":34494.270155656,"data":"[Taper-minus] [08:34:38] S105-Taper-minus python 2990/6104 u=12146 ce=1.6581 gn=1.001 scale=8192.0 30,160 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34505.563327966,"data":"[RMS] [08:34:50] S105-RMS python 3240/6104 u=12396 ce=1.6075 gn=1.620 scale=8192.0 27,824 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34564.194164112,"data":"[Taper-minus] [08:35:48] S105-Taper-minus python@3050: full-dev web CE 6.1957, python non-W CE 2.7161\n"}
+,{"stream_name":"stdout","time":34589.453393823,"data":"[RMS] [08:36:13] S105-RMS python@3355: full-dev web CE 6.2102, python non-W CE 2.6988\n"}
+,{"stream_name":"stdout","time":34641.283190748,"data":"[Taper-minus] [08:37:05] S105-Taper-minus python 3240/6104 u=12396 ce=1.6018 gn=1.019 scale=8192.0 27,860 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34643.401439118,"data":"[RMS] [08:37:07] S105-RMS python 3490/6104 u=12646 ce=1.7631 gn=1.138 scale=8192.0 29,716 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34724.336211253,"data":"[Taper-minus] [08:38:28] S105-Taper-minus python@3355: full-dev web CE 6.1905, python non-W CE 2.6906\n"}
+,{"stream_name":"stdout","time":34752.139507759,"data":"[RMS] [08:38:56] S105-RMS python@3660: full-dev web CE 6.1851, python non-W CE 2.6824\n"}
+,{"stream_name":"stdout","time":34777.077255919,"data":"[Taper-minus] [08:39:21] S105-Taper-minus python 3490/6104 u=12646 ce=1.7574 gn=1.644 scale=8192.0 30,165 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34785.966390629,"data":"[RMS] [08:39:30] S105-RMS python 3740/6104 u=12896 ce=1.7480 gn=2.397 scale=8192.0 28,731 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34884.291494493,"data":"[Taper-minus] [08:41:08] S105-Taper-minus python@3660: full-dev web CE 6.2051, python non-W CE 2.6747\n"}
+,{"stream_name":"stdout","time":34914.837671787,"data":"[RMS] [08:41:39] S105-RMS python@3965: full-dev web CE 6.2174, python non-W CE 2.6678\n"}
+,{"stream_name":"stdout","time":34917.387255076,"data":"[Taper-minus] [08:41:41] S105-Taper-minus python 3740/6104 u=12896 ce=1.7415 gn=2.310 scale=8192.0 29,181 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":34923.922824105,"data":"[RMS] [08:41:48] S105-RMS python 3990/6104 u=13146 ce=1.6543 gn=1.128 scale=8192.0 29,691 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35029.087056782,"data":"[RMS] [08:43:33] S105-RMS python 4240/6104 u=13396 ce=1.9006 gn=1.201 scale=8192.0 38,968 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35044.052969911,"data":"[Taper-minus] [08:43:48] S105-Taper-minus python@3965: full-dev web CE 6.2246, python non-W CE 2.6630\n"}
+,{"stream_name":"stdout","time":35052.936426749,"data":"[Taper-minus] [08:43:57] S105-Taper-minus python 3990/6104 u=13146 ce=1.6429 gn=0.946 scale=8192.0 30,218 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35077.347307889,"data":"[RMS] [08:44:21] S105-RMS python@4270: full-dev web CE 6.2147, python non-W CE 2.6521\n"}
+,{"stream_name":"stdout","time":35155.972217661,"data":"[Taper-minus] [08:45:40] S105-Taper-minus python 4240/6104 u=13396 ce=1.9044 gn=1.264 scale=8192.0 39,775 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35166.883604157,"data":"[RMS] [08:45:51] S105-RMS python 4490/6104 u=13646 ce=1.5058 gn=1.069 scale=8192.0 29,713 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35204.126360402,"data":"[Taper-minus] [08:46:28] S105-Taper-minus python@4270: full-dev web CE 6.2233, python non-W CE 2.6517\n"}
+,{"stream_name":"stdout","time":35240.151971309,"data":"[RMS] [08:47:04] S105-RMS python@4575: full-dev web CE 6.2198, python non-W CE 2.6398\n"}
+,{"stream_name":"stdout","time":35291.905218302,"data":"[Taper-minus] [08:47:56] S105-Taper-minus python 4490/6104 u=13646 ce=1.5105 gn=1.039 scale=8192.0 30,131 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35311.509768812,"data":"[RMS] [08:48:16] S105-RMS python 4740/6104 u=13896 ce=1.8135 gn=1.223 scale=8192.0 28,321 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35364.23391486,"data":"[Taper-minus] [08:49:08] S105-Taper-minus python@4575: full-dev web CE 6.2243, python non-W CE 2.6383\n"}
+,{"stream_name":"stdout","time":35404.729815865,"data":"[RMS] [08:49:49] S105-RMS python@4880: full-dev web CE 6.2233, python non-W CE 2.6345\n"}
+,{"stream_name":"stdout","time":35434.170166077,"data":"[Taper-minus] [08:50:18] S105-Taper-minus python 4740/6104 u=13896 ce=1.8048 gn=1.125 scale=8192.0 28,782 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35449.582825062,"data":"[RMS] [08:50:34] S105-RMS python 4990/6104 u=14146 ce=1.4668 gn=1.217 scale=16384.0 29,676 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35526.238315577,"data":"[Taper-minus] [08:51:50] S105-Taper-minus python@4880: full-dev web CE 6.2240, python non-W CE 2.6377\n"}
+,{"stream_name":"stdout","time":35567.447711785,"data":"[RMS] [08:52:31] S105-RMS python@5185: full-dev web CE 6.2519, python non-W CE 2.6288\n"}
+,{"stream_name":"stdout","time":35570.051495457,"data":"[Taper-minus] [08:52:34] S105-Taper-minus python 4990/6104 u=14146 ce=1.4704 gn=1.042 scale=16384.0 30,144 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35592.143422881,"data":"[RMS] [08:52:56] S105-RMS python 5240/6104 u=14396 ce=1.8804 gn=1.295 scale=16384.0 28,722 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35686.368938368,"data":"[Taper-minus] [08:54:30] S105-Taper-minus python@5185: full-dev web CE 6.2527, python non-W CE 2.6254\n"}
+,{"stream_name":"stdout","time":35692.817887809,"data":"[RMS] [08:54:37] S105-RMS python 5490/6104 u=14646 ce=1.4589 gn=1.167 scale=16384.0 40,686 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35710.541069069,"data":"[Taper-minus] [08:54:55] S105-Taper-minus python 5240/6104 u=14396 ce=1.8737 gn=1.192 scale=16384.0 29,155 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35730.148918797,"data":"[RMS] [08:55:14] S105-RMS python@5490: full-dev web CE 6.2386, python non-W CE 2.6203\n"}
+,{"stream_name":"stdout","time":35808.894795761,"data":"[Taper-minus] [08:56:33] S105-Taper-minus python 5490/6104 u=14646 ce=1.4678 gn=0.950 scale=16384.0 41,670 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35835.374033225,"data":"[RMS] [08:56:59] S105-RMS python 5740/6104 u=14896 ce=1.5987 gn=1.185 scale=16384.0 28,733 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35846.178810158,"data":"[Taper-minus] [08:57:10] S105-Taper-minus python@5490: full-dev web CE 6.2386, python non-W CE 2.6171\n"}
+,{"stream_name":"stdout","time":35892.853407413,"data":"[RMS] [08:57:57] S105-RMS python@5795: full-dev web CE 6.2217, python non-W CE 2.6124\n"}
+,{"stream_name":"stdout","time":35949.085558532,"data":"[Taper-minus] [08:58:53] S105-Taper-minus python 5740/6104 u=14896 ce=1.5945 gn=0.996 scale=16384.0 29,217 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":35973.186857785,"data":"[RMS] [08:59:17] S105-RMS python 5990/6104 u=15146 ce=1.7780 gn=2.743 scale=16384.0 29,721 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36005.971747906,"data":"[Taper-minus] [08:59:50] S105-Taper-minus python@5795: full-dev web CE 6.2093, python non-W CE 2.6101\n"}
+,{"stream_name":"stdout","time":36059.949086496,"data":"[RMS] [09:00:44] S105-RMS python@6100: full-dev web CE 6.2411, python non-W CE 2.6089\n"}
+,{"stream_name":"stdout","time":36084.886872821,"data":"[Taper-minus] [09:01:09] S105-Taper-minus python 5990/6104 u=15146 ce=1.7715 gn=5.026 scale=16384.0 30,149 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36107.542030536,"data":"[RMS] [09:01:31] S105-RMS python@6104: full-dev web CE 6.2402, python non-W CE 2.6086\n"}
+,{"stream_name":"stdout","time":36110.124222894,"data":"[RMS] [09:01:34] S105-RMS: branch 'x' starts from switch 1981c4abae47\n"}
+,{"stream_name":"stdout","time":36156.202824564,"data":"[RMS] [09:02:20] S105-RMS x@0: full-dev web CE 4.5860, x non-W CE 4.1805\n"}
+,{"stream_name":"stdout","time":36156.388937492,"data":"[RMS] [09:02:20] S105-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":36170.748343768,"data":"[Taper-minus] [09:02:35] S105-Taper-minus python@6100: full-dev web CE 6.2481, python non-W CE 2.6069\n"}
+,{"stream_name":"stdout","time":36198.652132104,"data":"[RMS] [09:03:03] S105-RMS x@1: full-dev web CE 4.5900, x non-W CE 4.1072\n"}
+,{"stream_name":"stdout","time":36218.319339211,"data":"[Taper-minus] [09:03:22] S105-Taper-minus python@6104: full-dev web CE 6.2424, python non-W CE 2.6098\n"}
+,{"stream_name":"stdout","time":36221.036964448,"data":"[Taper-minus] [09:03:25] S105-Taper-minus: branch 'x' starts from switch a75487c067e1\n"}
+,{"stream_name":"stdout","time":36257.46476042,"data":"[RMS] [09:04:01] S105-RMS x@10: full-dev web CE 4.6798, x non-W CE 3.7516\n"}
+,{"stream_name":"stdout","time":36267.569206168,"data":"[Taper-minus] [09:04:12] S105-Taper-minus x@0: full-dev web CE 4.5754, x non-W CE 4.1825\n"}
+,{"stream_name":"stdout","time":36267.790109315,"data":"[Taper-minus] [09:04:12] S105-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -\u003e ok\n"}
+,{"stream_name":"stdout","time":36310.188161192,"data":"[Taper-minus] [09:04:54] S105-Taper-minus x@1: full-dev web CE 4.5795, x non-W CE 4.1103\n"}
+,{"stream_name":"stdout","time":36345.718476056,"data":"[RMS] [09:05:30] S105-RMS x@100: full-dev web CE 4.8609, x non-W CE 2.8254\n"}
+,{"stream_name":"stdout","time":36358.80249344,"data":"[RMS] [09:05:43] S105-RMS x 136/6104 u=9292 ce=2.4374 gn=1.920 scale=2048.0 10,622 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36368.937674842,"data":"[Taper-minus] [09:05:53] S105-Taper-minus x@10: full-dev web CE 4.6926, x non-W CE 3.7541\n"}
+,{"stream_name":"stdout","time":36456.918717888,"data":"[Taper-minus] [09:07:21] S105-Taper-minus x@100: full-dev web CE 4.8943, x non-W CE 2.8397\n"}
+,{"stream_name":"stdout","time":36469.762000074,"data":"[Taper-minus] [09:07:34] S105-Taper-minus x 136/6104 u=9292 ce=2.4394 gn=1.688 scale=2048.0 10,642 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36476.185701342,"data":"[RMS] [09:07:40] S105-RMS x@305: full-dev web CE 5.1123, x non-W CE 2.5192\n"}
+,{"stream_name":"stdout","time":36510.348858861,"data":"[RMS] [09:08:14] S105-RMS x 386/6104 u=9542 ce=2.4900 gn=1.530 scale=2048.0 27,038 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36586.250994544,"data":"[Taper-minus] [09:09:30] S105-Taper-minus x@305: full-dev web CE 5.1235, x non-W CE 2.5216\n"}
+,{"stream_name":"stdout","time":36619.658861117,"data":"[Taper-minus] [09:10:04] S105-Taper-minus x 386/6104 u=9542 ce=2.4839 gn=1.458 scale=2048.0 27,335 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36652.115748432,"data":"[RMS] [09:10:36] S105-RMS x@610: full-dev web CE 5.7095, x non-W CE 2.3690\n"}
+,{"stream_name":"stdout","time":36661.554789678,"data":"[RMS] [09:10:46] S105-RMS x 636/6104 u=9792 ce=2.3528 gn=1.315 scale=2048.0 27,079 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36760.177759033,"data":"[Taper-minus] [09:12:24] S105-Taper-minus x@610: full-dev web CE 5.6966, x non-W CE 2.3630\n"}
+,{"stream_name":"stdout","time":36769.367462936,"data":"[Taper-minus] [09:12:33] S105-Taper-minus x 636/6104 u=9792 ce=2.3421 gn=1.480 scale=2048.0 27,350 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36775.741819303,"data":"[RMS] [09:12:40] S105-RMS x 886/6104 u=10042 ce=2.0150 gn=1.173 scale=4096.0 35,871 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36828.227786985,"data":"[RMS] [09:13:32] S105-RMS x@915: full-dev web CE 5.9862, x non-W CE 2.2938\n"}
+,{"stream_name":"stdout","time":36881.773358562,"data":"[Taper-minus] [09:14:26] S105-Taper-minus x 886/6104 u=10042 ce=2.0088 gn=1.175 scale=4096.0 36,455 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36922.745472645,"data":"[RMS] [09:15:07] S105-RMS x 1136/6104 u=10292 ce=2.2876 gn=1.350 scale=4096.0 27,874 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":36934.177891195,"data":"[Taper-minus] [09:15:18] S105-Taper-minus x@915: full-dev web CE 6.0266, x non-W CE 2.2855\n"}
+,{"stream_name":"stdout","time":36995.243369061,"data":"[RMS] [09:16:19] S105-RMS x@1220: full-dev web CE 6.2311, x non-W CE 2.2351\n"}
+,{"stream_name":"stdout","time":37026.903290805,"data":"[Taper-minus] [09:16:51] S105-Taper-minus x 1136/6104 u=10292 ce=2.2792 gn=1.323 scale=4096.0 28,224 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37062.021434901,"data":"[RMS] [09:17:26] S105-RMS x 1386/6104 u=10542 ce=2.2091 gn=1.098 scale=4096.0 29,411 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37098.999957488,"data":"[Taper-minus] [09:18:03] S105-Taper-minus x@1220: full-dev web CE 6.2527, x non-W CE 2.2311\n"}
+,{"stream_name":"stdout","time":37164.721517778,"data":"[Taper-minus] [09:19:09] S105-Taper-minus x 1386/6104 u=10542 ce=2.2076 gn=1.145 scale=4096.0 29,722 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37168.074042083,"data":"[RMS] [09:19:12] S105-RMS x@1525: full-dev web CE 6.5346, x non-W CE 2.1976\n"}
+,{"stream_name":"stdout","time":37213.129237502,"data":"[RMS] [09:19:57] S105-RMS x 1636/6104 u=10792 ce=2.2921 gn=1.224 scale=4096.0 27,105 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37269.619916253,"data":"[Taper-minus] [09:20:54] S105-Taper-minus x@1525: full-dev web CE 6.5656, x non-W CE 2.1921\n"}
+,{"stream_name":"stdout","time":37313.952675562,"data":"[Taper-minus] [09:21:38] S105-Taper-minus x 1636/6104 u=10792 ce=2.2834 gn=1.219 scale=4096.0 27,448 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37330.115406918,"data":"[RMS] [09:21:54] S105-RMS x@1830: full-dev web CE 6.6813, x non-W CE 2.1759\n"}
+,{"stream_name":"stdout","time":37350.563542732,"data":"[RMS] [09:22:15] S105-RMS x 1886/6104 u=11042 ce=2.0540 gn=1.191 scale=4096.0 29,804 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37429.537544437,"data":"[Taper-minus] [09:23:34] S105-Taper-minus x@1830: full-dev web CE 6.6420, x non-W CE 2.1667\n"}
+,{"stream_name":"stdout","time":37449.392683741,"data":"[Taper-minus] [09:23:53] S105-Taper-minus x 1886/6104 u=11042 ce=2.0476 gn=1.118 scale=4096.0 30,229 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37492.020474802,"data":"[RMS] [09:24:36] S105-RMS x@2135: full-dev web CE 6.7744, x non-W CE 2.1449\n"}
+,{"stream_name":"stdout","time":37492.324534374,"data":"[RMS] [09:24:36] S105-RMS x 2136/6104 u=11292 ce=2.0988 gn=1.177 scale=4096.0 28,881 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37589.600451936,"data":"[Taper-minus] [09:26:14] S105-Taper-minus x@2135: full-dev web CE 6.7927, x non-W CE 2.1360\n"}
+,{"stream_name":"stdout","time":37589.902870809,"data":"[Taper-minus] [09:26:14] S105-Taper-minus x 2136/6104 u=11292 ce=2.0916 gn=1.123 scale=4096.0 29,151 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37592.561052397,"data":"[RMS] [09:26:17] S105-RMS x 2386/6104 u=11542 ce=2.0300 gn=1.059 scale=4096.0 40,863 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37653.983505682,"data":"[RMS] [09:27:18] S105-RMS x@2440: full-dev web CE 6.7093, x non-W CE 2.1213\n"}
+,{"stream_name":"stdout","time":37688.309489743,"data":"[Taper-minus] [09:27:52] S105-Taper-minus x 2386/6104 u=11542 ce=2.0229 gn=1.027 scale=4096.0 41,649 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37734.617377482,"data":"[RMS] [09:28:39] S105-RMS x 2636/6104 u=11792 ce=2.0846 gn=1.169 scale=4096.0 28,846 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37749.512972636,"data":"[Taper-minus] [09:28:54] S105-Taper-minus x@2440: full-dev web CE 6.7108, x non-W CE 2.1139\n"}
+,{"stream_name":"stdout","time":37816.045188753,"data":"[RMS] [09:30:00] S105-RMS x@2745: full-dev web CE 6.8405, x non-W CE 2.1075\n"}
+,{"stream_name":"stdout","time":37828.605559777,"data":"[Taper-minus] [09:30:13] S105-Taper-minus x 2636/6104 u=11792 ce=2.0849 gn=1.205 scale=4096.0 29,183 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37871.830348511,"data":"[RMS] [09:30:56] S105-RMS x 2886/6104 u=12042 ce=1.8154 gn=1.230 scale=8192.0 29,850 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37909.353154839,"data":"[Taper-minus] [09:31:33] S105-Taper-minus x@2745: full-dev web CE 6.7939, x non-W CE 2.0968\n"}
+,{"stream_name":"stdout","time":37964.268782644,"data":"[Taper-minus] [09:32:28] S105-Taper-minus x 2886/6104 u=12042 ce=1.8056 gn=1.074 scale=8192.0 30,205 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":37984.451954738,"data":"[RMS] [09:32:48] S105-RMS x@3050: full-dev web CE 6.8696, x non-W CE 2.0892\n"}
+,{"stream_name":"stdout","time":38020.426354614,"data":"[RMS] [09:33:24] S105-RMS x 3136/6104 u=12292 ce=1.9534 gn=1.099 scale=8192.0 27,564 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38075.829986661,"data":"[Taper-minus] [09:34:20] S105-Taper-minus x@3050: full-dev web CE 6.8542, x non-W CE 2.0791\n"}
+,{"stream_name":"stdout","time":38111.185956758,"data":"[Taper-minus] [09:34:55] S105-Taper-minus x 3136/6104 u=12292 ce=1.9424 gn=1.127 scale=8192.0 27,882 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38146.28741757,"data":"[RMS] [09:35:30] S105-RMS x@3355: full-dev web CE 6.9027, x non-W CE 2.0769\n"}
+,{"stream_name":"stdout","time":38157.501371802,"data":"[RMS] [09:35:42] S105-RMS x 3386/6104 u=12542 ce=1.9830 gn=1.167 scale=8192.0 29,870 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38235.698746564,"data":"[Taper-minus] [09:37:00] S105-Taper-minus x@3355: full-dev web CE 6.8946, x non-W CE 2.0663\n"}
+,{"stream_name":"stdout","time":38246.658656393,"data":"[Taper-minus] [09:37:11] S105-Taper-minus x 3386/6104 u=12542 ce=1.9711 gn=1.193 scale=8192.0 30,220 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38262.272972771,"data":"[RMS] [09:37:26] S105-RMS x 3636/6104 u=12792 ce=2.0076 gn=1.120 scale=8192.0 39,095 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38308.225739696,"data":"[RMS] [09:38:12] S105-RMS x@3660: full-dev web CE 6.9123, x non-W CE 2.0603\n"}
+,{"stream_name":"stdout","time":38349.855789467,"data":"[Taper-minus] [09:38:54] S105-Taper-minus x 3636/6104 u=12792 ce=1.9977 gn=1.056 scale=8192.0 39,714 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38395.697272911,"data":"[Taper-minus] [09:39:40] S105-Taper-minus x@3660: full-dev web CE 6.9414, x non-W CE 2.0533\n"}
+,{"stream_name":"stdout","time":38399.823230028,"data":"[RMS] [09:39:44] S105-RMS x 3886/6104 u=13042 ce=1.8437 gn=1.113 scale=8192.0 29,778 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38470.328552273,"data":"[RMS] [09:40:54] S105-RMS x@3965: full-dev web CE 6.9206, x non-W CE 2.0506\n"}
+,{"stream_name":"stdout","time":38485.29039296,"data":"[Taper-minus] [09:41:09] S105-Taper-minus x 3886/6104 u=13042 ce=1.8349 gn=1.005 scale=8192.0 30,230 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38541.804222468,"data":"[RMS] [09:42:06] S105-RMS x 4136/6104 u=13292 ce=1.9051 gn=1.159 scale=8192.0 28,860 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38555.332254636,"data":"[Taper-minus] [09:42:19] S105-Taper-minus x@3965: full-dev web CE 6.9879, x non-W CE 2.0420\n"}
+,{"stream_name":"stdout","time":38625.68772936,"data":"[Taper-minus] [09:43:30] S105-Taper-minus x 4136/6104 u=13292 ce=1.8902 gn=1.162 scale=8192.0 29,187 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38632.268875938,"data":"[RMS] [09:43:36] S105-RMS x@4270: full-dev web CE 7.0625, x non-W CE 2.0434\n"}
+,{"stream_name":"stdout","time":38679.072731361,"data":"[RMS] [09:44:23] S105-RMS x 4386/6104 u=13542 ce=2.1130 gn=1.108 scale=8192.0 29,840 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38715.229168422,"data":"[Taper-minus] [09:44:59] S105-Taper-minus x@4270: full-dev web CE 6.9820, x non-W CE 2.0332\n"}
+,{"stream_name":"stdout","time":38761.317223602,"data":"[Taper-minus] [09:45:45] S105-Taper-minus x 4386/6104 u=13542 ce=2.1085 gn=1.265 scale=8192.0 30,201 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38794.324369303,"data":"[RMS] [09:46:18] S105-RMS x@4575: full-dev web CE 7.0355, x non-W CE 2.0345\n"}
+,{"stream_name":"stdout","time":38823.048893145,"data":"[RMS] [09:46:47] S105-RMS x 4636/6104 u=13792 ce=2.1419 gn=1.219 scale=8192.0 28,438 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38875.369472847,"data":"[Taper-minus] [09:47:39] S105-Taper-minus x@4575: full-dev web CE 7.0259, x non-W CE 2.0258\n"}
+,{"stream_name":"stdout","time":38901.671696825,"data":"[Taper-minus] [09:48:06] S105-Taper-minus x 4636/6104 u=13792 ce=2.1391 gn=1.202 scale=8192.0 29,171 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":38958.17359131,"data":"[RMS] [09:49:02] S105-RMS x@4880: full-dev web CE 6.9900, x non-W CE 2.0261\n"}
+,{"stream_name":"stdout","time":38960.307929736,"data":"[RMS] [09:49:04] S105-RMS x 4886/6104 u=14042 ce=1.8334 gn=1.018 scale=16384.0 29,842 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39037.318112002,"data":"[Taper-minus] [09:50:21] S105-Taper-minus x@4880: full-dev web CE 6.9700, x non-W CE 2.0181\n"}
+,{"stream_name":"stdout","time":39039.402230857,"data":"[Taper-minus] [09:50:23] S105-Taper-minus x 4886/6104 u=14042 ce=1.8352 gn=1.089 scale=16384.0 29,739 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39065.231004394,"data":"[RMS] [09:50:49] S105-RMS x 5136/6104 u=14292 ce=1.9184 gn=1.261 scale=16384.0 39,038 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39120.207067989,"data":"[RMS] [09:51:44] S105-RMS x@5185: full-dev web CE 6.9753, x non-W CE 2.0210\n"}
+,{"stream_name":"stdout","time":39142.179420966,"data":"[Taper-minus] [09:52:06] S105-Taper-minus x 5136/6104 u=14292 ce=1.9068 gn=1.183 scale=16384.0 39,853 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39196.98071772,"data":"[Taper-minus] [09:53:01] S105-Taper-minus x@5185: full-dev web CE 6.9253, x non-W CE 2.0129\n"}
+,{"stream_name":"stdout","time":39202.637491507,"data":"[RMS] [09:53:07] S105-RMS x 5386/6104 u=14542 ce=1.9853 gn=1.108 scale=16384.0 29,809 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39277.839524116,"data":"[Taper-minus] [09:54:22] S105-Taper-minus x 5386/6104 u=14542 ce=1.9735 gn=1.107 scale=16384.0 30,208 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39282.250005201,"data":"[RMS] [09:54:26] S105-RMS x@5490: full-dev web CE 7.0186, x non-W CE 2.0149\n"}
+,{"stream_name":"stdout","time":39344.653090038,"data":"[RMS] [09:55:29] S105-RMS x 5636/6104 u=14792 ce=1.9911 gn=1.162 scale=16384.0 28,855 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39356.778396069,"data":"[Taper-minus] [09:55:41] S105-Taper-minus x@5490: full-dev web CE 6.9639, x non-W CE 2.0077\n"}
+,{"stream_name":"stdout","time":39418.333184597,"data":"[Taper-minus] [09:56:42] S105-Taper-minus x 5636/6104 u=14792 ce=1.9888 gn=1.213 scale=16384.0 29,154 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39444.352765652,"data":"[RMS] [09:57:08] S105-RMS x@5795: full-dev web CE 7.0175, x non-W CE 2.0100\n"}
+,{"stream_name":"stdout","time":39482.125168372,"data":"[RMS] [09:57:46] S105-RMS x 5886/6104 u=15042 ce=1.9150 gn=1.130 scale=16384.0 29,794 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39516.845769028,"data":"[Taper-minus] [09:58:21] S105-Taper-minus x@5795: full-dev web CE 6.9580, x non-W CE 2.0019\n"}
+,{"stream_name":"stdout","time":39553.974288161,"data":"[Taper-minus] [09:58:58] S105-Taper-minus x 5886/6104 u=15042 ce=1.8999 gn=1.077 scale=16384.0 30,196 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39611.068066832,"data":"[RMS] [09:59:55] S105-RMS x@6100: full-dev web CE 6.9706, x non-W CE 2.0063\n"}
+,{"stream_name":"stdout","time":39658.4379933,"data":"[RMS] [10:00:42] S105-RMS x@6104: full-dev web CE 6.9810, x non-W CE 2.0054\n"}
+,{"stream_name":"stdout","time":39658.493742472,"data":"[RMS] [10:00:43] S105-RMS: COMPLETE\n"}
+,{"stream_name":"stdout","time":39659.006341836,"data":"[RMS] [10:00:43] S106-RMS: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":39681.516451142,"data":"[Taper-minus] [10:01:06] S105-Taper-minus x@6100: full-dev web CE 6.9561, x non-W CE 1.9972\n"}
+,{"stream_name":"stdout","time":39728.897867083,"data":"[Taper-minus] [10:01:53] S105-Taper-minus x@6104: full-dev web CE 6.9550, x non-W CE 1.9971\n"}
+,{"stream_name":"stdout","time":39728.96338335,"data":"[Taper-minus] [10:01:53] S105-Taper-minus: COMPLETE\n"}
+,{"stream_name":"stdout","time":39729.621466448,"data":"[Taper-minus] [10:01:54] S106-Taper-minus: fresh paired initialization\n"}
+,{"stream_name":"stdout","time":39749.93676441,"data":"[RMS] [10:02:14] S106-RMS prefix 250/9156 u=250 ce=6.7418 gn=0.474 scale=128.0 45,046 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39825.431325056,"data":"[Taper-minus] [10:03:29] S106-Taper-minus prefix 250/9156 u=250 ce=6.7420 gn=0.473 scale=128.0 42,779 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39841.22787503,"data":"[RMS] [10:03:45] S106-RMS prefix 500/9156 u=500 ce=6.3739 gn=0.506 scale=128.0 44,868 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39921.008956337,"data":"[Taper-minus] [10:05:05] S106-Taper-minus prefix 500/9156 u=500 ce=6.3739 gn=0.508 scale=128.0 42,867 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39932.300905573,"data":"[RMS] [10:05:16] S106-RMS prefix 750/9156 u=750 ce=5.8673 gn=0.576 scale=128.0 44,974 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":39938.784671944,"data":"[RMS] [10:05:23] worker RMS: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":40016.441491445,"data":"[Taper-minus] [10:06:40] S106-Taper-minus prefix 750/9156 u=750 ce=5.8664 gn=0.566 scale=128.0 42,898 tok/s (incl. eval)\n"}
+,{"stream_name":"stdout","time":40023.156858636,"data":"[Taper-minus] [10:06:47] worker Taper-minus: paused at deadline/stop; state saved\n"}
+,{"stream_name":"stdout","time":40029.102177999,"data":"\n"}
+,{"stream_name":"stdout","time":40029.104417861,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":40029.105238126,"data":"PROGRESS\n"}
+,{"stream_name":"stdout","time":40029.106279031,"data":"  S101-RMS: complete\n"}
+,{"stream_name":"stdout","time":40029.107338965,"data":"  S102-RMS: complete\n"}
+,{"stream_name":"stdout","time":40029.108692221,"data":"  S103-RMS: complete\n"}
+,{"stream_name":"stdout","time":40029.109825609,"data":"  S104-RMS: complete\n"}
+,{"stream_name":"stdout","time":40029.110990926,"data":"  S105-RMS: complete\n"}
+,{"stream_name":"stdout","time":40029.112051108,"data":"  S106-RMS: prefix step 763/9156\n"}
+,{"stream_name":"stdout","time":40029.113191332,"data":"  S101-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":40029.114299053,"data":"  S102-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":40029.11561249,"data":"  S103-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":40029.116653857,"data":"  S104-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":40029.117864157,"data":"  S105-Taper-minus: complete\n"}
+,{"stream_name":"stdout","time":40029.11903162,"data":"  S106-Taper-minus: prefix step 763/9156\n"}
+,{"stream_name":"stdout","time":40029.120202805,"data":"[10:06:53] RMS: 26,705 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":40029.12131184,"data":"[10:06:53] Taper-minus: 26,705 optimizer updates remaining\n"}
+,{"stream_name":"stdout","time":40029.122480698,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":40029.123661886,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":40029.124599939,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":40029.12553302,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":40029.126399824,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":40029.127191331,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 5/6, R2 2/3; missing events: 1316; incomplete runs: 2\n"}
+,{"stream_name":"stdout","time":40029.127969677,"data":"H2 seed 101: D=-0.08861  D3050=-0.02602  Q=-0.08797  prefix gap=0.28%  adaptation RMS=2.2983 Taper=2.3260  matched={1525: -0.04998, 3050: 0.00438, 6104: -0.11368}\n"}
+,{"stream_name":"stdout","time":40029.128846209,"data":"H2 seed 102: D=+0.00647  D3050=-0.01762  Q=+0.00735  prefix gap=0.28%  adaptation RMS=2.3110 Taper=2.3340  matched={1525: -0.03341, 3050: -0.07855, 6104: -0.04656}\n"}
+,{"stream_name":"stdout","time":40029.129663617,"data":"H2 seed 103: D=-0.03505  D3050=-0.07394  Q=-0.03085  prefix gap=0.34%  adaptation RMS=2.2339 Taper=2.2743  matched={1525: -0.23734, 3050: -0.08188, 6104: -0.08538}\n"}
+,{"stream_name":"stdout","time":40029.130443313,"data":"H2 seed 104: D=-0.05133  D3050=+0.00712  Q=-0.04868  prefix gap=0.26%  adaptation RMS=2.2137 Taper=2.2449  matched={1525: -0.02623, 3050: -0.09491, 6104: 0.04597}\n"}
+,{"stream_name":"stdout","time":40029.131173786,"data":"H2 seed 105: D=-0.01789  D3050=-0.00698  Q=-0.01531  prefix gap=0.23%  adaptation RMS=2.1751 Taper=2.1854  matched={1525: -0.03847, 3050: -0.0501, 6104: -0.01304}\n"}
+,{"stream_name":"stdout","time":40029.131920865,"data":"R2 seed 104: D=+0.01602  D3050=+0.02243  Q=+0.01867  prefix gap=0.26%  adaptation RMS=3.5013 Taper=3.5828  matched={1525: 0.00366, 3050: -0.00108, 6104: 0.02714}\n"}
+,{"stream_name":"stdout","time":40029.132690763,"data":"R2 seed 105: D=+0.01020  D3050=+0.01969  Q=+0.01278  prefix gap=0.23%  adaptation RMS=3.4243 Taper=3.4357  matched={1525: -0.02822, 3050: -0.00808, 6104: 0.01811}\n"}
+,{"stream_name":"stdout","time":40029.133476678,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":40029.134231343,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":40029.134955947,"data":"Manipulation check: {'switch_gap_larger_for_x': False, 'specific_change_larger_for_x': True}\n"}
+,{"stream_name":"stdout","time":40029.135755239,"data":"====================================================================================================\n"}
+,{"stream_name":"stdout","time":40029.136579781,"data":"NOT FINISHED: run this notebook again (Save Version -\u003e Save \u0026 Run All). It resumes automatically from this output.\n"}
+,{"stream_name":"stdout","time":40029.640319833,"data":"runner exit code: 0\n"}
+,{"stream_name":"stdout","time":40029.728498179,"data":"H2 ANSWER (web -\u003e mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.\n"}
+,{"stream_name":"stdout","time":40029.72853044,"data":"H2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":40029.728536053,"data":"R2 ANSWER (web -\u003e Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.\n"}
+,{"stream_name":"stdout","time":40029.728540773,"data":"R2 decision category: INVALID OR INCOMPLETE\n"}
+,{"stream_name":"stdout","time":40029.72854483,"data":"Complete: H2 False, R2 False; seed groups with full evidence: H2 5/6, R2 2/3; missing events: 1316; incomplete runs: 2\n"}
+,{"stream_name":"stdout","time":40029.72855031,"data":"H2 seed 101: D=-0.08861  D3050=-0.02602  Q=-0.08797  prefix gap=0.28%  adaptation RMS=2.2983 Taper=2.3260  matched={1525: -0.04998, 3050: 0.00438, 6104: -0.11368}\n"}
+,{"stream_name":"stdout","time":40029.72855486,"data":"H2 seed 102: D=+0.00647  D3050=-0.01762  Q=+0.00735  prefix gap=0.28%  adaptation RMS=2.3110 Taper=2.3340  matched={1525: -0.03341, 3050: -0.07855, 6104: -0.04656}\n"}
+,{"stream_name":"stdout","time":40029.728559129,"data":"H2 seed 103: D=-0.03505  D3050=-0.07394  Q=-0.03085  prefix gap=0.34%  adaptation RMS=2.2339 Taper=2.2743  matched={1525: -0.23734, 3050: -0.08188, 6104: -0.08538}\n"}
+,{"stream_name":"stdout","time":40029.728563348,"data":"H2 seed 104: D=-0.05133  D3050=+0.00712  Q=-0.04868  prefix gap=0.26%  adaptation RMS=2.2137 Taper=2.2449  matched={1525: -0.02623, 3050: -0.09491, 6104: 0.04597}\n"}
+,{"stream_name":"stdout","time":40029.728581745,"data":"H2 seed 105: D=-0.01789  D3050=-0.00698  Q=-0.01531  prefix gap=0.23%  adaptation RMS=2.1751 Taper=2.1854  matched={1525: -0.03847, 3050: -0.0501, 6104: -0.01304}\n"}
+,{"stream_name":"stdout","time":40029.728586521,"data":"R2 seed 104: D=+0.01602  D3050=+0.02243  Q=+0.01867  prefix gap=0.26%  adaptation RMS=3.5013 Taper=3.5828  matched={1525: 0.00366, 3050: -0.00108, 6104: 0.02714}\n"}
+,{"stream_name":"stdout","time":40029.728590772,"data":"R2 seed 105: D=+0.01020  D3050=+0.01969  Q=+0.01278  prefix gap=0.23%  adaptation RMS=3.4243 Taper=3.4357  matched={1525: -0.02822, 3050: -0.00808, 6104: 0.01811}\n"}
+,{"stream_name":"stdout","time":40029.728594922,"data":"H2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":40029.72859861,"data":"R2 reason: Missing or duplicate planned primary seed\n"}
+,{"stream_name":"stdout","time":40029.728602403,"data":"Manipulation check: {'switch_gap_larger_for_x': False, 'specific_change_larger_for_x': True}\n"}
+,{"stream_name":"stdout","time":40029.728606325,"data":"\n"}
+,{"stream_name":"stderr","time":40032.46630274,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":40032.466334259,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":40032.630871488,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":40032.630905065,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":40033.463487392,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":40033.685265555,"data":"[NbConvertApp] Writing 301810 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":40036.429395222,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":40037.429330736,"data":"[NbConvertApp] Writing 1081923 bytes to __results__.html\n"}
+]
