@@ -39,6 +39,39 @@ Session 1 details:
 - **Lineage.** All 30 branch-start checks were bit-exact (max |dCE| 0.0, max relative dE 0.0).
 - **Stopped at.** Seed 106 at prefix step 763 in both workers; 26,705 updates remain per worker.
 
+| Time (UTC) | Step | Notes |
+|---|---|---|
+| 2026-10-10 01:40 | Session 2 ended | 21:37 → 01:40; 4.06 h; exit codes 0/0; no restarts; seed 106 completed in both conditions. All 12 runs complete; 0 missing records; no failures or problems; runner hash = registered |
+| 2026-10-10 08:22 | Final report fetched | `reports/s2-kaggle/run/s2state/decision-report.{txt,json}` |
+| 2026-10-10 08:27 | All records fetched | All 12 runs' `events.jsonl`, `train.jsonl`, completion receipts and switch receipts, plus the worker logs (114 MB), into `reports/s2-kaggle/run/` |
+| 2026-10-10 08:35 | Independent recomputation | `s2_run.py report` was rerun on CPU from the downloaded records and the pilot's committed records. Both decisions, all intervals, all six seeds' evidence, the pooled estimate and the manipulation check are identical. The document bootstrap differs only at about 1e-17 (BLAS rounding, NumPy 2.5.3 vs 2.1.3) |
+
+**GPU use.** Probe about 0.1 h, smoke test 0.45 h, session 1 11.12 h, session 2 4.06 h: about 15.7 h in total.
+
+### Pre-registered results
+
+**H2 (web → mc4-zh, seeds 101–106): OPPOSITE DIRECTION.**
+- **Endpoint.** Mean D_X = **−0.0326** nats/token (threshold ≤ −0.03); SD 0.0341.
+  - Per seed (101 → 106): −0.0886, +0.0065, −0.0351, −0.0513, −0.0179, −0.0089.
+- **Intervals.** 95% t-interval [−0.0683, +0.0032], which includes 0. 90% t-interval [−0.0606, −0.0045]. Equivalence within ±0.015: no.
+- **Same direction elsewhere.** Mean D_X(3050) −0.0338; mean Q −0.0306; mean matched differential forgetting at the 6,104 target −0.0378.
+- **Guardrails passed.** Prefix gaps 0.23–0.34%; X adaptation 2.18–2.33 nats.
+- **Fresh seeds only (104–106, descriptive).** Mean −0.0260, 95% interval [−0.0816, +0.0296].
+- **Document bootstrap (evaluation noise only).** Mean-D 95% [−0.0339, −0.0311]. Seed variation dominates.
+- **Premise qualification (Protocol 4.6).** The selected domain's switch-time gap (S 0.0934) did not exceed Python's (0.1099).
+
+**R2 (web → Python, fresh seeds 104–106): STOP — SMALL OBSERVED EFFECT. The pilot's NO replicates.**
+- **Endpoint.** Mean D = **+0.0093**; SD 0.0072. Per seed +0.0160, +0.0102, +0.0018.
+- **Intervals.** 95% t-interval [−0.0084, +0.0271]. 90% t-interval [−0.0027, +0.0214]. Equivalence within ±0.015: no.
+- **Note.** The sign is opposite to the pilot's three seeds, which were all negative.
+- **Pooled six seeds (descriptive; includes the pilot's published seeds).** Mean −0.0065, 95% [−0.0254, +0.0125].
+
+**Manipulation check (descriptive).** Values are RMS / Taper-minus, X vs Python.
+- **Switch gap:** 0.0855 / 0.1217 for X vs 0.0926 / 0.1361 for Python. Not larger for X.
+- **Domain-specific change in training:** 0.1652 / 0.1830 for X vs 0.0386 / 0.0418 for Python. About 4× larger for X.
+- **Reading:** "premise stronger for X in training" = **yes**; "at the switch" = no.
+- **Interpretation (matrix in Protocol 9.4):** opposite direction with the in-training premise stronger for X is evidence against the scale-mismatch account of H1 in this setting.
+
 What the timestamp evidence establishes:
 - **Bitcoin.** The block proves that the manifest (protocol and code hashes) existed by 01:59 UTC on 9 October. At that time session 1 had completed no seed: S102's X branches finished at 00:57 and 00:58, but nobody saw results before the session's output appeared at 10:07.
 - **Before the first job.** The digest was submitted to the calendars at 21:55 UTC on 8 October, before the first Study 2 job at 21:56. The calendars' receipts are in the proof, but that earlier time is not Bitcoin-anchored.

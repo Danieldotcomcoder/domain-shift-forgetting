@@ -1,0 +1,14 @@
+{
+  "seed": 103,
+  "condition": "Taper-minus",
+  "config_sha256": "3d4f14683ea892e49e65a19896d568b68b004e9fea499f0703da0efc18a19b09",
+  "stages": [
+    "x"
+  ],
+  "switch_sha256": "1e457bd6fb889c7a717deac80f3eb9e85a5e007bed7728f587a501c8c80e9f5d",
+  "updates": 6104,
+  "optimizer_seconds": 2165.720865011215,
+  "clipped": 6104,
+  "overflow_retries": 0,
+  "completed_unix": 1791510942.609848
+}

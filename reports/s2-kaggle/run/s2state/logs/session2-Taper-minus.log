@@ -1,0 +1,204 @@
+[21:38:30] worker Taper-minus on Tesla T4 (torch 2.11.0+cu128); deadline in 11.13 h
+[21:38:38] S106-Taper-minus: resumed at prefix step 763 (global update 763)
+[21:39:14] S106-Taper-minus prefix@763: full-dev web CE 6.0020, python non-W CE 8.1823
+[21:40:50] S106-Taper-minus prefix 1013/9156 u=1013 ce=5.7789 gn=0.704 scale=128.0 30,961 tok/s (incl. eval)
+[21:42:29] S106-Taper-minus prefix 1263/9156 u=1263 ce=5.7723 gn=0.699 scale=128.0 41,606 tok/s (incl. eval)
+[21:44:07] S106-Taper-minus prefix 1513/9156 u=1513 ce=5.3002 gn=0.890 scale=128.0 41,618 tok/s (incl. eval)
+[21:45:46] S106-Taper-minus prefix 1763/9156 u=1763 ce=5.4651 gn=0.844 scale=128.0 41,562 tok/s (incl. eval)
+[21:47:24] S106-Taper-minus prefix 2013/9156 u=2013 ce=5.3997 gn=0.838 scale=256.0 41,585 tok/s (incl. eval)
+[21:49:03] S106-Taper-minus prefix 2263/9156 u=2263 ce=5.1864 gn=0.869 scale=256.0 41,559 tok/s (incl. eval)
+[21:50:42] S106-Taper-minus prefix 2513/9156 u=2513 ce=5.0054 gn=0.924 scale=256.0 41,497 tok/s (incl. eval)
+[21:52:20] S106-Taper-minus prefix 2763/9156 u=2763 ce=5.2281 gn=0.915 scale=256.0 41,463 tok/s (incl. eval)
+[21:54:01] S106-Taper-minus prefix 3013/9156 u=3013 ce=5.0198 gn=0.995 scale=256.0 40,704 tok/s (incl. eval)
+[21:54:57] S106-Taper-minus prefix@3052: full-dev web CE 5.0306, python non-W CE 6.7819
+[21:56:20] S106-Taper-minus prefix 3263/9156 u=3263 ce=4.8581 gn=1.036 scale=256.0 29,497 tok/s (incl. eval)
+[21:57:58] S106-Taper-minus prefix 3513/9156 u=3513 ce=4.9126 gn=0.865 scale=256.0 41,550 tok/s (incl. eval)
+[21:59:37] S106-Taper-minus prefix 3763/9156 u=3763 ce=5.0975 gn=0.949 scale=256.0 41,484 tok/s (incl. eval)
+[22:01:16] S106-Taper-minus prefix 4013/9156 u=4013 ce=4.8347 gn=0.815 scale=512.0 41,479 tok/s (incl. eval)
+[22:02:55] S106-Taper-minus prefix 4263/9156 u=4263 ce=4.7736 gn=0.929 scale=512.0 41,424 tok/s (incl. eval)
+[22:04:34] S106-Taper-minus prefix 4513/9156 u=4513 ce=4.7637 gn=0.909 scale=512.0 41,393 tok/s (incl. eval)
+[22:06:13] S106-Taper-minus prefix 4763/9156 u=4763 ce=4.7156 gn=1.003 scale=512.0 41,402 tok/s (incl. eval)
+[22:07:52] S106-Taper-minus prefix 5013/9156 u=5013 ce=4.9104 gn=0.975 scale=512.0 41,409 tok/s (incl. eval)
+[22:09:32] S106-Taper-minus prefix 5263/9156 u=5263 ce=4.7782 gn=0.923 scale=512.0 40,628 tok/s (incl. eval)
+[22:11:11] S106-Taper-minus prefix 5513/9156 u=5513 ce=4.5258 gn=0.979 scale=512.0 41,512 tok/s (incl. eval)
+[22:12:50] S106-Taper-minus prefix 5763/9156 u=5763 ce=4.9317 gn=1.014 scale=512.0 41,538 tok/s (incl. eval)
+[22:14:28] S106-Taper-minus prefix 6013/9156 u=6013 ce=4.6313 gn=1.064 scale=1024.0 41,479 tok/s (incl. eval)
+[22:15:42] S106-Taper-minus prefix@6104: full-dev web CE 4.7119, python non-W CE 6.2656
+[22:16:39] S106-Taper-minus prefix 6263/9156 u=6263 ce=4.5485 gn=1.042 scale=1024.0 31,343 tok/s (incl. eval)
+[22:18:09] S106-Taper-minus prefix@6409: full-dev web CE 4.6944, python non-W CE 6.0804
+[22:18:47] S106-Taper-minus prefix 6513/9156 u=6513 ce=4.8068 gn=0.967 scale=1024.0 32,158 tok/s (incl. eval)
+[22:20:36] S106-Taper-minus prefix@6714: full-dev web CE 4.6765, python non-W CE 6.1608
+[22:20:54] S106-Taper-minus prefix 6763/9156 u=6763 ce=4.6530 gn=0.931 scale=1024.0 32,141 tok/s (incl. eval)
+[22:22:24] S106-Taper-minus prefix 7013/9156 u=7013 ce=4.5594 gn=0.965 scale=1024.0 45,615 tok/s (incl. eval)
+[22:23:03] S106-Taper-minus prefix@7019: full-dev web CE 4.6613, python non-W CE 6.3771
+[22:24:33] S106-Taper-minus prefix 7263/9156 u=7263 ce=4.6250 gn=1.014 scale=1024.0 31,673 tok/s (incl. eval)
+[22:25:33] S106-Taper-minus prefix@7324: full-dev web CE 4.6454, python non-W CE 6.1286
+[22:26:40] S106-Taper-minus prefix 7513/9156 u=7513 ce=4.4926 gn=1.030 scale=1024.0 32,181 tok/s (incl. eval)
+[22:28:00] S106-Taper-minus prefix@7629: full-dev web CE 4.6335, python non-W CE 6.0150
+[22:28:48] S106-Taper-minus prefix 7763/9156 u=7763 ce=4.6658 gn=0.977 scale=1024.0 32,177 tok/s (incl. eval)
+[22:30:27] S106-Taper-minus prefix@7934: full-dev web CE 4.6155, python non-W CE 6.0238
+[22:30:55] S106-Taper-minus prefix 8013/9156 u=8013 ce=4.7788 gn=1.052 scale=2048.0 32,170 tok/s (incl. eval)
+[22:32:54] S106-Taper-minus prefix@8239: full-dev web CE 4.6025, python non-W CE 5.9169
+[22:33:03] S106-Taper-minus prefix 8263/9156 u=8263 ce=4.6832 gn=0.967 scale=2048.0 32,109 tok/s (incl. eval)
+[22:34:33] S106-Taper-minus prefix 8513/9156 u=8513 ce=4.7080 gn=1.044 scale=2048.0 45,484 tok/s (incl. eval)
+[22:35:21] S106-Taper-minus prefix@8544: full-dev web CE 4.5904, python non-W CE 5.9250
+[22:36:40] S106-Taper-minus prefix 8763/9156 u=8763 ce=4.5662 gn=0.988 scale=2048.0 32,114 tok/s (incl. eval)
+[22:37:49] S106-Taper-minus prefix@8849: full-dev web CE 4.5798, python non-W CE 6.0199
+[22:38:49] S106-Taper-minus prefix 9013/9156 u=9013 ce=4.8013 gn=1.082 scale=2048.0 31,685 tok/s (incl. eval)
+[22:40:28] S106-Taper-minus prefix@9156: full-dev web CE 4.5710, python non-W CE 6.2414
+[22:40:32] S106-Taper-minus: branch 'web' starts from switch 3af34c9580c1
+[22:41:19] S106-Taper-minus web@0: full-dev web CE 4.5710, python non-W CE 6.2414
+[22:41:19] S106-Taper-minus web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[22:42:02] S106-Taper-minus web@1: full-dev web CE 4.5711, python non-W CE 6.2431
+[22:43:01] S106-Taper-minus web@10: full-dev web CE 4.5701, python non-W CE 6.1315
+[22:44:29] S106-Taper-minus web@100: full-dev web CE 4.5667, python non-W CE 6.1252
+[22:44:32] S106-Taper-minus web 107/6104 u=9263 ce=4.4766 gn=1.047 scale=2048.0 11,972 tok/s (incl. eval)
+[22:46:40] S106-Taper-minus web@305: full-dev web CE 4.5579, python non-W CE 6.0750
+[22:47:03] S106-Taper-minus web 357/6104 u=9513 ce=4.6158 gn=1.057 scale=2048.0 27,056 tok/s (incl. eval)
+[22:48:56] S106-Taper-minus web 607/6104 u=9763 ce=4.4251 gn=1.028 scale=2048.0 36,088 tok/s (incl. eval)
+[22:49:35] S106-Taper-minus web@610: full-dev web CE 4.5477, python non-W CE 6.1275
+[22:51:28] S106-Taper-minus web 857/6104 u=10013 ce=4.5865 gn=1.067 scale=4096.0 27,057 tok/s (incl. eval)
+[22:52:31] S106-Taper-minus web@915: full-dev web CE 4.5402, python non-W CE 5.9451
+[22:53:55] S106-Taper-minus web 1107/6104 u=10263 ce=4.4850 gn=1.038 scale=4096.0 27,884 tok/s (incl. eval)
+[22:55:18] S106-Taper-minus web@1220: full-dev web CE 4.5310, python non-W CE 5.8414
+[22:56:14] S106-Taper-minus web 1357/6104 u=10513 ce=4.4984 gn=1.031 scale=4096.0 29,399 tok/s (incl. eval)
+[22:58:11] S106-Taper-minus web@1525: full-dev web CE 4.5219, python non-W CE 5.9198
+[22:58:45] S106-Taper-minus web 1607/6104 u=10763 ce=4.4869 gn=1.031 scale=4096.0 27,056 tok/s (incl. eval)
+[23:00:53] S106-Taper-minus web@1830: full-dev web CE 4.5120, python non-W CE 6.0393
+[23:01:03] S106-Taper-minus web 1857/6104 u=11013 ce=4.5085 gn=1.072 scale=4096.0 29,798 tok/s (incl. eval)
+[23:02:47] S106-Taper-minus web 2107/6104 u=11263 ce=4.4506 gn=1.054 scale=4096.0 39,185 tok/s (incl. eval)
+[23:03:35] S106-Taper-minus web@2135: full-dev web CE 4.5065, python non-W CE 5.9345
+[23:05:05] S106-Taper-minus web 2357/6104 u=11513 ce=4.4356 gn=1.103 scale=4096.0 29,818 tok/s (incl. eval)
+[23:06:17] S106-Taper-minus web@2440: full-dev web CE 4.4995, python non-W CE 5.9541
+[23:07:27] S106-Taper-minus web 2607/6104 u=11763 ce=4.4907 gn=1.111 scale=4096.0 28,858 tok/s (incl. eval)
+[23:08:59] S106-Taper-minus web@2745: full-dev web CE 4.4925, python non-W CE 5.9458
+[23:09:44] S106-Taper-minus web 2857/6104 u=12013 ce=4.4550 gn=1.053 scale=8192.0 29,816 tok/s (incl. eval)
+[23:11:47] S106-Taper-minus web@3050: full-dev web CE 4.4863, python non-W CE 5.8340
+[23:12:13] S106-Taper-minus web 3107/6104 u=12263 ce=4.4878 gn=1.748 scale=8192.0 27,540 tok/s (incl. eval)
+[23:14:30] S106-Taper-minus web@3355: full-dev web CE 4.4799, python non-W CE 5.8435
+[23:14:30] S106-Taper-minus web 3357/6104 u=12513 ce=4.5337 gn=1.172 scale=8192.0 29,815 tok/s (incl. eval)
+[23:16:15] S106-Taper-minus web 3607/6104 u=12763 ce=4.3948 gn=1.191 scale=8192.0 39,186 tok/s (incl. eval)
+[23:17:11] S106-Taper-minus web@3660: full-dev web CE 4.4743, python non-W CE 5.8485
+[23:18:32] S106-Taper-minus web 3857/6104 u=13013 ce=4.3858 gn=1.132 scale=8192.0 29,856 tok/s (incl. eval)
+[23:19:53] S106-Taper-minus web@3965: full-dev web CE 4.4691, python non-W CE 5.9636
+[23:20:54] S106-Taper-minus web 4107/6104 u=13263 ce=4.4254 gn=1.062 scale=8192.0 28,897 tok/s (incl. eval)
+[23:22:35] S106-Taper-minus web@4270: full-dev web CE 4.4652, python non-W CE 5.8650
+[23:23:11] S106-Taper-minus web 4357/6104 u=13513 ce=4.3535 gn=1.095 scale=8192.0 29,913 tok/s (incl. eval)
+[23:25:16] S106-Taper-minus web@4575: full-dev web CE 4.4605, python non-W CE 5.9010
+[23:25:32] S106-Taper-minus web 4607/6104 u=13763 ce=4.2642 gn=1.060 scale=8192.0 28,885 tok/s (incl. eval)
+[23:27:14] S106-Taper-minus web 4857/6104 u=14013 ce=4.5188 gn=1.069 scale=16384.0 40,411 tok/s (incl. eval)
+[23:28:00] S106-Taper-minus web@4880: full-dev web CE 4.4575, python non-W CE 5.9436
+[23:29:36] S106-Taper-minus web 5107/6104 u=14263 ce=4.3334 gn=1.105 scale=16384.0 28,859 tok/s (incl. eval)
+[23:30:41] S106-Taper-minus web@5185: full-dev web CE 4.4539, python non-W CE 5.8111
+[23:31:53] S106-Taper-minus web 5357/6104 u=14513 ce=4.4309 gn=1.126 scale=16384.0 29,855 tok/s (incl. eval)
+[23:33:23] S106-Taper-minus web@5490: full-dev web CE 4.4509, python non-W CE 5.8596
+[23:34:15] S106-Taper-minus web 5607/6104 u=14763 ce=4.5035 gn=1.139 scale=16384.0 28,891 tok/s (incl. eval)
+[23:36:05] S106-Taper-minus web@5795: full-dev web CE 4.4483, python non-W CE 5.7396
+[23:36:32] S106-Taper-minus web 5857/6104 u=15013 ce=4.4747 gn=1.107 scale=16384.0 29,879 tok/s (incl. eval)
+[23:38:51] S106-Taper-minus web@6100: full-dev web CE 4.4478, python non-W CE 5.8481
+[23:39:39] S106-Taper-minus web@6104: full-dev web CE 4.4471, python non-W CE 5.8486
+[23:39:42] S106-Taper-minus: branch 'python' starts from switch 3af34c9580c1
+[23:40:29] S106-Taper-minus python@0: full-dev web CE 4.5710, python non-W CE 6.2414
+[23:40:29] S106-Taper-minus python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[23:41:11] S106-Taper-minus python@1: full-dev web CE 4.5756, python non-W CE 6.0679
+[23:41:17] S106-Taper-minus python 3/6104 u=9159 ce=3.6853 gn=3.869 scale=2048.0 14,381 tok/s (incl. eval)
+[23:42:10] S106-Taper-minus python@10: full-dev web CE 4.6985, python non-W CE 5.3970
+[23:43:38] S106-Taper-minus python@100: full-dev web CE 4.8634, python non-W CE 3.8213
+[23:44:48] S106-Taper-minus python 253/6104 u=9409 ce=2.1366 gn=1.454 scale=2048.0 19,419 tok/s (incl. eval)
+[23:45:48] S106-Taper-minus python@305: full-dev web CE 5.1131, python non-W CE 3.3195
+[23:47:18] S106-Taper-minus python 503/6104 u=9659 ce=1.9988 gn=1.136 scale=2048.0 27,180 tok/s (incl. eval)
+[23:48:43] S106-Taper-minus python@610: full-dev web CE 5.5204, python non-W CE 3.0650
+[23:49:49] S106-Taper-minus python 753/6104 u=9909 ce=2.1693 gn=1.206 scale=2048.0 27,206 tok/s (incl. eval)
+[23:51:38] S106-Taper-minus python@915: full-dev web CE 5.7544, python non-W CE 2.9597
+[23:52:19] S106-Taper-minus python 1003/6104 u=10159 ce=1.8616 gn=1.374 scale=4096.0 27,228 tok/s (incl. eval)
+[23:54:24] S106-Taper-minus python@1220: full-dev web CE 5.9023, python non-W CE 2.8913
+[23:54:36] S106-Taper-minus python 1253/6104 u=10409 ce=1.6922 gn=1.143 scale=4096.0 30,011 tok/s (incl. eval)
+[23:56:21] S106-Taper-minus python 1503/6104 u=10659 ce=1.7321 gn=1.378 scale=4096.0 38,824 tok/s (incl. eval)
+[23:57:15] S106-Taper-minus python@1525: full-dev web CE 5.9816, python non-W CE 2.8368
+[23:58:47] S106-Taper-minus python 1753/6104 u=10909 ce=1.8809 gn=1.367 scale=4096.0 28,123 tok/s (incl. eval)
+[23:59:57] S106-Taper-minus python@1830: full-dev web CE 6.0550, python non-W CE 2.8033
+[00:01:08] S106-Taper-minus python 2003/6104 u=11159 ce=1.8756 gn=1.419 scale=4096.0 29,000 tok/s (incl. eval)
+[00:02:38] S106-Taper-minus python@2135: full-dev web CE 6.1120, python non-W CE 2.7589
+[00:03:25] S106-Taper-minus python 2253/6104 u=11409 ce=1.7103 gn=1.074 scale=4096.0 30,009 tok/s (incl. eval)
+[00:05:18] S106-Taper-minus python@2440: full-dev web CE 6.1442, python non-W CE 2.7408
+[00:05:46] S106-Taper-minus python 2503/6104 u=11659 ce=1.6207 gn=1.203 scale=4096.0 29,013 tok/s (incl. eval)
+[00:08:00] S106-Taper-minus python@2745: full-dev web CE 6.1530, python non-W CE 2.7199
+[00:08:02] S106-Taper-minus python 2753/6104 u=11909 ce=1.8015 gn=1.119 scale=4096.0 29,969 tok/s (incl. eval)
+[00:09:48] S106-Taper-minus python 3003/6104 u=12159 ce=1.6356 gn=1.115 scale=8192.0 38,752 tok/s (incl. eval)
+[00:10:47] S106-Taper-minus python@3050: full-dev web CE 6.1393, python non-W CE 2.6978
+[00:12:09] S106-Taper-minus python 3253/6104 u=12409 ce=1.4575 gn=1.125 scale=8192.0 29,028 tok/s (incl. eval)
+[00:13:28] S106-Taper-minus python@3355: full-dev web CE 6.1917, python non-W CE 2.6786
+[00:14:30] S106-Taper-minus python 3503/6104 u=12659 ce=1.8481 gn=1.978 scale=8192.0 29,049 tok/s (incl. eval)
+[00:16:09] S106-Taper-minus python@3660: full-dev web CE 6.1891, python non-W CE 2.6657
+[00:16:47] S106-Taper-minus python 3753/6104 u=12909 ce=1.6008 gn=1.298 scale=8192.0 29,973 tok/s (incl. eval)
+[00:18:50] S106-Taper-minus python@3965: full-dev web CE 6.1882, python non-W CE 2.6561
+[00:19:08] S106-Taper-minus python 4003/6104 u=13159 ce=1.5111 gn=1.289 scale=8192.0 29,005 tok/s (incl. eval)
+[00:20:47] S106-Taper-minus python 4253/6104 u=13409 ce=1.6465 gn=1.177 scale=8192.0 41,333 tok/s (incl. eval)
+[00:21:31] S106-Taper-minus python@4270: full-dev web CE 6.1920, python non-W CE 2.6339
+[00:23:08] S106-Taper-minus python 4503/6104 u=13659 ce=1.8469 gn=1.189 scale=8192.0 29,039 tok/s (incl. eval)
+[00:24:12] S106-Taper-minus python@4575: full-dev web CE 6.2087, python non-W CE 2.6249
+[00:25:27] S106-Taper-minus python 4753/6104 u=13909 ce=1.5862 gn=1.093 scale=8192.0 29,624 tok/s (incl. eval)
+[00:26:54] S106-Taper-minus python@4880: full-dev web CE 6.1962, python non-W CE 2.6181
+[00:27:48] S106-Taper-minus python 5003/6104 u=14159 ce=1.9389 gn=1.194 scale=16384.0 29,034 tok/s (incl. eval)
+[00:29:35] S106-Taper-minus python@5185: full-dev web CE 6.2114, python non-W CE 2.6128
+[00:30:04] S106-Taper-minus python 5253/6104 u=14409 ce=1.4884 gn=1.042 scale=16384.0 30,050 tok/s (incl. eval)
+[00:32:16] S106-Taper-minus python@5490: full-dev web CE 6.2275, python non-W CE 2.6012
+[00:32:25] S106-Taper-minus python 5503/6104 u=14659 ce=1.3421 gn=1.019 scale=16384.0 29,057 tok/s (incl. eval)
+[00:34:04] S106-Taper-minus python 5753/6104 u=14909 ce=1.6171 gn=1.321 scale=16384.0 41,424 tok/s (incl. eval)
+[00:34:56] S106-Taper-minus python@5795: full-dev web CE 6.2209, python non-W CE 2.5987
+[00:36:25] S106-Taper-minus python 6003/6104 u=15159 ce=1.7096 gn=1.146 scale=16384.0 29,069 tok/s (incl. eval)
+[00:37:41] S106-Taper-minus python@6100: full-dev web CE 6.2327, python non-W CE 2.5967
+[00:38:29] S106-Taper-minus python@6104: full-dev web CE 6.2335, python non-W CE 2.5971
+[00:38:32] S106-Taper-minus: branch 'x' starts from switch 3af34c9580c1
+[00:39:18] S106-Taper-minus x@0: full-dev web CE 4.5710, x non-W CE 4.2973
+[00:39:18] S106-Taper-minus x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[00:40:01] S106-Taper-minus x@1: full-dev web CE 4.5752, x non-W CE 4.1941
+[00:41:00] S106-Taper-minus x@10: full-dev web CE 4.6731, x non-W CE 3.8358
+[00:42:28] S106-Taper-minus x@100: full-dev web CE 4.8403, x non-W CE 2.8453
+[00:42:45] S106-Taper-minus x 149/6104 u=9305 ce=2.9300 gn=1.527 scale=2048.0 10,770 tok/s (incl. eval)
+[00:44:37] S106-Taper-minus x@305: full-dev web CE 5.0543, x non-W CE 2.5281
+[00:45:15] S106-Taper-minus x 399/6104 u=9555 ce=2.0868 gn=1.357 scale=2048.0 27,334 tok/s (incl. eval)
+[00:47:31] S106-Taper-minus x@610: full-dev web CE 5.6334, x non-W CE 2.3630
+[00:47:44] S106-Taper-minus x 649/6104 u=9805 ce=2.5730 gn=1.375 scale=2048.0 27,374 tok/s (incl. eval)
+[00:49:37] S106-Taper-minus x 899/6104 u=10055 ce=2.3133 gn=1.195 scale=4096.0 36,498 tok/s (incl. eval)
+[00:50:24] S106-Taper-minus x@915: full-dev web CE 6.0549, x non-W CE 2.2824
+[00:52:01] S106-Taper-minus x 1149/6104 u=10305 ce=2.1607 gn=1.286 scale=4096.0 28,345 tok/s (incl. eval)
+[00:53:08] S106-Taper-minus x@1220: full-dev web CE 6.3143, x non-W CE 2.2244
+[00:54:18] S106-Taper-minus x 1399/6104 u=10555 ce=2.0717 gn=1.153 scale=4096.0 29,899 tok/s (incl. eval)
+[00:55:58] S106-Taper-minus x@1525: full-dev web CE 6.4310, x non-W CE 2.1850
+[00:56:47] S106-Taper-minus x 1649/6104 u=10805 ce=2.0430 gn=1.103 scale=4096.0 27,521 tok/s (incl. eval)
+[00:58:38] S106-Taper-minus x@1830: full-dev web CE 6.5862, x non-W CE 2.1518
+[00:59:02] S106-Taper-minus x 1899/6104 u=11055 ce=1.9767 gn=1.182 scale=4096.0 30,305 tok/s (incl. eval)
+[01:01:17] S106-Taper-minus x@2135: full-dev web CE 6.7497, x non-W CE 2.1265
+[01:01:22] S106-Taper-minus x 2149/6104 u=11305 ce=2.0488 gn=1.287 scale=4096.0 29,265 tok/s (incl. eval)
+[01:03:00] S106-Taper-minus x 2399/6104 u=11555 ce=2.0129 gn=1.184 scale=4096.0 41,760 tok/s (incl. eval)
+[01:03:57] S106-Taper-minus x@2440: full-dev web CE 6.7649, x non-W CE 2.1061
+[01:05:20] S106-Taper-minus x 2649/6104 u=11805 ce=1.8643 gn=1.134 scale=4096.0 29,298 tok/s (incl. eval)
+[01:06:36] S106-Taper-minus x@2745: full-dev web CE 6.7842, x non-W CE 2.0865
+[01:07:35] S106-Taper-minus x 2899/6104 u=12055 ce=1.9925 gn=1.173 scale=8192.0 30,345 tok/s (incl. eval)
+[01:09:21] S106-Taper-minus x@3050: full-dev web CE 6.8378, x non-W CE 2.0716
+[01:10:01] S106-Taper-minus x 3149/6104 u=12305 ce=1.5499 gn=1.205 scale=8192.0 28,030 tok/s (incl. eval)
+[01:12:01] S106-Taper-minus x@3355: full-dev web CE 6.8539, x non-W CE 2.0595
+[01:12:17] S106-Taper-minus x 3399/6104 u=12555 ce=1.9579 gn=1.093 scale=8192.0 30,257 tok/s (incl. eval)
+[01:13:59] S106-Taper-minus x 3649/6104 u=12805 ce=1.7812 gn=1.225 scale=8192.0 39,945 tok/s (incl. eval)
+[01:14:40] S106-Taper-minus x@3660: full-dev web CE 6.8529, x non-W CE 2.0481
+[01:16:14] S106-Taper-minus x 3899/6104 u=13055 ce=1.8477 gn=1.091 scale=8192.0 30,281 tok/s (incl. eval)
+[01:17:20] S106-Taper-minus x@3965: full-dev web CE 6.8625, x non-W CE 2.0358
+[01:18:34] S106-Taper-minus x 4149/6104 u=13305 ce=1.9609 gn=1.179 scale=8192.0 29,316 tok/s (incl. eval)
+[01:19:59] S106-Taper-minus x@4270: full-dev web CE 6.8590, x non-W CE 2.0258
+[01:20:49] S106-Taper-minus x 4399/6104 u=13555 ce=1.8431 gn=1.090 scale=8192.0 30,336 tok/s (incl. eval)
+[01:22:38] S106-Taper-minus x@4575: full-dev web CE 6.8923, x non-W CE 2.0185
+[01:23:09] S106-Taper-minus x 4649/6104 u=13805 ce=1.8564 gn=1.130 scale=8192.0 29,268 tok/s (incl. eval)
+[01:25:19] S106-Taper-minus x@4880: full-dev web CE 6.9454, x non-W CE 2.0121
+[01:25:26] S106-Taper-minus x 4899/6104 u=14055 ce=1.9550 gn=1.137 scale=16384.0 29,887 tok/s (incl. eval)
+[01:27:09] S106-Taper-minus x 5149/6104 u=14305 ce=1.8534 gn=1.095 scale=16384.0 39,944 tok/s (incl. eval)
+[01:27:58] S106-Taper-minus x@5185: full-dev web CE 6.9748, x non-W CE 2.0045
+[01:29:24] S106-Taper-minus x 5399/6104 u=14555 ce=1.8169 gn=1.155 scale=16384.0 30,319 tok/s (incl. eval)
+[01:30:38] S106-Taper-minus x@5490: full-dev web CE 6.9686, x non-W CE 1.9995
+[01:31:44] S106-Taper-minus x 5649/6104 u=14805 ce=1.8721 gn=1.234 scale=16384.0 29,259 tok/s (incl. eval)
+[01:33:17] S106-Taper-minus x@5795: full-dev web CE 6.9635, x non-W CE 1.9940
+[01:33:59] S106-Taper-minus x 5899/6104 u=15055 ce=1.9120 gn=1.246 scale=16384.0 30,292 tok/s (incl. eval)
+[01:36:01] S106-Taper-minus x@6100: full-dev web CE 6.9621, x non-W CE 1.9898
+[01:36:49] S106-Taper-minus x@6104: full-dev web CE 6.9535, x non-W CE 1.9906
+[01:36:49] S106-Taper-minus: COMPLETE
+[01:36:49] worker Taper-minus: all assigned runs complete

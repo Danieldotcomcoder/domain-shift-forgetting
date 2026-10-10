@@ -3,7 +3,23 @@
 Start here if you are a new Claude Code session continuing this project. Read this whole file before doing
 anything. Branch: `study2` (created from `main` at `4de359f`, the reviewer-verified paper commit).
 
-## EXECUTION STATUS (2026-10-08 23:00 UTC): Study 2 is RUNNING. See `study2/RUNLOG.md` for every step
+## FINAL STATUS (2026-10-10): Study 2 is COMPLETE. Results and full timeline are in `study2/RUNLOG.md`
+
+- **H2 (web → mc4-zh, 6 seeds): OPPOSITE DIRECTION.** Mean D_X −0.0326 (SD 0.034; 95% t-interval
+  [−0.068, +0.003] includes 0; one seed positive). The premise qualification applies (switch gap not above
+  Python's), but the in-training domain-specific scale change was about 4× Python's.
+- **R2 (web → Python, seeds 104–106): STOP — SMALL OBSERVED EFFECT.** Mean D +0.0093. The pilot's NO
+  replicates, although the fresh seeds' sign is positive. Equivalence within ±0.015 is not shown for either.
+- **Records.** `reports/s2-kaggle/run/` holds the decision report, config, sessions, and every events.jsonl and
+  train.jsonl. Switch states and weights stay in the Kaggle output.
+- **Still to do (the user's call).**
+  - The OSF registration with the manifest, the proof and Amendment 1.
+  - Making the Study 2 notebooks public (for the Kaggle timestamps).
+  - The paper section.
+  - Pushing to GitHub. The user asked to hold the push until Study 2 is done; it is now done, but the push still
+    needs the user's go-ahead.
+
+## Earlier execution status (2026-10-08 23:00 UTC; kept for the record)
 
 - **Decisions (2026-10-08).** The author chose to run before the OSF registration, with a hash-timestamp first
   (Protocol Amendment 1). The design was approved as written.

@@ -1,0 +1,204 @@
+[21:38:30] worker RMS on Tesla T4 (torch 2.11.0+cu128); deadline in 11.13 h
+[21:38:38] S106-RMS: resumed at prefix step 763 (global update 763)
+[21:39:13] S106-RMS prefix@763: full-dev web CE 6.0022, python non-W CE 8.1916
+[21:40:41] S106-RMS prefix 1013/9156 u=1013 ce=5.7788 gn=0.694 scale=128.0 33,266 tok/s (incl. eval)
+[21:42:12] S106-RMS prefix 1263/9156 u=1263 ce=5.7730 gn=0.695 scale=128.0 45,348 tok/s (incl. eval)
+[21:43:44] S106-RMS prefix 1513/9156 u=1513 ce=5.3021 gn=0.899 scale=128.0 44,255 tok/s (incl. eval)
+[21:45:17] S106-RMS prefix 1763/9156 u=1763 ce=5.4645 gn=0.852 scale=128.0 44,114 tok/s (incl. eval)
+[21:46:50] S106-RMS prefix 2013/9156 u=2013 ce=5.4017 gn=0.834 scale=256.0 44,153 tok/s (incl. eval)
+[21:48:23] S106-RMS prefix 2263/9156 u=2263 ce=5.1923 gn=0.916 scale=256.0 44,078 tok/s (incl. eval)
+[21:49:56] S106-RMS prefix 2513/9156 u=2513 ce=5.0038 gn=0.878 scale=256.0 44,121 tok/s (incl. eval)
+[21:51:28] S106-RMS prefix 2763/9156 u=2763 ce=5.2336 gn=0.956 scale=256.0 44,095 tok/s (incl. eval)
+[21:53:01] S106-RMS prefix 3013/9156 u=3013 ce=5.0166 gn=0.944 scale=256.0 44,116 tok/s (incl. eval)
+[21:53:54] S106-RMS prefix@3052: full-dev web CE 5.0347, python non-W CE 6.7694
+[21:55:14] S106-RMS prefix 3263/9156 u=3263 ce=4.8581 gn=1.023 scale=256.0 30,804 tok/s (incl. eval)
+[21:56:47] S106-RMS prefix 3513/9156 u=3513 ce=4.9158 gn=0.881 scale=256.0 44,015 tok/s (incl. eval)
+[21:58:20] S106-RMS prefix 3763/9156 u=3763 ce=5.0999 gn=0.914 scale=256.0 44,071 tok/s (incl. eval)
+[21:59:53] S106-RMS prefix 4013/9156 u=4013 ce=4.8498 gn=0.893 scale=512.0 44,060 tok/s (incl. eval)
+[22:01:26] S106-RMS prefix 4263/9156 u=4263 ce=4.7803 gn=0.923 scale=512.0 43,989 tok/s (incl. eval)
+[22:02:59] S106-RMS prefix 4513/9156 u=4513 ce=4.7756 gn=0.927 scale=512.0 43,996 tok/s (incl. eval)
+[22:04:33] S106-RMS prefix 4763/9156 u=4763 ce=4.7267 gn=0.970 scale=512.0 43,970 tok/s (incl. eval)
+[22:06:06] S106-RMS prefix 5013/9156 u=5013 ce=4.9167 gn=0.903 scale=512.0 43,994 tok/s (incl. eval)
+[22:07:39] S106-RMS prefix 5263/9156 u=5263 ce=4.7899 gn=0.904 scale=512.0 44,001 tok/s (incl. eval)
+[22:09:14] S106-RMS prefix 5513/9156 u=5513 ce=4.5408 gn=0.914 scale=512.0 43,189 tok/s (incl. eval)
+[22:10:47] S106-RMS prefix 5763/9156 u=5763 ce=4.9306 gn=0.886 scale=512.0 43,974 tok/s (incl. eval)
+[22:12:20] S106-RMS prefix 6013/9156 u=6013 ce=4.6370 gn=0.940 scale=1024.0 44,076 tok/s (incl. eval)
+[22:13:32] S106-RMS prefix@6104: full-dev web CE 4.7215, python non-W CE 6.1957
+[22:14:31] S106-RMS prefix 6263/9156 u=6263 ce=4.5535 gn=0.961 scale=1024.0 31,223 tok/s (incl. eval)
+[22:16:03] S106-RMS prefix@6409: full-dev web CE 4.7040, python non-W CE 6.4162
+[22:16:42] S106-RMS prefix 6513/9156 u=6513 ce=4.8128 gn=0.923 scale=1024.0 31,187 tok/s (incl. eval)
+[22:18:35] S106-RMS prefix@6714: full-dev web CE 4.6871, python non-W CE 6.2834
+[22:18:53] S106-RMS prefix 6763/9156 u=6763 ce=4.6705 gn=0.880 scale=1024.0 31,207 tok/s (incl. eval)
+[22:20:27] S106-RMS prefix 7013/9156 u=7013 ce=4.5698 gn=0.871 scale=1024.0 43,879 tok/s (incl. eval)
+[22:21:07] S106-RMS prefix@7019: full-dev web CE 4.6707, python non-W CE 6.1294
+[22:22:38] S106-RMS prefix 7263/9156 u=7263 ce=4.6348 gn=0.947 scale=1024.0 31,215 tok/s (incl. eval)
+[22:23:39] S106-RMS prefix@7324: full-dev web CE 4.6618, python non-W CE 6.0786
+[22:24:51] S106-RMS prefix 7513/9156 u=7513 ce=4.5059 gn=0.918 scale=1024.0 30,756 tok/s (incl. eval)
+[22:26:13] S106-RMS prefix@7629: full-dev web CE 4.6473, python non-W CE 6.0818
+[22:27:02] S106-RMS prefix 7763/9156 u=7763 ce=4.6852 gn=0.921 scale=1024.0 31,202 tok/s (incl. eval)
+[22:28:44] S106-RMS prefix@7934: full-dev web CE 4.6309, python non-W CE 6.0756
+[22:29:14] S106-RMS prefix 8013/9156 u=8013 ce=4.7892 gn=1.050 scale=2048.0 31,254 tok/s (incl. eval)
+[22:31:16] S106-RMS prefix@8239: full-dev web CE 4.6150, python non-W CE 5.8906
+[22:31:25] S106-RMS prefix 8263/9156 u=8263 ce=4.6988 gn=0.907 scale=2048.0 31,219 tok/s (incl. eval)
+[22:32:58] S106-RMS prefix 8513/9156 u=8513 ce=4.7277 gn=0.948 scale=2048.0 43,875 tok/s (incl. eval)
+[22:33:48] S106-RMS prefix@8544: full-dev web CE 4.6058, python non-W CE 5.9281
+[22:35:10] S106-RMS prefix 8763/9156 u=8763 ce=4.5839 gn=0.961 scale=2048.0 31,157 tok/s (incl. eval)
+[22:36:20] S106-RMS prefix@8849: full-dev web CE 4.5976, python non-W CE 6.0883
+[22:37:21] S106-RMS prefix 9013/9156 u=9013 ce=4.8088 gn=1.041 scale=2048.0 31,139 tok/s (incl. eval)
+[22:39:02] S106-RMS prefix@9156: full-dev web CE 4.5846, python non-W CE 5.9825
+[22:39:07] S106-RMS: branch 'web' starts from switch d0ebb17507b7
+[22:39:55] S106-RMS web@0: full-dev web CE 4.5846, python non-W CE 5.9825
+[22:39:55] S106-RMS web@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[22:40:38] S106-RMS web@1: full-dev web CE 4.5852, python non-W CE 5.9844
+[22:41:38] S106-RMS web@10: full-dev web CE 4.5834, python non-W CE 6.0365
+[22:43:09] S106-RMS web@100: full-dev web CE 4.5822, python non-W CE 6.0012
+[22:43:11] S106-RMS web 107/6104 u=9263 ce=4.4874 gn=0.928 scale=2048.0 11,696 tok/s (incl. eval)
+[22:45:23] S106-RMS web@305: full-dev web CE 4.5733, python non-W CE 5.9966
+[22:45:47] S106-RMS web 357/6104 u=9513 ce=4.6296 gn=1.012 scale=2048.0 26,303 tok/s (incl. eval)
+[22:47:45] S106-RMS web 607/6104 u=9763 ce=4.4397 gn=1.002 scale=2048.0 34,837 tok/s (incl. eval)
+[22:48:24] S106-RMS web@610: full-dev web CE 4.5630, python non-W CE 5.9033
+[22:50:20] S106-RMS web 857/6104 u=10013 ce=4.6067 gn=1.094 scale=4096.0 26,306 tok/s (incl. eval)
+[22:51:25] S106-RMS web@915: full-dev web CE 4.5545, python non-W CE 5.8992
+[22:52:51] S106-RMS web 1107/6104 u=10263 ce=4.4992 gn=0.978 scale=4096.0 27,131 tok/s (incl. eval)
+[22:54:17] S106-RMS web@1220: full-dev web CE 4.5456, python non-W CE 5.8637
+[22:55:15] S106-RMS web 1357/6104 u=10513 ce=4.5202 gn=0.977 scale=4096.0 28,560 tok/s (incl. eval)
+[22:57:15] S106-RMS web@1525: full-dev web CE 4.5360, python non-W CE 5.8990
+[22:57:50] S106-RMS web 1607/6104 u=10763 ce=4.5023 gn=1.004 scale=4096.0 26,293 tok/s (incl. eval)
+[23:00:02] S106-RMS web@1830: full-dev web CE 4.5275, python non-W CE 5.9186
+[23:00:12] S106-RMS web 1857/6104 u=11013 ce=4.5252 gn=1.059 scale=4096.0 28,954 tok/s (incl. eval)
+[23:02:00] S106-RMS web 2107/6104 u=11263 ce=4.4620 gn=1.007 scale=4096.0 37,976 tok/s (incl. eval)
+[23:02:48] S106-RMS web@2135: full-dev web CE 4.5216, python non-W CE 5.9612
+[23:04:21] S106-RMS web 2357/6104 u=11513 ce=4.4617 gn=1.082 scale=4096.0 28,934 tok/s (incl. eval)
+[23:05:35] S106-RMS web@2440: full-dev web CE 4.5154, python non-W CE 5.9612
+[23:06:48] S106-RMS web 2607/6104 u=11763 ce=4.5145 gn=1.060 scale=4096.0 28,019 tok/s (incl. eval)
+[23:08:22] S106-RMS web@2745: full-dev web CE 4.5079, python non-W CE 5.8730
+[23:09:09] S106-RMS web 2857/6104 u=12013 ce=4.4714 gn=1.058 scale=8192.0 28,936 tok/s (incl. eval)
+[23:11:16] S106-RMS web@3050: full-dev web CE 4.5002, python non-W CE 5.8074
+[23:11:42] S106-RMS web 3107/6104 u=12263 ce=4.4988 gn=1.700 scale=8192.0 26,768 tok/s (incl. eval)
+[23:14:03] S106-RMS web@3355: full-dev web CE 4.4953, python non-W CE 5.8276
+[23:14:04] S106-RMS web 3357/6104 u=12513 ce=4.5458 gn=1.125 scale=8192.0 28,952 tok/s (incl. eval)
+[23:15:52] S106-RMS web 3607/6104 u=12763 ce=4.4127 gn=1.130 scale=8192.0 37,933 tok/s (incl. eval)
+[23:16:49] S106-RMS web@3660: full-dev web CE 4.4884, python non-W CE 5.8058
+[23:18:13] S106-RMS web 3857/6104 u=13013 ce=4.4060 gn=1.107 scale=8192.0 28,997 tok/s (incl. eval)
+[23:19:36] S106-RMS web@3965: full-dev web CE 4.4840, python non-W CE 5.8730
+[23:20:39] S106-RMS web 4107/6104 u=13263 ce=4.4466 gn=1.053 scale=8192.0 28,034 tok/s (incl. eval)
+[23:22:23] S106-RMS web@4270: full-dev web CE 4.4778, python non-W CE 5.8423
+[23:23:00] S106-RMS web 4357/6104 u=13513 ce=4.3677 gn=1.062 scale=8192.0 28,999 tok/s (incl. eval)
+[23:25:11] S106-RMS web@4575: full-dev web CE 4.4742, python non-W CE 5.9118
+[23:25:28] S106-RMS web 4607/6104 u=13763 ce=4.2725 gn=1.064 scale=8192.0 27,680 tok/s (incl. eval)
+[23:27:11] S106-RMS web 4857/6104 u=14013 ce=4.5308 gn=1.107 scale=16384.0 39,723 tok/s (incl. eval)
+[23:27:58] S106-RMS web@4880: full-dev web CE 4.4707, python non-W CE 5.8116
+[23:29:37] S106-RMS web 5107/6104 u=14263 ce=4.3397 gn=1.091 scale=16384.0 28,028 tok/s (incl. eval)
+[23:30:45] S106-RMS web@5185: full-dev web CE 4.4673, python non-W CE 5.7593
+[23:31:59] S106-RMS web 5357/6104 u=14513 ce=4.4439 gn=1.150 scale=16384.0 28,947 tok/s (incl. eval)
+[23:33:32] S106-RMS web@5490: full-dev web CE 4.4639, python non-W CE 5.7938
+[23:34:25] S106-RMS web 5607/6104 u=14763 ce=4.5206 gn=1.119 scale=16384.0 28,058 tok/s (incl. eval)
+[23:36:18] S106-RMS web@5795: full-dev web CE 4.4617, python non-W CE 5.7176
+[23:36:46] S106-RMS web 5857/6104 u=15013 ce=4.4915 gn=1.105 scale=16384.0 29,007 tok/s (incl. eval)
+[23:39:10] S106-RMS web@6100: full-dev web CE 4.4614, python non-W CE 5.8040
+[23:39:58] S106-RMS web@6104: full-dev web CE 4.4602, python non-W CE 5.8054
+[23:40:01] S106-RMS: branch 'python' starts from switch d0ebb17507b7
+[23:40:48] S106-RMS python@0: full-dev web CE 4.5846, python non-W CE 5.9825
+[23:40:49] S106-RMS python@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[23:41:32] S106-RMS python@1: full-dev web CE 4.5911, python non-W CE 5.8615
+[23:41:37] S106-RMS python 3/6104 u=9159 ce=3.5830 gn=2.804 scale=2048.0 14,064 tok/s (incl. eval)
+[23:42:32] S106-RMS python@10: full-dev web CE 4.7262, python non-W CE 5.4377
+[23:44:02] S106-RMS python@100: full-dev web CE 4.8836, python non-W CE 3.8472
+[23:45:14] S106-RMS python 253/6104 u=9409 ce=2.1368 gn=1.490 scale=2048.0 18,946 tok/s (incl. eval)
+[23:46:16] S106-RMS python@305: full-dev web CE 5.1512, python non-W CE 3.3186
+[23:47:49] S106-RMS python 503/6104 u=9659 ce=2.0106 gn=1.320 scale=2048.0 26,407 tok/s (incl. eval)
+[23:49:16] S106-RMS python@610: full-dev web CE 5.5592, python non-W CE 3.0832
+[23:50:23] S106-RMS python 753/6104 u=9909 ce=2.1750 gn=1.895 scale=2048.0 26,482 tok/s (incl. eval)
+[23:52:16] S106-RMS python@915: full-dev web CE 5.7914, python non-W CE 2.9637
+[23:52:58] S106-RMS python 1003/6104 u=10159 ce=1.8784 gn=1.102 scale=4096.0 26,500 tok/s (incl. eval)
+[23:55:06] S106-RMS python@1220: full-dev web CE 5.9325, python non-W CE 2.8989
+[23:55:20] S106-RMS python 1253/6104 u=10409 ce=1.7077 gn=1.434 scale=4096.0 28,788 tok/s (incl. eval)
+[23:57:08] S106-RMS python 1503/6104 u=10659 ce=1.7390 gn=1.091 scale=4096.0 38,100 tok/s (incl. eval)
+[23:58:03] S106-RMS python@1525: full-dev web CE 6.0064, python non-W CE 2.8438
+[23:59:38] S106-RMS python 1753/6104 u=10909 ce=1.8923 gn=0.996 scale=4096.0 27,220 tok/s (incl. eval)
+[00:00:50] S106-RMS python@1830: full-dev web CE 6.0727, python non-W CE 2.8101
+[00:02:04] S106-RMS python 2003/6104 u=11159 ce=1.8987 gn=1.526 scale=4096.0 28,122 tok/s (incl. eval)
+[00:03:36] S106-RMS python@2135: full-dev web CE 6.1219, python non-W CE 2.7647
+[00:04:24] S106-RMS python 2253/6104 u=11409 ce=1.7196 gn=1.627 scale=4096.0 29,170 tok/s (incl. eval)
+[00:06:21] S106-RMS python@2440: full-dev web CE 6.1506, python non-W CE 2.7500
+[00:06:50] S106-RMS python 2503/6104 u=11659 ce=1.6332 gn=1.344 scale=4096.0 28,159 tok/s (incl. eval)
+[00:09:07] S106-RMS python@2745: full-dev web CE 6.1527, python non-W CE 2.7282
+[00:09:10] S106-RMS python 2753/6104 u=11909 ce=1.8173 gn=1.135 scale=4096.0 29,109 tok/s (incl. eval)
+[00:10:59] S106-RMS python 3003/6104 u=12159 ce=1.6479 gn=1.529 scale=8192.0 37,542 tok/s (incl. eval)
+[00:12:00] S106-RMS python@3050: full-dev web CE 6.1827, python non-W CE 2.7043
+[00:13:25] S106-RMS python 3253/6104 u=12409 ce=1.4675 gn=1.162 scale=8192.0 28,172 tok/s (incl. eval)
+[00:14:46] S106-RMS python@3355: full-dev web CE 6.1928, python non-W CE 2.6870
+[00:15:51] S106-RMS python 3503/6104 u=12659 ce=1.8477 gn=1.170 scale=8192.0 28,119 tok/s (incl. eval)
+[00:17:32] S106-RMS python@3660: full-dev web CE 6.1898, python non-W CE 2.6723
+[00:18:11] S106-RMS python 3753/6104 u=12909 ce=1.6031 gn=0.968 scale=8192.0 29,086 tok/s (incl. eval)
+[00:20:18] S106-RMS python@3965: full-dev web CE 6.2067, python non-W CE 2.6605
+[00:20:37] S106-RMS python 4003/6104 u=13159 ce=1.5187 gn=1.544 scale=8192.0 28,179 tok/s (incl. eval)
+[00:22:19] S106-RMS python 4253/6104 u=13409 ce=1.6527 gn=1.171 scale=8192.0 39,916 tok/s (incl. eval)
+[00:23:04] S106-RMS python@4270: full-dev web CE 6.1946, python non-W CE 2.6410
+[00:24:45] S106-RMS python 4503/6104 u=13659 ce=1.8639 gn=1.146 scale=8192.0 28,188 tok/s (incl. eval)
+[00:25:51] S106-RMS python@4575: full-dev web CE 6.2110, python non-W CE 2.6348
+[00:27:07] S106-RMS python 4753/6104 u=13909 ce=1.5929 gn=1.138 scale=8192.0 28,779 tok/s (incl. eval)
+[00:28:37] S106-RMS python@4880: full-dev web CE 6.2093, python non-W CE 2.6246
+[00:29:32] S106-RMS python 5003/6104 u=14159 ce=1.9455 gn=1.122 scale=16384.0 28,189 tok/s (incl. eval)
+[00:31:23] S106-RMS python@5185: full-dev web CE 6.2241, python non-W CE 2.6188
+[00:31:53] S106-RMS python 5253/6104 u=14409 ce=1.5028 gn=1.407 scale=16384.0 29,151 tok/s (incl. eval)
+[00:34:08] S106-RMS python@5490: full-dev web CE 6.2315, python non-W CE 2.6117
+[00:34:18] S106-RMS python 5503/6104 u=14659 ce=1.3528 gn=1.099 scale=16384.0 28,211 tok/s (incl. eval)
+[00:36:00] S106-RMS python 5753/6104 u=14909 ce=1.6270 gn=1.145 scale=16384.0 40,042 tok/s (incl. eval)
+[00:36:54] S106-RMS python@5795: full-dev web CE 6.2302, python non-W CE 2.6095
+[00:38:26] S106-RMS python 6003/6104 u=15159 ce=1.7200 gn=1.212 scale=16384.0 28,172 tok/s (incl. eval)
+[00:39:45] S106-RMS python@6100: full-dev web CE 6.2543, python non-W CE 2.6026
+[00:40:33] S106-RMS python@6104: full-dev web CE 6.2447, python non-W CE 2.6016
+[00:40:36] S106-RMS: branch 'x' starts from switch d0ebb17507b7
+[00:41:24] S106-RMS x@0: full-dev web CE 4.5846, x non-W CE 4.2858
+[00:41:24] S106-RMS x@0 lineage: max |dCE| 0.0, max rel dE 0.0 -> ok
+[00:42:07] S106-RMS x@1: full-dev web CE 4.5911, x non-W CE 4.1897
+[00:43:07] S106-RMS x@10: full-dev web CE 4.7009, x non-W CE 3.8297
+[00:44:37] S106-RMS x@100: full-dev web CE 4.8700, x non-W CE 2.8415
+[00:44:55] S106-RMS x 149/6104 u=9305 ce=2.9247 gn=1.691 scale=2048.0 10,512 tok/s (incl. eval)
+[00:46:50] S106-RMS x@305: full-dev web CE 5.0810, x non-W CE 2.5228
+[00:47:30] S106-RMS x 399/6104 u=9555 ce=2.1043 gn=1.395 scale=2048.0 26,495 tok/s (incl. eval)
+[00:49:50] S106-RMS x@610: full-dev web CE 5.6694, x non-W CE 2.3708
+[00:50:04] S106-RMS x 649/6104 u=9805 ce=2.5784 gn=1.183 scale=2048.0 26,564 tok/s (incl. eval)
+[00:52:00] S106-RMS x 899/6104 u=10055 ce=2.3180 gn=1.168 scale=4096.0 35,220 tok/s (incl. eval)
+[00:52:49] S106-RMS x@915: full-dev web CE 6.1206, x non-W CE 2.2879
+[00:54:30] S106-RMS x 1149/6104 u=10305 ce=2.1746 gn=1.235 scale=4096.0 27,348 tok/s (incl. eval)
+[00:55:39] S106-RMS x@1220: full-dev web CE 6.2951, x non-W CE 2.2350
+[00:56:52] S106-RMS x 1399/6104 u=10555 ce=2.0778 gn=1.159 scale=4096.0 28,915 tok/s (incl. eval)
+[00:58:35] S106-RMS x@1525: full-dev web CE 6.4801, x non-W CE 2.1958
+[00:59:26] S106-RMS x 1649/6104 u=10805 ce=2.0626 gn=1.161 scale=4096.0 26,637 tok/s (incl. eval)
+[01:01:20] S106-RMS x@1830: full-dev web CE 6.7219, x non-W CE 2.1653
+[01:01:45] S106-RMS x 1899/6104 u=11055 ce=1.9893 gn=1.141 scale=4096.0 29,324 tok/s (incl. eval)
+[01:04:05] S106-RMS x@2135: full-dev web CE 6.8442, x non-W CE 2.1401
+[01:04:10] S106-RMS x 2149/6104 u=11305 ce=2.0606 gn=1.125 scale=4096.0 28,312 tok/s (incl. eval)
+[01:05:52] S106-RMS x 2399/6104 u=11555 ce=2.0235 gn=1.129 scale=4096.0 40,220 tok/s (incl. eval)
+[01:06:50] S106-RMS x@2440: full-dev web CE 6.7830, x non-W CE 2.1211
+[01:08:16] S106-RMS x 2649/6104 u=11805 ce=1.8862 gn=1.097 scale=4096.0 28,333 tok/s (incl. eval)
+[01:09:35] S106-RMS x@2745: full-dev web CE 6.8431, x non-W CE 2.1010
+[01:10:36] S106-RMS x 2899/6104 u=12055 ce=2.0203 gn=1.191 scale=8192.0 29,260 tok/s (incl. eval)
+[01:12:26] S106-RMS x@3050: full-dev web CE 6.9372, x non-W CE 2.0846
+[01:13:08] S106-RMS x 3149/6104 u=12305 ce=1.5572 gn=1.136 scale=8192.0 27,091 tok/s (incl. eval)
+[01:15:11] S106-RMS x@3355: full-dev web CE 6.8817, x non-W CE 2.0726
+[01:15:28] S106-RMS x 3399/6104 u=12555 ce=1.9672 gn=1.159 scale=8192.0 29,266 tok/s (incl. eval)
+[01:17:14] S106-RMS x 3649/6104 u=12805 ce=1.7917 gn=1.084 scale=8192.0 38,403 tok/s (incl. eval)
+[01:17:56] S106-RMS x@3660: full-dev web CE 6.9187, x non-W CE 2.0612
+[01:19:34] S106-RMS x 3899/6104 u=13055 ce=1.8524 gn=1.094 scale=8192.0 29,278 tok/s (incl. eval)
+[01:20:41] S106-RMS x@3965: full-dev web CE 6.8720, x non-W CE 2.0480
+[01:21:59] S106-RMS x 4149/6104 u=13305 ce=1.9770 gn=1.133 scale=8192.0 28,312 tok/s (incl. eval)
+[01:23:26] S106-RMS x@4270: full-dev web CE 6.8714, x non-W CE 2.0388
+[01:24:18] S106-RMS x 4399/6104 u=13555 ce=1.8581 gn=1.097 scale=8192.0 29,318 tok/s (incl. eval)
+[01:26:11] S106-RMS x@4575: full-dev web CE 6.8872, x non-W CE 2.0308
+[01:26:45] S106-RMS x 4649/6104 u=13805 ce=1.8759 gn=1.141 scale=8192.0 27,971 tok/s (incl. eval)
+[01:28:58] S106-RMS x@4880: full-dev web CE 6.9352, x non-W CE 2.0245
+[01:29:05] S106-RMS x 4899/6104 u=14055 ce=1.9604 gn=1.163 scale=16384.0 29,305 tok/s (incl. eval)
+[01:30:51] S106-RMS x 5149/6104 u=14305 ce=1.8718 gn=1.094 scale=16384.0 38,420 tok/s (incl. eval)
+[01:31:43] S106-RMS x@5185: full-dev web CE 6.9899, x non-W CE 2.0184
+[01:33:11] S106-RMS x 5399/6104 u=14555 ce=1.8289 gn=1.159 scale=16384.0 29,286 tok/s (incl. eval)
+[01:34:27] S106-RMS x@5490: full-dev web CE 6.9732, x non-W CE 2.0126
+[01:35:36] S106-RMS x 5649/6104 u=14805 ce=1.8743 gn=1.146 scale=16384.0 28,336 tok/s (incl. eval)
+[01:37:12] S106-RMS x@5795: full-dev web CE 6.9996, x non-W CE 2.0071
+[01:37:56] S106-RMS x 5899/6104 u=15055 ce=1.9303 gn=1.134 scale=16384.0 29,284 tok/s (incl. eval)
+[01:40:02] S106-RMS x@6100: full-dev web CE 6.9722, x non-W CE 2.0036
+[01:40:50] S106-RMS x@6104: full-dev web CE 6.9754, x non-W CE 2.0051
+[01:40:50] S106-RMS: COMPLETE
+[01:40:50] worker RMS: all assigned runs complete

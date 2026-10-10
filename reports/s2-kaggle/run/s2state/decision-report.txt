@@ -1,15 +1,28 @@
-H2 ANSWER (web -> mc4-zh): NOT YET - the experiment is incomplete, or a run failed numerically or a correctness/data/lineage gate failed.
-H2 decision category: INVALID OR INCOMPLETE
-R2 ANSWER (web -> Python, seeds 104-106): NOT YET - the fresh-seed web and Python branches are incomplete or a run failed.
-R2 decision category: INVALID OR INCOMPLETE
-Complete: H2 False, R2 False; seed groups with full evidence: H2 5/6, R2 2/3; missing events: 1316; incomplete runs: 2
+H2 ANSWER (web -> mc4-zh): NO - the effect goes the other way: Taper-minus forgets LESS than RMS after the switch to the selected domain (mean D_X <= -0.03).
+H2 decision category: OPPOSITE DIRECTION
+R2 ANSWER (web -> Python, seeds 104-106): NO - on the fresh seeds, no persistent excess forgetting >= 0.015 nats/token: the pilot's H1 answer replicates.
+R2 decision category: STOP — SMALL OBSERVED EFFECT
+Complete: H2 True, R2 True; seed groups with full evidence: H2 6/6, R2 3/3; missing events: 0; incomplete runs: 0
 H2 seed 101: D=-0.08861  D3050=-0.02602  Q=-0.08797  prefix gap=0.28%  adaptation RMS=2.2983 Taper=2.3260  matched={1525: -0.04998, 3050: 0.00438, 6104: -0.11368}
 H2 seed 102: D=+0.00647  D3050=-0.01762  Q=+0.00735  prefix gap=0.28%  adaptation RMS=2.3110 Taper=2.3340  matched={1525: -0.03341, 3050: -0.07855, 6104: -0.04656}
 H2 seed 103: D=-0.03505  D3050=-0.07394  Q=-0.03085  prefix gap=0.34%  adaptation RMS=2.2339 Taper=2.2743  matched={1525: -0.23734, 3050: -0.08188, 6104: -0.08538}
 H2 seed 104: D=-0.05133  D3050=+0.00712  Q=-0.04868  prefix gap=0.26%  adaptation RMS=2.2137 Taper=2.2449  matched={1525: -0.02623, 3050: -0.09491, 6104: 0.04597}
 H2 seed 105: D=-0.01789  D3050=-0.00698  Q=-0.01531  prefix gap=0.23%  adaptation RMS=2.1751 Taper=2.1854  matched={1525: -0.03847, 3050: -0.0501, 6104: -0.01304}
+H2 seed 106: D=-0.00886  D3050=-0.08556  Q=-0.00824  prefix gap=0.30%  adaptation RMS=2.2807 Taper=2.3067  matched={1525: -0.11237, 3050: -0.13577, 6104: -0.01433}
 R2 seed 104: D=+0.01602  D3050=+0.02243  Q=+0.01867  prefix gap=0.26%  adaptation RMS=3.5013 Taper=3.5828  matched={1525: 0.00366, 3050: -0.00108, 6104: 0.02714}
 R2 seed 105: D=+0.01020  D3050=+0.01969  Q=+0.01278  prefix gap=0.23%  adaptation RMS=3.4243 Taper=3.4357  matched={1525: -0.02822, 3050: -0.00808, 6104: 0.01811}
-H2 reason: Missing or duplicate planned primary seed
-R2 reason: Missing or duplicate planned primary seed
+R2 seed 106: D=+0.00180  D3050=-0.02951  Q=+0.00241  prefix gap=0.30%  adaptation RMS=3.3808 Taper=3.6443  matched={1525: -0.00943, 3050: 0.00142, 6104: 0.00684}
+H2: mean D = -0.03255, SD 0.03406, t95 [-0.06830, +0.00321], t90 [-0.06057, -0.00453] (equivalent within +/-0.015: False)
+R2: mean D = +0.00934, SD 0.00715, t95 [-0.00842, +0.02709], t90 [-0.00271, +0.02139] (equivalent within +/-0.015: False)
+Pooled web->Python (descriptive): mean D = -0.00649, SD 0.01805, t95 [-0.02543, +0.01245], t90 [-0.02134, +0.00836] (equivalent within +/-0.015: False)
+H2 mean_D = -0.03255
+H2 mean_D3050 = -0.03383
+H2 mean_Q = -0.03062
+H2 mean_matched_difference = -0.03784
+H2 reason: Mean D <= -0.03
+R2 mean_D = +0.00934
+R2 mean_D3050 = +0.00420
+R2 mean_Q = +0.01129
+R2 mean_matched_difference = +0.01736
+R2 reason: Mean endpoint D < 0.015; not evidence of equivalence
 Manipulation check: {'switch_gap_larger_for_x': False, 'specific_change_larger_for_x': True}

@@ -1,0 +1,13 @@
+{
+  "sha256": "1981c4abae470a43eb967f6d66e0e285e2e13eb9cfce7c31540581bb62968589",
+  "progress": {
+    "stage": "prefix",
+    "step": 9156,
+    "optimizer_seconds": 3342.425040960312,
+    "updates": 9156,
+    "clipped": 910,
+    "overflow_retries": 0,
+    "parent_sha256": null
+  },
+  "global_update": 9156
+}
