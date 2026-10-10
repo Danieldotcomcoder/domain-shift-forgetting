@@ -146,6 +146,9 @@ and the H2 report must say so.
 
 - **The sign does not replicate.** D was positive in every fresh seed (+0.0160, +0.0102, +0.0018) and negative in
   every pilot seed, and no fresh value lies inside the pilot's interval.
+- **The split follows the sessions.** If seeds are exchangeable, a split this clean has probability 0.1. A post
+  hoc check found nothing systematic: prefix web CE, web-branch forgetting and Python-branch forgetting overlap
+  between the two groups, and both sessions used the same pinned image.
 - **Pooled six-seed estimate** (descriptive; includes the pilot's published seeds): mean D −0.0065,
   95% [−0.0254, +0.0125].
 

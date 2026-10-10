@@ -915,8 +915,14 @@ full development set). ``Code gain'' is the drop in non-W Python cross-entropy f
 1's decision replicates. Equivalence is again not shown (90\% interval $[\repDloNinety, \repDhiNinety]$). The
 decision replicates, but the sign does not. $D$ was positive in every fresh seed, where it had been negative in
 every seed of Study 1, and none of the fresh values lies inside Study 1's descriptive 95\% interval
-$[\Dlo, \Dhi]$. Three seeds had understated the seed-to-seed variation: the SD of the six web-to-Python values is
-\poolSd, about \poolSdRatio{} times Study 1's. Pooled over all six seeds (descriptive only, and including Study 1's
+$[\Dlo, \Dhi]$. The sign split coincides with the session split: all three negative contrasts come from Study 1's
+run and all three positive ones from Study 2's. If seeds are exchangeable, a split this clean has probability
+\splitProb. We checked for a systematic difference between the two groups and found none (post hoc). Across both
+conditions, prefix web cross-entropy was \splitPrefixPilot{} in Study 1's seeds and \splitPrefixFresh{} in the
+fresh ones; web-branch forgetting was \splitFwebPilot{} and \splitFwebFresh; and Python-branch forgetting was
+\splitFpyPilot{} and \splitFpyFresh. Both sessions used the same pinned software image, and Study 2 re-evaluated
+Study 1's switch states bit-exactly. Three seeds had understated the seed-to-seed variation: the SD of the six
+web-to-Python values is \poolSd, about \poolSdRatio{} times Study 1's. Pooled over all six seeds (descriptive only, and including Study 1's
 published seeds), mean $D$ = \poolMean{} with a 95\% interval of $[\poolLo, \poolHi]$. \Cref{tab:s2intervals}
 collects every interval of both studies' contrasts.
 
@@ -932,6 +938,10 @@ pre-specified one. The one-sided 95\% upper bound of a mean is the upper end of 
   \item \textbf{Python, six seeds pooled} (descriptive, including Study 1's published seeds): \poolHiNinety. This
         rules it out.
 \end{itemize}
+The Chinese bound lies below zero, yet we do not use the same one-sided logic to claim protection. The asymmetry
+is deliberate. H1 is directional, so a one-sided test against the excess it predicts fits it. Protection was
+never hypothesized, so it gets the default two-sided reading, whose 95\% interval includes zero; and the
+opposite-direction label depends on single seeds.
 
 \begin{table}[t]
 \centering

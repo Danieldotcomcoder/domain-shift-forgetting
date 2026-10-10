@@ -553,6 +553,25 @@ def study2_assets(ev1, m, fmt):
         "every leave-one-out mean must stay in the stop / opposite / transient row of the interpretation matrix"
     out.update({"twoLooMin": m(min(loo.values()), 3), "twoLooMax": m(max(loo.values()), 3),
                 "twoLooFlip": " and ".join(str(s) for s in flips), "twoLooFlipMax": m(max(loo[s] for s in flips), 3)})
+    # post hoc: R2's sign split coincides with the session split; compare the two seed groups
+    split = {}
+    for name, seeds in (("pilot", SEEDS), ("fresh", FRESH)):
+        g = {}
+        for cond, tag in (("RMS", "R"), ("Taper-minus", "T")):
+            g[f"prefix{tag}"] = [ce2(s, cond, "prefix", PREFIX_END) for s in seeds]
+            g[f"fweb{tag}"] = [rows["python", s]["F_rms_web" if tag == "R" else "F_t_web"] for s in seeds]
+            g[f"fpy{tag}"] = [rows["python", s]["F_rms" if tag == "R" else "F_t"] for s in seeds]
+            g[f"adapt{tag}"] = [rows["python", s]["adapt"][cond] for s in seeds]
+        split[name] = g
+    assert all(rows["python", s]["D"] < 0 for s in SEEDS) and all(x > 0 for x in r2), "the sign split in the text"
+    for key in ("prefix", "fweb", "fpy"):  # the text says the two groups overlap on each measure
+        lo_hi = {n: (min(split[n][key + "R"] + split[n][key + "T"]), max(split[n][key + "R"] + split[n][key + "T"]))
+                 for n in split}
+        assert lo_hi["pilot"][0] <= lo_hi["fresh"][1] and lo_hi["fresh"][0] <= lo_hi["pilot"][1], key
+        for n, (lo_, hi_) in lo_hi.items():
+            out[f"split{key.capitalize()}{n.capitalize()}"] = \
+                f"{m(lo_, 3)} to {m(hi_, 3)}" if key == "fweb" else f"{lo_:.3f}--{hi_:.3f}"
+    out["splitProb"] = f"{2 / math.comb(len(SEEDS2), len(FRESH)):.1f}"
     rmean, rsd, rlo, rhi = interval(r2, T95)
     _, _, rlo90, rhi90 = interval(r2, T90)
     pmean, psd, plo, phi = interval(pooled, T95)
@@ -904,8 +923,8 @@ def main():
     abstract = (
         "TaperNorm replaces a pre-norm Transformer's internal normalization with a gated map that acts like "
         "RMSNorm early in training and then becomes a fixed linear scaling. Without per-token normalization, a "
-        "model might forget more after a shift in the training data. We tested this in two small studies whose "
-        "designs, endpoints and decision rules were fixed before training. Paired 17.7M-parameter models with "
+        "model might forget more after a shift in the training data. Two small studies tested this, with designs, "
+        "endpoints and decision rules fixed before training. Paired 17.7M-parameter models with "
         "internal RMSNorm or TaperNorm were trained on 150M web tokens, then continued for 100M tokens on web "
         "text or a new domain. The endpoint D is a difference-in-differences in held-out web cross-entropy; "
         "positive D means extra forgetting under TaperNorm. In a pilot with Python code (three seeds), mean D "
@@ -914,12 +933,14 @@ def main():
         "new domain by a fixed rule (Chinese web text) and added three fresh seeds. On Chinese, mean D over six "
         f"seeds was {h2_mean:.3f} (95% interval {h2_lo:.3f} to {h2_hi:+.3f}), just past the -0.03 threshold for "
         f"the opposite direction; a post hoc one-sided 95% upper bound of {h2_hi90:.3f} rules out an excess of +0.015. "
-        f"Under GPT-2's tokenizer, however, {ctrl:.0f}% of Chinese tokens are byte fragments. On the fresh seeds "
+        f"Under GPT-2's tokenizer, however, {ctrl:.0f}% of Chinese labels are byte fragments, so much of that shift "
+        "concerns which output tokens must be predicted, which the internal normalizers do not touch. "
+        "On the fresh seeds "
         f"the Python decision replicated (mean D {r2_mean:+.3f}), but D was positive in all three, where it had "
         "been negative in all three pilot seeds: three seeds understated seed variation. A pre-specified "
-        "in-training measure of the scale shift that motivates the hypothesis was about "
+        "in-training measure of the scale shift behind the hypothesis was about "
         f"{['zero', 'one', 'two', 'three', 'four', 'five', 'six'][ratio]} times larger for Chinese than for "
-        "Python, yet TaperNorm did not forget more. Equivalence within +/-0.015 was not shown in either study. "
+        "Python, yet TaperNorm did not forget more. Neither study showed equivalence within +/-0.015. "
         "We find no evidence that TaperNorm increases forgetting under these shifts. Code and all records are "
         "released.")
     assert h2_hi90 < -0.0 and r2_mean > 0, "abstract's one-sided-bound and sign statements"
