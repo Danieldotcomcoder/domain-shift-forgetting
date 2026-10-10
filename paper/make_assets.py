@@ -546,9 +546,17 @@ def study2_assets(ev1, m, fmt):
                 "twoRareMax": f"{max(abs(rows['x', s]['rare']['contribution_to_d']) for s in SEEDS2):.4f}",
                 "twoSdRatio": f"{sd / pilot_sd:.0f}",
                 "repInPilot": f"{sum(pilot_lo <= rows['python', s]['D'] <= pilot_hi for s in FRESH)}"})
+    # post hoc leave-one-seed-out: the category label may change, the permitted reading may not
+    loo = {s: statistics.mean(rows["x", u]["D"] for u in SEEDS2 if u != s) for s in SEEDS2}
+    flips = [s for s in SEEDS2 if loo[s] > cfg["decision_thresholds"]["opposite_d"]]
+    assert all(v < cfg["decision_thresholds"]["small_d"] for v in loo.values()), \
+        "every leave-one-out mean must stay in the stop / opposite / transient row of the interpretation matrix"
+    out.update({"twoLooMin": m(min(loo.values()), 3), "twoLooMax": m(max(loo.values()), 3),
+                "twoLooFlip": " and ".join(str(s) for s in flips), "twoLooFlipMax": m(max(loo[s] for s in flips), 3)})
     rmean, rsd, rlo, rhi = interval(r2, T95)
     _, _, rlo90, rhi90 = interval(r2, T90)
     pmean, psd, plo, phi = interval(pooled, T95)
+    _, _, plo90, phi90 = interval(pooled, T90)
     rmatched = [rows["python", s]["matched"][str(rep["r2"]["decision"]["common_target_update"])]["differential_forgetting"]
                 for s in FRESH]
     out.update({"repDmean": m(rmean), "repDsd": m(rsd, sign=False), "repDlo": m(rlo), "repDhi": m(rhi),
@@ -563,7 +571,7 @@ def study2_assets(ev1, m, fmt):
                 "repAdaptMin": f"{min(v for s in FRESH for v in rows['python', s]['adapt'].values()):.2f}",
                 "repAdaptMax": f"{max(v for s in FRESH for v in rows['python', s]['adapt'].values()):.2f}",
                 "poolMean": m(pmean), "poolSd": m(psd, sign=False), "poolLo": m(plo), "poolHi": m(phi),
-                "poolSdRatio": f"{psd / pilot_sd:.0f}"})
+                "poolSdRatio": f"{psd / pilot_sd:.0f}", "poolLoNinety": m(plo90), "poolHiNinety": m(phi90)})
     R, T = ("x", "RMS"), ("x", "Taper-minus")
     out.update({"mcGapXR": f"{scale[R]['gap']:.3f}", "mcGapXT": f"{scale[T]['gap']:.3f}",
                 "mcGapPyR": f"{scale['python', 'RMS']['gap']:.3f}", "mcGapPyT": f"{scale['python', 'Taper-minus']['gap']:.3f}",
@@ -619,8 +627,11 @@ def study2_assets(ev1, m, fmt):
                  f"{fmt(r['matched']['6104']['differential_forgetting'])} & ${r['gap'] * 100:.2f}\\%$ & "
                  f"${r['adapt']['RMS']:.2f}$ / ${r['adapt']['Taper-minus']:.2f}$ \\\\")
     rmeans = {k: statistics.mean(rows["python", s][k] for s in FRESH) for k in ("D", "D3050", "G", "Q")}
+    rsds = {k: statistics.stdev(rows["python", s][k] for s in FRESH) for k in ("D", "D3050", "G", "Q")}
     t += ["\\midrule", "Mean & " + " & ".join(fmt(rmeans[k]) for k in ("D", "D3050", "G", "Q"))
-          + f" & {fmt(statistics.mean(rmatched))} & & \\\\", "\\bottomrule", "\\end{tabular}"]
+          + f" & {fmt(statistics.mean(rmatched))} & & \\\\",
+          "SD & " + " & ".join(f"${rsds[k]:.4f}$" for k in ("D", "D3050", "G", "Q"))
+          + f" & ${statistics.stdev(rmatched):.4f}$ & & \\\\", "\\bottomrule", "\\end{tabular}"]
     table("table_s2_replication.tex", t)
 
     t = ["\\begin{tabular}{@{}llrrrrc@{}}", "\\toprule",
@@ -739,7 +750,8 @@ def study2_assets(ev1, m, fmt):
     fig.savefig(FIG / "study2_trajectories.pdf", metadata={"CreationDate": None})
     fig.savefig(FIG / "study2_trajectories.png", dpi=220)
     plt.close(fig)
-    return out, {"h2": (mean, lo, hi), "r2": rmean, "ratio": (out["mcRatioLo"], out["mcRatioHi"])}
+    return out, {"h2": (mean, lo, hi), "h2_hi90": hi90, "r2": rmean, "ratio": (out["mcRatioLo"], out["mcRatioHi"]),
+                 "ctrl_share": float(out["twoCtrlShare"])}
 
 
 def main():
@@ -886,30 +898,31 @@ def main():
     macros.update(two)
 
     # ---- abstract: one ASCII text for both the PDF and the arXiv metadata field
-    (h2_mean, h2_lo, h2_hi), r2_mean = s2["h2"], s2["r2"]
+    (h2_mean, h2_lo, h2_hi), r2_mean, h2_hi90, ctrl = s2["h2"], s2["r2"], s2["h2_hi90"], s2["ctrl_share"]
     ratio = round(float(s2["ratio"][0]))
     assert round(float(s2["ratio"][1])) == ratio
     abstract = (
         "TaperNorm replaces a pre-norm Transformer's internal normalization with a gated map that acts like "
-        "RMSNorm early in training and then becomes a fixed, calibrated linear scaling. Without per-token "
-        "normalization, such a model might forget more after a shift in the training data. We tested this in two "
-        "small studies whose designs, endpoints and decision rules were fixed before training. Paired "
-        "17.7M-parameter models with internal RMSNorm or TaperNorm were trained on 150M web tokens and then "
-        "continued for 100M tokens either on web text or on a new domain. The endpoint D is a "
-        "difference-in-differences in held-out web cross-entropy; positive D means extra forgetting under "
-        f"TaperNorm. In a pilot with Python code (three seeds), mean D was {mean_d:.3f} nats/token, below the "
-        "pre-specified +0.015 bound, so the decision was to stop. A second study, whose frozen protocol and code "
-        "were hashed and submitted for timestamping before it ran, chose a new domain by a fixed rule (Chinese web "
-        f"text) and added three fresh seeds. On Chinese, mean D over six seeds was {h2_mean:.3f} (95% interval "
-        f"{h2_lo:.3f} to {h2_hi:+.3f}), just past the pre-specified -0.03 threshold for the opposite direction. "
-        f"On the fresh seeds the Python decision replicated (mean D {r2_mean:+.3f}), although D was positive in all "
-        "three, where it had been negative in all three pilot seeds: seed-to-seed variation was much larger than "
-        "the pilot suggested. The hypothesis rests on training shifting the scale of the activations entering the "
-        "normalizers. That domain-specific shift was small for Python but about "
-        f"{['zero', 'one', 'two', 'three', 'four', 'five', 'six'][ratio]} times larger for Chinese, so the premise "
-        "was present, yet TaperNorm did not forget more. Equivalence within +/-0.015 was not shown in either study. "
-        "We find no evidence that TaperNorm increases forgetting under these domain shifts. Code and all "
-        "evaluation records are released.")
+        "RMSNorm early in training and then becomes a fixed linear scaling. Without per-token normalization, a "
+        "model might forget more after a shift in the training data. We tested this in two small studies whose "
+        "designs, endpoints and decision rules were fixed before training. Paired 17.7M-parameter models with "
+        "internal RMSNorm or TaperNorm were trained on 150M web tokens, then continued for 100M tokens on web "
+        "text or a new domain. The endpoint D is a difference-in-differences in held-out web cross-entropy; "
+        "positive D means extra forgetting under TaperNorm. In a pilot with Python code (three seeds), mean D "
+        f"was {mean_d:.3f} nats/token, below the pre-specified +0.015 bound, so the decision was to stop. A second "
+        "study, whose frozen protocol and code were hashed and submitted for timestamping before it ran, chose a "
+        "new domain by a fixed rule (Chinese web text) and added three fresh seeds. On Chinese, mean D over six "
+        f"seeds was {h2_mean:.3f} (95% interval {h2_lo:.3f} to {h2_hi:+.3f}), just past the -0.03 threshold for "
+        f"the opposite direction; a post hoc one-sided 95% upper bound of {h2_hi90:.3f} rules out an excess of +0.015. "
+        f"Under GPT-2's tokenizer, however, {ctrl:.0f}% of Chinese tokens are byte fragments. On the fresh seeds "
+        f"the Python decision replicated (mean D {r2_mean:+.3f}), but D was positive in all three, where it had "
+        "been negative in all three pilot seeds: three seeds understated seed variation. A pre-specified "
+        "in-training measure of the scale shift that motivates the hypothesis was about "
+        f"{['zero', 'one', 'two', 'three', 'four', 'five', 'six'][ratio]} times larger for Chinese than for "
+        "Python, yet TaperNorm did not forget more. Equivalence within +/-0.015 was not shown in either study. "
+        "We find no evidence that TaperNorm increases forgetting under these shifts. Code and all records are "
+        "released.")
+    assert h2_hi90 < -0.0 and r2_mean > 0, "abstract's one-sided-bound and sign statements"
     assert macros["repNpos"] == "3" and all(rows[s]["D"] < 0 for s in SEEDS), "abstract's sign statement"
     assert macros["repInPilot"] == "0", "main text: no fresh value lies inside Study 1's interval"
     assert abstract.isascii(), "abstract must be plain ASCII"

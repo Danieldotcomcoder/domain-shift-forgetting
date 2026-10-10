@@ -83,10 +83,14 @@ the scale premise directly as a pre-specified manipulation check. Our contributi
         effect}. Mean $D$ = \Dmean{}~nats/token, against a $+0.015$ bound for a meaningful excess;
   \item Study 2's results. The selected domain is Chinese web text. There, mean $D_X$ over six seeds was
         \twoDmean{} (95\% interval $[\twoDlo, \twoDhi]$), which falls just past the pre-specified $-0.03$
-        threshold into the \emph{opposite direction} category. On the fresh seeds the web-to-Python result
-        replicated (\emph{stop}; mean $D$ = \repDmean). The domain-specific change in activation scale at the
-        normalizer inputs, beyond what continued web training produced, was \mcRatioLo--\mcRatioHi{} times larger
-        for Chinese than for Python. The premise was present, yet TaperNorm did not forget more;
+        threshold into the \emph{opposite direction} category; that label depends on single seeds, but the
+        pre-specified reading does not. On the fresh seeds the web-to-Python result replicated (\emph{stop}; mean
+        $D$ = \repDmean). A pre-specified in-training measure of the premise, the domain-specific change in
+        activation scale at the normalizer inputs, was \mcRatioLo--\mcRatioHi{} times larger for Chinese than for
+        Python, yet TaperNorm did not forget more;
+  \item a cautionary measurement of seed variation. Study 1's three paired seeds agreed closely (SD \Dsd), and
+        three fresh seeds then gave web-to-Python contrasts of the opposite sign; the six seeds' SD is about
+        \poolSdRatio{} times Study 1's;
   \item a lightweight procedure for fixing a cloud-executed study's plan before it runs without a prior registry
         entry, with an account of what it does and does not establish. The frozen protocol and code are hashed
         and the hash timestamped, every cloud notebook embeds the hash, and saved model states that are reused
@@ -503,7 +507,9 @@ forgetting at the furthest target reached by every seed ($s = \matchedTarget$).}
 \Cref{tab:primary} gives the primary results. Mean $D$ = \Dmean{}~nats/token (SD \Dsd; descriptive 95\% interval
 $[\Dlo, \Dhi]$), and $D$ is negative in all three seeds. Since $\bar D < 0.015$ and no early transient reached
 0.05 (\cref{sec:trajectory}), the pre-specified decision is \textbf{stop: small observed effect} (rule~6). The
-data provide no evidence for H1.
+data provide no evidence for H1. The close agreement of the three seeds should not be over-trusted: three fresh
+seeds in Study 2 gave web-to-Python contrasts of the opposite sign, none of them inside this interval
+(\cref{sec:s2results}).
 
 The other pre-specified quantities point the same way as $D$:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
@@ -619,7 +625,11 @@ uncertainty about the effect itself.
 
 Study 1 left two questions open. Its exploratory scale analysis suggested that the premise of H1 was weak for
 Python, so its null result says little about a shift that does move activation scales; and three seeds estimate
-seed-to-seed variation poorly. Study 2 is a separate study with its own protocol. It adds no seeds to Study 1's
+seed-to-seed variation poorly. Study 2 is a separate study with its own protocol.\footnote{The frozen protocol
+calls itself ``pre-registered'' (for example, in the heading of its Section~9.4) and calls R2 ``confirmatory''.
+That wording was written before Amendment~1 deferred the public registry entry, and the frozen text cannot be
+changed. In this paper Study 2 is described as specified in advance and hash-timestamped
+(\cref{sec:s2prespec}), and R2 as a replication within a screening study.} It adds no seeds to Study 1's
 analysis and changes none of Study 1's endpoints or decisions. It asks three questions.
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
   \item \textbf{H2 (primary).} After a switch from web text to a new domain $X$, chosen by a fixed rule, does
@@ -689,7 +699,8 @@ seeds. Adaptation is the drop in the $X$ development set's non-W cross-entropy o
 \centering
 \small
 \caption{Pre-specified interpretation matrix of Study 2 (protocol, Section~9.4). ``Premise stronger'' is the
-in-training reading of the manipulation check. The row that applies to the outcome is marked.}
+in-training reading of the manipulation check. The reading that applies to the outcome is in bold; its second
+sentence, in grey, needs the equivalence reading, which was not met.}
 \label{tab:s2matrix}
 \begin{tabular}{@{}llp{8.2cm}@{}}
 \toprule
@@ -699,7 +710,8 @@ Proceed & yes & TaperNorm shows persistent excess forgetting where the scale pre
 this setting) \\
 Proceed & no & Excess forgetting on $X$, not explained by the measured scale premise \\
 Stop, opposite or transient & yes & \textbf{Evidence against the scale-mismatch account of H1 in this setting.}
-With the equivalence reading, also ``no excess larger than 0.015'' \quad($\leftarrow$ outcome) \\
+($\leftarrow$ outcome) \textcolor{black!45}{With the equivalence reading, also ``no excess larger than
+0.015'' (not met).} \\
 Stop, opposite or transient & no & A second domain pair without excess forgetting; uninformative about the
 mechanism, because the premise was again weak \\
 Inconclusive, limited or invalid & any & No conclusion about H2 \\
@@ -784,11 +796,13 @@ this block the $X$ branches of seeds 101--103 had already reached their endpoint
 time of submission to the calendars comes from the author's machine; the calendar operators record it, but the
 proof does not establish it. That the plan was fixed before any outcome existed therefore rests on Kaggle's
 server-side version times: the notebook versions that embed the manifest were created between \twoFirstJob{} and
-the start of the main run. Three further facts limit what could have changed after the run started. The decisions
-were computed in-process by the runner, its decision thresholds are constants in its source, and every session
-recorded a runner SHA-256 equal to the registered one. Amendment~1 defers the public registry entry until after execution, so that entry
-cannot establish pre-specification on its own. Study 2 should be read as \emph{specified in advance and
-hash-timestamped before any run, publicly registered after execution}, not as conventionally pre-registered.
+the start of the main run. (The times given here were printed by the author's machine at each push; Kaggle's
+version history records them independently.) Three further facts limit what could have changed after the run
+started. The decisions were computed in-process by the runner, its decision thresholds are constants in its
+source, and every session recorded a runner SHA-256 equal to the registered one. Amendment~1 defers the public
+registry entry until after execution, so that entry cannot establish pre-specification on its own. Study 2
+should be read as \emph{specified in advance and hash-timestamped before any run, with public registration
+deferred until after execution}, not as conventionally pre-registered.
 
 \subsection{Execution and implementation checks}
 \label{sec:s2execution}
@@ -847,15 +861,18 @@ thresholds ($+0.03$, $+0.015$, $-0.03$); the decision uses only $s = 6{,}104$ (a
 interval $[\twoDlo, \twoDhi]$), negative in \twoNneg{} of 6 seeds and positive in seed \twoPosSeed{} (\twoPosD).
 Because the mean is at or below $-0.03$, the pre-specified category is \textbf{opposite direction} (rule~3):
 Taper-minus forgot less web text than RMS after the switch to Chinese. The 90\% interval,
-$[\twoDloNinety, \twoDhiNinety]$, does not lie within $\pm 0.015$, so equivalence is not shown, and under the
-protocol we make no statement that the effect is no larger than 0.015.
+$[\twoDloNinety, \twoDhiNinety]$, does not lie within $\pm 0.015$, so equivalence is not shown, and the
+protocol's own reading does not allow the statement that the effect is no larger than 0.015 (a post hoc one-sided
+reading follows the replication below).
 
-The category needs three qualifications.
+The category label needs three qualifications.
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
   \item \textbf{The margin is narrow.} The mean lies just past the threshold, and the 95\% interval includes zero.
-  \item \textbf{It depends on the reused seeds.} On the fresh seeds alone the mean is \twoFreshMean{} (95\%
+  \item \textbf{It depends on single seeds.} On the fresh seeds alone the mean is \twoFreshMean{} (95\%
         interval $[\twoFreshLo, \twoFreshHi]$), which does not reach $-0.03$. The most negative seed is 101
-        (\twoDmin), whose switch state is Study 1's and also served the domain selection.
+        (\twoDmin), whose switch state is Study 1's and also served the domain selection. Post hoc, leaving out
+        one seed at a time gives means between \twoLooMin{} and \twoLooMax, and leaving out either of seeds
+        \twoLooFlip{} raises the mean above $-0.03$, which would make the category \emph{stop}.
   \item \textbf{Seed variation is large.} The between-seed SD of $D_X$ (\twoDsd) is about \twoSdRatio{} times
         Study 1's SD of $D$ (\Dsd), which the protocol had used for planning. Individual trajectories are also
         noisy: a seed's $D_X(s)$ changed by \twoJitter{} on average between adjacent full evaluations, 305 updates
@@ -886,7 +903,8 @@ The other pre-specified quantities point the same way as $D_X$:
 \centering
 \small
 \caption{R2: the web $\to$ Python contrast $D$ on the fresh seeds, with Study 1's estimand and rules (nats/token;
-full development set). ``Code gain'' is the drop in non-W Python cross-entropy from the switch.}
+full development set). ``Code gain'' is the drop in non-W Python cross-entropy from the switch. Study 1's seeds
+101--103 are in \cref{tab:primary}.}
 \label{tab:s2replication}
 \input{generated/table_s2_replication.tex}
 \end{table}
@@ -901,6 +919,19 @@ $[\Dlo, \Dhi]$. Three seeds had understated the seed-to-seed variation: the SD o
 \poolSd, about \poolSdRatio{} times Study 1's. Pooled over all six seeds (descriptive only, and including Study 1's
 published seeds), mean $D$ = \poolMean{} with a 95\% interval of $[\poolLo, \poolHi]$. \Cref{tab:s2intervals}
 collects every interval of both studies' contrasts.
+
+\paragraph{A post hoc one-sided reading.} H1 predicts an excess, so ``no evidence for H1'' rests on a one-sided
+question: is an excess of $+0.015$ ruled out? The protocol allows the statement ``no larger than 0.015'' only
+through its two-sided equivalence reading, so what follows is a post hoc non-inferiority reading, not a
+pre-specified one. The one-sided 95\% upper bound of a mean is the upper end of its 90\% interval in
+\cref{tab:s2intervals}.
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Chinese (six seeds):} \twoDhiNinety. This rules out an excess of $+0.015$. Equivalence failed only
+        on the lower side, where Taper-minus may forget less.
+  \item \textbf{Python, fresh seeds alone:} \repDhiNinety. This does not rule out an excess of $+0.015$.
+  \item \textbf{Python, six seeds pooled} (descriptive, including Study 1's published seeds): \poolHiNinety. This
+        rules it out.
+\end{itemize}
 
 \begin{table}[t]
 \centering
@@ -927,6 +958,11 @@ the same six seeds.
         a factor of \mcXfactorR{} in the RMS models and grew by a factor of \mcXfactorT{} in the Taper-minus models
         (web branch: \mcWebFactorR{} and \mcWebFactorT).
 \end{itemize}
+The in-training measure is taken after treatment, in models that had by then forgotten different amounts: the
+Chinese branch forgot more than the Python branch, and most Chinese labels are byte fragments that mainly load
+the tied embedding and output layer. A larger domain-specific scale change may therefore be partly a symptom of
+heavier forgetting rather than an independent premise, and the check cannot separate the two. The measure taken
+before treatment, the switch-time gap, was not stronger for Chinese.
 
 \begin{table}[t]
 \centering
@@ -945,9 +981,13 @@ $\times$ 6 seeds; the signed row is a plain mean, with its multiplicative factor
 
 \paragraph{Pre-specified reading.} H2's category is opposite direction and the premise was stronger for $X$ in
 training, so the matrix (\cref{tab:s2matrix}) permits the reading \emph{evidence against the scale-mismatch account
-of H1 in this setting}. Without the equivalence reading, its second sentence does not apply. Because of the
-qualifications above, we read the opposite-direction category as no evidence for H1 on Chinese, and not as
-evidence that TaperNorm protects against forgetting.
+of H1 in this setting}. Without the equivalence reading, its second sentence does not apply. The reading is
+sturdier than the label. Every leave-one-out mean stays below $+0.015$, so dropping any one seed would leave the
+category in the same row of the matrix, which groups stop, opposite and transient, and the permitted reading
+would be unchanged; only the label \emph{opposite direction} depends on single seeds. The reading inherits the
+limits of the manipulation check, which is measured after treatment. Because of the qualifications above, we read
+the opposite-direction category as no evidence for H1 on Chinese, and not as evidence that TaperNorm protects
+against forgetting.
 
 \section{Discussion}
 \label{sec:discussion}
@@ -956,16 +996,20 @@ evidence that TaperNorm protects against forgetting.
 RMSNorm with TaperNorm did not produce the excess forgetting that H1 predicts. Neither shift reached the
 pre-specified screen for a meaningful excess. For Python, Study 1's mean was negative and the fresh seeds' mean,
 although positive, stayed below 0.015. For Chinese, the mean was negative and fell just into the opposite-direction
-category. Study 2 also measured the premise directly. Beyond what continued web training did, the Chinese shift
-changed activation scales during training about four times as much as Python did, and the two architectures
-responded differently: the RMS models' scale shrank and the Taper-minus models' grew. Taper-minus nevertheless did
-not forget more. Under Study 2's pre-specified interpretation matrix this is evidence against the scale-mismatch account of H1
-in this setting.
+category. How firmly an excess of $+0.015$ is ruled out differs, by the post hoc one-sided reading of
+\cref{sec:s2results}: firmly for Chinese, for Python only when the six seeds are pooled, and not by the three fresh
+Python seeds alone. Study 2 also measured the premise with a pre-specified in-training check. Beyond what
+continued web training did, the Chinese shift changed activation scales during training about four times as much
+as Python did, and the two architectures responded differently: the RMS models' scale shrank and the Taper-minus
+models' grew. Taper-minus nevertheless did not forget more. Under Study 2's pre-specified interpretation matrix
+this is evidence against the scale-mismatch account of H1 in this setting, subject to the limits of a check
+measured after treatment.
 
 \paragraph{What they do not show.} \emph{Stop} is not evidence of equivalence \citep{lakens2017equivalence}, and
 neither study met its equivalence reading. Nor is the opposite-direction category good evidence that TaperNorm
-protects against forgetting. The Chinese mean lay just past the threshold, its 95\% interval includes zero, it
-depends on one reused seed in particular, and a single seed's endpoint is noisy. The Chinese shift was also nearly
+protects against forgetting. The Chinese mean lay just past the threshold, its 95\% interval includes zero,
+leaving out either of two single seeds would change the label to \emph{stop}, and a single seed's endpoint is
+noisy. The Chinese shift was also nearly
 catastrophic for web text in both architectures (\cref{fig:s2traj}a), a regime in which the difference between
 them is a small fraction of the total forgetting. In Study 1, apart from a brief early dip, the negative values of
 $D$ appeared only in the final, low-learning-rate phase, and the training regime, including learning-rate decay,
@@ -984,9 +1028,12 @@ than we used, or an endpoint that averages several late evaluations rather than 
 \paragraph{The premise and the mechanism.} Study 1's exploratory analysis found the scale premise weak for Python:
 code and web activations differed in scale by only about \scaleGapPctR--\scaleGapPctT\% at the switch, and the
 largest change during continuation, a shrinkage in the RMS model, happened to a similar extent when training simply
-continued on web text. Study 2 found a premise about four times stronger for Chinese and still no excess
-forgetting, which makes it less likely that H1 failed only because the premise was absent. We tested no
-mechanism, but several features of the setting may matter:
+continued on web text. Study 2's in-training check found a premise about four times stronger for Chinese and
+still no excess forgetting, which makes it less likely that H1 failed only because the premise was absent. That
+check, however, is measured after treatment and cannot separate cause from symptom: a larger domain-specific scale
+change may partly reflect the heavier forgetting of the Chinese branch, and the measure taken before treatment,
+the switch-time gap, was not stronger for Chinese. We tested no mechanism, but several features of the setting may
+matter:
 \begin{itemize}[leftmargin=1.4em,itemsep=2pt]
   \item Taper-minus keeps the final RMSNorm, which \citet{kanavalau2026tapernorm} identify as the essential
         anchor of scale.
@@ -1028,6 +1075,9 @@ before starting the run, or filing a registry entry first, would remove that dep
         with a larger switch-time gap than Python. Chinese text under GPT-2's tokenizer mixes a change of content
         with a change of the predicted token distribution, and it destroyed most of the models' web performance in
         both architectures. Another domain, or a tokenizer that covers Chinese, might behave differently.
+  \item \textbf{The manipulation check.} Its in-training measure is taken after treatment, in models that had
+        forgotten different amounts, so it cannot separate a premise that causes forgetting from a symptom of it.
+        The measure taken before treatment, the switch-time gap, was not stronger for Chinese.
   \item \textbf{Reuse across sessions.} For seeds 101--103, Study 2's Chinese branches are compared with web
         branches trained in Study 1's session. The bit-exact lineage checks and the pinned software image bound
         the differences between sessions but cannot exclude all of them. The same seeds' switch states also served
@@ -1041,7 +1091,8 @@ before starting the run, or filing a registry entry first, would remove that dep
         (\cref{sec:s2prespec}). Git commit dates are set by the author's machine and are not independent
         timestamps.
   \item \textbf{Thresholds.} The decision thresholds were set as investment thresholds without a power analysis,
-        and Study 2's equivalence bound reuses the smaller of them.
+        and Study 2's equivalence bound reuses the smaller of them. The one-sided readings and the
+        leave-one-seed-out analysis were added after the results were known.
   \item \textbf{Data audit.} The near-duplicate search is approximate. Its analytic recall is high for pairs above
         the similarity threshold, but the random-pair audits are only sanity checks with negligible power,
         repository names are an incomplete proxy for forks, and near duplicates between the Chinese data and
@@ -1059,9 +1110,10 @@ before starting the run, or filing a registry entry first, would remove that dep
 Two small studies, each specified before it ran, found no evidence that TaperNorm increases persistent forgetting
 after a domain shift. For web to Python, the pre-specified decision was \emph{stop} in the pilot and again on
 three fresh seeds, although the fresh seeds' contrasts were positive where the pilot's had been negative. For web
-to Chinese, a shift whose scale premise during training was about four times stronger, mean $D_X$ was
+to Chinese, where a pre-specified in-training measure of the premise was about four times larger, mean $D_X$ was
 \twoDmean{}~nats/token, just past the threshold for the opposite direction, with a 95\% interval that includes
-zero. Neither study shows equivalence, and seed-to-seed variation was much larger than the pilot suggested. A
+zero; a post hoc one-sided bound rules out an excess of $+0.015$. Neither study shows equivalence, and
+seed-to-seed variation was much larger than the pilot suggested. A
 more decisive test would need larger models, many more seeds, a tokenizer suited to the new domain, and an
 endpoint that averages several late evaluations.
 

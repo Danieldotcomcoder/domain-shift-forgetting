@@ -130,7 +130,9 @@ and the H2 report must say so.
 | **Mean** | **−0.0325** | **−0.0338** | **−0.0306** | **−0.0378** | | |
 
 - **A narrow call.** The mean is just past the −0.03 threshold and the 95% interval includes 0. On the fresh
-  seeds alone (104–106) the mean is −0.0260 (95% [−0.0816, +0.0296]), which does not reach −0.03.
+  seeds alone (104–106) the mean is −0.0260 (95% [−0.0816, +0.0296]), which does not reach −0.03. Leaving
+  out seed 101 or seed 104 (post hoc) would make the category STOP. Every leave-one-out mean stays below
+  +0.015, though, so the pre-specified reading below would be the same: only the label is fragile.
 - **Large seed variation.** The SD of D_X is about 10 times the pilot's SD of D. A single seed's D_X(s) moves
   by about 0.04 between adjacent evaluations (post hoc).
 - **Near-catastrophic shift.** The Chinese branch raised web cross-entropy from about 4.58 to about 6.99
@@ -147,6 +149,13 @@ and the H2 report must say so.
 - **Pooled six-seed estimate** (descriptive; includes the pilot's published seeds): mean D −0.0065,
   95% [−0.0254, +0.0125].
 
+**Post hoc one-sided reading** (not pre-specified). Is an excess of +0.015 ruled out? The one-sided 95% upper
+bounds are:
+
+- **Chinese:** −0.0045, so yes. Equivalence failed only on the lower side.
+- **Fresh Python seeds alone:** +0.0214, so no.
+- **Pooled Python:** +0.0084, so yes.
+
 **Manipulation check (pre-specified, descriptive).** All values are mean absolute natural-log ratios of
 activation scales, RMS / Taper-minus.
 
@@ -156,6 +165,8 @@ activation scales, RMS / Taper-minus.
   web-probe scale was 0.165 / 0.183 for Chinese and 0.039 / 0.042 for Python.
 - **The two architectures moved in opposite directions on Chinese.** The web-probe scale shrank by a factor
   of 0.72 in RMS and grew by a factor of 1.21 in Taper-minus.
+- **Caveat.** The in-training measure is taken after treatment, in models that forgot different amounts. A
+  larger change may partly be a symptom of heavier forgetting, not an independent premise.
 
 **Pre-specified reading** (Protocol §9.4): opposite direction, with the in-training premise stronger for X, is
 *evidence against the scale-mismatch account of H1 in this setting*. Equivalence was not shown, so the protocol
@@ -189,7 +200,7 @@ does not allow the stronger statement "no excess larger than 0.015".
 - **Inspecting the proof.** Run `python study2/timestamp.py info study2/registration-manifest.json.ots`.
   [`study2/timestamp-evidence.json`](study2/timestamp-evidence.json) collects the facts above.
 
-Read Study 2 as "specified in advance and hash-timestamped before any run; publicly registered after execution".
+Read Study 2 as "specified in advance and hash-timestamped before any run, with public registration deferred until after execution".
 
 ## Status
 
