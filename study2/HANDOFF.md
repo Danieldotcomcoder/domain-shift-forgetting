@@ -5,7 +5,7 @@ anything. Branch: `study2` (created from `main` at `4de359f`, the reviewer-verif
 
 ## FINAL STATUS (2026-10-10): Study 2 is COMPLETE. Results and full timeline are in `study2/RUNLOG.md`
 
-- **H2 (web → mc4-zh, 6 seeds): OPPOSITE DIRECTION.** Mean D_X −0.0326 (SD 0.034; 95% t-interval
+- **H2 (web → mc4-zh, 6 seeds): OPPOSITE DIRECTION.** Mean D_X −0.0325 (SD 0.034; 95% t-interval
   [−0.068, +0.003] includes 0; one seed positive). The premise qualification applies (switch gap not above
   Python's), but the in-training domain-specific scale change was about 4× Python's.
 - **R2 (web → Python, seeds 104–106): STOP — SMALL OBSERVED EFFECT.** Mean D +0.0093. The pilot's NO

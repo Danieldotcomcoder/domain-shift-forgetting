@@ -1,0 +1,23 @@
+{
+  "schema": "s2-timestamp-evidence-1",
+  "manifest": "study2/registration-manifest.json",
+  "manifest_sha256": "3eeda992819ae9428a00c6a98688cf9b172879a136c771d7b9794ed92110e45a",
+  "proof": "study2/registration-manifest.json.ots",
+  "calendar_submission_utc": "2026-10-08T21:55:36Z",
+  "calendar_submission_source": "local clock of the submitting machine (study2/RUNLOG.md); recorded by the calendars but not Bitcoin-anchored",
+  "calendars_accepted": ["https://a.pool.opentimestamps.org", "https://b.pool.opentimestamps.org",
+                         "https://a.pool.eternitywall.com", "https://ots.btc.catallaxy.com"],
+  "bitcoin_block_height": 970569,
+  "bitcoin_block_hash": "000000000000000000003225542bf2f8ab2aadbaa449af26977602b793b6cde1",
+  "bitcoin_block_time_utc": "2026-10-09T01:59:53Z",
+  "bitcoin_block_time_source": "blockstream.info API, block-height 970569",
+  "kaggle_versions_embedding_the_manifest_utc": {
+    "danny00/s2-domain-probe v1": "2026-10-08T21:56:52Z",
+    "danny00/s2-prepare-domain v1": "2026-10-08T22:01:47Z",
+    "danny00/s2-single-notebook-smoke v1": "2026-10-08T22:30:42Z",
+    "danny00/s2-single-notebook-run v1 (CPU bootstrap)": "2026-10-08T22:58:03Z",
+    "danny00/s2-single-notebook-run v2 (session 1)": "2026-10-08T22:59:36Z",
+    "danny00/s2-single-notebook-run v3 (session 2)": "2026-10-09T21:36:27Z"
+  },
+  "kaggle_times_source": "push times printed by the local machine (study2/RUNLOG.md); Kaggle records each version server-side"
+}

@@ -51,7 +51,7 @@ Session 1 details:
 ### Pre-registered results
 
 **H2 (web → mc4-zh, seeds 101–106): OPPOSITE DIRECTION.**
-- **Endpoint.** Mean D_X = **−0.0326** nats/token (threshold ≤ −0.03); SD 0.0341.
+- **Endpoint.** Mean D_X = **−0.0325** (−0.03255) nats/token (threshold ≤ −0.03); SD 0.0341.
   - Per seed (101 → 106): −0.0886, +0.0065, −0.0351, −0.0513, −0.0179, −0.0089.
 - **Intervals.** 95% t-interval [−0.0683, +0.0032], which includes 0. 90% t-interval [−0.0606, −0.0045]. Equivalence within ±0.015: no.
 - **Same direction elsewhere.** Mean D_X(3050) −0.0338; mean Q −0.0306; mean matched differential forgetting at the 6,104 target −0.0378.
@@ -73,7 +73,7 @@ Session 1 details:
 - **Interpretation (matrix in Protocol 9.4):** opposite direction with the in-training premise stronger for X is evidence against the scale-mismatch account of H1 in this setting.
 
 What the timestamp evidence establishes:
-- **Bitcoin.** The block proves that the manifest (protocol and code hashes) existed by 01:59 UTC on 9 October. At that time session 1 had completed no seed: S102's X branches finished at 00:57 and 00:58, but nobody saw results before the session's output appeared at 10:07.
+- **Bitcoin.** The block proves that the manifest (protocol and code hashes) existed by 01:59 UTC on 9 October (Bitcoin block times are accurate only to about two hours). This is *after* the X branches of seeds 101-103 reached their endpoints inside the running session (worker logs: 23:59, 00:57-00:58 and 01:55-01:56 UTC). *Corrected 10 October:* an earlier version of this line said that no seed had completed by then, which was wrong. The Bitcoin anchor alone therefore does not predate every outcome; the two items below do.
 - **Before the first job.** The digest was submitted to the calendars at 21:55 UTC on 8 October, before the first Study 2 job at 21:56. The calendars' receipts are in the proof, but that earlier time is not Bitcoin-anchored.
 - **Kaggle.** Every Study 2 notebook version embeds the manifest byte for byte: the probe at 21:56, the preparation at 22:01, the smoke test at 22:30, and the main run at 22:58 and 22:59 UTC on 8 October. The probe's selection, the preparation manifest and every runner session record its SHA-256. These are server-side timestamps, verifiable once the notebooks are made public.
 

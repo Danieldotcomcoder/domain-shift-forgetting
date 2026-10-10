@@ -4,24 +4,42 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c)
 ![Hardware](https://img.shields.io/badge/run%20on-Kaggle%20T4%20x2-20beff)
 
-A pre-specified pilot experiment that asks whether replacing a transformer's internal RMSNorm layers with
-**TaperNorm** (normalization that is gradually switched off during training) makes the model forget more of
-what it learned when its training data switches domain.
+Two pre-specified studies ask whether replacing a transformer's internal RMSNorm layers with **TaperNorm**
+(normalization that is gradually switched off during training) makes the model forget more of what it learned
+when its training data switches domain.
 
 > **H1.** After switching training from web text to Python code, does a model trained with internal
 > TaperNorm (*Taper-minus*) lose more held-out web performance than an otherwise identical RMSNorm model,
 > relative to simply continuing web training?
 
-The protocol, data splits, endpoints and decision rules were fixed before any training run. This is a
-screening pilot that decides whether a larger study is worth running. It is not a confirmatory result.
+- **Study 1** is a small screening pilot of H1 (web → Python, three paired seeds).
+- **Study 2** is a separate study. It tests H1's direction on a new domain chosen by a fixed rule (**H2**), and it
+  replicates the pilot on three fresh seeds (**R2**). It also measures H1's premise, a domain-induced change in
+  activation scale, as a pre-specified manipulation check.
 
-**Paper:** a preprint describing the study is in [`paper/main.pdf`](paper/main.pdf) (source and asset
+In both studies the protocol, data splits, endpoints and decision rules were fixed before any training run. Both
+are screening studies, not confirmatory results.
+
+**Paper:** a preprint describing both studies is in [`paper/main.pdf`](paper/main.pdf) (source and asset
 generator in [`paper/`](paper/)).
 
-## Result
+## Results at a glance
+
+D is the difference-in-differences in held-out web cross-entropy (nats/token) at the endpoint. Positive D means
+extra forgetting under TaperNorm.
+
+| Study | Shift | Seeds | Mean D | Descriptive 95% interval | Pre-specified decision |
+|---|---|---|---:|---|---|
+| 1 | web → Python | 101–103 | −0.0223 | [−0.0308, −0.0139] | **STOP — SMALL OBSERVED EFFECT** |
+| 2 (H2) | web → Chinese (mC4 zh) | 101–106 | −0.0325 | [−0.0683, +0.0032] | **OPPOSITE DIRECTION** |
+| 2 (R2) | web → Python | 104–106 | +0.0093 | [−0.0084, +0.0271] | **STOP — SMALL OBSERVED EFFECT** (the pilot's NO replicates) |
+
+No study found the excess forgetting H1 predicts, and none showed equivalence within ±0.015 nats/token.
+
+## Study 1 result
 
 > **H1: No.** Taper-minus did not show more persistent web forgetting than RMSNorm after the switch to Python.
-> The pre-specified decision is **STOP — SMALL OBSERVED EFFECT**. Stage 1 is closed.
+> The pre-specified decision is **STOP — SMALL OBSERVED EFFECT**.
 
 The run was complete and valid. All three paired seeds finished, no events were missing, there were no
 numerical failures, and every guardrail passed.
@@ -54,8 +72,9 @@ numerical failures, and every guardrail passed.
   three; rare tokens contribute at most 3% of D.
 - **What the rules allow.** STOP means no convincing persistent excess forgetting within this pilot. It is not
   evidence of equivalence. Per protocol, no extra seeds, changed endpoints or follow-up study start
-  automatically. Any new question, such as whether TaperNorm reduces forgetting, needs its own
-  pre-specified protocol.
+  automatically. Study 2 is a new question with its own protocol, not an extension of the pilot.
+- **Hindsight from Study 2.** The three seeds agreed closely, but that understated the seed-to-seed variation:
+  three fresh seeds gave positive web → Python contrasts, all outside this interval (see below).
 
 **Exploratory analyses** (chosen after the results; descriptive only, see the paper's §5.3–5.4)
 
@@ -86,16 +105,110 @@ numerical failures, and every guardrail passed.
   first public commit came after seed 101's endpoint values had appeared in the live log; the paper (§3.6)
   discloses this timeline in full.
 
+## Study 2 result
+
+The protocol is [`study2/PROTOCOL.md`](study2/PROTOCOL.md); the execution log is
+[`study2/RUNLOG.md`](study2/RUNLOG.md).
+
+**Domain selection.** Four candidates were fixed in advance: German, Russian and Chinese mC4, and OpenWebMath.
+The rule picks the candidate whose activations at the pilot's switch states differ most in scale from web text.
+**Chinese (mC4 zh)** was selected, with S = 0.0934, ahead of Russian (0.0893), German (0.0514) and OpenWebMath
+(0.0119). No candidate exceeded Python's S of 0.1099, a case the protocol anticipated (§4.6): Study 2 proceeds,
+and the H2 report must say so.
+
+> **H2 (web → Chinese, seeds 101–106): OPPOSITE DIRECTION.** Mean D_X = −0.0325 nats/token (SD 0.0341;
+> 95% interval [−0.0683, +0.0032]; 90% interval [−0.0606, −0.0045]; equivalence within ±0.015 not shown).
+
+| Seed | D_X | D_X at 3050 | Q | Matched (6104) | Prefix gap | Chinese improvement (RMS / Taper) |
+|---|---:|---:|---:|---:|---:|---:|
+| 101 (pilot switch state) | −0.0886 | −0.0260 | −0.0880 | −0.1137 | 0.28% | 2.30 / 2.33 nats |
+| 102 (pilot switch state) | +0.0065 | −0.0176 | +0.0074 | −0.0466 | 0.28% | 2.31 / 2.33 nats |
+| 103 (pilot switch state) | −0.0351 | −0.0739 | −0.0309 | −0.0854 | 0.34% | 2.23 / 2.27 nats |
+| 104 | −0.0513 | +0.0071 | −0.0487 | +0.0460 | 0.26% | 2.21 / 2.24 nats |
+| 105 | −0.0179 | −0.0070 | −0.0153 | −0.0130 | 0.23% | 2.18 / 2.19 nats |
+| 106 | −0.0089 | −0.0856 | −0.0082 | −0.0143 | 0.30% | 2.28 / 2.31 nats |
+| **Mean** | **−0.0325** | **−0.0338** | **−0.0306** | **−0.0378** | | |
+
+- **A narrow call.** The mean is just past the −0.03 threshold and the 95% interval includes 0. On the fresh
+  seeds alone (104–106) the mean is −0.0260 (95% [−0.0816, +0.0296]), which does not reach −0.03.
+- **Large seed variation.** The SD of D_X is about 10 times the pilot's SD of D. A single seed's D_X(s) moves
+  by about 0.04 between adjacent evaluations (post hoc).
+- **Near-catastrophic shift.** The Chinese branch raised web cross-entropy from about 4.58 to about 6.99
+  nats/token in both architectures (forgetting 2.34–2.55 nats/token, against 1.63–1.69 for Python). Under
+  GPT-2's tokenizer, 85% of the Chinese labels are byte fragments.
+- **Not evidence of protection.** We read the category as no evidence for H1 on Chinese, not as evidence that
+  TaperNorm protects against forgetting.
+
+> **R2 (web → Python, fresh seeds 104–106): STOP — SMALL OBSERVED EFFECT.** Mean D = +0.0093 (SD 0.0071;
+> 95% [−0.0084, +0.0271]; 90% [−0.0027, +0.0214]). The pilot's decision replicates.
+
+- **The sign does not replicate.** D was positive in every fresh seed (+0.0160, +0.0102, +0.0018) and negative in
+  every pilot seed, and no fresh value lies inside the pilot's interval.
+- **Pooled six-seed estimate** (descriptive; includes the pilot's published seeds): mean D −0.0065,
+  95% [−0.0254, +0.0125].
+
+**Manipulation check (pre-specified, descriptive).** All values are mean absolute natural-log ratios of
+activation scales, RMS / Taper-minus.
+
+- **At the switch, the premise was not stronger for Chinese.** The domain-vs-web gap was 0.085 / 0.122 for
+  Chinese and 0.093 / 0.136 for Python.
+- **During training, the premise was about 4× stronger for Chinese.** The domain-specific change of the
+  web-probe scale was 0.165 / 0.183 for Chinese and 0.039 / 0.042 for Python.
+- **The two architectures moved in opposite directions on Chinese.** The web-probe scale shrank by a factor
+  of 0.72 in RMS and grew by a factor of 1.21 in Taper-minus.
+
+**Pre-specified reading** (Protocol §9.4): opposite direction, with the in-training premise stronger for X, is
+*evidence against the scale-mismatch account of H1 in this setting*. Equivalence was not shown, so the protocol
+does not allow the stronger statement "no excess larger than 0.015".
+
+**Run record**
+
+- **Compute.** A domain probe, a CPU data preparation and a smoke test, then the main run: two Kaggle sessions
+  of 11.12 h and 4.06 h on 2x Tesla T4, with PyTorch 2.11.0 in the pilot's pinned Docker image. There were no
+  restarts, failures, missing records or FP16 retries.
+- **Lineage.** All 24 lineage checks were bit-exact: every restored switch state re-evaluated exactly to its
+  records, including the pilot's six in a new session.
+- **Evidence** (`reports/s2-kaggle/`): the probe's `selection.json`, the preparation manifest, audit and
+  acceptance records, the smoke-test results, the decision reports, the session records, worker logs, and every
+  run's `events.jsonl`, `train.jsonl` and receipts.
+- **Independent recomputation.** [`paper/make_assets.py`](paper/make_assets.py) recomputes every contrast,
+  interval and manipulation-check value from these records and asserts agreement with the decision report.
+- **Withheld.** Checkpoints stay in the Kaggle notebook output. The preparation notebook stays private, because
+  its output holds the sealed reserved test split.
+
+**Pre-specification (Protocol Amendment 1).** Study 2 ran before a public registry entry was filed.
+- **The manifest.** [`study2/registration-manifest.json`](study2/registration-manifest.json) holds the SHA-256 of
+  the protocol and every Study 2 code file.
+- **Submitted for timestamping before any job.** The manifest's hash went to four OpenTimestamps calendars at
+  21:55 UTC on 8 October 2026, one minute before the first Study 2 job.
+- **Embedded in every notebook version.** Every Study 2 notebook embeds the manifest byte for byte. The versions
+  were created 21:56–22:59 UTC, so Kaggle records server-side times for them.
+- **The Bitcoin attestation came later.** The proof ([`.ots`](study2/registration-manifest.json.ots)) is anchored
+  in Bitcoin block 970,569 (01:59 UTC on 9 October). That is after the Chinese branches of seeds 101–103 had
+  finished inside the running session, so the earlier bound rests on Kaggle's records.
+- **Inspecting the proof.** Run `python study2/timestamp.py info study2/registration-manifest.json.ots`.
+  [`study2/timestamp-evidence.json`](study2/timestamp-evidence.json) collects the facts above.
+
+Read Study 2 as "specified in advance and hash-timestamped before any run; publicly registered after execution".
+
 ## Status
 
 | Stage | State |
 |---|---|
-| Protocol v3, data specification, analysis plan | Frozen |
-| Corpus preparation (C4 English + The Stack dedup Python, GPT-2 tokens) | Done, hash-verified |
-| Implementation + equivalence tests | Done |
-| Kaggle smoke test (T4 x2) | Passed 2026-10-03 |
-| Primary run (3 seeds x 2 conditions x 3 phases) | Complete 2026-10-03 (12:18–21:40 UTC) |
-| **Decision on H1** | **No: STOP — SMALL OBSERVED EFFECT. Stage 1 closed.** |
+| Study 1: protocol v3, data specification, analysis plan | Frozen |
+| Study 1: corpus preparation (C4 English + The Stack dedup Python, GPT-2 tokens) | Done, hash-verified |
+| Study 1: implementation + equivalence tests | Done |
+| Study 1: Kaggle smoke test (T4 x2) | Passed 2026-10-03 |
+| Study 1: primary run (3 seeds x 2 conditions x 3 phases) | Complete 2026-10-03 (12:18–21:40 UTC) |
+| **Study 1: decision on H1** | **No: STOP — SMALL OBSERVED EFFECT** |
+| Study 2: protocol, Amendment 1, code | Frozen 2026-10-08 21:54 UTC; manifest hash timestamped |
+| Study 2: domain probe, preparation, smoke test | Done 2026-10-08 (mC4 zh selected; preparation accepted; smoke passed) |
+| Study 2: main run (12 condition–seed runs) | Complete 2026-10-10 01:40 UTC |
+| **Study 2: decisions** | **H2: OPPOSITE DIRECTION. R2: STOP — SMALL OBSERVED EFFECT (replicates)** |
+| Study 2: public registry entry | To be filed after execution (Amendment 1) |
+
+To run Study 2 yourself, follow [`kaggle_s2/README.md`](kaggle_s2/README.md). The sections below describe the
+shared design and Study 1's runner; Study 2 reuses them unchanged.
 
 ## Experimental design
 
@@ -282,7 +395,11 @@ seeds, endpoints or decision thresholds.
 ## Repository layout
 
 ```text
-kaggle_h1/                 Current runner: h1_run.py, notebook builder, status script, equivalence tests
+kaggle_h1/                 Study 1 runner: h1_run.py, notebook builder, status script, equivalence tests
+kaggle_s2/                 Study 2: runner, domain probe, domain preparation, notebook builder, status script,
+                           tests, and the runbook (README.md)
+study2/                    Study 2 protocol (with Amendment 1), registration manifest, OpenTimestamps proof,
+                           timestamp evidence, execution log, hand-off notes and the OSF filing guide
 src/domain_shift_forgetting/
   models/                  Transformer, RMSNorm, TaperNorm
   training/                Effective update, checkpoints, budget arithmetic
@@ -295,16 +412,19 @@ configs/                   Protocol values (stage1.v3.json) and earlier Kaggle c
 docs/                      Implementation notes and earlier runbooks
 notebooks/, scripts/       Earlier Kaggle workflows (superseded by kaggle_h1/ for execution)
 Domain-Shift Forgetting · Stage 1 — H1 Research Pi/   Protocol export: the scientific source of truth
-reports/h1-kaggle/         Decision report, frozen config, session record, run log, and per-run
+reports/h1-kaggle/         Study 1: decision report, frozen config, session record, run log, and per-run
                            evaluation records, training logs and completion receipts
-paper/                     Preprint source, compiled PDF, and the script that generates its numbers
+reports/s2-kaggle/         Study 2: probe selection, preparation records, smoke-test results, decision
+                           reports, session records, worker logs, and every run's records
+paper/                     Preprint source (both studies), compiled PDF, and the script that generates its numbers
 manifests/, registry/      Manifest templates and run/task registries
 data/, artifacts/          Local data and checkpoints (contents git-ignored)
 ```
 
 ### Protocol documents
 
-The original protocol pages remain the scientific source of truth:
+Study 2's protocol is [`study2/PROTOCOL.md`](study2/PROTOCOL.md). For Study 1, the original protocol pages
+remain the scientific source of truth:
 
 - [Project overview](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi%203d88a2d10e448149ac9df736861f0d40.md)
 - [01 · Protocol v3, H1 only](Domain-Shift%20Forgetting%20%C2%B7%20Stage%201%20%E2%80%94%20H1%20Research%20Pi/01%20%C2%B7%20Protocol%20v3%20%E2%80%94%20H1%20only%203d88a2d10e44812ea734fdeff5891429.md)
@@ -315,29 +435,36 @@ The original protocol pages remain the scientific source of truth:
 
 ## Scope and limitations
 
-- **One question only.** H1 is the only hypothesis. There is no Taper-plus arm, correction, replay, extra seeds
-  or outcome-dependent redesign.
-- **Development data only.** The pilot uses development data alone; the reserved test split stays sealed for any
-  later confirmatory study.
+- **Narrow questions.** Study 1 tests H1 only. Study 2 tests H1's direction on one more domain (H2) and
+  replicates Study 1 (R2). There is no Taper-plus arm, correction, replay or outcome-dependent redesign.
+- **Development data only.** Both studies use development data alone; the reserved test splits stay sealed for
+  any later confirmatory study.
 - **What H1 covers.** It concerns the complete TaperNorm training intervention, including its taper history.
   It does not isolate a mechanism, and it does not describe normalization-free transformers in general.
-- **Narrow conditions.** Results come from one small model, one corpus sample, one recipe and FP16 on T4.
-  Generalization beyond these is untested.
+- **Narrow conditions.** Results come from one small model, two domain pairs, one corpus sample per domain, one
+  recipe and FP16 on T4. Generalization beyond these is untested.
+- **The Chinese shift.** Under GPT-2's tokenizer most Chinese labels are byte fragments, so this shift mixes
+  content with a change of the predicted token distribution, and it destroys most web performance in both
+  architectures.
 - **Embeddings dominate.** Embeddings are most of the parameter count, so differential embedding drift can
   mediate the effect.
-- **Fragile uncertainty.** With three seeds, uncertainty estimates are fragile, and a positive screen does not
-  establish a population effect.
+- **Fragile uncertainty.** Seeds are few, and Study 2 showed that the seed-to-seed variation is much larger than
+  Study 1's three seeds suggested. A screening decision does not establish a population effect.
+- **Registration.** Neither study was lodged with a registry before it ran; the paper sets out exactly what
+  fixes each plan in advance and what does not.
 
 ## References
 
 - TaperNorm: [arXiv:2602.10408v1](https://arxiv.org/abs/2602.10408v1) (version 1; later versions carry a
   different title). The operator and calibration are reused; the training setup is this project's own.
 - [nanoGPT](https://github.com/karpathy/nanoGPT): model starting point.
-- [C4](https://huggingface.co/datasets/allenai/c4) and
-  [The Stack (dedup)](https://huggingface.co/datasets/bigcode/the-stack-dedup): data sources. Their own
-  licenses and terms of use apply, and no corpus content is redistributed here.
+- [C4 and mC4](https://huggingface.co/datasets/allenai/c4),
+  [The Stack (dedup)](https://huggingface.co/datasets/bigcode/the-stack-dedup) and
+  [OpenWebMath](https://huggingface.co/datasets/open-web-math/open-web-math) (a Study 2 candidate): data
+  sources. Their own licenses and terms of use apply, and no corpus content is redistributed here.
+- [OpenTimestamps](https://opentimestamps.org): the timestamp of Study 2's registration manifest.
 
 ## License
 
 Released under the [MIT License](LICENSE). The license covers this repository's code and documents; it does
-not extend to the C4 or The Stack datasets, which keep their own licenses and terms of use.
+not extend to the C4, mC4, OpenWebMath or The Stack datasets, which keep their own licenses and terms of use.

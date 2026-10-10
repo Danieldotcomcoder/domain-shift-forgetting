@@ -31,6 +31,9 @@ git add study2/registration-manifest.json; git commit -m "Study 2: registration 
   `.venv\Scripts\ots stamp study2\registration-manifest.json`. Commit the `.ots` proof. A few hours later, run
   `.venv\Scripts\ots upgrade study2\registration-manifest.json.ots` to complete the Bitcoin attestation, and commit
   again.
+- On Windows the `ots` client could not load OpenSSL. Study 2 therefore used
+  [`study2/timestamp.py`](../study2/timestamp.py) (`stamp`, `upgrade`, `info`), which calls the same
+  `opentimestamps` library.
 - Every notebook embeds the manifest byte for byte, and the builder refuses to build without it.
 - File the public registration (for example on OSF) with `study2/PROTOCOL.md`, the manifest, the `.ots` proof and
   the commit.

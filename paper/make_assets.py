@@ -1,6 +1,6 @@
 """Generate every number, table and figure in the paper from the run's own records.
 
-Reads reports/h1-kaggle/ (decision report, config, session record, per-run evaluation logs,
+Reads reports/h1-kaggle/ (Study 1: decision report, config, session record, per-run evaluation logs,
 completion receipts, and corpus/{audit,manifest}.json). Recomputes the primary
 contrasts independently from the raw evaluation records and asserts agreement with the frozen
 analysis output before writing anything. Nothing in the manuscript is typed by hand.
@@ -134,8 +134,8 @@ def second_draft_analyses(ev, rows, config, session):
     early = [10, 100, 305]
     middle = [u for u in FULL_CONT if 610 <= u <= 4880]
     late = [u for u in FULL_CONT if u >= 5185]
-    out["earlyLo"] = mm(min(point_mean[u] for u in early), 3)
-    out["earlyHi"] = mm(max(point_mean[u] for u in early), 3)
+    out["earlyLo"] = mm(min(point_mean[u] for u in early), 4)  # 4 decimals, as \dipMean (same s = 100 value)
+    out["earlyHi"] = mm(max(point_mean[u] for u in early), 4)
     out["midMean"] = mm(statistics.mean(point_mean[u] for u in middle), 3)
     out["midMin"] = mm(min(point_mean[u] for u in middle), 3)
     out["midMax"] = mm(max(point_mean[u] for u in middle), 3)
@@ -271,6 +271,475 @@ def second_draft_analyses(ev, rows, config, session):
     out["shortDocs"] = str(audit["short_shingle_documents"])
     assert audit["missed_candidate_pairs_found"] == 0  # the manuscript says "none reached 0.85"
     return out
+
+
+S2DIR = ROOT / "reports" / "s2-kaggle"
+S2STATE = S2DIR / "run" / "s2state"
+SEEDS2 = (101, 102, 103, 104, 105, 106)
+FRESH = (104, 105, 106)
+T95 = {3: 4.303, 6: 2.571}   # pre-registered (study2/PROTOCOL.md, Sec. 8.5)
+T90 = {3: 2.920, 6: 2.015}
+
+
+def figure_style():
+    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7, "axes.titlesize": 7.5,
+                         "axes.labelsize": 7, "xtick.labelsize": 6.5, "ytick.labelsize": 6.5,
+                         "axes.edgecolor": MUTED, "axes.linewidth": 0.6, "xtick.color": INK2, "ytick.color": INK2,
+                         "axes.labelcolor": INK2, "text.color": INK, "legend.fontsize": 6.3,
+                         "pdf.fonttype": 42})
+
+
+def sha256_lf(path):
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def load_study2():
+    read = lambda p: json.loads(p.read_text(encoding="utf-8"))
+    data = {"report": read(S2STATE / "decision-report.json"), "config": read(S2STATE / "config.json"),
+            "sessions": [json.loads(l) for l in (S2STATE / "sessions.jsonl").read_text().splitlines() if l.strip()],
+            "selection": read(S2DIR / "probe" / "s2probe" / "selection.json"),
+            "online": read(S2DIR / "prepare" / "s2prep" / "s2online" / "manifest.json"),
+            "audit": read(S2DIR / "prepare" / "s2prep" / "s2online" / "audit.json"),
+            "acceptance": read(S2DIR / "prepare" / "s2prep" / "acceptance.json"),
+            "smoke": read(S2DIR / "smoke" / "smoke-results.json"),
+            "stamp": read(ROOT / "study2" / "timestamp-evidence.json"),
+            "registration": read(ROOT / "study2" / "registration-manifest.json")}
+    ev2, completion2 = {}, {}
+    for seed in SEEDS2:
+        for cond in CONDS:
+            run = S2STATE / "runs" / f"S{seed}-{cond}"
+            completion2[seed, cond] = read(run / "completion.json")
+            for line in (run / "events.jsonl").read_text(encoding="utf-8").splitlines():
+                r = json.loads(line)
+                ev2[seed, cond, r["stage"], r["step"], r["role"], r["domain"]] = r
+    data["ev"], data["completion"] = ev2, completion2
+    return data
+
+
+def interval(values, table):
+    mean, sd = statistics.mean(values), statistics.stdev(values)
+    half = table[len(values)] * sd / math.sqrt(len(values))
+    return mean, sd, mean - half, mean + half
+
+
+def study2_assets(ev1, m, fmt):
+    """Study 2: integrity chain, independent recomputation of every H2/R2 contrast and of the manipulation check
+    against the frozen report, then macros, tables and the Study 2 figure."""
+    d = load_study2()
+    rep, cfg, sel, ev2 = d["report"], d["config"], d["selection"], d["ev"]
+    out = {}
+    # ---- integrity chain: configuration, registration manifest, runner and protocol hashes
+    body = {k: v for k, v in cfg.items() if k not in ("config_sha256", "checkpoint_seconds")}
+    assert hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode()).hexdigest() \
+        == cfg["config_sha256"], "Study 2 config hash does not recompute"
+    manifest_path = ROOT / "study2" / "registration-manifest.json"
+    manifest_sha = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+    assert manifest_sha == d["stamp"]["manifest_sha256"] == sel["registration_manifest_sha256"] \
+        == d["online"]["registration_manifest_sha256"]
+    registered = d["registration"]["files_sha256"]
+    for session in d["sessions"]:
+        assert session["registration_manifest_sha256"] == manifest_sha
+        assert session["code_sha256"] == registered["kaggle_s2/s2_run.py"]
+    assert sha256_lf(ROOT / "kaggle_s2" / "s2_run.py") == registered["kaggle_s2/s2_run.py"]
+    assert sha256_lf(ROOT / "study2" / "PROTOCOL.md") == registered["study2/PROTOCOL.md"], \
+        "the registered protocol must stay byte-identical"
+    try:  # the OpenTimestamps proof, if the library is installed
+        from opentimestamps.core.notary import BitcoinBlockHeaderAttestation
+        from opentimestamps.core.serialize import StreamDeserializationContext
+        from opentimestamps.core.timestamp import DetachedTimestampFile
+        with (ROOT / "study2" / "registration-manifest.json.ots").open("rb") as stream:
+            proof = DetachedTimestampFile.deserialize(StreamDeserializationContext(stream))
+        assert proof.file_digest.hex() == manifest_sha
+        heights = {a.height for _, a in proof.timestamp.all_attestations()
+                   if isinstance(a, BitcoinBlockHeaderAttestation)}
+        assert d["stamp"]["bitcoin_block_height"] in heights
+    except ImportError:
+        print("note: opentimestamps not installed; the .ots proof was not re-parsed")
+    assert rep["complete"] and not rep["failures"] and not rep["problems"] and rep["missing_event_count"] == 0
+    assert rep["h2"]["decision"]["category"] == "OPPOSITE DIRECTION"
+    assert rep["r2"]["decision"]["category"] == "STOP — SMALL OBSERVED EFFECT"
+    assert cfg["decision_thresholds"] == {"prefix_gap": 0.02, "adaptation": 0.05, "proceed_d": 0.03,
+                                          "proceed_d3050": 0.015, "q_fraction": 0.5, "opposite_d": -0.03,
+                                          "small_d": 0.015, "transient_d": 0.05}
+    lineage = rep["lineage"]
+    assert len(lineage) == 24 and all(v["passed"] and v["max_ce_diff"] == 0.0 and v["max_energy_rel_diff"] == 0.0
+                                      for v in lineage.values())
+    for seed in SEEDS:  # the reused switch states re-evaluate bit-exactly to the pilot's own records
+        for cond in CONDS:
+            for role in ("full", "quick"):
+                assert ev2[seed, cond, "x", 0, role, "web"]["ce"] == ev1[seed, cond, "prefix", PREFIX_END, role, "web"]["ce"]
+    smoke = d["smoke"]
+    assert smoke["lineage"]["passed"] and all(r["max_ce_diff"] == 0.0 for r in smoke["lineage"]["runs"].values())
+    assert sel["status"] == "selected" and sel["selected"] == "mc4-zh" and sel["reproduction"]["passed"]
+
+    # ---- independent recomputation of the contrasts
+    def ce2(seed, cond, stage, step, role="full", dom="web", metric="ce"):
+        src = ev1 if seed in SEEDS and stage != "x" else ev2
+        return src[seed, cond, stage, step, role, dom][metric]
+
+    def contrast2(seed, shift, step, role="full"):
+        rp, tp = ce2(seed, "RMS", "prefix", PREFIX_END, role), ce2(seed, "Taper-minus", "prefix", PREFIX_END, role)
+        rw, rs = ce2(seed, "RMS", "web", step, role), ce2(seed, "RMS", shift, step, role)
+        tw, ts = ce2(seed, "Taper-minus", "web", step, role), ce2(seed, "Taper-minus", shift, step, role)
+        dd, g = (ts - tw) - (rs - rw), (tp - rp) - (tw - rw)
+        return {"D": dd, "G": g, "Q": dd - g, "F_rms_web": rw - rp, "F_rms": rs - rp, "F_t_web": tw - tp, "F_t": ts - tp}
+
+    rows = {}
+    for shift, key, seeds in (("x", "h2", SEEDS2), ("python", "r2", SEEDS2)):
+        details = {s["seed"]: s for s in rep[key]["seeds"]} if key == "h2" else \
+            {s["seed"]: s for s in rep["r2"]["seeds"]}
+        for seed in seeds:
+            end = contrast2(seed, shift, CONT)
+            base = ("prefix", PREFIX_END) if shift == "python" else ("x", 0)
+            adapt = {c: ce2(seed, c, *base, dom=shift, metric="non_w_ce") - ce2(seed, c, shift, CONT, dom=shift,
+                                                                                metric="non_w_ce") for c in CONDS}
+            prefix = {c: ce2(seed, c, "prefix", PREFIX_END) for c in CONDS}
+            row = {**end, "D3050": contrast2(seed, shift, 3050)["D"], "D1525": contrast2(seed, shift, 1525)["D"],
+                   "gap": abs(prefix["Taper-minus"] - prefix["RMS"]) / prefix["RMS"], "adapt": adapt,
+                   "full_D": {u: contrast2(seed, shift, u)["D"] for u in FULL_CONT},
+                   "quick_D": {u: contrast2(seed, shift, u, "quick")["D"] for u in QUICK_CONT}}
+            if seed in details:
+                found = details[seed]
+                assert abs(row["D"] - found["endpoint"]["d"]) < 1e-12 and abs(row["Q"] - found["endpoint"]["q"]) < 1e-12
+                assert abs(row["G"] - found["endpoint"]["g_web"]) < 1e-12
+                assert abs(row["D3050"] - found["evidence"]["d3050"]) < 1e-12
+                row.update(matched=found["matched"], tail=found["tail"], classes=found["class_contributions"],
+                           rare=found["rare"])
+            rows[shift, seed] = row
+    for seed in SEEDS:  # the pilot's own web -> Python values, recomputed through the Study 2 path
+        assert abs(rows["python", seed]["D"] - contrast2(seed, "python", CONT)["D"]) < 1e-15
+    h2 = [rows["x", s]["D"] for s in SEEDS2]
+    r2 = [rows["python", s]["D"] for s in FRESH]
+    pooled = [rows["python", s]["D"] for s in SEEDS2]
+    for values, block in ((h2, rep["h2"]["uncertainty"]), (r2, rep["r2"]["uncertainty"]),
+                          (pooled, rep["pooled_python_descriptive"]),
+                          ([rows["x", s]["D"] for s in FRESH], rep["h2"]["fresh_seed_sensitivity"])):
+        mean, sd, lo, hi = interval(values, T95)
+        _, _, lo90, hi90 = interval(values, T90)
+        assert abs(mean - block["mean"]) < 1e-12 and abs(lo - block["t95"][0]) < 1e-12 and abs(hi90 - block["t90"][1]) < 1e-12
+
+    # ---- manipulation check (Finding A's measures), recomputed from the diagnostic probes
+    def diag2(seed, cond, stage, step):
+        if seed in SEEDS and stage != "x":
+            return ev1[seed, cond, stage, step, "diag", "both"]["measurement"]
+        return ev2[seed, cond, stage, step, "diag", "all"]["measurement"]
+
+    sites = [f"{i}.{b}" for i in range(6) for b in ("attention", "mlp")]
+    scale = {}
+    for shift in ("x", "python"):
+        for cond in CONDS:
+            gap, wch, sch, spec = [], [], [], []
+            for seed in SEEDS2:
+                switch = diag2(seed, cond, "prefix", PREFIX_END)
+                gsrc = diag2(seed, cond, "x", 0) if shift == "x" else switch
+                wend, send = diag2(seed, cond, "web", CONT), diag2(seed, cond, shift, CONT)
+                for site in sites:
+                    E = lambda mm_, dom, site=site: mm_["sites"][f"{site}.h"]["all"][dom]["mean_squared_norm"]
+                    gap.append(0.5 * math.log(E(gsrc, shift) / E(gsrc, "web")))
+                    wch.append(0.5 * math.log(E(wend, "web") / E(switch, "web")))
+                    sch.append(0.5 * math.log(E(send, "web") / E(switch, "web")))
+                    spec.append(sch[-1] - wch[-1])
+            v = {"gap": float(np.mean(np.abs(gap))), "w_abs": float(np.mean(np.abs(wch))),
+                 "s_abs": float(np.mean(np.abs(sch))), "w_signed": float(np.mean(wch)),
+                 "s_signed": float(np.mean(sch)), "specific": float(np.mean(np.abs(spec)))}
+            frozen = rep["manipulation_check"][shift][cond]
+            for mine, theirs in (("gap", "switch_gap_abs"), ("w_abs", "web_branch_change_abs"),
+                                 ("s_abs", "shift_branch_change_abs"), ("specific", "specific_change_abs")):
+                assert abs(v[mine] - frozen[theirs]) < 1e-12, (shift, cond, mine)
+            scale[shift, cond] = v
+    reading = rep["manipulation_check"]["reading"]
+    assert reading == {"switch_gap_larger_for_x": False, "specific_change_larger_for_x": True}
+
+    # ---- macros
+    cand = sel["candidates"]
+    out.update({"twoSelZh": f"{cand['mc4-zh']['S']:.4f}", "twoSelRu": f"{cand['mc4-ru']['S']:.4f}",
+                "twoSelDe": f"{cand['mc4-de']['S']:.4f}", "twoSelOwm": f"{cand['openwebmath']['S']:.4f}",
+                "twoSelPy": f"{sel['python_reference']['S']:.4f}",
+                "twoSelPyR": f"{sel['python_reference']['per_condition']['RMS']:.4f}",
+                "twoSelPyT": f"{sel['python_reference']['per_condition']['Taper-minus']:.4f}",
+                "twoReproMax": f"{max(sel['reproduction']['max_relative_difference'].values()):.1f}"})
+    online, audit, acc = d["online"], d["audit"], d["acceptance"]
+    out.update({"twoTrainTokens": f"{online['splits']['x_train']['tokens']:,}",
+                "twoTrainDocs": f"{acc['documents']['x_train']:,}", "twoDevDocs": f"{acc['documents']['x_dev']:,}",
+                "twoTestDocs": f"{acc['documents']['x_test']:,}",
+                "twoNearRemoved": f"{audit['near_removed']:,}", "twoExactRemoved": f"{audit['exact_removed']:,}",
+                "twoFrozenRemoved": f"{audit['exact_frozen_removed'] + audit['near_frozen_dev_removed']:,}",
+                "twoAuditPairs": f"{audit['missed_candidate_pairs_checked']:,}",
+                "twoFrozenPairs": f"{audit['frozen_pairs_checked']:,}",
+                "twoTrainShards": f"{len(online['domain']['shards_consumed']['train'])}",
+                "twoValShards": f"{len(online['domain']['shards_consumed']['validation'])}",
+                "twoRawTrain": f"{online['raw_tokens_before_dedup']['train'] / 1e6:.1f}"})
+    sessions = d["sessions"]
+    stamp = d["stamp"]
+    to_dt = lambda s: dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+    first_job = to_dt(stamp["kaggle_versions_embedding_the_manifest_utc"]["danny00/s2-domain-probe v1"])
+    block_time = to_dt(stamp["bitcoin_block_time_utc"])
+    submit = to_dt(stamp["calendar_submission_utc"])
+    run_start = dt.datetime.fromtimestamp(sessions[0]["started_unix"], dt.UTC)
+    when = lambda t: f"{t.strftime('%H:%M')} UTC on {t.day} {t.strftime('%B')}"
+    sec2 = {c: statistics.mean(d["completion"][s, c]["optimizer_seconds"] / d["completion"][s, c]["updates"]
+                               for s in FRESH) for c in CONDS}
+    clip2 = rep["clipping"]
+    out.update({"twoSessOne": f"{sessions[0]['hours']:.2f}", "twoSessTwo": f"{sessions[1]['hours']:.2f}",
+                "twoSessTotal": f"{sum(s['hours'] for s in sessions):.2f}",
+                "twoTorch": sessions[0]["torch"].split("+")[0],
+                "twoManifestSha": manifest_sha[:12], "twoSubmit": when(submit), "twoFirstJob": when(first_job),
+                "twoRunStart": when(run_start), "twoBlock": f"{stamp['bitcoin_block_height']:,}",
+                "twoBlockTime": when(block_time),
+                "twoBlockAfterStart": f"{(block_time - run_start).total_seconds() / 3600:.0f}",
+                "twoLineageN": f"{len(lineage)}", "twoSecRMS": f"{sec2['RMS']:.2f}", "twoSecTaper": f"{sec2['Taper-minus']:.2f}",
+                "twoClipXR": f"{clip2['RMS']['x']['mean'] * 100:.1f}",
+                "twoClipXT": f"{clip2['Taper-minus']['x']['mean'] * 100:.1f}",
+                "twoClipPyR": f"{clip2['RMS']['python']['mean'] * 100:.0f}",
+                "twoClipWebR": f"{clip2['RMS']['web']['mean'] * 100:.0f}"})
+    mean, sd, lo, hi = interval(h2, T95)
+    _, _, lo90, hi90 = interval(h2, T90)
+    fmean, _, flo, fhi = interval([rows["x", s]["D"] for s in FRESH], T95)
+    f_x = [rows["x", s][k] for s in SEEDS2 for k in ("F_rms", "F_t")]
+    early = {u: statistics.mean(rows["x", s]["quick_D"][u] for s in SEEDS2) for u in QUICK_CONT if u <= 1000}
+    early_u = max(early, key=early.get)
+    traj = {u: statistics.mean(rows["x", s]["full_D"][u] for s in SEEDS2) for u in FULL_CONT if u > 0}
+    positive = [s for s in SEEDS2 if rows["x", s]["D"] > 0]
+    target = rep["h2"]["decision"]["common_target_update"]
+    matched = [rows["x", s]["matched"][str(target)]["differential_forgetting"] for s in SEEDS2]
+    boot = rep["document_bootstrap"]
+    out.update({"twoDmean": m(mean), "twoDsd": m(sd, sign=False), "twoDlo": m(lo), "twoDhi": m(hi),
+                "twoDloNinety": m(lo90), "twoDhiNinety": m(hi90), "twoDmin": m(min(h2)), "twoDmax": m(max(h2)),
+                "twoNneg": f"{sum(x < 0 for x in h2)}", "twoPosSeed": f"{positive[0]}" if len(positive) == 1 else "--",
+                "twoPosD": m(rows["x", positive[0]]["D"]) if len(positive) == 1 else "--",
+                "twoDthree": m(statistics.mean(rows["x", s]["D3050"] for s in SEEDS2)),
+                "twoQmean": m(statistics.mean(rows["x", s]["Q"] for s in SEEDS2)),
+                "twoGmean": m(statistics.mean(rows["x", s]["G"] for s in SEEDS2)),
+                "twoMatched": m(statistics.mean(matched)), "twoMatchedTarget": f"{target:,}",
+                "twoGapMin": f"{min(rows['x', s]['gap'] for s in SEEDS2) * 100:.2f}",
+                "twoGapMax": f"{max(rows['x', s]['gap'] for s in SEEDS2) * 100:.2f}",
+                "twoAdaptMin": f"{min(v for s in SEEDS2 for v in rows['x', s]['adapt'].values()):.2f}",
+                "twoAdaptMax": f"{max(v for s in SEEDS2 for v in rows['x', s]['adapt'].values()):.2f}",
+                "twoFxMin": m(min(f_x), 2, sign=False), "twoFxMax": m(max(f_x), 2, sign=False),
+                "twoFxMean": m(statistics.mean(f_x), 2, sign=False),
+                "twoDrelPct": f"{abs(mean) / statistics.mean(f_x) * 100:.1f}",
+                "twoFreshMean": m(fmean), "twoFreshLo": m(flo), "twoFreshHi": m(fhi),
+                "twoBootLo": m(boot["mean_d_percentile_95"][0]), "twoBootHi": m(boot["mean_d_percentile_95"][1]),
+                "twoEarlyMax": m(early[early_u], 3), "twoEarlyMaxAt": f"{early_u:,}",
+                "twoTrajNeg": f"{sum(v < 0 for v in traj.values())}", "twoTrajN": f"{len(traj)}",
+                "twoMedianMin": m(min(rows["x", s]["tail"]["unweighted_median"] for s in SEEDS2), 3),
+                "twoMedianMax": m(max(rows["x", s]["tail"]["unweighted_median"] for s in SEEDS2), 3),
+                "twoMedianNeg": f"{sum(rows['x', s]['tail']['unweighted_median'] < 0 for s in SEEDS2)}"})
+    cls2 = {s: {c["token_class"]: c["weighted_contribution"] for c in rows["x", s]["classes"]} for s in SEEDS2}
+    _, pilot_sd, pilot_lo, pilot_hi = interval([rows["python", s]["D"] for s in SEEDS], T95)
+    late = [u for u in FULL_CONT if u >= 5185]  # Study 1's post hoc late window, reused descriptively
+    steps = [u for u in FULL_CONT if u >= 305]
+    out.update({"twoLateMean": m(statistics.mean(traj[u] for u in late)), "twoLateNeg": f"{sum(traj[u] < 0 for u in late)}",
+                "twoLateCount": f"{len(late)}",
+                "twoJitter": m(statistics.mean(abs(rows["x", s]["full_D"][b] - rows["x", s]["full_D"][a])
+                                               for s in SEEDS2 for a, b in zip(steps, steps[1:])), 3, sign=False)})
+    x_classes = ev2[FRESH[0], "RMS", "x", 0, "full", "x"]["classes"]
+    w_classes = ev2[FRESH[0], "RMS", "x", 0, "full", "web"]["classes"]
+    out["twoCtrlShare"] = f"{x_classes['X'][1] / sum(v[1] for v in x_classes.values()) * 100:.0f}"
+    out["webCtrlShare"] = f"{w_classes['X'][1] / sum(v[1] for v in w_classes.values()) * 100:.1f}"
+    out.update({"twoPrefixCE":f"{statistics.mean(ce2(s, c, 'prefix', PREFIX_END) for s in SEEDS2 for c in CONDS):.2f}",
+                "twoWebEndCE": f"{statistics.mean(ce2(s, c, 'web', CONT) for s in SEEDS2 for c in CONDS):.2f}",
+                "twoXendCE": f"{statistics.mean(ce2(s, c, 'x', CONT) for s in SEEDS2 for c in CONDS):.2f}",
+                "twoOverflow": f"{sum(d['completion'][s, c]['overflow_retries'] for s in SEEDS2 for c in CONDS)}",
+                "twoClassPneg": f"{sum(cls2[s]['P'] < 0 for s in SEEDS2)}",
+                "twoClassAneg": f"{sum(cls2[s]['A'] < 0 for s in SEEDS2)}",
+                "twoRareMax": f"{max(abs(rows['x', s]['rare']['contribution_to_d']) for s in SEEDS2):.4f}",
+                "twoSdRatio": f"{sd / pilot_sd:.0f}",
+                "repInPilot": f"{sum(pilot_lo <= rows['python', s]['D'] <= pilot_hi for s in FRESH)}"})
+    rmean, rsd, rlo, rhi = interval(r2, T95)
+    _, _, rlo90, rhi90 = interval(r2, T90)
+    pmean, psd, plo, phi = interval(pooled, T95)
+    rmatched = [rows["python", s]["matched"][str(rep["r2"]["decision"]["common_target_update"])]["differential_forgetting"]
+                for s in FRESH]
+    out.update({"repDmean": m(rmean), "repDsd": m(rsd, sign=False), "repDlo": m(rlo), "repDhi": m(rhi),
+                "repDloNinety": m(rlo90), "repDhiNinety": m(rhi90),
+                "repDvalues": ", ".join(m(rows["python", s]["D"]) for s in FRESH),
+                "repNpos": f"{sum(x > 0 for x in r2)}",
+                "repDthree": m(statistics.mean(rows["python", s]["D3050"] for s in FRESH)),
+                "repQmean": m(statistics.mean(rows["python", s]["Q"] for s in FRESH)),
+                "repMatched": m(statistics.mean(rmatched)),
+                "repGapMin": f"{min(rows['python', s]['gap'] for s in FRESH) * 100:.2f}",
+                "repGapMax": f"{max(rows['python', s]['gap'] for s in FRESH) * 100:.2f}",
+                "repAdaptMin": f"{min(v for s in FRESH for v in rows['python', s]['adapt'].values()):.2f}",
+                "repAdaptMax": f"{max(v for s in FRESH for v in rows['python', s]['adapt'].values()):.2f}",
+                "poolMean": m(pmean), "poolSd": m(psd, sign=False), "poolLo": m(plo), "poolHi": m(phi),
+                "poolSdRatio": f"{psd / pilot_sd:.0f}"})
+    R, T = ("x", "RMS"), ("x", "Taper-minus")
+    out.update({"mcGapXR": f"{scale[R]['gap']:.3f}", "mcGapXT": f"{scale[T]['gap']:.3f}",
+                "mcGapPyR": f"{scale['python', 'RMS']['gap']:.3f}", "mcGapPyT": f"{scale['python', 'Taper-minus']['gap']:.3f}",
+                "mcSpecXR": f"{scale[R]['specific']:.3f}", "mcSpecXT": f"{scale[T]['specific']:.3f}",
+                "mcSpecPyR": f"{scale['python', 'RMS']['specific']:.3f}",
+                "mcSpecPyT": f"{scale['python', 'Taper-minus']['specific']:.3f}",
+                "mcRatioLo": f"{min(scale[R]['specific'] / scale['python', 'RMS']['specific'], scale[T]['specific'] / scale['python', 'Taper-minus']['specific']):.1f}",
+                "mcRatioHi": f"{max(scale[R]['specific'] / scale['python', 'RMS']['specific'], scale[T]['specific'] / scale['python', 'Taper-minus']['specific']):.1f}",
+                "mcXfactorR": f"{math.exp(scale[R]['s_signed']):.2f}", "mcXfactorT": f"{math.exp(scale[T]['s_signed']):.2f}",
+                "mcWebFactorR": f"{math.exp(scale[R]['w_signed']):.2f}", "mcWebFactorT": f"{math.exp(scale[T]['w_signed']):.2f}"})
+
+    # ---- tables
+    def table(path, lines):
+        (OUT / path).write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    t = ["\\begin{tabular}{@{}lrrrrr@{}}", "\\toprule",
+         "Candidate & $S$ (both) & RMS & Taper-minus & First half & Second half \\\\", "\\midrule"]
+    labels = {"mc4-zh": "Chinese web text (mC4 zh)", "mc4-ru": "Russian web text (mC4 ru)",
+              "mc4-de": "German web text (mC4 de)", "openwebmath": "Mathematical web text (OpenWebMath)"}
+    for cid in sel["ranking"]:
+        c = cand[cid]
+        t.append(f"{labels[cid]}{' (selected)' if cid == sel['selected'] else ''} & ${c['S']:.4f}$ & "
+                 f"${c['per_condition']['RMS']:.4f}$ & ${c['per_condition']['Taper-minus']:.4f}$ & "
+                 f"${c['half_sample_S'][0]:.4f}$ & ${c['half_sample_S'][1]:.4f}$ \\\\")
+    py = sel["python_reference"]
+    t += ["\\midrule", f"Python (pilot's code, reference) & ${py['S']:.4f}$ & ${py['per_condition']['RMS']:.4f}$ & "
+          f"${py['per_condition']['Taper-minus']:.4f}$ & & \\\\", "\\bottomrule", "\\end{tabular}"]
+    table("table_s2_selection.tex", t)
+
+    t = ["\\begin{tabular}{@{}lrrrrrrrr@{}}", "\\toprule",
+         "Seed & $D_X$ & $D_X(3050)$ & $D_X(1525)$ & $G_{\\text{web}}$ & $Q$ & Matched ($s{=}" + f"{target}" + "$) & "
+         "Gap & $X$ gain (R / T) \\\\", "\\midrule"]
+    for seed in SEEDS2:
+        r = rows["x", seed]
+        dagger = "$^\\dagger$" if seed in SEEDS else ""
+        t.append(f"{seed}{dagger} & {fmt(r['D'])} & {fmt(r['D3050'])} & {fmt(r['D1525'])} & "
+                 f"{fmt(r['G'])} & {fmt(r['Q'])} & {fmt(r['matched'][str(target)]['differential_forgetting'])} & "
+                 f"${r['gap'] * 100:.2f}\\%$ & ${r['adapt']['RMS']:.2f}$ / ${r['adapt']['Taper-minus']:.2f}$ \\\\")
+    means = {k: statistics.mean(rows["x", s][k] for s in SEEDS2) for k in ("D", "D3050", "D1525", "G", "Q")}
+    sds = {k: statistics.stdev(rows["x", s][k] for s in SEEDS2) for k in ("D", "D3050", "D1525", "G", "Q")}
+    t += ["\\midrule", "Mean & " + " & ".join(fmt(means[k]) for k in ("D", "D3050", "D1525", "G", "Q"))
+          + f" & {fmt(statistics.mean(matched))} & & \\\\",
+          "SD & " + " & ".join(f"${sds[k]:.4f}$" for k in ("D", "D3050", "D1525", "G", "Q"))
+          + f" & ${statistics.stdev(matched):.4f}$ & & \\\\", "\\bottomrule", "\\end{tabular}"]
+    table("table_s2_primary.tex", t)
+
+    t = ["\\begin{tabular}{@{}lrrrrrrr@{}}", "\\toprule",
+         "Seed & $D$ & $D(3050)$ & $G_{\\text{web}}$ & $Q$ & Matched ($s{=}6104$) & Gap & Code gain (R / T) \\\\",
+         "\\midrule"]
+    for seed in FRESH:
+        r = rows["python", seed]
+        t.append(f"{seed} & {fmt(r['D'])} & {fmt(r['D3050'])} & {fmt(r['G'])} & {fmt(r['Q'])} & "
+                 f"{fmt(r['matched']['6104']['differential_forgetting'])} & ${r['gap'] * 100:.2f}\\%$ & "
+                 f"${r['adapt']['RMS']:.2f}$ / ${r['adapt']['Taper-minus']:.2f}$ \\\\")
+    rmeans = {k: statistics.mean(rows["python", s][k] for s in FRESH) for k in ("D", "D3050", "G", "Q")}
+    t += ["\\midrule", "Mean & " + " & ".join(fmt(rmeans[k]) for k in ("D", "D3050", "G", "Q"))
+          + f" & {fmt(statistics.mean(rmatched))} & & \\\\", "\\bottomrule", "\\end{tabular}"]
+    table("table_s2_replication.tex", t)
+
+    t = ["\\begin{tabular}{@{}llrrrrc@{}}", "\\toprule",
+         "Contrast & Seeds & Mean & SD & 95\\% $t$-interval & 90\\% $t$-interval & Equivalent \\\\", "\\midrule"]
+    blocks = [("Chinese, $D_X$ (H2)", "101--106", h2),
+              ("\\quad fresh seeds only", "104--106", [rows["x", s]["D"] for s in FRESH]),
+              ("Python, $D$ (R2)", "104--106", r2),
+              ("\\quad pilot (Study 1)", "101--103", [rows["python", s]["D"] for s in SEEDS]),
+              ("\\quad pooled (descriptive)", "101--106", pooled)]
+    iv = lambda a, b: f"$[{a:+.4f}, {b:+.4f}]$".replace("+", "{+}")
+    for name, seeds_txt, values in blocks:
+        mean_, sd_, lo_, hi_ = interval(values, T95)
+        _, _, lo9, hi9 = interval(values, T90)
+        inside = "yes" if -0.015 < lo9 and hi9 < 0.015 else "no"
+        t.append(f"{name} & {seeds_txt} & {fmt(mean_)} & ${sd_:.4f}$ & {iv(lo_, hi_)} & {iv(lo9, hi9)} & {inside} \\\\")
+    t += ["\\bottomrule", "\\end{tabular}"]
+    table("table_s2_intervals.tex", t)
+
+    fs = lambda x: f"${x:+.3f}$ ($\\times{math.exp(x):.2f}$)".replace("+", "{+}")
+    t = ["\\begin{tabular}{@{}lrrrr@{}}", "\\toprule",
+         " & \\multicolumn{2}{c}{Chinese ($X$)} & \\multicolumn{2}{c}{Python} \\\\",
+         "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}",
+         "Log-ratio of scales & RMS & Taper-minus & RMS & Taper-minus \\\\",
+         "\\midrule",
+         "Switch gap, domain vs.\\ web, $|\\cdot|$ & " + " & ".join(f"{scale[k]['gap']:.3f}" for k in
+                                                                     [R, T, ("python", "RMS"), ("python", "Taper-minus")]) + " \\\\",
+         "Web branch: web-probe change, $|\\cdot|$ & " + " & ".join(f"{scale[k]['w_abs']:.3f}" for k in
+                                                                      [R, T, ("python", "RMS"), ("python", "Taper-minus")]) + " \\\\",
+         "Shifted branch: web-probe change, $|\\cdot|$ & " + " & ".join(f"{scale[k]['s_abs']:.3f}" for k in
+                                                                          [R, T, ("python", "RMS"), ("python", "Taper-minus")]) + " \\\\",
+         "\\quad signed (factor) & " + " & ".join(fs(scale[k]["s_signed"]) for k in
+                                                 [R, T, ("python", "RMS"), ("python", "Taper-minus")]) + " \\\\",
+         "Domain-specific change, $|\\cdot|$ & " + " & ".join(
+             f"\\textbf{{{scale[k]['specific']:.3f}}}" for k in [R, T, ("python", "RMS"), ("python", "Taper-minus")]) + " \\\\",
+         "\\bottomrule", "\\end{tabular}"]
+    table("table_s2_scales.tex", t)
+
+    t = ["\\begin{tabular}{@{}lrrrrrrrr@{}}", "\\toprule",
+         " & \\multicolumn{4}{c}{Contribution to $D_X$ by token class} & \\multicolumn{3}{c}{Per-document $D_i$} & R \\\\",
+         "\\cmidrule(lr){2-5}\\cmidrule(lr){6-8}",
+         "Seed & W & A & P & C & Median & 1\\%-trimmed & Top-1\\% sum & contribution \\\\", "\\midrule"]
+    for seed in SEEDS2:
+        r = rows["x", seed]
+        cls = {c["token_class"]: c for c in r["classes"]}
+        t.append(f"{seed} & " + " & ".join(fmt(cls[c]["weighted_contribution"]) for c in "WAPX") + " & "
+                 f"{fmt(r['tail']['unweighted_median'])} & {fmt(r['tail']['trimmed_token_weighted_mean'])} & "
+                 f"{fmt(r['tail']['top_signed_sum'])} & {fmt(r['rare']['contribution_to_d'])} \\\\")
+        assert abs(sum(c["weighted_contribution"] for c in r["classes"]) - r["D"]) < 1e-6
+    t += ["\\bottomrule", "\\end{tabular}"]
+    table("table_s2_tails.tex", t)
+
+    phases = [("prefix_calibration", "Prefix, $u \\le 763$ (calibration)"),
+              ("prefix_gate_decay", "Prefix, $764 \\le u \\le 6{,}103$"), ("prefix_gate_zero", "Prefix, $u \\ge 6{,}104$"),
+              ("web", "Web branch"), ("python", "Python branch"), ("x", "Chinese branch")]
+    t = ["\\begin{tabular}{@{}lrcc@{}}", "\\toprule", "Phase & Runs & RMS & Taper-minus \\\\", "\\midrule"]
+    for key, name in phases:
+        cells = [f"{clip2[c][key]['mean'] * 100:.1f}\\% ({clip2[c][key]['min'] * 100:.1f}--{clip2[c][key]['max'] * 100:.1f})"
+                 for c in CONDS]
+        t.append(f"{name} & {clip2['RMS'][key]['runs']} & " + " & ".join(cells) + " \\\\")
+    t += ["\\bottomrule", "\\end{tabular}"]
+    table("table_s2_clipping.tex", t)
+
+    # ---- figure: Study 2 trajectories
+    figure_style()
+    fig, axes = plt.subplots(1, 3, figsize=(6.75, 2.35), constrained_layout=True)
+    xs = FULL_CONT
+
+    def style(ax, title):
+        ax.set_title(title, loc="left", color=INK, fontweight="bold")
+        ax.grid(True, color=GRID, linewidth=0.5)
+        ax.set_axisbelow(True)
+        for side in ("top", "right"):
+            ax.spines[side].set_visible(False)
+        ax.set_xlim(-150, 6300)
+        ax.set_xticks([0, 1525, 3050, 4575, 6104])
+        ax.set_xlabel("Continuation update $s$")
+
+    ax = axes[0]
+    for cond in CONDS:
+        for branch, ls in (("x", "-"), ("web", (0, (3, 1.6)))):
+            ys = [statistics.mean(ce2(s, cond, branch, u) for s in SEEDS2) for u in xs]
+            ax.plot(xs, ys, color=COLOR[cond], linestyle=ls, linewidth=1.4, label=cond if branch == "x" else None)
+    style(ax, "(a) Held-out web CE")
+    ax.set_ylabel("Full-dev web CE (nats/token)")
+    ax.legend(loc="center right", frameon=False, handlelength=1.8)
+    ax.text(6104, 6.4, "Chinese branches (solid)", color=INK2, fontsize=6.2, ha="right", va="top")
+    ax.text(6104, 4.66, "web branches (dashed)", color=INK2, fontsize=6.2, ha="right", va="bottom")
+    ax = axes[1]
+    for y in (0.03, 0.015, -0.03):
+        ax.axhline(y, color=MUTED, linewidth=0.6)
+    ax.axhline(0, color=INK2, linewidth=0.7)
+    for seed in SEEDS2:
+        ax.plot(xs, [rows["x", seed]["full_D"][u] for u in xs], color=MUTED, linewidth=0.7,
+                linestyle="-" if seed in FRESH else (0, (2, 1.2)))
+    ax.plot([], [], color=MUTED, linewidth=0.7, linestyle=(0, (2, 1.2)), label="101–103")
+    ax.plot([], [], color=MUTED, linewidth=0.7, label="104–106")
+    ax.plot(xs, [statistics.mean(rows["x", s]["full_D"][u] for s in SEEDS2) for u in xs], color=INK, linewidth=1.6,
+            label="mean")
+    style(ax, "(b) Contrast $D_X(s)$, full dev")
+    ax.grid(False, axis="y")
+    lim = max(abs(rows["x", s]["full_D"][u]) for s in SEEDS2 for u in xs)
+    assert lim < 0.235  # one seed-point excursion (seed 104, s = 3,355) reaches about -0.22
+    ax.set_ylim(-0.235, 0.09)
+    ax.set_yticks([-0.2, -0.15, -0.1, -0.05, 0, 0.05])
+    ax.set_yticklabels(["−0.20", "−0.15", "−0.10", "−0.05", "0", "+0.05"])
+    ax.set_ylabel("$D_X(s)$ (nats/token)")
+    ax.legend(loc="lower center", frameon=False, handlelength=1.3, fontsize=5.6, ncol=3, columnspacing=0.7,
+              title="seeds", title_fontsize=5.6, borderaxespad=0.2)
+    ax = axes[2]
+    for cond in CONDS:
+        ys = [statistics.mean(ce2(s, cond, "x", u, dom="x", metric="non_w_ce") for s in SEEDS2) for u in xs]
+        ax.plot(xs, ys, color=COLOR[cond], linewidth=1.4, label=cond)
+    style(ax, "(c) Chinese adaptation")
+    ax.set_ylabel("Full-dev non-W Chinese CE (nats/token)")
+    ax.legend(loc="upper right", frameon=False)
+    fig.savefig(FIG / "study2_trajectories.pdf", metadata={"CreationDate": None})
+    fig.savefig(FIG / "study2_trajectories.png", dpi=220)
+    plt.close(fig)
+    return out, {"h2": (mean, lo, hi), "r2": rmean, "ratio": (out["mcRatioLo"], out["mcRatioHi"])}
 
 
 def main():
@@ -410,34 +879,49 @@ def main():
         macros[f"DoneFive{letter}"] = m(rows[seed]["D1525"], 3)
     macros.update(second_draft_analyses(ev, rows, config, session))
 
+    def fmt(x, d=4):
+        return f"${x:+.{d}f}$".replace("+", "{+}")
+
+    two, s2 = study2_assets(ev, m, fmt)
+    macros.update(two)
+
     # ---- abstract: one ASCII text for both the PDF and the arXiv metadata field
-    seeds_txt = ", ".join(f"{rows[s]['D']:.3f}" for s in SEEDS)
+    (h2_mean, h2_lo, h2_hi), r2_mean = s2["h2"], s2["r2"]
+    ratio = round(float(s2["ratio"][0]))
+    assert round(float(s2["ratio"][1])) == ratio
     abstract = (
         "TaperNorm replaces a pre-norm Transformer's internal normalization with a gated map that acts like "
         "RMSNorm early in training and then becomes a fixed, calibrated linear scaling. Without per-token "
-        "normalization, such a model might forget more after a shift in the training data. We tested this in a "
-        "small pilot with design, endpoint and decision rules fixed before training. Paired "
-        "17.7M-parameter models with internal RMSNorm or TaperNorm (three seeds) were trained on 150M web "
-        "tokens, then continued for 100M tokens on web text or Python code. The primary endpoint is a "
-        "difference-in-differences D in held-out web "
-        "cross-entropy; positive D means extra forgetting under TaperNorm. Switching to Python raised web "
-        f"cross-entropy by about {mean_f_code:.2f} nats/token in both models. Mean D was {mean_d:.3f} nats/token "
-        f"(seeds {seeds_txt}), below the pre-specified +0.015 bound, so the pre-specified decision is to stop: "
-        "we find no evidence that TaperNorm increases persistent forgetting in this setting. In exploratory "
-        "analyses, D was near zero for most of continuation (after a brief early dip) and became negative as "
-        "the learning rate annealed, and the code-specific activation-scale shift that motivated the hypothesis "
-        "was small in both models. Code and all evaluation records are released.")
+        "normalization, such a model might forget more after a shift in the training data. We tested this in two "
+        "small studies whose designs, endpoints and decision rules were fixed before training. Paired "
+        "17.7M-parameter models with internal RMSNorm or TaperNorm were trained on 150M web tokens and then "
+        "continued for 100M tokens either on web text or on a new domain. The endpoint D is a "
+        "difference-in-differences in held-out web cross-entropy; positive D means extra forgetting under "
+        f"TaperNorm. In a pilot with Python code (three seeds), mean D was {mean_d:.3f} nats/token, below the "
+        "pre-specified +0.015 bound, so the decision was to stop. A second study, whose frozen protocol and code "
+        "were hashed and submitted for timestamping before it ran, chose a new domain by a fixed rule (Chinese web "
+        f"text) and added three fresh seeds. On Chinese, mean D over six seeds was {h2_mean:.3f} (95% interval "
+        f"{h2_lo:.3f} to {h2_hi:+.3f}), just past the pre-specified -0.03 threshold for the opposite direction. "
+        f"On the fresh seeds the Python decision replicated (mean D {r2_mean:+.3f}), although D was positive in all "
+        "three, where it had been negative in all three pilot seeds: seed-to-seed variation was much larger than "
+        "the pilot suggested. The hypothesis rests on training shifting the scale of the activations entering the "
+        "normalizers. That domain-specific shift was small for Python but about "
+        f"{['zero', 'one', 'two', 'three', 'four', 'five', 'six'][ratio]} times larger for Chinese, so the premise "
+        "was present, yet TaperNorm did not forget more. Equivalence within +/-0.015 was not shown in either study. "
+        "We find no evidence that TaperNorm increases forgetting under these domain shifts. Code and all "
+        "evaluation records are released.")
+    assert macros["repNpos"] == "3" and all(rows[s]["D"] < 0 for s in SEEDS), "abstract's sign statement"
+    assert macros["repInPilot"] == "0", "main text: no fresh value lies inside Study 1's interval"
     assert abstract.isascii(), "abstract must be plain ASCII"
+    assert len(abstract) <= 1920, f"arXiv abstract limit: {len(abstract)} characters"
     (ROOT / "paper" / "arxiv-abstract.txt").write_text(abstract + "\n", encoding="ascii")
-    (OUT / "abstract.tex").write_text(abstract + "\n", encoding="utf-8")
+    tex_abstract = re.sub(r"(?<=[\s(])-(?=\d)", "$-$", abstract.replace("%", "\\%").replace("+/-", "$\\pm$"))
+    (OUT / "abstract.tex").write_text(tex_abstract + "\n", encoding="utf-8")
     print(f"abstract: {len(abstract)} characters, ASCII")
-    lines = ["% Generated by paper/make_assets.py from reports/h1-kaggle -- do not edit by hand."]
+    lines = ["% Generated by paper/make_assets.py from reports/h1-kaggle and reports/s2-kaggle -- do not edit by hand."]
     # Thousands separators as {,} so numbers typeset correctly in both text and math mode.
     lines += [f"\\newcommand{{\\{k}}}{{{v.replace(',', '{,}')}}}" for k, v in macros.items()]
     (OUT / "numbers.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-    def fmt(x, d=4):
-        return f"${x:+.{d}f}$".replace("+", "{+}")
 
     # ---------- Table: primary contrasts per seed ----------
     t = ["\\begin{tabular}{@{}lrrrrrr@{}}", "\\toprule",
@@ -489,7 +973,7 @@ def main():
     t = ["\\begin{tabular}{@{}lrrrrrrr@{}}", "\\toprule",
          " & \\multicolumn{4}{c}{Contribution to $D$ by token class} & \\multicolumn{3}{c}{Per-document $D_i$} \\\\",
          "\\cmidrule(lr){2-5}\\cmidrule(lr){6-8}",
-         "Seed & W & A & P & X & Median & 1\\%-trimmed & Top-1\\% sum \\\\", "\\midrule"]
+         "Seed & W & A & P & C & Median & 1\\%-trimmed & Top-1\\% sum \\\\", "\\midrule"]
     for seed in SEEDS:
         cls = {c["token_class"]: c for c in rows[seed]["classes"]}
         tail = rows[seed]["tail"]
@@ -504,11 +988,7 @@ def main():
         assert abs(cls_sum - rows[seed]["D"]) < 1e-6
 
     # ---------- Figure: trajectories ----------
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7, "axes.titlesize": 7.5,
-                         "axes.labelsize": 7, "xtick.labelsize": 6.5, "ytick.labelsize": 6.5,
-                         "axes.edgecolor": MUTED, "axes.linewidth": 0.6, "xtick.color": INK2, "ytick.color": INK2,
-                         "axes.labelcolor": INK2, "text.color": INK, "legend.fontsize": 6.3,
-                         "pdf.fonttype": 42})
+    figure_style()
     fig, axes = plt.subplots(1, 3, figsize=(6.75, 2.35), constrained_layout=True)
     xs = FULL_CONT
 
@@ -569,7 +1049,7 @@ def main():
 
     summary = {k: v for k, v in macros.items()}
     (OUT / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
-    print("independent recomputation agrees with the frozen report; wrote", len(macros), "macros, 4 tables, 1 figure")
+    print("independent recomputation (Studies 1 and 2) agrees with the frozen reports; wrote", len(macros), "macros, 11 tables, 2 figures")
     for k in ("Dmean", "Dsd", "Dlo", "Dhi", "DthreeMean", "Qmean", "Gmean", "matchedMean", "FcodeMean", "DrelPct",
               "earlyMax", "earlyMaxAt", "clipRMSlo", "clipRMShi", "clipTaperlo", "clipTaperhi", "paramsRMS",
               "embedShare", "nDocsWeb", "slopeRMS", "slopeTaper", "sessionStart", "sessionEnd"):
